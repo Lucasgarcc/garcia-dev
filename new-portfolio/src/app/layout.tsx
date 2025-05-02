@@ -5,7 +5,6 @@ import type { ReactNode } from 'react';
 import Header from './components/Home/Header/Header';
 import Scene3D from './components/Background/Scene3D';
 import Emphasis from './components/Home/Emphasis/Emphasis';
-import RedeSocial from './components/Home/Emphasis/RedeSocial/RedeSocial';
 // import Footer from './components/Footer';
 
 const inter = Inter({ subsets: ['latin'] });
