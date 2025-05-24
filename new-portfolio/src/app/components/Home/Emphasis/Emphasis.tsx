@@ -1,6 +1,7 @@
 'use client';
 import { Typography, Button } from '@mui/material';
 import { motion } from 'framer-motion';
+import Scene3D from './Emphasis.module.css';
 export default function Home() {
   return (
 
@@ -11,16 +12,16 @@ export default function Home() {
     >
     
       <Typography variant="h2" gutterBottom>
-        Eai, Eu sou Lucas
+        <span className={Scene3D.titleDetail}>Eai</span>, Eu sou Lucas
       </Typography>
       <Typography variant="h4" gutterBottom>
-        Desenvolvedor Frontend
+        Desenvolvedor <span className={Scene3D.titleDetail}>Frontend</span>
       </Typography>
  
       <Typography variant="body1" maxWidth={550} textAlign={'justify'}>
         Sou um desenvolvedor Frontend apaixonado por criar experiências digitais incríveis. Com uma sólida formação em design e desenvolvimento web, estou sempre em busca de novos desafios e oportunidades para aprimorar minhas habilidades.
       </Typography>
-      <Button variant="contained" sx={{ backgroundColor: '#749f21', marginTop: '1rem' }}>
+      <Button variant="contained" sx={{ backgroundColor: '#749f21', marginTop: '1rem', color: '#406661' }}>
 
         <a href="https://wa.link/i3xug3" target="_blank" className="button button-flex" aria-label="Contate-me">
           contate-me <i className="uil uil-message button-icone"></i>

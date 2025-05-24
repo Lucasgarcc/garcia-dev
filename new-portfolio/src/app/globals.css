@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #424242;
   --foreground: #171717;
 }
 
@@ -14,8 +14,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #f3f3f3;
-    --foreground: #000000;
+    --background: #fffffd;
+    --foreground: #181818;
   }
 }
 
@@ -31,6 +31,19 @@ main {
   justify-content: center;
   align-items: center;
   gap: 1rem;
+}
+
+@media screen and (max-width: 1568px) {
+  main {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10rem;
+  }
+  .area-content-scene3D {
+    width: 100%;
+    height: auto;
+  }
 }
 
 .area-content-emphasis {

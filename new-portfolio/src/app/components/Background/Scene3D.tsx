@@ -35,54 +35,42 @@ export default function OrbitLogos() {
 
   return (
     <>
-        <div ref={containerRef} style={{
-            display: 'flex',
-            alignItems: 'flex-start',
-            justifyContent: 'center',
-            position: 'relative',
-            width: 1000,
-            height: 500,
-            margin: '0 auto',
+        <div className={Scene3D.areaContainer} ref={containerRef}>
+
+            <div className={Scene3D.areaRedesocial}>
+                <RedeSocial/>
+            </div>
+            
+
+        {/* Foto central */}
+        <motion.div
+            style={{
+            overflow: 'hidden',
+            position: 'absolute',
+            top: '33%',
+            left: '45%',
+            width: 'auto',
             backgroundColor: 'transparent',
-            perspective: 650,
-            transformStyle: 'preserve-3d',
-            overflow: 'visible',
-        }}>
-
-        <div className={Scene3D.areaRedesocial}>
-            <RedeSocial/>
-        </div>
-        
-
-      {/* Foto central */}
-      <motion.div
-        style={{
-          overflow: 'hidden',
-          position: 'absolute',
-          top: '33%',
-          left: '45%',
-          width: 'auto',
-          backgroundColor: 'transparent',
-          transform: 'translate(-50%, -50%)',
-          zIndex: 10,
-          boxShadow: '0 0 15px rgba(0, 0, 0, 0)',
-          filter: `
-          drop-shadow(0 0 4px rgba(47, 46, 46, 0.6)) 
-          drop-shadow(0 0 8px rgba(97, 97, 97, 0.5)) 
-          drop-shadow(0 0 12px rgba(43, 43, 43, 0.4))
-        `,
-        }}
-        animate={{
-            rotate: [0, 5, -5, 0], // leve balanço
-            y: [0, 5, 0],
-            x : [ 0, 9, 0 ]         // leve flutuação
-          }}
-          transition={{
-            duration: 5,
-            repeat: Infinity,
-            ease: 'easeInOut',
-        }}
-      >
+            transform: 'translate(-50%, -50%)',
+            zIndex: 10,
+            boxShadow: '0 0 15px rgba(0, 0, 0, 0)',
+            filter: `
+            drop-shadow(0 0 4px rgba(47, 46, 46, 0.6)) 
+            drop-shadow(0 0 8px rgba(97, 97, 97, 0.5)) 
+            drop-shadow(0 0 12px rgba(43, 43, 43, 0.4))
+            `,
+            }}
+            animate={{
+                rotate: [0, 5, -5, 0], // leve balanço
+                y: [0, 5, 0],
+                x : [ 0, 9, 0 ]         // leve flutuação
+            }}
+            transition={{
+                duration: 5,
+                repeat: Infinity,
+                ease: 'easeInOut',
+            }}
+        >
         <Image src={profile} className={Scene3D.profile} alt="Minha foto"  />
       </motion.div>
 

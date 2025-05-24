@@ -37,7 +37,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <Header />
         <main>{children}
 
-          <div>
+          <div className='area-content-scene3D' >
             <Scene3D />
           </div>	
           <div className='area-content-emphasis'  >

@@ -12,3 +12,34 @@
   left: -12rem;
   right: 0;
 }
+
+.areaContainer {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    position: relative;
+    width: 832px;
+    height: 500px;
+    margin: 0px auto;
+    background-color: transparent;
+    perspective: 650px;
+    transform-style: preserve-3d;
+    overflow: visible;
+}
+
+@media screen and (max-width:1568px) {
+
+  .areaContainer {
+    position: relative;  
+    inset: 0 0 0 -9rem;
+    width: 900px;
+  }
+}
+@media screen and (max-width:1000px) {
+  .areaContainer {
+    position: relative;  
+    inset: 0 0 0 -9rem;
+    width: 600px;
+	height: 20vh;
+  }
+}
