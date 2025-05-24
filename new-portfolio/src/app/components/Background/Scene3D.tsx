@@ -5,7 +5,7 @@ import Image from 'next/image';
 import RedeSocial from '../Home/Emphasis/RedeSocial/RedeSocial';
 import Scene3D from './Scene3D.module.css';
 
-import profile from '../../../../public/assets/profile(2).png';
+import profile from '../../../../public/assets/profile.png';
 import react from '../../../../public/assets/react.png';
 import html from '../../../../public/assets/html.png';
 import css from '../../../../public/assets/css3.png';
@@ -86,6 +86,7 @@ export default function OrbitLogos() {
         return (
           <motion.div
             key={index}
+            className={Scene3D.logoContainer}
             style={{
               width: 55,
               height: 50,
@@ -96,7 +97,7 @@ export default function OrbitLogos() {
               transformStyle: 'preserve-3d',
             }}
           >
-            <Image
+            <Image className={Scene3D.logo}
               src={logo}
               alt={`Logo ${logo}`}
               width={50}
