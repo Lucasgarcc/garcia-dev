@@ -10,15 +10,15 @@ const HomeSocial = () => {
     <>
     <div  className={Styles.contentIcon} role="navigation" aria-label="Redes sociais">
         <a href="https://www.linkedin.com/in/lucas-garcia-l/" target="_blank" aria-label="Perfil no LinkedIn">
-          <FaLinkedinIn size={30}  color="#388E3C" />
+          <FaLinkedinIn className={Styles.Icon} size={30}  color="#388E3C" />
         </a>
 
         <a href="https://lucasgarcia0589"aria-label="Perfil no Discord">
-          <RxDiscordLogo size={30} color="#8BC34A" />
+          <RxDiscordLogo className={Styles.Icon} size={30} color="#8BC34A" />
         </a>
 
         <a href="https://github.com/Lucasgarcc" target="_blank" aria-label="Perfil no GitHub">
-          <FiGithub size={30} color="#388E3C" />
+          <FiGithub className={Styles.Icon} size={30} color="#388E3C" />
         </a>
       </div>
       </>

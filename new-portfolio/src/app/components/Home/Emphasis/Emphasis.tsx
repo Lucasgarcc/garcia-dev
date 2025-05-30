@@ -11,10 +11,10 @@ export default function Home() {
       transition={{ duration: 0.5 }}
     >
     
-      <Typography variant="h2" gutterBottom>
+      <Typography className={Scene3D.title} variant="h2" gutterBottom>
         <span className={Scene3D.titleDetail}>Eai</span>, Eu sou Lucas
       </Typography>
-      <Typography variant="h4" gutterBottom>
+      <Typography className={Scene3D.titleSubtitle} variant="h4" gutterBottom>
         Desenvolvedor <span className={Scene3D.titleDetail}>Frontend</span>
       </Typography>
  
