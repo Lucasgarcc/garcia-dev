@@ -2,9 +2,7 @@
 import { motion, useAnimationFrame } from 'framer-motion';
 import { useRef, useState } from 'react';
 import Image from 'next/image';
-import RedeSocial from '../Home/Emphasis/RedeSocial/RedeSocial';
 import Scene3D from './Scene3D.module.css';
-
 import profile from '../../../../public/assets/profile.png';
 import react from '../../../../public/assets/react.png';
 import html from '../../../../public/assets/html.png';
@@ -37,11 +35,6 @@ export default function OrbitLogos() {
 		<>
 			<div className={Scene3D.areaContainer} ref={containerRef}>
 
-				<div className={Scene3D.areaRedesocial}>
-					<RedeSocial />
-				</div>
-
-
 				{/* Foto central */}
 				<motion.div
 					style={{
@@ -53,12 +46,12 @@ export default function OrbitLogos() {
 						width: 'auto',
 						backgroundColor: 'transparent',
 						transform: 'translate(-50%, -50%)',
-						zIndex: 10,
+						zIndex: 1000,
 						boxShadow: '0 0 15px rgba(0, 0, 0, 0)',
 						filter: `
-                            drop-shadow(0 0 4px rgba(47, 46, 46, 0.6)) 
-                            drop-shadow(0 0 8px rgba(97, 97, 97, 0.5)) 
-                            drop-shadow(0 0 12px rgba(43, 43, 43, 0.4))
+                            drop-shadow(0 0 4px rgba(47, 46, 46, 0.36)) 
+                            drop-shadow(0 0 8px rgba(97, 97, 97, 0.32)) 
+                            drop-shadow(0 0 12px rgba(43, 43, 43, 0.25))
                         `,
 					}}
 					animate={{
@@ -77,7 +70,8 @@ export default function OrbitLogos() {
 
 				{/* Logos Orbitando */}
 				{logos.map((logo, index) => {
-					const angle = (index / logos.length) * Math.PI * 2 + time * 0.4;
+
+					const angle = (index / logos.length) * Math.PI * 2 + time * 0.5;
 					const yAngle = Math.sin(time + index) * 0.5;
 
 					const x = Math.cos(angle) * radius;
@@ -95,6 +89,7 @@ export default function OrbitLogos() {
 								position: 'absolute',
 								top: '40%',
 								left: '72%',
+								zIndex: 1000,
 								transform: `translate3d(${x}px, ${y}px, ${z}px) translate(-50%, -50%)`,
 								transformStyle: 'preserve-3d',
 							}}

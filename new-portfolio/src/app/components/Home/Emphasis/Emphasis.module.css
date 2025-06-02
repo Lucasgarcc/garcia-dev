@@ -1,3 +1,10 @@
+.areaContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+}
+
 .titleDetail {
   color: #7ba93e;
 }

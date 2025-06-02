@@ -8,8 +8,9 @@
 .areaRedesocial {
   margin: 0;
   position: absolute;
+  z-index: 1;
   top: 50%;
-  left: -12rem;
+  left: 0;
   right: 0;
 }
 
@@ -18,20 +19,25 @@
     align-items: flex-start;
     justify-content: center;
     position: relative;
-    inset: -5rem 0  0;
+    z-index: 1000;
+    inset: -5rem 0 0 -13rem;
     width: 832px;
     height: 600px;
     margin: 0px auto;
     background-color: transparent;
-    perspective: 500px;
+    perspective: 400px;
     transform-style: preserve-3d;
     overflow: visible;
+}
+
+.logo {
+    width: 40;
 }
 
 @media screen and (max-width:1568px) {
 
   .areaContainer {
-    inset: 0 0 0 -9rem;
+    inset: -2rem 0 0 -9rem;
     width: 900px;
   }
 }
@@ -39,21 +45,20 @@
 @media screen and (max-width:1000px) {
   .areaContainer { 
     width: 600px;
-	  height: 30vh;
+	  height: 40vh;
   }
 }
 
 @media screen and (max-width:1024px) {
   .areaContainer { 
-    inset: 0 0 0 -7rem;
-    width: 100%;
+    inset: -2rem 0 0 -7rem;
     perspective: 100%;  
   }
 }  
 
-@media screen and (max-width:600px) {
+@media screen and (max-width:900px) {
   .areaContainer { 
-    inset: 5rem 0 0 -5rem;
+    inset: 2rem 0 0 -5rem;
     width: 500px;
   }
 
@@ -71,8 +76,9 @@
 @media screen and (max-width:480px) {
   .areaContainer { 
     width: 400px;
-    inset: 6rem 0 0 -7rem;
-    height: 10rem;
+    inset: -2rem 0 0 -5rem;
+    perspective-origin: left;
+    height: 25rem;
   }
   .logoContainer {  
     position: absolute;
@@ -93,9 +99,9 @@
 @media screen and (max-width:360px) {
 
   .areaContainer { 
-    inset: 5rem 0 0 -3rem;
+    inset: -1rem 0 0 -3rem;
     width: 90%;
-    height: 10rem;
+    height: 15rem;
     perspective-origin: 100%;
   }
   .areaRedesocial {

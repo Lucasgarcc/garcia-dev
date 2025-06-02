@@ -3,6 +3,9 @@
 :root {
   --background: #424242;
   --foreground: #171717;
+
+  --bg-header: #ffffff00;
+  --color-header: #ffffff;
 }
 
 @theme inline {
@@ -14,8 +17,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #fffffd;
-    --foreground: #181818;
+    --background: #060505;
+    --foreground: #ffffff;
   }
 }
 
@@ -27,29 +30,64 @@ body {
 }
 
 main {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
 }
 
 @media screen and (max-width: 1568px) {
-  main {
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 10rem;
-  }
-  .area-content-scene3D {
-    width: 100%;
-    height: auto;
-  }
+    main {
+        flex-flow: row;
+        justify-content: center;
+        gap: 2rem;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        position: relative;
+    }
+    .area-content-scene3D {
+        width: 100%;
+        order:initial;
+        height: auto;
+    }
+    .areaContentRedeSocial {
+        order: 1;
+        position: absolute;
+        inset: 20rem 0 0 1rem;
+        display: flex;
+    }
+    .area-content-emphasis {
+      order: 2;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .areaContentRedeSocial {
+        inset: 17rem 0 0 3rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .areaContentRedeSocial {
+        inset: 10rem 0 0 2rem;
+        z-index: 0;
+    }
+    main {
+        gap: .1rem;
+    }
+}
+
+.area-content-scene3D {
+  display: flex;
+  order: 1;
 }
 
 .area-content-emphasis {
-  margin-top: 5rem;
   background: var(--background);
   color: var(--foreground);
-  padding: 20px;
+  margin: 0 auto;;
+  width: 100%;
+  padding: 2rem;
   border-radius: 8px;
 }
