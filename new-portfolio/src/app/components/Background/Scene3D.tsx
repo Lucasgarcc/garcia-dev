@@ -86,6 +86,7 @@ export default function OrbitLogos() {
 								overflow: 'hidden',
 								width: 50,						
                                 height: 50,
+								maxWidth: '100%',
 								position: 'absolute',
 								top: '40%',
 								left: '72%',

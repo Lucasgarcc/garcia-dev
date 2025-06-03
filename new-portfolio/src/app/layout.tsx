@@ -6,6 +6,7 @@ import type { ReactNode } from 'react';
 
 import Header from './components/Home/Header/Header';
 import MainLayout from './components/Home/Main/Main';
+import LaserBackground from './components/Background/LaserBackground/LaserBackground';
 // import Footer from './components/Footer';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -36,6 +37,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
                 <meta property="og:description" content="Portfólio pessoal com animações 3D e projetos modernos" />
             </head>
             <body className={inter.className} >
+                <LaserBackground />
                 <Header />
                 <main>
                 <MainLayout> {children} </MainLayout>

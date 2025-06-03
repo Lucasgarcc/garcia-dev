@@ -9,7 +9,7 @@ const HomeSocial = () => {
     <section>
     <div  className={Styles.contentIcon} role="navigation" aria-label="Redes sociais">
         <a href="https://www.linkedin.com/in/lucas-garcia-l/" target="_blank" aria-label="Perfil no LinkedIn">
-          <RiLinkedinLine className={Styles.Icon} size={30}  strokeWidth={1.1} color="#388E3C" />
+          <RiLinkedinLine className={Styles.Icon} size={30}  strokeWidth={1.1}  />
         </a>
 
         <a href="https://lucasgarcia0589"aria-label="Perfil no Discord">
@@ -17,7 +17,7 @@ const HomeSocial = () => {
         </a>
 
         <a href="https://github.com/Lucasgarcc" target="_blank" aria-label="Perfil no GitHub">
-          <FiGithub className={Styles.Icon} size={30} color="#388E3C" />
+          <FiGithub className={Styles.Icon} size={30}  />
         </a>
       </div>
       </section>
