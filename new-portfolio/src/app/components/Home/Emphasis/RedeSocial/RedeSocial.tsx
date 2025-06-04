@@ -7,20 +7,20 @@ import { RiLinkedinLine } from "react-icons/ri";
 const HomeSocial = () => {
   return (
     <section>
-    <div  className={Styles.contentIcon} role="navigation" aria-label="Redes sociais">
+      <div className={Styles.contentIcon} role="navigation" aria-label="Redes sociais">
         <a href="https://www.linkedin.com/in/lucas-garcia-l/" target="_blank" aria-label="Perfil no LinkedIn">
-          <RiLinkedinLine className={Styles.Icon} size={30}  strokeWidth={1.1}  />
+          <RiLinkedinLine className={Styles.Icon} size={30} strokeWidth={1.1} />
         </a>
 
-        <a href="https://lucasgarcia0589"aria-label="Perfil no Discord">
-          <RxDiscordLogo className={Styles.Icon} size={30} color="#8BC34A" />
+        <a href="https://lucasgarcia0589" aria-label="Perfil no Discord">
+          <RxDiscordLogo className={`${Styles.Icon} ${Styles.IconEmph} `}  size={30} />
         </a>
 
         <a href="https://github.com/Lucasgarcc" target="_blank" aria-label="Perfil no GitHub">
-          <FiGithub className={Styles.Icon} size={30}  />
+          <FiGithub className={Styles.Icon} size={30} />
         </a>
       </div>
-      </section>
+    </section>
   );
 };
 

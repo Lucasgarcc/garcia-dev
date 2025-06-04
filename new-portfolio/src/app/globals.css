@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #242424;
+  --background: #000000;
   --foreground: #171717;
 
   --bg-header: #ffffff00;
@@ -19,12 +19,15 @@
   /* Tema claro */
   --bg-primary-c: #ffffff; /* Branco puro */
   --bg-secondary-c: #f5f5f5; /* Cinza muito claro */
-  --color-text-c: #333333; /* Cinza escuro */
+  --color-text-c: #ffffff; /* Cinza escuro */
   --color-text-secondary-c: #666666; /* Cinza médio */
-
-  --primary-c-1: #8BC34A;
-  --primary-c-2: #5faf09;
+  --primary-c-0-1: #c4f58c;
+  --primary-c-0-2: #a8f05b;
+  --primary-c-0-3: #80c52c;
+  --primary-c-1: #8BC34A; 
+  --primary-c-2: #81cb13;
   --primary-c-3: #305800;
+  --primary-c-4: #1b2f02;
 }
 
 @theme inline {
@@ -43,7 +46,7 @@
 
 body {
   background: var(--background);
-  color: var(--foreground);
+  color: rgb(255, 255, 255);
   font-family: Arial, Helvetica, sans-serif;
   height: 100vh;
 }
@@ -83,18 +86,22 @@ main {
 
 @media screen and (max-width: 1024px) {
     .areaContentRedeSocial {
-        inset: 17rem 0 0 3rem;
+        inset: 10rem 0 0 3rem;
     }
 }
 
 @media screen and (max-width: 480px) {
     .areaContentRedeSocial {
-        inset: 10rem 0 0 2rem;
+        inset: 9rem 0 0 2rem;
         z-index: 0;
     }
     main {
-        gap: .1rem;
+        gap: 8rem;
     }
+    .area-content-emphasis {
+        padding: 1rem;
+    }
+
 }
 
 .area-content-scene3D {

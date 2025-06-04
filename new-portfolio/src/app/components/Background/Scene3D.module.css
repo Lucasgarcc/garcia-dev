@@ -36,7 +36,7 @@
 @media screen and (max-width:1568px) {
 
   .areaContainer {
-    inset: -2rem 0 0 -9rem;
+    inset: -7rem 0 0 -13rem;
     width: 900px;
   }
 }
@@ -51,7 +51,6 @@
 @media screen and (max-width:1024px) {
   .areaContainer { 
     inset: -2rem 0 0 -7rem;
- 
   }
 }  
 
@@ -74,7 +73,6 @@
 
 @media screen and (max-width:480px) {
   .areaContainer { 
-    width: 400px;
     inset: -2rem 0 0 -5rem;
     perspective-origin: left; /*  TESTAR -- CENTER lm */
     height: 25rem;
@@ -90,24 +88,48 @@
   }
 
   .logo {
-    max-width: 45%;
+    width: 50%;
     height: 100%;
   }
 }
 
-@media screen and (max-width:360px) {
+@media screen and (max-width:420px) {
 
   .areaContainer { 
-    inset: -1rem 0 0 -3rem;
-    width: 90%;
-    height: 20rem;
-    perspective-origin: 100%;
+    inset: 1rem 0 0 -4rem;
+    max-width: 100%;
+    height: 12rem;
+    perspective-origin: left;
   }
   .areaRedesocial {
     inset: 6rem 0 0 -8rem;
   }
   .logo {
-    max-width: 35%;
+    max-width: 100%;
+  }
+}
 
+@media screen and (max-width:390px) {
+  .areaContainer { 
+    max-width: 95%;
+  }
+}
+@media screen and (max-width:375px) {
+  .areaContainer { 
+    max-width: 100%;
+  }
+}
+
+
+
+@media screen and (max-width:360px) {
+  .areaContainer { 
+    max-width: 77%;
+  }
+}
+
+@media screen and (max-width:320px) {
+  .areaContainer { 
+    max-width: 70%;
   }
 }

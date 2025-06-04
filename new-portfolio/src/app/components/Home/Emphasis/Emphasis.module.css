@@ -1,12 +1,16 @@
 .areaContainer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4rem;
+  color: var(--color-text);
+
 }
 
 .titleDetail {
-  color: #7ba93e;
+  color: #a5fe31;
+}
+
+.titleSubtitle {
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: .8rem;
 }
 
 @media screen and (max-width: 480px) {

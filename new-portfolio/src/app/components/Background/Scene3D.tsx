@@ -89,7 +89,7 @@ export default function OrbitLogos() {
 								maxWidth: '100%',
 								position: 'absolute',
 								top: '40%',
-								left: '72%',
+								left: '73%',
 								zIndex: 1000,
 								transform: `translate3d(${x}px, ${y}px, ${z}px) translate(-50%, -50%)`,
 								transformStyle: 'preserve-3d',
