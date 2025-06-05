@@ -1,0 +1,42 @@
+.aboutMeContainer {
+    display: flex;
+    margin: 0 auto;
+    padding: 1.5rem;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    gap: 5rem;
+}
+
+.aboutContentText {
+    order: 2;
+    width: 100%;
+}
+
+.aboutContentImage {
+    order: 1;
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+}
+
+@media screen and (max-width: 768px) {
+    .aboutMeContainer {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .aboutContentText {
+        order: 1;
+        text-align: center;
+        width: 90%;
+    }
+
+    .aboutContentImage {
+        order: 2;
+        max-width: 90%;
+    }
+    
+}

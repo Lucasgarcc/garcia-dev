@@ -3,7 +3,8 @@ import '../../../globals.css'
 import { Typography, Button } from '@mui/material';
 import { motion } from 'framer-motion';
 import Scene3D from './Emphasis.module.css';
-export default function Home() {
+
+const Home = () => {
 	return (
 
 		<motion.div
@@ -31,3 +32,5 @@ export default function Home() {
 		</motion.div>
 	);
 }
+
+export default Home;
