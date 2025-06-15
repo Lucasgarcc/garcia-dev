@@ -20,3 +20,10 @@
     font-size: 1.5rem !important;
   }
 }
+
+
+@media screen and (max-width: 390px) {
+  .titleSubtitle {
+    font-size: 1.3rem !important;
+  }
+}

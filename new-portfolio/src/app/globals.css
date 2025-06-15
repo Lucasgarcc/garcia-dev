@@ -28,14 +28,33 @@
   --primary-c-2: #81cb13;
   --primary-c-3: #305800;
   --primary-c-4: #1b2f02;
+
+  /* ================= Logo ================= */
+  --logo-fill-primary: #ffffff;
+  --logo-stroke-primary: #67f928;
+  --logo-stroke-secondary: #595959;
+  --logo-gradient-stop1: #fffffffa;
+  --logo-gradient-stop2: #ffffff;
+  --logo-gradient-stop3: #ffffff;
+  --gradient-start: #ffffff00;
+  --gradient-mid: #eeffdc00;
+  /* e assim por diante */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@theme dark {
+  --background: var(--bg-primary);
+  --foreground: var(--color-text);
+  --font-geist-sans: 'Inter', sans-serif;
+  --font-geist-mono: 'Courier New', monospace;
 }
+
+@theme light {
+  --background: var(--bg-primary-c);
+  --foreground: var(--color-text-c);
+  --font-geist-sans: 'Inter', sans-serif;
+  --font-geist-mono: 'Courier New', monospace;
+}
+
 
 @media (prefers-color-scheme: dark) {
   :root {
