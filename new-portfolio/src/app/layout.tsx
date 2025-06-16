@@ -1,19 +1,16 @@
 // app/layout.tsx
 import './globals.css';
-
 import { Inter } from 'next/font/google';
 import type { ReactNode } from 'react';
-
 import Header from './components/Home/Header/Header';
-import MainLayout from './components/Home/Main/Main';
 import LaserBackground from './components/Background/LaserBackground/LaserBackground';
-// import Footer from './components/Footer';
+// import Footer from './components/Footer'; // quando for usar
 
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-    title: 'Meu Portfólio',
-    description: 'Portfólio pessoal com animações 3D e projetos modernos',
+  title: 'Meu Portfólio',
+  description: 'Portfólio pessoal com animações 3D e projetos modernos',
 };
 
 interface RootLayoutProps {
@@ -40,7 +37,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
                 <LaserBackground />
                 <Header />
                 <main>
-                <MainLayout> {children} </MainLayout>
+                    {children}
                 </main>
             </body>
         </html>
