@@ -10,7 +10,7 @@ import useViewAnimation from '@/hooks/EffectAnimation/EffectAnimation';
 import AboutMe from '../AboutMe/AboutMe';
 
 interface ClientLayoutProps {
-  children: ReactNode;
+  children: ReactNode | null;
 }
 
 const MainLayout = ({ children }: ClientLayoutProps) => {
