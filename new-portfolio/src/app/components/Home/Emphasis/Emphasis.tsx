@@ -13,7 +13,7 @@ const Home = () => {
 			transition={{ duration: 0.5 }}
 			className={Scene3D.areaContainer}
 		>
-			<Typography className={Scene3D.title} variant="h2" gutterBottom>
+			<Typography className={Scene3D.title} variant="h2" gutterBottom fontFamily={'var(--font-title)'} fontWeight={450}>
 				<span className={Scene3D.titleDetail}>Eai</span>, Eu sou Lucas
 			</Typography>
 			<Typography className={Scene3D.titleSubtitle} variant="h4" gutterBottom>

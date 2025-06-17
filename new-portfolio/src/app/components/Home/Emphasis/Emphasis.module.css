@@ -1,10 +1,9 @@
 .areaContainer {
   color: var(--color-text);
-
 }
 
 .titleDetail {
-  color: #a5fe31;
+  color: var(--primary-c-0-3);
 }
 
 .titleSubtitle {

@@ -15,7 +15,7 @@ const AboutMe = ( ) => {
                 transition={{ duration: 0.5 }}
                 >
                 <Typography marginTop={10} color='var(--primary-c-2)' textTransform={'uppercase'} 
-                variant="h4" className={Styles.title} textAlign={'center'} gutterBottom fontWeight={450}>
+                variant="h4" className={Styles.title} textAlign={'center'} fontFamily='var(--font-title)' gutterBottom fontWeight={450}>
                     Sobre Mim
                 </Typography>      
                 <div className={Styles.aboutMeContainer}>

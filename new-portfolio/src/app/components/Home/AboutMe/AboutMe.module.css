@@ -7,6 +7,7 @@
     width: 100%;
     max-width: 1200px;
     gap: 5rem;
+    color: var(--color-text);
 }
 
 .aboutContentText {
