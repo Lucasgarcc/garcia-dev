@@ -87,11 +87,11 @@ export default function InteractiveLaserLines() {
                         animation: { enable: true, speed: 10, sync: false },
                     },
                     //stroke: { width: 1, color: '#cc', opacity: 0.5 },
-                    shadow: { enable: true, color: '#fff', blur: 12 },
+                    shadow: { enable: true, color: '#ccc', blur: 12 },
                     links: {
                         enable: true,
                         distance: 140,
-                        color: '#ffffff',
+                        color: '#000000',
                         opacity: 0.25,
                         width: 1,
                     },

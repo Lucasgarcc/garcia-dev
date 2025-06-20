@@ -23,7 +23,7 @@ const Home = () => {
 			<Typography variant="body1" maxWidth={550}  textAlign={'justify'}>
 				Sou um desenvolvedor Frontend apaixonado por criar experiências digitais incríveis. Com uma sólida formação em design e desenvolvimento web, estou sempre em busca de novos desafios e oportunidades para aprimorar minhas habilidades.
 			</Typography>
-			<Button variant="contained" sx={{ backgroundColor: 'var(--primary-c-3)', marginTop: '1rem', color: 'var(--color-text)' }}>
+			<Button variant="contained" sx={{ backgroundColor: 'var(--primary-c-3)', marginTop: '1rem', color: 'var(--color-text-n)' }}>
 
 				<a href="https://wa.link/i3xug3" target="_blank" className="button button-flex" aria-label="Contate-me">
 					contate-me <i className="uil uil-message button-icone"></i>

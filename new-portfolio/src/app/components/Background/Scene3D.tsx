@@ -3,7 +3,7 @@ import { motion, useAnimationFrame } from 'framer-motion';
 import { useRef, useState } from 'react';
 import Image from 'next/image';
 import Scene3D from './Scene3D.module.css';
-import profile from '../../../../src/assets/profile.png';
+import profile from '../../../../src/assets/profile_ligth.png';
 import react from '../../../../src/assets/react.png';
 import html from '../../../../src/assets/html.png';
 import css from '../../../../src/assets/css3.png';
