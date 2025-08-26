@@ -29,7 +29,9 @@ const Home = () => {
 					contate-me <i className="uil uil-message button-icone"></i>
 				</a>
 			</Button>
+			
 		</motion.div>
+		
 	);
 }
 

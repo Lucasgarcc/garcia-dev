@@ -8,6 +8,7 @@ import Scene3D from '@/app/components/Background/Scene3D';
 
 import useViewAnimation from '@/hooks/EffectAnimation/EffectAnimation';
 import AboutMe from '../AboutMe/AboutMe';
+import MouseRole from '../MouseRole/MouseRole';
 
 interface ClientLayoutProps {
   children: ReactNode | null;
@@ -33,7 +34,9 @@ const MainLayout = ({ children }: ClientLayoutProps) => {
         </div>
         <div className="area-content-emphasis">
           <Emphasis />
+          <MouseRole />
         </div>
+    
       </div>
         <section className={ `area-content-about-me transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
           }`} ref={ref}  >
