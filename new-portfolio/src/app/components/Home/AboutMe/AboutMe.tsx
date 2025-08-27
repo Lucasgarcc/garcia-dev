@@ -4,6 +4,7 @@ import React from 'react';
 import { Typography} from '@mui/material';
 import { motion } from 'framer-motion';
 import Styles from './AboutMe.module.css';
+import Statistics from './Statistics/Statistics';
 
 const AboutMe = ( ) => {
     return (
@@ -21,12 +22,15 @@ const AboutMe = ( ) => {
                 <div className={Styles.aboutMeContainer}>
                     <div className={Styles.aboutContentText}>
         
-                    <Typography variant="body1" marginTop={2} maxWidth={'100%'}  textAlign={'justify'}>
-                        Desenvolvedor Web, com amplo conhecimento e alguns anos de experiência, atuando em tecnologias web Frontend e UI/UX design, desenvolvendo projetosde qualidade. Valorizo o conhecimento, a capacidade de aprender algo novo todos os dias, com entusiasmo e entusiasmo e muita resiliência, olharpara o futuro com a mente aberta a qualquer desafio e oportunidade que surja na minha jornada...
-                    </Typography>
-                </div>
-                <figure className={Styles.aboutContentImage}>
-                </figure>
+                        <Typography variant="body1" marginTop={2} maxWidth={'100%'}  textAlign={'justify'}>
+                            Desenvolvedor Web, com amplo conhecimento e alguns anos de experiência, atuando em tecnologias web Frontend e UI/UX design, desenvolvendo projetosde qualidade. Valorizo o conhecimento, a capacidade de aprender algo novo todos os dias, com entusiasmo e entusiasmo e muita resiliência, olharpara o futuro com a mente aberta a qualquer desafio e oportunidade que surja na minha jornada...
+                        </Typography>
+                        
+                        <Statistics/>
+
+                    </div>
+                    <figure className={Styles.aboutContentImage}>
+                    </figure>
                 </div>     
             </motion.div>
         </>
