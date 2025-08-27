@@ -1,0 +1,77 @@
+
+.ContainerStatistics {
+    margin: 3rem auto;
+    margin-left: auto;
+    display: flex;
+    align-items: end;
+    justify-content: flex-start;
+    text-align: center;
+    gap: 4rem;
+
+}
+
+.StatisticBox {
+  position: relative;
+  width: 160px;
+  height: 140px;
+  border-radius: 16px;
+  background: linear-gradient(
+    135deg,
+    rgb(13, 13, 13),
+    rgb(16, 16, 16)
+  );
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  /* sombra sutil */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.StatisticBox:hover {
+  transform: translateX(10px) rotate3d(10, 1, 10, 10deg);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+}
+
+/* texto principal */
+.StatisticBox span:first-child {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--color-text, #98ff09da);
+  text-shadow: 0 0 8px rgba(153, 255, 0, 0.956);
+}
+
+/* subtítulo */
+.StatisticBox span:last-child {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.85);
+  letter-spacing: 0.5px;
+}
+
+/* efeito espelhado só com rotação */
+.StatisticBox::after {
+  content: attr(data-text);
+  position: absolute;
+  bottom: -55%;
+  left: 50%;
+  transform: translateX(-50%) rotateX(180deg);
+  transform-origin: top center;
+
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.25);
+  opacity: 0.3;
+  pointer-events: none;
+
+  /* gradiente para sumir aos poucos */
+  background: linear-gradient(to top, rgba(34, 34, 34, 0.6), transparent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
