@@ -9,6 +9,7 @@ import Scene3D from '@/app/components/Background/Scene3D';
 import useViewAnimation from '@/hooks/EffectAnimation/EffectAnimation';
 import AboutMe from '../AboutMe/AboutMe';
 import MouseRole from '../MouseRole/MouseRole';
+import Statistics from '../AboutMe/Statistics/Statistics';
 
 interface ClientLayoutProps {
   children: ReactNode | null;
