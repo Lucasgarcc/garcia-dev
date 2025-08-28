@@ -11,6 +11,7 @@
 }
 
 .StatisticBox {
+  padding: 1rem;
   position: relative;
   width: 160px;
   height: 140px;
@@ -44,7 +45,7 @@
 .StatisticBox span:first-child {
   font-size: 2rem;
   font-weight: bold;
-  color: var(--color-text, #98ff09da);
+  color: var(--color-text, #a3ff23da);
   text-shadow: 0 0 8px rgba(153, 255, 0, 0.956);
 }
 
@@ -74,4 +75,37 @@
   background: linear-gradient(to top, rgba(34, 34, 34, 0.6), transparent);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+
+@media screen and (max-width: 1024px) {
+  .ContainerStatistics {
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .StatisticBox {
+    width: 50%;
+  }
+
+  .StatisticBox span:first-child {
+    font-size: 1.5rem;
+  }
+
+  .StatisticBox span:last-child {
+    font-size: 0.8rem;
+  }
+
+  .StatisticBox::after {
+    font-size: 1.2rem;
+    bottom: -45%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .StatisticBox {
+    width: 80%;
+  }
 }
