@@ -73,21 +73,19 @@
 
   /* gradiente para sumir aos poucos */
   background: linear-gradient(to top, rgba(34, 34, 34, 0.6), transparent);
-  -webkit-background-clip: text;
+  --background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 
 @media screen and (max-width: 1024px) {
   .ContainerStatistics {
-
-    flex-direction: column;
     justify-content: center;
     align-items: center;
   }
 
   .StatisticBox {
-    width: 50%;
+    width: 20%;
   }
 
   .StatisticBox span:first-child {
@@ -105,7 +103,16 @@
 }
 
 @media screen and (max-width: 768px) {
+  .ContainerStatistics {
+    flex-direction: column;
+  }
   .StatisticBox {
-    width: 80%;
+    width: 35%;
+  }
+}
+
+@media screen and (max-width: 448px) {
+  .StatisticBox {
+    width: 70%;
   }
 }
