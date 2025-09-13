@@ -5,6 +5,7 @@ import { Typography} from '@mui/material';
 import { motion } from 'framer-motion';
 import Styles from './AboutMe.module.css';
 import Statistics from './Statistics/Statistics';
+import CodeCard from './Statistics/CodeCard/CodeCard';
 
 const AboutMe = ( ) => {
     return (
@@ -15,8 +16,8 @@ const AboutMe = ( ) => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
                 >
-                <Typography marginTop={10} color='var(--primary-c-2)' textTransform={'uppercase'} 
-                variant="h4" className={Styles.title} textAlign={'center'} fontFamily='var(--font-title)' gutterBottom fontWeight={450}>
+                <Typography marginTop={7} color='var(--primary-c-2)' textTransform={'uppercase'} 
+                variant="h4" className={Styles.title} marginBottom={10} textAlign={'center'} fontFamily='var(--font-title)' gutterBottom fontWeight={450}>
                     Sobre Mim
                 </Typography>      
                 <div className={Styles.aboutMeContainer}>
@@ -29,6 +30,7 @@ const AboutMe = ( ) => {
                         <Statistics/>
 
                     </div>
+                    <CodeCard />
                     <figure className={Styles.aboutContentImage}>
                     </figure>
                 </div>     
