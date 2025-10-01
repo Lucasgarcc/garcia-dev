@@ -34,8 +34,6 @@
     flex-direction: row;
     border-radius: 2rem;
     overflow: hidden;
-     /*z-index: 10;
-   box-shadow: rgba(7, 255, 3, 0.243) -2px -20px 20px 5px, rgba(2, 255, 120, 0.302) 2px 20px 20px 5px;*/
 }
 
 .CircularShadow {
