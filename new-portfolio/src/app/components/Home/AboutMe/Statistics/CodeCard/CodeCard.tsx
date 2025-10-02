@@ -52,7 +52,7 @@ const CodeCard = () => {
                 <div className={`${Style.ContentSection} relative`}>
                 <div className="absolute inset-0  bg-[#111111] z-10">
                     <div className="absolute w-full h-full">
-                    <div className={`absolute ${Style.GraphicRing} rounded-full`} style={{ top: '20%', right: '10%', width: '150px', height: '150px' }}></div>
+                    <div className={`absolute rounded-full`} style={{ top: '20%', right: '10%', width: '150px', height: '150px' }}></div>
                     <div className="absolute GraphicRing rounded-full opacity-60" style={{ top: '50%', right: '0', width: '250px', height: '250px' }}></div>
                     </div>
                 </div>
