@@ -3,14 +3,14 @@ import { motion, useAnimationFrame } from 'framer-motion';
 import { useRef, useState } from 'react';
 import Image from 'next/image';
 import Scene3D from './Scene3D.module.css';
-import profile from '../../../../src/assets/profile_ligth.png';
-import react from '../../../../src/assets/react.png';
-import html from '../../../../src/assets/html.png';
-import css from '../../../../src/assets/css3.png';
-import node from '../../../../src/assets/nodejs-11492982.png';
-import ts from '../../../../src/assets/typescript.png';
-import js from '../../../../src/assets/JS.png';
-import angular from '../../../../src/assets/angular.png';
+import profile from '../../../../public/assets/profile_ligth.png';
+import react from '../../../../public/assets/react.png';
+import html from '../../../../public/assets/html.png';
+import css from '../../../../public/assets/css3.png';
+import node from '../../../../public/assets/nodejs-11492982.png';
+import ts from '../../../../public/assets/typescript.png';
+import js from '../../../../public/assets/JS.png';
+import angular from '../../../../public/assets/angular.png';
 
 const logos = [react, html, css, node, ts, js, angular];
 
