@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import Styles from './AboutMe.module.css';
 import Statistics from './Statistics/Statistics';
 import CodeCard from './Statistics/CodeCard/CodeCard';
+import ViableResume from './ViableResume/ViableResume';
 
 const AboutMe = ( ) => {
     return (
@@ -16,7 +17,7 @@ const AboutMe = ( ) => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
                 >
-                <Typography marginTop={7} color='var(--primary-c-2)' textTransform={'uppercase'} 
+                <Typography marginTop={20} color='var(--primary-c-2)' textTransform={'uppercase'} 
                 variant="h4" className={Styles.title} marginBottom={10} textAlign={'center'} fontFamily='var(--font-title)' gutterBottom fontWeight={450}>
                     Sobre Mim
                 </Typography>      
@@ -26,8 +27,9 @@ const AboutMe = ( ) => {
                         <Typography variant="body1" marginTop={2} maxWidth={'100%'}  textAlign={'justify'}>
                             Desenvolvedor Web, com amplo conhecimento e alguns anos de experiência, atuando em tecnologias web Frontend e UI/UX design, desenvolvendo projetosde qualidade. Valorizo o conhecimento, a capacidade de aprender algo novo todos os dias, com entusiasmo e entusiasmo e muita resiliência, olharpara o futuro com a mente aberta a qualquer desafio e oportunidade que surja na minha jornada...
                         </Typography>
-                        
-                        <Statistics/>
+
+                        <Statistics />
+                        <ViableResume />
 
                     </div>
                     <CodeCard />
