@@ -1,5 +1,5 @@
 .profile {
-  width: 100%;
+  width: 90%;
   height: auto;
   object-fit: cover;
   /*box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);*/
@@ -25,7 +25,9 @@
 }
 
 @media screen and (max-width:1568px) {
-
+  .profile {
+    width: 85%;
+  }
   .areaContainer {
     inset: -7rem 0 0 -13rem;
     width: 900px;
