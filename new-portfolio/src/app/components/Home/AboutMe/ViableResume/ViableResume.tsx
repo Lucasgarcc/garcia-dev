@@ -14,13 +14,17 @@ const ViableResume = () => {
                 download
                 target="_blank"
                 variant="contained"
+                className={Styles.VariableResumeButton}
                 sx={{
                     backgroundColor: 'var(--primary-c-3)',
                     marginTop: '1rem',
-                    padding: '1.1rem',
+                    padding: '.5rem',
+                    textAlign: 'center',
+                    fontSize: '1.1rem',
                     color: 'var(--color-text-n)',
                     ":hover": {
-                        backgroundColor: "var(--primary-c-2)",
+                        backgroundColor: "var(--primary-c-0-4)",
+                        color: "var(--primary-c-0-5)",
                         transform: "translateY(-2px)",
                     },
                     transition: "all 0.3s ease",
@@ -28,6 +32,7 @@ const ViableResume = () => {
                 }}
                 startIcon={<BsDownload />}
                 aria-label="Baixar CV"
+                size="large" 
             >
                 Baixar CV
             </Button>
