@@ -1,0 +1,10 @@
+.VariableResumeButton {
+    width: 400px;
+}
+
+
+@media screen and (max-width: 480px) {
+    .VariableResumeButton {
+        width: 40%;
+    }
+}
