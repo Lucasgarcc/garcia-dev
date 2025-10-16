@@ -9,7 +9,7 @@ import Scene3D from '@/app/components/Background/Scene3D';
 import useViewAnimation from '@/hooks/EffectAnimation/EffectAnimation';
 import AboutMe from '../AboutMe/AboutMe';
 import MouseRole from '../MouseRole/MouseRole';
-import Statistics from '../AboutMe/Statistics/Statistics';
+import Timeline from '../Timeline/Timeline';
 
 interface ClientLayoutProps {
   children: ReactNode | null;
@@ -42,6 +42,10 @@ const MainLayout = ({ children }: ClientLayoutProps) => {
         <section className={ `area-content-about-me transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
           }`} ref={ref}  >
           <AboutMe/>
+        </section> 
+          <section className={ `area-content-about-me transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
+          }`} ref={ref}  >
+          <Timeline />
         </section> 
       </main>
 
