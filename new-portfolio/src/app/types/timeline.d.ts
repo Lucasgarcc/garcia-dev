@@ -8,3 +8,4 @@ export interface TimelineData {
     Cursos: TimelineItem[];
     Experiencias: TimelineItem[];
 }
+
