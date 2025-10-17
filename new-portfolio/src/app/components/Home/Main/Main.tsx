@@ -36,6 +36,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
           <Emphasis />
           <MouseRole />
         </div>
+
       </section>
 
       {/* Sobre mim */}
@@ -61,6 +62,21 @@ const MainLayout = ({ children }: MainLayoutProps) => {
             </div>
       </section>
     </main>
+
+    
+      </div>
+        <section className={ `area-content-about-me transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
+          }`} ref={ref}  >
+          <AboutMe/>
+        </section> 
+          <section className={ `area-content-about-me transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
+          }`} ref={ref}  >
+          <Timeline />
+        </section> 
+      </main>
+
+    </>
+
   );
 };
 
