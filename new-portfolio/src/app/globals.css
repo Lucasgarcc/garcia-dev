@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Gugi&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
 
 @import "tailwindcss";
@@ -84,6 +85,7 @@ main {
   align-items: center;
   justify-content: center;
   width: 100%;
+  overflow-x: hidden;
 }
 
 .main-content {
@@ -91,6 +93,29 @@ main {
     justify-content: center;
     align-items: center;
     gap: 4rem;
+}
+
+.area-continer-timeline {
+	position: relative;
+	width: 100%;
+
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+	z-index: 1;
+}
+
+/* Conteúdo (timeline) centralizado sobre o fundo */
+.timeline-wrapper {
+	position: relative;
+	z-index: 2;
+	width: 100%;
+	padding: 8rem 2rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 @media screen and (max-width: 1568px) {
@@ -137,6 +162,17 @@ main {
         padding: 1rem;
     }
 
+    .area-content-timeline {
+        margin-top: 5rem;
+        position: absolute;
+        top: 0;
+        /*left: 50%;     começa no meio */ 
+        width: 100%;           /*  pega apenas a metade direita */
+        height: 95%;
+        background: linear-gradient(90deg, rgb(23, 23, 23) 0%, rgb(10, 10, 10) 100%);
+        z-index: 0;
+        box-shadow: -4px 0 12px rgba(0, 0, 0, 0.25);
+    }
 }
 
 @media screen and (max-width: 420px) {
