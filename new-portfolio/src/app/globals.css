@@ -16,6 +16,7 @@
   --bg-primary: #000000; /* Preto puro */
   --bg-secondary: #1a1a1a; /* Preto levemente suavizado */
   --color-text: #000000; /* Branco puro */
+  --color-text-d: #ffff; /* Cinza claro */
   --color-text-secondary: #cccccc; /* Cinza claro */
 
   /* Tema claro */
@@ -52,14 +53,14 @@
 
 @theme dark {
   --background: var(--bg-primary);
-  --foreground: var(--color-text);
+  --foreground: var(--color-text-d);
   --font-geist-sans: 'Inter', sans-serif;
   --font-geist-mono: 'Courier New', monospace;
 }
 
 @theme light {
   --background: var(--bg-primary-c);
-  --foreground: var(--color-text-c);
+  --foreground: var(--color-text);
   --font-geist-sans: 'Inter', sans-serif;
   --font-geist-mono: 'Courier New', monospace;
 }
@@ -67,13 +68,12 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #ffffff;
+    --background:  var(--bg-primary-n);
     --foreground: #ffffff;
   }
 }
 
 body {
-  background: var(--background);
   color: var(--color-text);
   font-family:  var(--font-roboto);
   height: 100vh;
