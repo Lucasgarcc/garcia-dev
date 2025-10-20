@@ -24,17 +24,26 @@ const AboutMe = ( ) => {
                 <div className={Styles.aboutMeContainer}>
                     <div className={Styles.aboutContentText}>
         
-                        <Typography variant="body1" marginTop={2} maxWidth={'100%'}  textAlign={'justify'}>
-                            Desenvolvedor Web, com amplo conhecimento e alguns anos de experiência, atuando em tecnologias web Frontend e UI/UX design, desenvolvendo projetosde qualidade. Valorizo o conhecimento, a capacidade de aprender algo novo todos os dias, com entusiasmo e entusiasmo e muita resiliência, olharpara o futuro com a mente aberta a qualquer desafio e oportunidade que surja na minha jornada...
+                        <Typography className={Styles.aboutContentDescription} variant="body1" marginTop={2} maxWidth={'100%'}  textAlign={'justify'}>
+                           Desenvolvedor Web e criador de experiências digitais que unem design, propósito e tecnologia.
+                            Trabalho com foco em Frontend e UI/UX Design, desenvolvendo interfaces que conectam pessoas e ideias.
+                            Acredito que cada projeto é uma oportunidade de evoluir — técnica e pessoalmente — e sigo construindo minha trajetória com curiosidade, resiliência e vontade de ir além.
+                            Meu objetivo é crescer como Desenvolvedor Frontend Pleno e, no futuro, expandir meus horizontes como Full Stack, sempre mantendo o olhar criativo e a busca pela excelência em cada detalhe.
                         </Typography>
 
-                        <Statistics />
-                        <ViableResume />
+                        <div className={Styles.aboutContentStatis}>
+                            <Statistics />
+                        </div>
+                        <div className={Styles.aboutContentButton}>
+                            <ViableResume />
+                        </div>
+      
+                        <CodeCard />
+                     
 
                     </div>
-                    <CodeCard />
-                    <figure className={Styles.aboutContentImage}>
-                    </figure>
+          
+
                 </div>     
             </motion.div>
         </>

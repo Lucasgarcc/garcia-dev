@@ -29,20 +29,69 @@
     }
 
     .aboutContentText {
-        order: 1;
+        display: grid;
+        grid-template-columns: 1fr 1fr; 
+        justify-content: center;
+        gap: 1rem;
+        align-items: center;   
+        max-width: 100%;
+    }
+    .aboutContentDescription {
+        grid-area: 1 / 2 /3;
         text-align: center;
+
+    }
+    .aboutContentStatis {
+        grid-area: 3 /1 / 3;
+        text-align: center;
+        margin-top: 1rem;
         width: 90%;
     }
 
+    .aboutContentButton {
+        grid-area: 3 / 2 / 3;
+        text-align: center;
+        margin-top: 1rem;
+    }
     .aboutContentImage {
-        order: 2;
+        grid-area: 1 / 1 /3;
         max-width: 90%;
     }
     
 } 
 
+@media screen and (max-width: 1300px) {
+    .aboutContentText {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    .aboutContentDescription {
+        order: 2;
+        width: 90%
+    }
+
+    .aboutContentStatis {
+        order: 3;
+        width: 90%;
+    }
+    .aboutContentButton {
+        order: 4;
+        margin-top: 1.5rem;
+    }
+    .aboutContentImage {
+        order: 1;
+        margin-bottom: 1.2rem;
+        width: 100%;
+    }
+}
+
 @media screen and (max-width: 480px) {
   .title {
     font-size: 1.6rem !important;
+  }
+  .aboutContentButton {
+    width: 100%;
   }
 }
