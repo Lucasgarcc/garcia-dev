@@ -18,7 +18,7 @@ const AboutMe = ( ) => {
                 transition={{ duration: 0.5 }}
                 >
                 <Typography marginTop={20} color='var(--primary-c-2)' textTransform={'uppercase'} 
-                variant="h4" className={Styles.title} marginBottom={10} textAlign={'center'} fontFamily='var(--font-title)' gutterBottom fontWeight={450}>
+                variant="h4" className={Styles.title} marginBottom={1} textAlign={'center'} fontFamily='var(--font-title)' gutterBottom fontWeight={450}>
                     Sobre Mim
                 </Typography>      
                 <div className={Styles.aboutMeContainer}>
@@ -37,11 +37,12 @@ const AboutMe = ( ) => {
                         <div className={Styles.aboutContentButton}>
                             <ViableResume />
                         </div>
-      
-                        <CodeCard />
-                     
 
+                        <div className={Styles.aboutContentImage}>          
+                            <CodeCard />
+                        </div>
                     </div>
+
           
 
                 </div>     

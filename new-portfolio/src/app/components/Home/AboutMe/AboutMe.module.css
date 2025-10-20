@@ -5,36 +5,56 @@
     align-items: center;
     width: 100%;
     max-width: 1200px;
-    gap: 5rem;
     color: var(--color-text);
 }
 
 .aboutContentText {
-    order: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+    align-items: center;   
     width: 100%;
 }
 
 .aboutContentImage {
-    order: 1;
-    width: 100%;
-    max-width: 400px;
-    height: auto;
+    margin-top: 10rem;
+    grid-area: 1 / 1 / 3;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.aboutContentDescription {
+    grid-area: 1 / 2 /3;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.aboutContentStatis {
+    margin-top: 25rem;
+    grid-area: 2 /2 / 2;
+    display: flex;
+    gap: 2rem;
+}
+.aboutContentButton {
+    grid-area: 3/ 2 / 3;
 }
 
 @media screen and (max-width: 1700px) {
+
     .aboutMeContainer {
         flex-direction: column;
         align-items: center;
         gap: 2rem;
     }
-
     .aboutContentText {
         display: grid;
         grid-template-columns: 1fr 1fr; 
         justify-content: center;
         gap: 1rem;
         align-items: center;   
-        max-width: 100%;
+        width: 100%;
     }
     .aboutContentDescription {
         grid-area: 1 / 2 /3;
@@ -47,13 +67,13 @@
         margin-top: 1rem;
         width: 90%;
     }
-
     .aboutContentButton {
         grid-area: 3 / 2 / 3;
         text-align: center;
         margin-top: 1rem;
     }
     .aboutContentImage {
+         margin-top: 5rem;
         grid-area: 1 / 1 /3;
         max-width: 90%;
     }
@@ -61,6 +81,7 @@
 } 
 
 @media screen and (max-width: 1300px) {
+
     .aboutContentText {
         display: flex;
         flex-direction: column;
