@@ -85,7 +85,7 @@
   }
 
   .StatisticBox {
-    width: 20%;
+    width: 40%;
   }
 
   .StatisticBox span:first-child {
@@ -107,13 +107,13 @@
     flex-direction: column;
   }
   .StatisticBox {
-    width: 35%;
+    width: 80%;
   }
 }
 
 @media screen and (max-width: 448px) {
   .StatisticBox {
-    width: 40%;
+    width: 90%;
 
   }
 }
