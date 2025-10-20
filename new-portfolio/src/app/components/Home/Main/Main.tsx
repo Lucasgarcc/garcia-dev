@@ -10,6 +10,7 @@ import useViewAnimation from '@/hooks/EffectAnimation/EffectAnimation';
 import AboutMe from '../AboutMe/AboutMe';
 import MouseRole from '../MouseRole/MouseRole';
 import Timeline from '../Timeline/Timeline';
+import Differential from '../Differential/Differential';
 
 interface MainLayoutProps {
   children?: ReactNode;
@@ -61,6 +62,19 @@ const MainLayout = ({ children }: MainLayoutProps) => {
                 <Timeline /> {/* ou o conteúdo com tabs etc */}
             </div>
       </section>
+
+	   	{/* Diferencial */}
+		<section
+			className={`area-continer-differential transition-all duration-800 ${
+			isVisible
+				? ' opacity-0 translate-x-10' 
+				: ' opacity-100 translate-x-0'
+			}`}>
+			<div className='area-content-diffential'>
+				
+				<Differential />
+			</div>
+		</section>
     </main>
 
   );

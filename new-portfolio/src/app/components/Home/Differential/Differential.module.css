@@ -1,0 +1,55 @@
+.differentialContainer {
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-items: stretch; /* ✅ Garante alturas iguais */
+  max-width: 60%;
+  gap: 2rem;
+}
+
+.differentialItem {
+  background: linear-gradient(90deg, rgb(23, 23, 23) 0%, rgba(3, 3, 3, 0.992) 100%);
+  display: flex;             /* ✅ Para distribuir conteúdo internamente */
+  flex-direction: column;    /* ✅ Conteúdo empilhado verticalmente */
+  justify-content: center; 
+  text-align: center;/* Opcional — distribui título/descrição bem */
+  height: 100%;              /* ✅ Faz o card preencher toda a altura do grid */
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  color: white;
+}
+
+.differentialTitle {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.differentialSubTitle {
+  font-size: 1.2rem;
+  font-weight: 600; /* Corrigido de "semi-bold" (valor inválido) */
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.differentialDetail {
+  color: var(--bg-secondary-n);
+  font-size: 3.5rem;
+}
+
+.differentialDescription {
+    margin: 0 auto;
+    text-align: left;
+    width: 100%;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+@media (max-width: 1024px) {
+  .differentialContainer {
+    grid-template-columns: 1fr; /* Muda para uma coluna */
+    max-width: 90%; /* Ajusta a largura máxima */
+  }
+}
