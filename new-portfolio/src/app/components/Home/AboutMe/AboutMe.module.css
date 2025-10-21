@@ -80,7 +80,7 @@
     
 } 
 
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1200px) {
 
     .aboutContentText {
         display: flex;
@@ -90,9 +90,8 @@
     }
     .aboutContentDescription {
         order: 2;
-        width: 90%
+        width: 70%
     }
-
     .aboutContentStatis {
         order: 3;
         width: 90%;
@@ -104,15 +103,36 @@
     .aboutContentImage {
         order: 1;
         margin-bottom: 1.2rem;
-        width: 100%;
+        width: 65%;
     }
 }
 
+@media screen and (max-width: 768px) {
+
+    .aboutContentDescription {
+        width: 60%;
+        font-size: 1rem;
+    }
+    .aboutContentImage {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    } 
+}
+
 @media screen and (max-width: 480px) {
-  .title {
-    font-size: 1.6rem !important;
-  }
-  .aboutContentButton {
-    width: 100%;
-  }
+
+    .title {
+        font-size: 1.6rem !important;
+    }
+    .aboutContentDescription {
+        width: 80%;
+    }
+    .aboutContentButton {
+        width: 100%;
+    }
+    .aboutContentImage {
+        width: 100%;
+    } 
 }
