@@ -2,6 +2,17 @@
     width: 400px;
 }
 
+@media screen and (max-width: 1200px) {
+    .VariableResumeButton {
+        width: 550px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .VariableResumeButton {
+        max-width: 100%;
+    }
+}
 
 @media screen and (max-width: 480px) {
     .VariableResumeButton {
