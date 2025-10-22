@@ -30,7 +30,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
         </div>
 
         <div className="areaContentRedeSocial"  ref={ref}>
-          <RedeSocial />
+          <RedeSocial redesocial={{ className: '', fontSize: 0}} />
         </div>
 
         <div className="area-content-emphasis">
