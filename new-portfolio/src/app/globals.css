@@ -119,6 +119,31 @@ main {
 	align-items: center;
 }
 
+.footerContentIcon {
+    position: relative;
+    display: flex;
+    margin:  0 auto;
+	margin-bottom: .9rem;
+	margin-right: 1rem;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+/*
+.footerContentIcon::after {
+    position: absolute;
+    inset: 1.6rem 0 0 0;
+    margin: 0 auto;
+    content: '';
+    display: block;
+    clear: both;
+    width: 90px;
+    height: .005rem;
+    background: rgba(245, 245, 245, 0.27);
+
+} */
+
 @media screen and (max-width: 1568px) {
     .main-content {
         flex-flow: row;

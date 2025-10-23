@@ -11,6 +11,7 @@ import AboutMe from '../AboutMe/AboutMe';
 import MouseRole from '../MouseRole/MouseRole';
 import Timeline from '../Timeline/Timeline';
 import Differential from '../Differential/Differential';
+import Footer from '../../Footer/Footer';
 
 interface MainLayoutProps {
   children?: ReactNode;
@@ -19,65 +20,67 @@ interface MainLayoutProps {
 const MainLayout = ({ children }: MainLayoutProps) => {
   const { ref, isVisible } = useViewAnimation(0.2);
 
-  return (
-    <main className="main-layout">
-      {children}
+    return (
+        <>
+            <main className="main-layout">
+                {children}
 
-      {/* Seção principal animada */}
-      <section className="main-content">
-        <div className="area-content-scene3D">
-          <Scene3D />
-        </div>
+                {/* Seção principal animada */}
+                <section className="main-content">
+                <div className="area-content-scene3D">
+                    <Scene3D />
+                </div>
 
-        <div className="areaContentRedeSocial"  ref={ref}>
-          <RedeSocial redesocial={{ className: '', fontSize: 0}} />
-        </div>
+                <div className="areaContentRedeSocial"  ref={ref}>
+                    <RedeSocial redesocial={{ className: '', fontSize: 0}} />
+                </div>
 
-        <div className="area-content-emphasis">
-          <Emphasis />
-          <MouseRole />
-        </div>
+                <div className="area-content-emphasis">
+                    <Emphasis />
+                    <MouseRole />
+                </div>
 
-      </section>
+                </section>
 
-      {/* Sobre mim */}
-      <section
-        className={`area-content-about-me transition-all duration-800 ${
-          isVisible
-            ? ' opacity-0 translate-x-10' 
-            : ' opacity-100 translate-x-0'
-        }`} >
-        <AboutMe  />
-      </section>
+                {/* Sobre mim */}
+                <section
+                className={`area-content-about-me transition-all duration-800 ${
+                    isVisible
+                    ? ' opacity-0 translate-x-10' 
+                    : ' opacity-100 translate-x-0'
+                }`} >
+                <AboutMe  />
+                </section>
 
-      {/* Linha do tempo */}
-      <section
-        className={`area-continer-timeline transition-all duration-800 ${
-          isVisible
-            ? ' opacity-0 translate-x-10' 
-            : ' opacity-100 translate-x-0'
-        }`}>
-        <div className='area-content-timeline'></div>
-            <div className="timeline-wrapper">
-                <Timeline /> {/* ou o conteúdo com tabs etc */}
-            </div>
-      </section>
+                {/* Linha do tempo */}
+                <section
+                className={`area-continer-timeline transition-all duration-800 ${
+                    isVisible
+                    ? ' opacity-0 translate-x-10' 
+                    : ' opacity-100 translate-x-0'
+                }`}>
+                <div className='area-content-timeline'></div>
+                    <div className="timeline-wrapper">
+                        <Timeline /> {/* ou o conteúdo com tabs etc */}
+                    </div>
+                </section>
 
-	   	{/* Diferencial */}
-		<section
-			className={`area-continer-differential transition-all duration-800 ${
-			isVisible
-				? ' opacity-0 translate-x-10' 
-				: ' opacity-100 translate-x-0'
-			}`}>
-			<div className='area-content-diffential'>
-				
-				<Differential />
-			</div>
-		</section>
-    </main>
-
-  );
+                {/* Diferencial */}
+            <section
+                className={`area-continer-differential transition-all duration-800 ${
+                isVisible
+                ? ' opacity-0 translate-x-10' 
+                : ' opacity-100 translate-x-0'
+                }`}>
+                <div className='area-content-diffential'>
+                
+                <Differential />
+                </div>
+            </section>
+            </main>
+            <Footer />
+        </>
+    );
 };
 
 export default MainLayout;
