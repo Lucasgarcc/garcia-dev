@@ -1,0 +1,37 @@
+.logo {
+    padding: .2rem .4rem;
+    padding-left: 1rem;
+    width: 110;
+    height: 100;
+    vertical-align: middle; 
+}
+
+/* Estilos para os gradientes dentro do SVG logo */
+.paint_linear > stop {
+    stop-color: var(--logo-gradient-stop1);
+    stop-color: rgb(30, 30, 30);
+    stop-color: var(--logo-gradient-stop3);
+}
+
+/* Estilos para os paths com classe path-1 -> FUNDO das CHAVES */
+.path1 {
+  fill: transparent;
+}
+
+/* Estilos para os paths com classe path-2 e path-3 CHAVES '{ }' */
+.path2 {
+  stroke: var(--logo-stroke-primary);
+}
+
+.path3 {
+  stroke: var(--logo-stroke-secondary);
+}
+
+@media screen and (max-width: 480px) {
+    .logo {
+        color: var(--logo-gradient-stop1);
+        margin-top: 2rem;
+        max-width: 100%;
+        height: auto;
+    }
+}

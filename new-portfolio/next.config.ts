@@ -1,6 +1,7 @@
 
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+
+const nextConfig: import('next').NextConfig = {
   reactStrictMode: true,
 
   experimental: {
@@ -36,11 +37,7 @@ const nextConfig = {
                     },
                     svgProps: {
                         fill: 'currentColor',
-                        Stroke: 'currentColor',
-                        stop: {
-                            stopColor: 'currentColor',
-                            offset: '0%' 
-                        },
+                        Stroke: 'currentColor'
                     },
                 },
             },

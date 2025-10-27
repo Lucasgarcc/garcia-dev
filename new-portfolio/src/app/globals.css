@@ -39,17 +39,23 @@
   --logo-fill-primary: #ffffff;
   --logo-stroke-primary: #91bf27;
   --logo-stroke-secondary: #595959;
-  --logo-gradient-stop1: #000000fa;
+  --logo-gradient-stop1: #343434fa;
   --logo-gradient-stop2: #1e1e1e;
-  --logo-gradient-stop3: #000000;
+  --logo-gradient-stop3: #363636;
   --gradient-start: #ffffff00;
   --gradient-mid: #eeffdc00;
   /* e assim por diante */
-
-
+  footer {
+    --logo-fill-primary: #ffffff;
+    --logo-stroke-primary: #00ffcc;
+    --logo-stroke-secondary: #595959;
+    --logo-gradient-stop1: #000000fa;
+  --logo-gradient-stop2: #1e1e1e im;
+  --logo-gradient-stop3: #ff0000 !important;
+  }
   --font-roboto: 'Roboto', sans-serif;
   --font-title:  'Gugi', sans-serif;
- --font-4: 400;
+  --font-4: 400;
 }
 
 @theme dark {
@@ -75,7 +81,7 @@
 }
 
 body {
-  color: var(--color-text);
+  /*color: var(--color-text);*/
   font-family:  var(--font-roboto);
   height: 100vh;
 }
