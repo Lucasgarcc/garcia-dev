@@ -1,11 +1,9 @@
 'use client'
 
 import React from 'react'
-import '../../../globals.css';
 import Style from './Logo.module.css'
 import LogoSvg from '@/assets/logo.svg';
 import { LogoProps } from '@/app/types/logo';
-
 
 const Logo = ({className = '', style = {}}: LogoProps ) => {
 
