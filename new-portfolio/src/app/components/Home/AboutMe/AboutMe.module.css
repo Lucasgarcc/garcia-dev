@@ -119,13 +119,6 @@
         align-items: center;
         width: 100%;
     } 
-    .aboutContentStatis {
-        height: auto
-    }
-    .aboutContentButton {
-        padding: 0 2rem 0 2rem;
-        width: 90%;
-    }
 }
 
 @media screen and (max-width: 480px) {
@@ -137,7 +130,6 @@
         width: 80%;
     }
     .aboutContentButton {
-        padding: 0;
         width: 100%;
     }
     .aboutContentImage {
