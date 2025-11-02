@@ -45,14 +45,7 @@
   --gradient-start: #ffffff00;
   --gradient-mid: #eeffdc00;
   /* e assim por diante */
-  footer {
-    --logo-fill-primary: #ffffff;
-    --logo-stroke-primary: #00ffcc;
-    --logo-stroke-secondary: #595959;
-    --logo-gradient-stop1: #000000fa;
-  --logo-gradient-stop2: #1e1e1e im;
-  --logo-gradient-stop3: #ff0000 !important;
-  }
+
   --font-roboto: 'Roboto', sans-serif;
   --font-title:  'Gugi', sans-serif;
   --font-4: 400;
