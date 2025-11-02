@@ -37,7 +37,7 @@ const nextConfig: import('next').NextConfig = {
                     },
                     svgProps: {
                         fill: 'currentColor',
-                        Stroke: 'currentColor'
+                        stroke: 'currentColor'
                     },
                 },
             },

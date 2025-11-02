@@ -72,7 +72,7 @@ const Timeline: React.FC = () => {
 	return (
 
 		<section className={Styles.timelineContainer}>
-			<Typography marginTop={4} color='var(--primary-c-2)' textTransform={'uppercase'} 
+			<Typography marginTop={15} color='var(--primary-c-2)' textTransform={'uppercase'} 
 					variant="h4" className={Styles.title} marginBottom={4} textAlign={'center'} fontFamily='var(--font-title)' gutterBottom fontWeight={450}
 				>
 				Qualificações

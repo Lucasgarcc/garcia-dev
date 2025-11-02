@@ -9,8 +9,8 @@ import LaserBackground from './components/Background/LaserBackground/LaserBackgr
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-  title: 'Meu Portfólio',
-  description: 'Portfólio pessoal com animações 3D e projetos modernos',
+  title: 'Garcia Developer',
+  description: 'Site profissional de Lucas Garcia, desenvolvedor Frontend.',
 };
 
 interface RootLayoutProps {
