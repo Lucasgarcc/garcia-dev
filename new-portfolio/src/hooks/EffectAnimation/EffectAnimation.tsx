@@ -1,31 +1,52 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 
-const useViewAnimation = (threshold = 0.2) => {
-    
-    const ref = useRef(null);
-    const [isVisible, setIsVisible] = useState(false);
+/**
+ * Hook para animar elementos conforme entram na viewport.
+ * Evita conflito de refs externas e é totalmente independente.
+ * 
+ * @param {number} threshold - Percentual de visibilidade necessário (0–1)
+ * @param {boolean} triggerOnce - Se `true`, a animação ocorre apenas na primeira vez
+ */
+const useViewAnimation = (threshold = 0.2, triggerOnce = true) => {
+  const elementRef = useRef<HTMLElement | null>(null);
+  const observerRef = useRef<IntersectionObserver | null>(null);
+  const [isVisible, setIsVisible] = useState(false);
 
-    useEffect(() => {
-        
-        const observer = new IntersectionObserver (
-            ([entry]) => {
-                setIsVisible(entry.isIntersecting);
-            },
-            { threshold }
-        );
+  const setRef = useCallback((node: HTMLElement | null) => {
+    // Remove observador anterior
+    if (observerRef.current && elementRef.current) {
+      observerRef.current.unobserve(elementRef.current);
+    }
 
-        const currentTarget = ref.current;
-        if (currentTarget) {
-            observer.observe(currentTarget);
-        }
+    // Se o novo nó for válido, começa a observar
+    if (node) {
+      elementRef.current = node;
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+            if (triggerOnce) observer.unobserve(entry.target);
+          } else if (!triggerOnce) {
+            setIsVisible(false);
+          }
+        },
+        { threshold }
+      );
 
-        return () => {
-            if (currentTarget)  observer.unobserve(currentTarget);
-        };
+      observer.observe(node);
+      observerRef.current = observer;
+    }
+  }, [threshold, triggerOnce]);
 
-    }, [threshold]);
+  useEffect(() => {
+    return () => {
+      if (observerRef.current && elementRef.current) {
+        observerRef.current.unobserve(elementRef.current);
+      }
+    };
+  }, []);
 
-    return {ref, isVisible};
-}  
+  return { ref: setRef, isVisible };
+};
 
 export default useViewAnimation;

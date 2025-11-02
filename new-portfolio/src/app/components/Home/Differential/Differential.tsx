@@ -18,7 +18,7 @@ const Differential = () => {
     >
       {/* Título principal */}
       <Typography
-        marginTop={4}
+        marginTop={15}
         color="var(--primary-c-2)"
         textTransform="uppercase"
         variant="h4"
@@ -76,10 +76,10 @@ const Differential = () => {
                 size={50}
                 color="var(--primary-c-0-4)"
               />
-              <div>
-                União entre domínio técnico, boas práticas de engenharia e foco
-                na experiência do usuário.
-              </div>
+                <div>
+                    União entre domínio técnico, boas práticas de engenharia e foco
+                    na experiência do usuário.
+                </div>
             </span>
           </Typography>
         </div>

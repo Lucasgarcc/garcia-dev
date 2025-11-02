@@ -13,7 +13,6 @@ const AboutMe = ( ) => {
     
         <>  
             <motion.div
-                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
                 >
@@ -24,11 +23,13 @@ const AboutMe = ( ) => {
                 <div className={Styles.aboutMeContainer}>
                     <div className={Styles.aboutContentText}>
         
-                        <Typography className={Styles.aboutContentDescription} variant="body1" marginTop={2} maxWidth={'100%'}  textAlign={'justify'}>
-                           Desenvolvedor Web e criador de experiências digitais que unem design, propósito e tecnologia.
-                            Trabalho com foco em Frontend e UI/UX Design, desenvolvendo interfaces que conectam pessoas e ideias.
-                            Acredito que cada projeto é uma oportunidade de evoluir — técnica e pessoalmente — e sigo construindo minha trajetória com curiosidade, resiliência e vontade de ir além.
-                            Meu objetivo é crescer como Desenvolvedor Frontend Pleno e, no futuro, expandir meus horizontes como Full Stack, sempre mantendo o olhar criativo e a busca pela excelência em cada detalhe.
+                        <Typography className={Styles.aboutContentDescription} variant="body1" marginTop={5} maxWidth={'100%'} letterSpacing={0} textAlign={'justify'}>
+                            <p>
+                                Desenvolvedor Web e criador de experiências digitais que unem design, propósito e tecnologia.
+                                Trabalho com foco em Frontend e UI/UX Design, desenvolvendo interfaces que conectam pessoas e ideias.
+                                Acredito que cada projeto é uma oportunidade de evoluir — técnica e pessoalmente — e sigo construindo minha trajetória com curiosidade, resiliência e vontade de ir além.
+                                Meu objetivo é crescer como Desenvolvedor Frontend Pleno e, no futuro, expandir meus horizontes como Full Stack, sempre mantendo o olhar criativo e a busca pela excelência em cada detalhe.
+                            </p>
                         </Typography>
 
                         <div className={Styles.aboutContentStatis}>
@@ -42,8 +43,6 @@ const AboutMe = ( ) => {
                             <CodeCard />
                         </div>
                     </div>
-
-          
 
                 </div>     
             </motion.div>

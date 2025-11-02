@@ -2,6 +2,7 @@
 
 import '../../../globals.css';
 import { ReactNode } from 'react';
+import { motion } from 'framer-motion';
 
 import Emphasis from '@/app/components/Home/Emphasis/Emphasis';
 import RedeSocial from '@/app/components/Home/Emphasis/RedeSocial/RedeSocial';
@@ -17,70 +18,107 @@ interface MainLayoutProps {
   children?: ReactNode;
 }
 
+// Variantes para seções que entram da esquerda
+const slideFromLeft = {
+  hidden: { opacity: 0, x: -60 },
+  visible: { opacity: 1, x: 0 },
+};
+
+// Variantes para seções que entram da direita
+const slideFromRight = {
+  hidden: { opacity: 0, x: 60 },
+  visible: { opacity: 1, x: 0 },
+};
+
 const MainLayout = ({ children }: MainLayoutProps) => {
-  const { ref, isVisible } = useViewAnimation(0.2);
+  return (
+    <>
+      <main className="main-layout">
+        {children}
 
-    return (
-        <>
-            <main className="main-layout">
-                {children}
-
-                {/* Seção principal animada */}
-                <section className="main-content">
-                <div className="area-content-scene3D">
-                    <Scene3D />
-                </div>
-
-                <div className="areaContentRedeSocial"  ref={ref}>
-                    <RedeSocial redesocial={{ className: '', fontSize: 0}} />
-                </div>
-
-                <div className="area-content-emphasis">
-                    <Emphasis />
-                    <MouseRole />
-                </div>
-
-                </section>
-
-                {/* Sobre mim */}
-                <section
-                className={`area-content-about-me transition-all duration-800 ${
-                    isVisible
-                    ? ' opacity-0 translate-x-10' 
-                    : ' opacity-100 translate-x-0'
-                }`} >
-                <AboutMe  />
-                </section>
-
-                {/* Linha do tempo */}
-                <section
-                className={`area-continer-timeline transition-all duration-800 ${
-                    isVisible
-                    ? ' opacity-0 translate-x-10' 
-                    : ' opacity-100 translate-x-0'
-                }`}>
-                <div className='area-content-timeline'></div>
-                    <div className="timeline-wrapper">
-                        <Timeline /> {/* ou o conteúdo com tabs etc */}
-                    </div>
-                </section>
-
-                {/* Diferencial */}
-            <section
-                className={`area-continer-differential transition-all duration-800 ${
-                isVisible
-                ? ' opacity-0 translate-x-10' 
-                : ' opacity-100 translate-x-0'
-                }`}>
-                <div className='area-content-diffential'>
+        {/* Seção principal */}
+        <motion.section
+            variants={slideFromRight}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.3 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="main-content">
+            
+            <motion.div
+                variants={slideFromLeft}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.8 }}  
+                className="area-content-scene3D">
+                <Scene3D />
                 
-                <Differential />
-                </div>
-            </section>
-            </main>
-            <Footer />
-        </>
-    );
+            </motion.div>
+
+            <motion.div
+                variants={slideFromLeft}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.8 }}   
+                className="areaContentRedeSocial">
+
+                <RedeSocial redesocial={{ className: '', fontSize: 0 }} />
+            </motion.div>
+            <motion.div
+                variants={slideFromRight}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.8 }}  
+                className="area-content-emphasis">
+
+                <Emphasis />
+                <MouseRole />
+            </motion.div>
+        </motion.section>
+
+        {/* Sobre mim */}
+        <motion.section
+          variants={slideFromLeft}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.3 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="area-content-about-me"
+        >
+          <AboutMe />
+        </motion.section>
+
+        {/* Linha do tempo */}
+        <motion.section
+          variants={slideFromRight}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.3 }}
+    
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="area-continer-timeline"
+        >
+          <Timeline />
+        </motion.section>
+
+        {/* Diferencial */}
+        <motion.section
+          variants={slideFromLeft}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.3 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="area-continer-differential"
+        >
+          <Differential />
+        </motion.section>
+      </main>
+      <Footer />
+    </>
+  );
 };
 
 export default MainLayout;

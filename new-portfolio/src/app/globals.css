@@ -44,8 +44,8 @@
   --logo-gradient-stop3: #171717;
   --gradient-start: #ffffff00;
   --gradient-mid: #eeffdc00;
-  /* e assim por diante */
 
+  /* e assim por diante */
   --font-roboto: 'Roboto', sans-serif;
   --font-title:  'Gugi', sans-serif;
   --font-4: 400;
@@ -142,6 +142,12 @@ main {
     background: rgba(245, 245, 245, 0.27);
 
 } */
+   .areaContentRedeSocial {
+        order: 1;
+        position: absolute;
+        inset: 22rem  auto auto 9rem;
+        display: flex;
+    }
 
 @media screen and (max-width: 1568px) {
     .main-content {
@@ -194,7 +200,7 @@ main {
         /*left: 50%;     começa no meio */ 
         width: 100%;           /*  pega apenas a metade direita */
         height: 95%;
-        background: linear-gradient(90deg, rgb(23, 23, 23) 0%, rgb(10, 10, 10) 100%);
+        /*background: linear-gradient(90deg, rgb(23, 23, 23) 0%, rgb(10, 10, 10) 100%);*/
         z-index: 0;
         box-shadow: -4px 0 12px rgba(0, 0, 0, 0.25);
     }
