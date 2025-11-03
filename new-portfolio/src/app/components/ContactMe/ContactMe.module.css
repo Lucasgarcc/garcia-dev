@@ -1,0 +1,162 @@
+.contactContainer {
+    margin-top: 6rem;
+    background-color: #99c40c;
+    max-width: 100%;
+    height: auto;
+}
+
+.contactFormContainer {
+    margin: 4rem auto;
+    margin-bottom: 0;
+    padding: 2rem;
+    /*background: linear-gradient(90deg, rgb(67, 92, 33) 100%, rgb(47, 90, 5) 100%);*/
+    background-color: #99c40c;
+    opacity: none;
+    width: 80%;
+    display: grid;
+    position: relative;
+    grid-template-columns: 1fr 1fr;
+
+    position: relative;
+}
+
+.contactForm {
+    width: 90%;
+}
+
+.contactButton {
+    width: 200px;
+}
+
+/* IMAGEM */
+.perfilIContainer {
+    position: relative;
+    display: flex;
+    justify-content: stretch;
+    align-items: self-end;
+    z-index: 0;
+}
+
+.perfilI {
+    width: 100%;
+    max-width: 420px;
+    height: 600px;
+    position: absolute;
+    top: -12.8%;
+    bottom: 0;
+    /*  fixa a base da imagem no fundo */
+    overflow: hidden;
+    border-radius: 16px;
+    z-index: 0;
+}
+
+.perfilI img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* 🔥 ajusta a imagem sem distorcer */
+    object-position: center top;
+    /* ou 'center center' dependendo da foto */
+    transition: transform 0.4s ease, filter 0.4s ease;
+
+}
+
+.perfilI :hover img {
+    transform: scale(1.05);
+    /* zoom sutil ao passar o mouse */
+    filter: brightness(1.1);
+}
+
+.contactFormTitle {
+    margin: 3rem 0 4rem 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--color-text);
+    font-family: var(--font-title);
+}
+
+.contactFormContentTitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+}
+
+/* ============ RESPONSIVO ============ */
+@media screen and (max-width: 1200px) {
+    .contactFormContainer {
+        padding: 0;
+        text-align: center;
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        height: auto;
+    }
+
+    .contactForm {
+        order: 1;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-direction: column;
+        width: 90%;
+    }
+
+    .perfilIContainer {
+        order: 2;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        width: 100%;
+        margin-top: 2rem;
+    }
+
+    .perfilI {
+        position: relative;
+        max-width: 380px;
+        height: 60vh;
+    }
+
+    .contactButton {
+        width: 100%;
+        max-width: 200px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    .contactFormTitle {
+        margin: 3rem 0 2rem 0;
+    }
+    .perfilI {
+        height: 50vh;
+    }
+
+    .contactButton {
+        width: 100%;
+    }
+
+}
+
+@media screen and (max-width: 480px) {
+
+    .contactFormContainer {
+        padding: 0 1rem 0 1rem;
+    }
+
+    .contactFormTitle {
+        font-size: 1.5rem;
+    }
+
+    .perfilI {
+        height: 50vh;
+    }
+
+    .contactButton {
+        width: 80%;
+    }
+    
+}

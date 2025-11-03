@@ -7,12 +7,12 @@ import { motion } from 'framer-motion';
 import Emphasis from '@/app/components/Home/Emphasis/Emphasis';
 import RedeSocial from '@/app/components/Home/Emphasis/RedeSocial/RedeSocial';
 import Scene3D from '@/app/components/Background/Scene3D';
-import useViewAnimation from '@/hooks/EffectAnimation/EffectAnimation';
 import AboutMe from '../AboutMe/AboutMe';
 import MouseRole from '../MouseRole/MouseRole';
 import Timeline from '../Timeline/Timeline';
 import Differential from '../Differential/Differential';
 import Footer from '../../Footer/Footer';
+import ContactMe from '../../ContactMe/ContactMe';
 
 interface MainLayoutProps {
   children?: ReactNode;
@@ -57,11 +57,11 @@ const MainLayout = ({ children }: MainLayoutProps) => {
             </motion.div>
 
             <motion.div
-                variants={slideFromLeft}
+                variants={slideFromRight}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.8 }}   
+                viewport={{ once: false, amount: 0.0 }}
+                transition={{ duration: 0.0, delay: 0.0, when: "beforeChildren" }}   
                 className="areaContentRedeSocial">
 
                 <RedeSocial redesocial={{ className: '', fontSize: 0 }} />
@@ -115,6 +115,19 @@ const MainLayout = ({ children }: MainLayoutProps) => {
         >
           <Differential />
         </motion.section>
+
+        {/*-- Contato  */}
+        <motion.section
+          variants={slideFromRight}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.3 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="area-continer-contact-me"
+        >
+          <ContactMe />
+        </motion.section>
+
       </main>
       <Footer />
     </>
