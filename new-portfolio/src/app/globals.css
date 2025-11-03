@@ -9,13 +9,14 @@
   --bg-header: #ffffff00;
   /* Tema neutro */
   --bg-primary-n: #222222; /* Cinza bem escuro */
-  --bg-secondary-n: #444444; /* Cinza médio */
+  --bg-secondary-c: #afafaf; /* Cinza claro */
   --color-text-n: #f0f0f0; /* Cinza quase branco */
   --color-text-secondary: #aaaaaa; /* Cinza neutro */
   /* Tema escuro */
   --bg-primary: #000000; /* Preto puro */
   --bg-secondary: #1a1a1a; /* Preto levemente suavizado */
-  --color-text: #000000; /* Branco puro */
+  --color-text: #3e3c3c; /* preto puro */
+  --color-text-p: #000;
   --color-text-d: #ffff; /* Cinza claro */
   --color-text-secondary: #cccccc; /* Cinza claro */
 
@@ -44,6 +45,9 @@
   --logo-gradient-stop3: #171717;
   --gradient-start: #ffffff00;
   --gradient-mid: #eeffdc00;
+
+
+  --gradient-line: linear-gradient(90deg, rgb(23, 23, 23) 0%, rgb(10, 10, 10) 100%);
 
   /* e assim por diante */
   --font-roboto: 'Roboto', sans-serif;
@@ -118,12 +122,16 @@ main {
 	align-items: center;
 }
 
+.area-continer-contact-me {
+  width: 100%;
+}
+
 .footerContentIcon {
     position: relative;
     display: flex;
     margin:  0 auto;
-	margin-bottom: .9rem;
-	margin-right: 1rem;
+    margin-bottom: .9rem;
+    margin-right: 1rem;
     justify-content: center;
     align-items: center;
     gap: 1rem;
