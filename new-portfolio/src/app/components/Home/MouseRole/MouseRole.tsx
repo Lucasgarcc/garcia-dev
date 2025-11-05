@@ -1,20 +1,35 @@
 'use client';
 import '../../../globals.css';
-import Sytles from './MouseRole.module.css'; 
-
-import react from 'react';
-
+import Styles from './MouseRole.module.css'; 
+import React from 'react';
 import { TbMouseFilled } from "react-icons/tb";
 import { RiArrowDownSLine } from 'react-icons/ri';
+import { useSmoothScroll } from '@/hooks/UseSmoothScroll/UseSmoothScroll';
+import { motion } from 'framer-motion';
 // import SwipeDownIcon from '@mui/icons-material/SwipeDown';
 
 const MouseRole = () => {
+
+    useSmoothScroll();
+
+    const handleScroll = () => {
+        window.scrollBy({
+            top: window.innerHeight,
+            behavior: 'smooth',
+        });
+    };
+
     return (
-        <div className={Sytles.ContainerMouseRole}>
-            <TbMouseFilled size={35} color={'var(--primary-c-0-3)'} />
-            <span className="text-xs text-gray-500">Role para baixo...</span>
-            <RiArrowDownSLine  size={28} color={'var(--primary-c-3)'} />
-        </div>
+        <motion.div 
+            initial={{opacity: 0, y: 20}}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1}}
+            className={Styles.ContainerMouseRole} 
+            onClick={handleScroll}>
+            <TbMouseFilled size={35} className={Styles.mouseIcon} />
+            <span className={`${Styles.text} text-xs text-gray-500`}>Role para baixo...</span>
+            <RiArrowDownSLine  size={28} className={Styles.arrowIcon}/>
+        </motion.div>
     )
 }
 

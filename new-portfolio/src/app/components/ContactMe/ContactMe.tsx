@@ -65,7 +65,7 @@ const ContactMe = () => {
         <ThemeProvider  theme={theme}>     
             <Typography
 
-                    marginTop={25}
+                    marginTop={30}
                     color='var(--primary-c-2)'
                     textTransform={'uppercase'}     
                     variant="h4"
