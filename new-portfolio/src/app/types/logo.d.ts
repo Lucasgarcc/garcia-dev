@@ -1,13 +1,10 @@
-export type LogoCSSVars = {
-  '--logo-fill-primary'?: string;
-  '--logo-stroke-primary'?: string;
-  '--logo-stroke-secondary'?: string;
-  '--logo-gradient-stop1'?: string;
-  '--logo-gradient-stop2'?: string;
-  '--logo-gradient-stop3'?: string;
-};
-
 export interface LogoProps {
-  className?: string;
-  style?: React.CSSProperties & LogoCSSVars;
+    strokePrimary?: string;
+    strokeSecondary?: string;
+    strokeThird?:string;
+    colorPrimary?: string;   // cor da chave esquerda {
+    colorSecondary?: string;
+    colorThird?: string; // cor da chave direita }
+    className?: string;      // caso queira aplicar classe extra
+    style?: React.CSSProperties; // para injetar variáveis CSS dinamicamente
 }

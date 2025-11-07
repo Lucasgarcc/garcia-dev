@@ -9,7 +9,7 @@ const Header = () => {
         <AppBar sx={{ backgroundColor: 'var(--bg-header)', color: 'var(--color-header)', boxShadow: 'none' }} position="static">
             <Toolbar >
                 <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                    <Logo />
+                    <Logo colorPrimary='#91bf27' colorSecondary='#595959' />
                 </Typography>
             </Toolbar>
         </AppBar>
