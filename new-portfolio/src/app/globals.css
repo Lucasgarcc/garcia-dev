@@ -77,6 +77,10 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   /*color: var(--color-text);*/
   font-family:  var(--font-roboto);
@@ -92,17 +96,33 @@ main {
   overflow-x: hidden;
 }
 
+.sectionWrapper {
+  min-height: 100vh;
+  padding-top: 8rem; /* Ajuste conforme seu header */
+  padding-bottom: 8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Ou center, se quiser centralizar tudo */
+}
+
 .main-content {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 4rem;
+    min-height: 80vh;
+}
+
+.area-content-about-me,
+.area-continer-timeline,
+.area-continer-differential,
+.area-continer-contact-me {
+  min-height: 100vh; /* mantém padrão */
 }
 
 .area-continer-timeline {
 	position: relative;
 	width: 100%;
-
 	min-height: 100vh;
 	display: flex;
 	justify-content: center;
@@ -150,12 +170,12 @@ main {
     background: rgba(245, 245, 245, 0.27);
 
 } */
-   .areaContentRedeSocial {
-        order: 1;
-        position: absolute;
-        inset: 22rem  auto auto 9rem;
-        display: flex;
-    }
+.areaContentRedeSocial {
+    order: 1;
+    position: absolute;
+    inset: 20rem  auto auto 9rem;
+    display: flex;
+}
 
 @media screen and (max-width: 1568px) {
     .main-content {
@@ -168,18 +188,19 @@ main {
         position: relative;
     }
     .area-content-scene3D {
-        width: 100%;
+        width: 90%;
         order:initial;
         height: auto;
     }
     .areaContentRedeSocial {
         order: 1;
         position: absolute;
-        inset: 20rem 0 0 1rem;
+        inset: 20rem 0 0 2rem;
         display: flex;
     }
     .area-content-emphasis {
       order: 2;
+      margin: 0 auto;
     }
 }
 

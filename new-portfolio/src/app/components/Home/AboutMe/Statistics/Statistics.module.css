@@ -45,8 +45,8 @@
 .StatisticBox span:first-child {
   font-size: 2rem;
   font-weight: bold;
-  color: var(var(--color-text-p), #a3ff23da);
-  text-shadow: 0 0 8px rgb(115, 255, 0);
+  color: var(var(--color-text-p), #b6ff50da);
+  text-shadow: 0 0 8px rgb(153, 255, 69);
 }
 
 /* subtítulo */

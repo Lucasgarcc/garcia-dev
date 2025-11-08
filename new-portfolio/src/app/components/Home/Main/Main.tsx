@@ -16,23 +16,23 @@ interface MainLayoutProps {
 }
 // Variantes para seções que entram da esquerda
 const slideFromLeftY = {
-	hidden: { opacity: 0, x: -60, y: 80 },
-	visible: { opacity: 1, x: 0, y: 60 },
+	hidden: { opacity: 0, x: -60 },
+	visible: { opacity: 1, x: 0 },
 };
 // Variantes para seções que entram da direita
 const slideFromRightY = {
-	hidden: { opacity: 0, x: 60, y: 80 },
-	visible: { opacity: 1, x: 0, y: 60 },
+	hidden: { opacity: 0, x: 60 },
+	visible: { opacity: 1, x: 0 },
 };
 
 const slideFromLeft = {
-	hidden: { opacity: 0, x: -60, },
-	visible: { opacity: 1, x: 0, },
+	hidden: { opacity: 0, x: -60},
+	visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: 'easeOut' }},
 };
 
 const slideFromRight = {
 	hidden: { opacity: 0, x: 60 },
-	visible: { opacity: 1, x: 0 },
+	visible: { opacity: 1, x: 0, transition: {duration: 0.8, ease: 'easeOut'} },
 };
 
 const MainLayout = ({ children }: MainLayoutProps) => {
@@ -45,15 +45,14 @@ const MainLayout = ({ children }: MainLayoutProps) => {
 					initial="hidden"
 					whileInView="visible"
 					viewport={{ once: false, amount: 0.3 }}
-					transition={{ duration: 0.8 }}
+					transition={{ duration: 0.8, ease: "easeOut" }}
 					className="main-content">
 
 					<motion.div
-						variants={slideFromLeft}
 						initial="hidden"
 						whileInView="visible"
-						viewport={{ once: true, amount: 0.3 }}
-						transition={{ duration: 0.8 }}
+						viewport={{ once: true, amount: 0.2 }}
+						transition={{ duration: 0.4 }}
 						className="area-content-scene3D">
 						<Scene3D />
 
@@ -66,7 +65,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
 						variants={slideFromRight}
 						initial="hidden"
 						whileInView="visible"
-						viewport={{ once: true, amount: 0.3 }}
+						viewport={{ once: false, amount: 0.3 }}
 						transition={{ duration: 0.8 }}
 						className="area-content-emphasis">
 						<Emphasis />
@@ -78,8 +77,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
 					variants={slideFromLeftY}
 					initial="hidden"
 					whileInView="visible"
-					viewport={{ once: false, amount: 0.3 }}
-					transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+					viewport={{ once: true, amount: 0.3 }}
 					className="area-content-about-me"
 				>
 					<AboutMe />
@@ -90,8 +88,6 @@ const MainLayout = ({ children }: MainLayoutProps) => {
 					initial="hidden"
 					whileInView="visible"
 					viewport={{ once: false, amount: 0.3 }}
-
-					transition={{ duration: 0.8, delay: 0.3 }}
 					className="area-continer-timeline"
 				>
 					<Timeline />

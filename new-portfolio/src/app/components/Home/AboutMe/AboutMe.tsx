@@ -13,11 +13,12 @@ const AboutMe = ( ) => {
     
         <>  
             <motion.div
-                initial={{ opacity: 0, y: 40}}
+                initial={{ opacity: 0, y: 90 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className={Styles.sectionWrapper}
                 >
-                <Typography marginTop={30} color='var(--primary-c-2)' textTransform={'uppercase'} 
+                <Typography marginTop={20} color='var(--primary-c-2)' textTransform={'uppercase'} 
                 variant="h4" className={Styles.title} marginBottom={1} textAlign={'center'} fontFamily='var(--font-title)' gutterBottom fontWeight={450}>
                     Sobre Mim
                 </Typography>      
