@@ -71,7 +71,11 @@ const Timeline: React.FC = () => {
 
 	return (
 
-		<section className={Styles.timelineContainer}>
+		<motion.div 
+			initial={{ opacity: 0, y: 90 }}
+			animate={{ opacity: 1, y: 0 }}
+			transition={{ duration: 0.8, ease: "easeOut" }}
+			className={Styles.timelineContainer}>
 			<Typography marginTop={15} color='var(--primary-c-2)' textTransform={'uppercase'} 
 					variant="h4" className={Styles.title} marginBottom={4} textAlign={'center'} fontFamily='var(--font-title)' gutterBottom fontWeight={450}
 				>
@@ -80,7 +84,7 @@ const Timeline: React.FC = () => {
 			<Typography
 				fontSize={18}
 				fontWeight={500}
-				color='var(--bg-secondary-n)'
+				color='var(--primary-c-0-3)'
 				textAlign="center"
 				marginTop={2}
 				marginBottom={5}
@@ -132,7 +136,7 @@ const Timeline: React.FC = () => {
 				</motion.div>
 				))}
 			</div>
-		</section>
+		</motion.div>
 	);
 };
 

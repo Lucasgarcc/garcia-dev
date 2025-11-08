@@ -12,13 +12,14 @@ import Styles from './Differential.module.css';
 const Differential = () => {
     return (
         <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
+            initial={{ opacity: 0, y: 90 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className={Styles.sectionWrapper}
         >
         {/* Título principal */}
         <Typography
-            marginTop={15}
+            marginTop={25}
             color="var(--primary-c-2)"
             textTransform="uppercase"
             variant="h4"

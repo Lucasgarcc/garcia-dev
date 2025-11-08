@@ -1,3 +1,12 @@
+.sectionWrapper {
+  min-height: 100vh;
+  padding-top: 8rem; /* Ajuste conforme seu header */
+  padding-bottom: 8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Ou center, se quiser centralizar tudo */
+}
+
 .differentialContainer {
     margin: 0 auto;
     display: grid;
