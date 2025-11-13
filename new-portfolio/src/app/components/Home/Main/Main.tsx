@@ -11,6 +11,8 @@ import Timeline from '../Timeline/Timeline';
 import Differential from '../Differential/Differential';
 import Footer from '../../Footer/Footer';
 import ContactMe from '../../ContactMe/ContactMe';
+import { Menu } from '@mui/material';
+import { useNavigation } from '@/hooks/context/NavigationContext';
 interface MainLayoutProps {
 	children?: ReactNode;
 }
@@ -36,17 +38,22 @@ const slideFromRight = {
 };
 
 const MainLayout = ({ children }: MainLayoutProps) => {
+
+ 	const { refs } = useNavigation();
+
 	return (
-		<>
+		<>	
 			<main className="main-layout">
 				{children}
 				{/* Seção principal */}
-				<motion.section
+				<motion.section 
+					ref={refs.intro}
 					initial="hidden"
 					whileInView="visible"
 					viewport={{ once: false, amount: 0.3 }}
 					transition={{ duration: 0.8, ease: "easeOut" }}
-					className="main-content">
+					className="main-content"
+					>
 
 					<motion.div
 						initial="hidden"
@@ -72,45 +79,57 @@ const MainLayout = ({ children }: MainLayoutProps) => {
 						<MouseRole />
 					</motion.div>
 				</motion.section>
+				
 				{/* Sobre mim */}
 				<motion.section
+					ref={refs.about}
 					variants={slideFromLeftY}
 					initial="hidden"
 					whileInView="visible"
 					viewport={{ once: true, amount: 0.3 }}
 					className="area-content-about-me"
+					id='about'
 				>
 					<AboutMe />
 				</motion.section>
+
 				{/* Linha do tempo */}
 				<motion.section
+					ref={refs.timeline}
 					variants={slideFromRightY}
 					initial="hidden"
 					whileInView="visible"
 					viewport={{ once: false, amount: 0.3 }}
 					className="area-continer-timeline"
+					id='timeline'
 				>
 					<Timeline />
 				</motion.section>
+
 				{/* Diferencial */}
 				<motion.section
+					ref={refs.diferencial}
 					variants={slideFromLeftY}
 					initial="hidden"
 					whileInView="visible"
 					viewport={{ once: false, amount: 0.3 }}
 					transition={{ duration: 0.8, delay: 0.4 }}
 					className="area-continer-differential"
+					id='diferencial'
 				>
 					<Differential />
 				</motion.section>
+
 				{/*-- Contato  */}
 				<motion.section
+					ref={refs.contato}
 					variants={slideFromRight}
 					initial="hidden"
 					whileInView="visible"
 					viewport={{ once: false, amount: 0.3 }}
 					transition={{ duration: 0.8, delay: 0.5 }}
 					className="area-continer-contact-me"
+					id='contato'
 				>
 					<ContactMe />
 				</motion.section>

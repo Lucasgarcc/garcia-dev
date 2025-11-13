@@ -1,53 +1,16 @@
+.containerToolBar	{
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-.logo {
-    padding: .2rem .4rem;
-    padding-left: 1rem;
-    width: 110;
-    height: 100;
-    vertical-align: middle; 
-    
 }
 
-/* globals.css */
+@media screen and (max-width: 768px )  {
 
-/* Estilos para os gradientes dentro do SVG logo */
-
-.paint_linear > stop {
-    stop-color: var(--logo-gradient-stop1);
-    stop-color: var(--logo-gradient-stop2);
-    stop-color: var(--logo-gradient-stop3);
-}
-
-/* Estilos para os paths com classe path-1 -> FUNDO das CHAVES */
-.path1 {
-  fill: transparent;
-}
-
-/* Estilos para os paths com classe path-2 e path-3 CHAVES '{ }' */
-.path2 {
-  stroke: var(--logo-stroke-primary);
-}
-
-.path3 {
-  stroke: var(--logo-stroke-secondary);
-}
-
-linearGradient {
-    .stop1 {
-        stop-color: #f0f;
-    }
-}
-
-
-.stop2 {
-  stop-color: #0ff;
-}
-
-
-@media screen and (max-width: 480px) {
-    .logo {
-        margin-top: 2rem;
-        max-width: 100%;
-        height: auto;
-    }
+  .containerToolBar {
+    padding: 1rem  .5rem;
+    align-items: flex-start;
+    max-width: 100%;
+  }
 }

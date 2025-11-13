@@ -1,0 +1,19 @@
+.link {
+  color: var(--color-text);
+  transition: .3s ease;
+  text-decoration: none;
+  font-family: var(--font-title) ;
+}
+
+.link:hover {
+  color: var(--bg-primary-n)
+}
+
+.underline {
+  /*text-decoration: underline;*/
+}
+
+.active {
+  color: var(--bg-primary-n);
+  font-weight: 600;
+}
