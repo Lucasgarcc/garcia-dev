@@ -77,10 +77,6 @@
   }
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   /*color: var(--color-text);*/
   font-family:  var(--font-roboto);
@@ -173,7 +169,7 @@ main {
 .areaContentRedeSocial {
     order: 1;
     position: absolute;
-    inset: 20rem  auto auto 9rem;
+    inset: 20rem  auto auto 5rem;
     display: flex;
 }
 

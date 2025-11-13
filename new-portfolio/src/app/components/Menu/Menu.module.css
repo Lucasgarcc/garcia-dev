@@ -1,0 +1,13 @@
+.menuContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+@media screen and (max-width: 768px )  {
+  .menuContainer {
+    display: none;
+    flex-direction: column ;
+  }
+}

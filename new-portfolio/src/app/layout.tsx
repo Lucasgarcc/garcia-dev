@@ -4,7 +4,7 @@ import { Inter } from 'next/font/google';
 import type { ReactNode } from 'react';
 import Header from './components/Home/Header/Header';
 import LaserBackground from './components/Background/LaserBackground/LaserBackground';
-// import Footer from './components/Footer'; // quando for usar
+import NavigationProvider from '@/hooks/context/NavigationContext';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -34,11 +34,17 @@ export default function RootLayout({ children }: RootLayoutProps) {
                 <meta property="og:description" content="Portfólio pessoal com animações 3D e projetos modernos" />
             </head>
             <body className={inter.className} >
-                <LaserBackground />
-                <Header />
-                <main>
-                    {children}
-                </main>
+                <NavigationProvider>
+                    <LaserBackground />
+                    <header>
+                        <Header />
+                    </header>
+
+                    <main>
+                        {children}
+                    </main>
+                </NavigationProvider>
+
             </body>
         </html>
     );
