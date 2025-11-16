@@ -88,7 +88,6 @@ const MainLayout = ({ children }: MainLayoutProps) => {
 					whileInView="visible"
 					viewport={{ once: true, amount: 0.3 }}
 					className="area-content-about-me"
-					id='about'
 				>
 					<AboutMe />
 				</motion.section>
@@ -101,7 +100,6 @@ const MainLayout = ({ children }: MainLayoutProps) => {
 					whileInView="visible"
 					viewport={{ once: false, amount: 0.3 }}
 					className="area-continer-timeline"
-					id='timeline'
 				>
 					<Timeline />
 				</motion.section>
@@ -109,13 +107,12 @@ const MainLayout = ({ children }: MainLayoutProps) => {
 				{/* Diferencial */}
 				<motion.section
 					ref={refs.diferencial}
-					variants={slideFromLeftY}
+					variants={slideFromRightY}
 					initial="hidden"
 					whileInView="visible"
 					viewport={{ once: false, amount: 0.3 }}
 					transition={{ duration: 0.8, delay: 0.4 }}
 					className="area-continer-differential"
-					id='diferencial'
 				>
 					<Differential />
 				</motion.section>
@@ -123,13 +120,13 @@ const MainLayout = ({ children }: MainLayoutProps) => {
 				{/*-- Contato  */}
 				<motion.section
 					ref={refs.contato}
-					variants={slideFromRight}
+					variants={slideFromLeftY}
 					initial="hidden"
 					whileInView="visible"
 					viewport={{ once: false, amount: 0.3 }}
 					transition={{ duration: 0.8, delay: 0.5 }}
 					className="area-continer-contact-me"
-					id='contato'
+
 				>
 					<ContactMe />
 				</motion.section>

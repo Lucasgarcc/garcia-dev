@@ -26,7 +26,9 @@ const NavigationProvider = ({ children }: { children: React.ReactNode}) => {
         const element = refs[section]?.current;
 
         if (element) {
+
             element.scrollIntoView({ behavior: 'smooth'});
+
         }   
     };
     
