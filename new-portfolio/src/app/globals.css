@@ -106,6 +106,7 @@ main {
     justify-content: center;
     align-items: center;
     gap: 4rem;
+    width: 80%;
     min-height: 80vh;
 }
 
