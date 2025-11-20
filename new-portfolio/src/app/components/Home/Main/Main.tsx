@@ -69,7 +69,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
 						<RedeSocial redesocial={{ className: '', fontSize: 0 }} />
 					</motion.div>
 					<motion.div
-						variants={slideFromRight}
+						variants={slideFromLeft}
 						initial="hidden"
 						whileInView="visible"
 						viewport={{ once: false, amount: 0.3 }}
