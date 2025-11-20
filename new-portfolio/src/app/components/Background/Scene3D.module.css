@@ -6,6 +6,7 @@
 }
 
 .areaContainer {
+    margin: 0 auto;
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -13,7 +14,6 @@
     inset: -6rem 0 0 -13rem;
     width: 832px;
     height: 600px;
-    margin: 0px auto;
     background-color: transparent;
     transform-style: preserve-3d;
     overflow: visible;
@@ -29,8 +29,8 @@
     width: 85%;
   }
   .areaContainer {
-    inset: -7rem 0 0 -13rem;
-    width: 900px;
+    inset: -3rem 0 0 -18rem;
+    width: 90%
   }
 }
 
