@@ -1,21 +1,40 @@
 // app/layout.tsx
 import './globals.css';
-import { Inter } from 'next/font/google';
+import { Roboto_Mono} from 'next/font/google';
 import type { ReactNode } from 'react';
 import Header from './components/Home/Header/Header';
 import LaserBackground from './components/Background/LaserBackground/LaserBackground';
 import NavigationProvider from '@/hooks/context/NavigationContext';
+import localFont from "next/font/local";
 
-const inter = Inter({ subsets: ['latin'] });
+export const gugi = localFont({
+    src: [
+        {
+            path: './fonts/Gugi/Gugi-Regular.ttf',
+            weight: "400",
+            style: "normal",
+        },
+    ],
+    variable: "--font-title",
+});
 
 export const metadata = {
   title: 'Garcia Developer',
   description: 'Site profissional de Lucas Garcia, desenvolvedor Frontend.',
 };
 
+const robotoMono = Roboto_Mono({
+    subsets: ['latin'],
+    weight: ['400', '500', '700'],
+    variable: '--font-roboto-mono',
+    display: 'swap',
+});
+
+
 interface RootLayoutProps {
     children: ReactNode;
 }
+
 
 export default function RootLayout({ children }: RootLayoutProps) {
 
@@ -33,7 +52,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
                 <meta property="og:title" content="Meu Portfólio" />
                 <meta property="og:description" content="Portfólio pessoal com animações 3D e projetos modernos" />
             </head>
-            <body className={inter.className} >
+            <body  className={`${robotoMono.variable} ${gugi.variable}`}>
                 <NavigationProvider>
                     <LaserBackground />
                     <header>
