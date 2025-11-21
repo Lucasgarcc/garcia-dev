@@ -29,7 +29,7 @@
     width: 90%; /* Garante que o card ocupe 90% da largura da tela */
     height: auto;
     max-width: 1000px; /* Impede que ele fique grande demais em telas largas */
-    aspect-ratio: 16 / 9; /* Mantém a proporção de uma tela widescreen */
+    aspect-ratio: 14 / 9; /* Mantém a proporção de uma tela widescreen */
     display: flex; /* Habilita o Flexbox */
     flex-direction: row;
     border-radius: 2rem;
