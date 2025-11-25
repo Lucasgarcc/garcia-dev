@@ -1,5 +1,4 @@
 .link {
-
   padding: .5rem;
   color: var(--color-text);
   transition: .3s ease;
@@ -15,11 +14,39 @@
   content: '';
   width: 20px;
   height: 10px;
-  background: var(--primary-c-0-6);
+  background: var(--logo-stroke-primary);
   display: inline-flex;
 }
 
 .active {
-  color: var(--bg-primary-n);
+  color: var(--logo-stroke-primary);
   font-weight: 600;
+}
+
+/*
+.active::before {
+  content: '→';
+  color: var(--logo-stroke-primary);
+  display: inline-flex;
+  margin: .5rem;
+}
+
+.active:hover.active::before {
+  color:#a3a3a3;
+}
+*/
+.active:hover {
+  color: #a3a3a3;
+}
+
+
+@media screen and (max-width: 768px )  {
+  
+  .link:hover {
+    color: var(--color-text-secondary-c);
+  }
+
+  .active {
+    color: var(--logo-stroke-primary);
+  }
 }
