@@ -33,6 +33,7 @@
 
 .tabButton:hover {
     color: var(--primary-c-0-4);
+    cursor: pointer;
 }
 
 .active {
@@ -113,6 +114,7 @@
   background: var(--primary-c-0-1);
   color: var(--color-text);
   transform: translateY(-4px);
+  cursor: pointer;
 }
 
 .content h3 {
