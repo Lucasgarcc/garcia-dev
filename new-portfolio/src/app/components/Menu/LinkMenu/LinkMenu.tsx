@@ -13,11 +13,12 @@ const LinkMenu = ({
     onClick,
 }: link & { onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void }) => {
     return (
+        
         <NextLink
             id={id}
             href={href}
             onClick={onClick}
-            className={`${styles.link} ${underline ? styles.underline : ''} ${active ? styles.active : ''}`}
+             className={`${styles.link} ${underline ? styles.underline : ''} ${active ? styles.active : ''}`}
         >
             {children}
         </NextLink>

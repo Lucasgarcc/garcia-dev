@@ -7,7 +7,7 @@ import styles from './Header.module.css'
 const Header = () => {
 
     const navItems = [
-        { id: 'intro', label: 'Início', href: '#intro', active: false },
+        { id: 'intro', label: 'Home', href: '#intro', active: false },
         { id: 'about', label: 'Sobre', href: '#about', active: false },
         { id: 'timeline', label: 'Linha do Tempo', href: '#timeline', active: false },
         { id: 'diferencial', label: 'Diferenciais', href: '#diferencial', active: false },

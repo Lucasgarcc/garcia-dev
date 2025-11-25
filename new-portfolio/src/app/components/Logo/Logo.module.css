@@ -2,7 +2,9 @@
     padding: .2rem .4rem;
     width: 110;
     height: 100;
-    vertical-align: middle; 
+    vertical-align: middle;
+    z-index: 1001; 
+    position: static;
 }
 
 /* Estilos para os paths com classe path-1 -> FUNDO das CHAVES */

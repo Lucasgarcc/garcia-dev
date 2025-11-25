@@ -6,5 +6,10 @@ export interface NavigationTypes {
         diferencial: React.RefObject<HTMLElement | null>;
         contato: React.RefObject<HTMLElement | null>;
     };
+
     scrollToSection: (section: keyof NavigationTypes['refs']) => void;
+    
+    active: string | null;
+    setActive: React.dispatch<React.SetStateAction<string | null >>;
+
 }
