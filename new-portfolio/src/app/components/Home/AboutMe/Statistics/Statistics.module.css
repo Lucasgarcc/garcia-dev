@@ -39,6 +39,7 @@
 .StatisticBox:hover {
   transform: translateX(10px) rotate3d(10, 1, 10, 10deg);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+  cursor: pointer;
 }
 
 /* texto principal */

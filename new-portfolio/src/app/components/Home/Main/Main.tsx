@@ -1,7 +1,7 @@
 'use client';
 import '../../../globals.css';
 import { ReactNode } from 'react';
-import { animate, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Emphasis from '@/app/components/Home/Emphasis/Emphasis';
 import RedeSocial from '@/app/components/Home/Emphasis/RedeSocial/RedeSocial';
 import Scene3D from '@/app/components/Background/Scene3D';
@@ -11,7 +11,6 @@ import Timeline from '../Timeline/Timeline';
 import Differential from '../Differential/Differential';
 import Footer from '../../Footer/Footer';
 import ContactMe from '../../ContactMe/ContactMe';
-import { Menu } from '@mui/material';
 import { useNavigation } from '@/hooks/context/NavigationContext';
 interface MainLayoutProps {
 	children?: ReactNode;
@@ -47,6 +46,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
 				{children}
 				{/* Seção principal */}
 				<motion.section 
+					id="intro"
 					ref={refs.intro}
 					initial="hidden"
 					whileInView="visible"
@@ -82,6 +82,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
 				
 				{/* Sobre mim */}
 				<motion.section
+					id="about"
 					ref={refs.about}
 					variants={slideFromLeftY}
 					initial="hidden"
@@ -94,6 +95,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
 
 				{/* Linha do tempo */}
 				<motion.section
+					id="timeline"
 					ref={refs.timeline}
 					variants={slideFromRightY}
 					initial="hidden"
@@ -106,6 +108,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
 
 				{/* Diferencial */}
 				<motion.section
+					id="diferencial"
 					ref={refs.diferencial}
 					variants={slideFromRightY}
 					initial="hidden"
@@ -119,6 +122,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
 
 				{/*-- Contato  */}
 				<motion.section
+					id="contato"
 					ref={refs.contato}
 					variants={slideFromLeftY}
 					initial="hidden"
