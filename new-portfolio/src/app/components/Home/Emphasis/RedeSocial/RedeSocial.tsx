@@ -5,7 +5,7 @@ import { FiGithub } from 'react-icons/fi';
 import { RxDiscordLogo } from "react-icons/rx";
 import { RiLinkedinLine } from "react-icons/ri";
 import { redesocial } from '@/app/types/redesocial';
-import { red } from '@mui/material/colors';
+
 
 interface HomeSocialProps {
   redesocial: redesocial;

@@ -229,11 +229,17 @@ main {
     .areaContentRedeSocial {
         inset: 10rem 0 0 3rem;
     }
+
+    .area-content-scene3D {
+        max-width: 100%;
+        display: flex;
+        order: 1;
+    }
 }
 
 @media screen and (max-width: 480px) {
     .areaContentRedeSocial {
-        inset: 9rem 0 0 2rem;
+        inset: 6rem 0 0 .40rem;
         z-index: 0;
     }
     .main-content {
