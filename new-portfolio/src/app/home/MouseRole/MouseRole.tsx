@@ -3,7 +3,7 @@ import Styles from './MouseRole.module.css';
 import React from 'react';
 import { TbMouseFilled } from "react-icons/tb";
 import { RiArrowDownSLine } from 'react-icons/ri';
-import { useSmoothScroll } from '@/hooks/UseSmoothScroll/UseSmoothScroll';
+import { useSmoothScroll } from '@/app/hooks/UseSmoothScroll/UseSmoothScroll';
 import { motion } from 'framer-motion';
 // import SwipeDownIcon from '@mui/icons-material/SwipeDown';
 

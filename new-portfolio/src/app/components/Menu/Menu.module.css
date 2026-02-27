@@ -89,10 +89,10 @@
         text-align: justify;
         background: transparent;
         width: 100%;
-        height: 15vh;
+        height: 10vh;
         inset: 0;
-        background: linear-gradient(180deg, #fff 2%, rgba(255, 255, 255, 0) 100%);
-        backdrop-filter: blur(2px); /* Desfoca o que está atrás, destacando os itens */
+        background: linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0) 100%);
+        backdrop-filter: blur(2.5px); /* Desfoca o que está atrás, destacando os itens */
         -webkit-backdrop-filter: blur(2px);
     }
 
@@ -101,10 +101,10 @@
     }
 
     .active.menuContainer {
-        padding: 2rem;
+        padding: 1rem;
         width: 60%;
         height: 60vh;
-        inset: auto 0 auto auto;
+        inset: .5rem 0 auto auto;
         border-radius: 2rem 0 2rem;
     }
 
@@ -164,7 +164,6 @@
 @media screen and (max-width: 480px )  {
     
     .hamburger {
-        margin: 2.5rem 0 0 2rem;
         right: 2rem;
         top: 1.5rem;
     }
