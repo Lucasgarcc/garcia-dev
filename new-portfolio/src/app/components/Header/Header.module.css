@@ -1,0 +1,17 @@
+.containerToolBar	{
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+
+}
+
+@media screen and (max-width: 768px )  {
+
+  .containerToolBar {
+    padding: 1rem  .5rem;
+    align-items: flex-start;
+    max-width: 100%;
+  }
+}

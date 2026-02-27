@@ -22,9 +22,8 @@
 
 @media screen and (max-width: 480px) {
     .logo {
-        color: var(--logo-gradient-stop1);
-        margin-top: 2rem;
-        max-width: 100%;
-        height: auto;
+        color: var(--bg-secondary);
+        margin-top: 3rem;
+
     }
 }
