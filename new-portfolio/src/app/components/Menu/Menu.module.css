@@ -2,14 +2,18 @@
     margin: 0;
     padding: 2.5rem;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     gap: 1rem;
+    width: 100%;
     max-width: 100%;
     position: fixed;
     inset: 0 0 auto;
     z-index: 1000;
-    background: linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(180deg, #fff, rgba(255, 255, 255, 0) 100%);
+    backdrop-filter: blur(2px); /* Desfoca o que está atrás, destacando os itens */
+    -webkit-backdrop-filter: blur(5px);
+
 }
 
 .menuContent {
@@ -78,23 +82,22 @@
     }
 
     .menuContainer{
-        width: 50%;
-        height: 60vh;
         padding: 0;
+        margin-bottom: 2rem;
         inset: auto 0 auto auto;
-        flex-direction: column ;
+        align-items: flex-start;
         text-align: justify;
         background: transparent;
-        border-radius: 2rem 0 2rem;
+        width: 100%;
+        height: 15vh;
+        inset: 0;
+        background: linear-gradient(180deg, #fff 2%, rgba(255, 255, 255, 0) 100%);
+        backdrop-filter: blur(2px); /* Desfoca o que está atrás, destacando os itens */
+        -webkit-backdrop-filter: blur(2px);
     }
 
-    .menuContainer {
-        width: 100%;
-        height: 20vh;
-        inset: 0;
-        border-radius: 0;
-        padding: 0;
-        background: linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0) 100%);
+    .logo {
+        display: none;
     }
 
     .active.menuContainer {
@@ -106,7 +109,7 @@
     }
 
     .active.menuContainer {
-        background: linear-gradient(190deg, var(--bg-primary-n) 40%, rgba(21, 21, 21, 0.934) 100%); /*var(--bg-primary-n);*/
+        background: linear-gradient(190deg, var(--bg-primary-n) 40%, rgba(21, 21, 21, 0.934) 100%);
     }
 
     .showMenu.menuContent{
