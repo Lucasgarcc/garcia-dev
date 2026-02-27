@@ -1,6 +1,5 @@
 'use client';
 
-import '../../../globals.css';
 import React, {useState } from 'react';
 import Styles from './Timeline.module.css';
 import {Typography } from '@mui/material';
@@ -17,14 +16,14 @@ const timelineData = {
 		location: 'Remoto / #KICK',
 		},
 		{
-		year: '2021 - 2023',
-		title: 'Análise e Desenvolvimento de Sistemas',
-		location: 'Ribeirão Preto - SP / UNIDERP Ribeirão Preto',
+			year: '2021 - 2023',
+			title: 'Análise e Desenvolvimento de Sistemas',
+			location: 'Ribeirão Preto - SP / UNIDERP Ribeirão Preto',
 		},
 		{
-		year: '2023 - 2026',
-		title: 'Frontend – Designer UI / UX',
-		location: 'Rio de Janeiro - RJ / ORIGAMID',
+			year: '2023 - 2026',
+			title: 'Frontend – Designer UI / UX',
+			location: 'Rio de Janeiro - RJ / ORIGAMID',
 		},
 		{
 			year: '2024 - 2024',
@@ -52,14 +51,14 @@ const timelineData = {
 	],
 	trabalho: [
 		{
-		year: '2014 - 2024',
-		title: 'Modelador de Plástico',
-		location: 'Guariba - SP / Indústria Plástica',
+			year: '2014 - 2024',
+			title: 'Modelador de Plástico',
+			location: 'Guariba - SP / Indústria Plástica',
 		},
 		{
-		year: '2025 - Atual',
-		title: 'Desenvolvedor Front-end Junior (web)',
-		location: 'Jaboticabal / F5 Software',
+			year: '2025 - Atual',
+			title: 'Desenvolvedor Front-end Junior (web)',
+			location: 'Jaboticabal / F5 Software',
 		},
 	],
 };

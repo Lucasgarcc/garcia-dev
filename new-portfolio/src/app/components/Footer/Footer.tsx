@@ -3,7 +3,7 @@
 import '../../globals.css';
 import React from 'react';
 import styles from './Footer.module.css';
-import RedeSocial from '../Home/Emphasis/RedeSocial/RedeSocial';
+import RedeSocial from '../../../app/home/Emphasis/RedeSocial/RedeSocial';
 
 const Footer: React.FC = () => {
     return (

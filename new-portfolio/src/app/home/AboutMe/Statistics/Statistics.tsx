@@ -1,5 +1,4 @@
 'use client';
-import '../../../../globals.css';
 import Styles from './Statistics.module.css';   
 import React from 'react';
 

@@ -105,7 +105,7 @@ main {
     justify-content: center;
     align-items: center;
     gap: 4rem;
-    width: 80%;
+    width: 75%;
     min-height: 80vh;
 }
 
@@ -169,7 +169,7 @@ main {
 .areaContentRedeSocial {
     order: 1;
     position: absolute;
-    inset: 20rem  auto auto 5rem;
+    inset: 20rem  auto auto 12rem;
     display: flex;
 }
 
@@ -199,6 +199,7 @@ main {
 
 @media screen and (max-width: 1568px) {
     .main-content {
+        margin-top: 4rem;
         flex-flow: row;
         justify-content: center;
         gap: 2rem;
@@ -264,6 +265,7 @@ main {
 
 @media screen and (max-width: 420px) {
   .main-content {
+    margin-top: 5rem;
     gap: 8rem;
   }
 }

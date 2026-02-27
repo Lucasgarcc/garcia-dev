@@ -1,7 +1,6 @@
 'client'
 
 import React from 'react';
-import '../../../../globals.css';
 import Styles from './ViableResume.module.css';
 import { Button } from '@mui/material';
 import { BsDownload } from "react-icons/bs";

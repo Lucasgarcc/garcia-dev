@@ -1,15 +1,21 @@
+import type React from 'react';
+
+export type NavigationPage = 'home' | 'projects';
+
+export type SectionRefs = Record<
+    string,
+    React.RefObject<HTMLElement | null>
+>;
+
 export interface NavigationTypes {
+    page: NavigationPage;
+
     refs: {
-        intro: React.RefObject<HTMLElement | null>;
-        about: React.RefObject<HTMLElement | null>;
-        timeline: React.RefObject<HTMLElement | null>;
-        diferencial: React.RefObject<HTMLElement | null>;
-        contato: React.RefObject<HTMLElement | null>;
+        home: SectionRefs;
+        projects: SectionRefs;
     };
 
-    scrollToSection: (section: keyof NavigationTypes['refs']) => void;
-    
     active: string | null;
-    setActive: React.dispatch<React.SetStateAction<string | null >>;
-
+    setActive: (id: string | null) => void;
+    scrollToSection: (id: string) => void;
 }

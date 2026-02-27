@@ -84,8 +84,8 @@ export default function OrbitLogos() {
 							className={Scene3D.logoContainer}
 							style={{
 								overflow: 'hidden',
-								width: 40,						
-                                height: 50,
+								width: '30px',						
+                                height: '50px',
 								position: 'absolute',
 								top: '40%',
 								left: '70%',
