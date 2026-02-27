@@ -1,5 +1,4 @@
 'use client';
-import '../../../globals.css'
 import { Typography, Button } from '@mui/material';
 import { motion } from 'framer-motion';
 import Scene3D from './Emphasis.module.css';
@@ -21,9 +20,8 @@ const Home = () => {
 			</Typography>
  
 			<Typography variant="body1" maxWidth={550}  textAlign={'justify'}>
-				<p>
-					Sou um desenvolvedor Frontend apaixonado por criar experiências digitais incríveis. Com uma sólida formação em design e desenvolvimento web, estou sempre em busca de novos desafios e oportunidades para aprimorar minhas habilidades.
-				</p>
+				
+				Sou um desenvolvedor Frontend apaixonado por criar experiências digitais incríveis. Com uma sólida formação em design e desenvolvimento web, estou sempre em busca de novos desafios e oportunidades para aprimorar minhas habilidades.
 			</Typography>
 			<Button variant="contained" sx={{ backgroundColor: 'var(--primary-c-3)', marginTop: '1rem', color: 'var(--color-text-n)',
                     textAlign: 'center',

@@ -2,12 +2,13 @@
 import './globals.css';
 import { Roboto_Mono} from 'next/font/google';
 import type { ReactNode } from 'react';
-import Header from './components/Home/Header/Header';
+import Header from './components/Header/Header';
 import LaserBackground from './components/Background/LaserBackground/LaserBackground';
-import NavigationProvider from '@/hooks/context/NavigationContext';
 import localFont from "next/font/local";
+import Providers from './Providers';
+import Footer from './components/Footer/Footer';
 
-export const gugi = localFont({
+const gugi = localFont({
     src: [
         {
             path: './fonts/Gugi/Gugi-Regular.ttf',
@@ -30,7 +31,6 @@ const robotoMono = Roboto_Mono({
     display: 'swap',
 });
 
-
 interface RootLayoutProps {
     children: ReactNode;
 }
@@ -52,17 +52,18 @@ export default function RootLayout({ children }: RootLayoutProps) {
                 <meta property="og:description" content="Portfólio pessoal com animações 3D e projetos modernos" />
             </head>
             <body  className={`${robotoMono.variable} ${gugi.variable}`}>
-                <NavigationProvider>
+
+                <Providers>
                     <LaserBackground />
                     <header>
                         <Header />
                     </header>
-
+    
                     <main>
                         {children}
                     </main>
-                </NavigationProvider>
-
+                    <Footer />
+                </Providers>
             </body>
         </html>
     );

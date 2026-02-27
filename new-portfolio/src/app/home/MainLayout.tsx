@@ -1,17 +1,16 @@
 'use client';
-import '../../../globals.css';
+
 import { ReactNode } from 'react';
 import { motion } from 'framer-motion';
-import Emphasis from '@/app/components/Home/Emphasis/Emphasis';
-import RedeSocial from '@/app/components/Home/Emphasis/RedeSocial/RedeSocial';
+import Emphasis from '@/app/home/Emphasis/Emphasis';
+import RedeSocial from '@/app/home/Emphasis/RedeSocial/RedeSocial';
 import Scene3D from '@/app/components/Background/Scene3D';
-import AboutMe from '../AboutMe/AboutMe';
-import MouseRole from '../MouseRole/MouseRole';
-import Timeline from '../Timeline/Timeline';
-import Differential from '../Differential/Differential';
-import Footer from '../../Footer/Footer';
-import ContactMe from '../../ContactMe/ContactMe';
-import { useNavigation } from '@/hooks/context/NavigationContext';
+import AboutMe from './AboutMe/AboutMe';
+import MouseRole from './MouseRole/MouseRole';
+import Timeline from './Timeline/Timeline';
+import Differential from './Differential/Differential';
+import ContactMe from '../components/ContactMe/ContactMe';
+import { useNavigation } from '../context/NavigationContext';
 interface MainLayoutProps {
 	children?: ReactNode;
 }
@@ -27,33 +26,37 @@ const slideFromRightY = {
 };
 
 const slideFromLeft = {
-	hidden: { opacity: 0, x: -60},
-	visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: 'easeOut' }},
+	hidden: { opacity: 0, x: -60 },
+	visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: 'easeOut' } },
 };
 
 const slideFromRight = {
 	hidden: { opacity: 0, x: 60 },
-	visible: { opacity: 1, x: 0, transition: {duration: 0.8, ease: 'easeOut'} },
+	visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: 'easeOut' } },
 };
 
 const MainLayout = ({ children }: MainLayoutProps) => {
 
- 	const { refs } = useNavigation();
+	const { refs, page } = useNavigation();
+
+	if (page !== 'home') return null;
+
+	const homeRefs = refs.home;
 
 	return (
-		<>	
+		<>
 			<main className="main-layout">
 				{children}
 				{/* Seção principal */}
-				<motion.section 
+				<motion.section
 					id="intro"
-					ref={refs.intro}
+					ref={homeRefs.intro}
 					initial="hidden"
 					whileInView="visible"
 					viewport={{ once: false, amount: 0.3 }}
 					transition={{ duration: 0.8, ease: "easeOut" }}
 					className="main-content"
-					>
+				>
 
 					<motion.div
 						initial="hidden"
@@ -69,7 +72,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
 						<RedeSocial redesocial={{ className: '', fontSize: 0 }} />
 					</motion.div>
 					<motion.div
-						variants={slideFromLeft}
+						variants={slideFromLeftY}
 						initial="hidden"
 						whileInView="visible"
 						viewport={{ once: false, amount: 0.3 }}
@@ -79,12 +82,12 @@ const MainLayout = ({ children }: MainLayoutProps) => {
 						<MouseRole />
 					</motion.div>
 				</motion.section>
-				
+
 				{/* Sobre mim */}
 				<motion.section
 					id="about"
-					ref={refs.about}
-					variants={slideFromLeftY}
+					ref={homeRefs.about}
+					variants={slideFromRightY}
 					initial="hidden"
 					whileInView="visible"
 					viewport={{ once: true, amount: 0.3 }}
@@ -96,7 +99,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
 				{/* Linha do tempo */}
 				<motion.section
 					id="timeline"
-					ref={refs.timeline}
+					ref={homeRefs.timeline}
 					variants={slideFromRightY}
 					initial="hidden"
 					whileInView="visible"
@@ -109,7 +112,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
 				{/* Diferencial */}
 				<motion.section
 					id="diferencial"
-					ref={refs.diferencial}
+					ref={homeRefs.diferencial}
 					variants={slideFromRightY}
 					initial="hidden"
 					whileInView="visible"
@@ -123,7 +126,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
 				{/*-- Contato  */}
 				<motion.section
 					id="contato"
-					ref={refs.contato}
+					ref={homeRefs.contato}
 					variants={slideFromLeftY}
 					initial="hidden"
 					whileInView="visible"
@@ -135,7 +138,6 @@ const MainLayout = ({ children }: MainLayoutProps) => {
 					<ContactMe />
 				</motion.section>
 			</main>
-			<Footer />
 		</>
 	);
 };
