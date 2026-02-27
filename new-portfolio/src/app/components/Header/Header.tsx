@@ -27,8 +27,7 @@ const Header = () => {
         <AppBar
             sx={{
                 // Aplicando aquele degradê que conversamos no início!
-                background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.5) 100%)',
-                backdropFilter: 'blur(10px)',
+                background: 'transparent',
                 color: 'var(--color-header)',
                 boxShadow: 'none',
                 position: 'fixed', // Geralmente headers de portfólio são fixos
