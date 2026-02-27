@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 import Logo from '../Logo/Logo';
-import { useNavigation } from '@/hooks/context/NavigationContext';
+import { useNavigation } from '../../context/NavigationContext'
 import LinkMenu from '@/app/components/Menu/LinkMenu/LinkMenu';
 import { NavItem } from '@/app/types/nav';
 import styles from './Menu.module.css';

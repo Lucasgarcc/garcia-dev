@@ -9,9 +9,7 @@ const CodeCard = () => {
 
     const [writing, setWriting] = useState(false);
 
-
     const [rotation, setRotation] = useState({ x: 0, y: 0 });
-
 
     const handleWrite = () => {
         if (writing) return;       
@@ -22,14 +20,14 @@ const CodeCard = () => {
   
     const codeContent = `
         <span class="${Style.Comment}">
-// Mais do que programar,  
-// eu transformo ideias em experiências.
-</span><br />  <span class="${Style.Keyword}">import</span> { <span class="${Style.Component}">React</span>, <span class="${Style.Function}">useState</span> } <span class="${Style.Keyword}">from</span> <span class="${Style.String}">'react'</span>;<br /><br />  <span class="${Style.Keyword}">const</span> <span class="${Style.Component}">MyDeveloperCard</span> = () => {<br />&nbsp;&nbsp;<span class="${Style.Keyword}">const</span> [<span class="${Style.Prop}">status</span>, <span class="${Style.Function}">setStatus</span>] = <span class="${Style.Function}">useState</span>(<span class="${Style.String}">'Online'</span>);<br /><br />&nbsp;&nbsp;<span class="${Style.Keyword}">return</span> (<br /> 
+  // Mais do que programar,  
+  // eu transformo ideias em experiências.
+    </span><br />  <span class="${Style.Keyword}">import</span> { <span class="${Style.Component}">React</span>, <span class="${Style.Function}">useState</span> } <span class="${Style.Keyword}">from</span> <span class="${Style.String}">'react'</span>;<br /><br />  <span class="${Style.Keyword}">const</span> <span class="${Style.Component}">MyDeveloperCard</span> = () => {<br />&nbsp;&nbsp;<span class="${Style.Keyword}">const</span> [<span class="${Style.Prop}">status</span>, <span class="${Style.Function}">setStatus</span>] = <span class="${Style.Function}">useState</span>(<span class="${Style.String}">'Online'</span>);<br /><br />&nbsp;&nbsp;<span class="${Style.Keyword}">return</span> (<br /> 
         &nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="${Style.Component}">div</span> <span class="">className</span>=<span class="${Style.String}">"card"</span>&gt;<br />
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="${Style.Component}">h1</span>&gt;Hello Word!&lt;/<span class="${Style.Component}">h1</span>&gt;<br />
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="${Style.Component}">p</span>&gt;Desenvolvendo a próxima grande ideia.&lt;/<span class="${Style.Component}">p</span>&gt;<br />
         &nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span class="${Style.Component}">div</span>&gt;<br />
-         &nbsp;&nbsp;);<br />  };<br /><br/> <span class="${Style.Keyword}">export default</span> <span class="${Style.Component}">MyDeveloperCard</span>;
+    &nbsp;&nbsp;  );<br />  };<br /><br/> <span class="${Style.Keyword}">export default</span> <span class="${Style.Component}">MyDeveloperCard</span>;
     `
     
     
@@ -48,7 +46,6 @@ const CodeCard = () => {
                 <div className={Style.CodeContainer} dangerouslySetInnerHTML={{ __html: codeContent }}/>
                 </div>
 
-                {/* Seção dos anéis gráficos. */}
                 <div className={`${Style.ContentSection} relative`}>
                 <div className="absolute inset-0  bg-[#111111] z-10">
                     <div className="absolute w-full h-full">

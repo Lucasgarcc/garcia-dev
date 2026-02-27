@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import '../../../globals.css';
 import { Typography } from '@mui/material';
 import { motion } from 'framer-motion';
 import { FaLightbulb } from 'react-icons/fa';

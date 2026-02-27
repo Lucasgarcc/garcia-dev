@@ -1,5 +1,4 @@
 'use client';
-import '../../../globals.css';
 import Styles from './MouseRole.module.css'; 
 import React from 'react';
 import { TbMouseFilled } from "react-icons/tb";
