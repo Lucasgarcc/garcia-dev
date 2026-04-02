@@ -3,10 +3,10 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
-import Logo from '../Logo/Logo';
-import { useNavigation } from '../../context/NavigationContext'
-import LinkMenu from '@/app/components/Menu/LinkMenu/LinkMenu';
-import { NavItem } from '@/app/types/nav';
+import Logo from '@/components/ui/Logo/Logo';
+import { useNavigation } from '@/core/context/NavigationContext';
+import LinkMenu from './LinkMenu/LinkMenu';
+import { NavItem } from '@/core/interfaces/nav';
 import styles from './Menu.module.css';
 
 
@@ -45,7 +45,7 @@ const Menu = ({ items }: { items: NavItem[] }) => {
                 <span className={styles.bar3}></span>
             </div>
 
-            <Logo colorPrimary='#91bf27' colorSecondary='#595959' className={`${open ? styles.logo : ''}` } />
+            <Logo colorPrimary='#91bf27' colorSecondary='#595959' className={`${open ? styles.logo : ''}`} />
 
             {/* Menu */}
             <div className={`${styles.menuContent} ${open ? styles.showMenu : ''}`}>

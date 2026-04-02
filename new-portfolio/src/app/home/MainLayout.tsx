@@ -2,143 +2,140 @@
 
 import { ReactNode } from 'react';
 import { motion } from 'framer-motion';
-import Emphasis from '@/app/home/Emphasis/Emphasis';
-import RedeSocial from '@/app/home/Emphasis/RedeSocial/RedeSocial';
-import Scene3D from '@/app/components/Background/Scene3D';
-import AboutMe from './AboutMe/AboutMe';
-import MouseRole from './MouseRole/MouseRole';
-import Timeline from './Timeline/Timeline';
-import Differential from './Differential/Differential';
-import ContactMe from '../components/ContactMe/ContactMe';
-import { useNavigation } from '../context/NavigationContext';
+import Emphasis from './components/Emphasis/Emphasis';
+import RedeSocial from './components/Emphasis/RedeSocial/RedeSocial';
+import Scene3D from '@/components/layout/Background/Scene3D';
+import AboutMe from './components/AboutMe/AboutMe';
+import MouseRole from './components/MouseRole/MouseRole';
+import Timeline from './components/Timeline/Timeline';
+import Differential from './components/Differential/Differential';
+import ContactMe from '@/components/ContactMe/ContactMe';
+import { useNavigation } from '@/core/context/NavigationContext';
+
+
 interface MainLayoutProps {
-	children?: ReactNode;
+    children?: ReactNode;
 }
 // Variantes para seções que entram da esquerda
 const slideFromLeftY = {
-	hidden: { opacity: 0, x: -60 },
-	visible: { opacity: 1, x: 0 },
+    hidden: { opacity: 0, x: -60 },
+    visible: { opacity: 1, x: 0 },
 };
 // Variantes para seções que entram da direita
 const slideFromRightY = {
-	hidden: { opacity: 0, x: 60 },
-	visible: { opacity: 1, x: 0 },
+    hidden: { opacity: 0, x: 60 },
+    visible: { opacity: 1, x: 0 },
 };
 
 const slideFromLeft = {
-	hidden: { opacity: 0, x: -60 },
-	visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: 'easeOut' } },
+    hidden: { opacity: 0, x: -60 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.8 } },
 };
 
 const slideFromRight = {
-	hidden: { opacity: 0, x: 60 },
-	visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: 'easeOut' } },
+    hidden: { opacity: 0, x: 60 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.8 } },
 };
 
 const MainLayout = ({ children }: MainLayoutProps) => {
 
-	const { refs, page } = useNavigation();
+    const { refs, page } = useNavigation();
 
-	if (page !== 'home') return null;
+    if (page !== 'home') return null;
 
-	const homeRefs = refs.home;
+    const homeRefs = refs.home;
+ console.log('Home Refs:', homeRefs);
+    return (
+        <>
+            <main className="main-layout">
+                {children}
+                {/* Seção principal */}
+                <motion.section
+                    id="intro"
+                    ref={homeRefs.intro}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: false, amount: 0.3 }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    className="main-content"
+                >
+                    <motion.div
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.2 }}
+                        transition={{ duration: 0.4 }}
+                        className="area-content-scene3D">
+                        <Scene3D />
 
-	return (
-		<>
-			<main className="main-layout">
-				{children}
-				{/* Seção principal */}
-				<motion.section
-					id="intro"
-					ref={homeRefs.intro}
-					initial="hidden"
-					whileInView="visible"
-					viewport={{ once: false, amount: 0.3 }}
-					transition={{ duration: 0.8, ease: "easeOut" }}
-					className="main-content"
-				>
+                    </motion.div>
+                    <motion.div
+                        className="areaContentRedeSocial">
+                        <RedeSocial redesocial={{ className: '', fontSize: 0 }} />
+                    </motion.div>
+                    <motion.div
+                        variants={slideFromLeftY}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: false, amount: 0.3 }}
+                        transition={{ duration: 0.8 }}
+                        className="area-content-emphasis">
+                        <Emphasis />
+                        <MouseRole />
+                    </motion.div>
+                </motion.section>
 
-					<motion.div
-						initial="hidden"
-						whileInView="visible"
-						viewport={{ once: true, amount: 0.2 }}
-						transition={{ duration: 0.4 }}
-						className="area-content-scene3D">
-						<Scene3D />
+                {/* Sobre mim */}
+                <motion.section
+                    id="about"
+                    ref={homeRefs.about}
+                    className="area-content-about-me"
+                >
+                    <AboutMe />
+                </motion.section>
 
-					</motion.div>
-					<motion.div
-						className="areaContentRedeSocial">
-						<RedeSocial redesocial={{ className: '', fontSize: 0 }} />
-					</motion.div>
-					<motion.div
-						variants={slideFromLeftY}
-						initial="hidden"
-						whileInView="visible"
-						viewport={{ once: false, amount: 0.3 }}
-						transition={{ duration: 0.8 }}
-						className="area-content-emphasis">
-						<Emphasis />
-						<MouseRole />
-					</motion.div>
-				</motion.section>
+                {/* Linha do tempo */}
+                <motion.section
+                    id="timeline"
+                    ref={homeRefs.timeline}
+                    variants={slideFromRightY}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: false, amount: 0.3 }}
+                    className="area-continer-timeline"
+                >
+                    <Timeline />
+                </motion.section>
 
-				{/* Sobre mim */}
-				<motion.section
-					id="about"
-					ref={homeRefs.about}
-					variants={slideFromRightY}
-					initial="hidden"
-					whileInView="visible"
-					viewport={{ once: true, amount: 0.3 }}
-					className="area-content-about-me"
-				>
-					<AboutMe />
-				</motion.section>
+                {/* Diferencial */}
+                <motion.section
+                    id="diferencial"
+                    ref={homeRefs.diferencial}
+                    variants={slideFromRightY}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: false, amount: 0.3 }}
+                    transition={{ duration: 0.8, delay: 0.5 }}
+                    className="area-continer-differential"
+                >
+                    <Differential />
+                </motion.section>
 
-				{/* Linha do tempo */}
-				<motion.section
-					id="timeline"
-					ref={homeRefs.timeline}
-					variants={slideFromRightY}
-					initial="hidden"
-					whileInView="visible"
-					viewport={{ once: false, amount: 0.3 }}
-					className="area-continer-timeline"
-				>
-					<Timeline />
-				</motion.section>
+                {/*-- Contato  */}
+                <motion.section
+                    id="contato"
+                    ref={homeRefs.contato}
+                    variants={slideFromLeftY}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: false, amount: 0.3 }}
+                    transition={{ duration: 0.8, delay: 0.5 }}
+                    className="area-continer-contact-me"
 
-				{/* Diferencial */}
-				<motion.section
-					id="diferencial"
-					ref={homeRefs.diferencial}
-					variants={slideFromRightY}
-					initial="hidden"
-					whileInView="visible"
-					viewport={{ once: false, amount: 0.3 }}
-					transition={{ duration: 0.8, delay: 0.4 }}
-					className="area-continer-differential"
-				>
-					<Differential />
-				</motion.section>
-
-				{/*-- Contato  */}
-				<motion.section
-					id="contato"
-					ref={homeRefs.contato}
-					variants={slideFromLeftY}
-					initial="hidden"
-					whileInView="visible"
-					viewport={{ once: false, amount: 0.3 }}
-					transition={{ duration: 0.8, delay: 0.5 }}
-					className="area-continer-contact-me"
-
-				>
-					<ContactMe />
-				</motion.section>
-			</main>
-		</>
-	);
+                >
+                    <ContactMe />
+                </motion.section>
+            </main>
+        </>
+    );
 };
 export default MainLayout;

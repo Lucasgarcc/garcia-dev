@@ -1,12 +1,12 @@
 // app/layout.tsx
 import './globals.css';
-import { Roboto_Mono} from 'next/font/google';
+import { Roboto_Mono } from 'next/font/google';
 import type { ReactNode } from 'react';
-import Header from './components/Header/Header';
-import LaserBackground from './components/Background/LaserBackground/LaserBackground';
+import Header from '@/components/layout/Header/Header';
+import LaserBackground from '@/components/layout/Background/LaserBackground/LaserBackground';
 import localFont from "next/font/local";
 import Providers from './Providers';
-import Footer from './components/Footer/Footer';
+import Footer from '@/components/layout/Footer/Footer';
 
 const gugi = localFont({
     src: [
@@ -20,8 +20,8 @@ const gugi = localFont({
 });
 
 export const metadata = {
-  title: 'Garcia Developer',
-  description: 'Site profissional de Lucas Garcia, desenvolvedor Frontend.',
+    title: 'Garcia Developer',
+    description: 'Site profissional de Lucas Garcia, desenvolvedor Frontend.',
 };
 
 const robotoMono = Roboto_Mono({
@@ -51,18 +51,22 @@ export default function RootLayout({ children }: RootLayoutProps) {
                 <meta property="og:title" content="Meu Portfólio" />
                 <meta property="og:description" content="Portfólio pessoal com animações 3D e projetos modernos" />
             </head>
-            <body  className={`${robotoMono.variable} ${gugi.variable}`}>
+            <body suppressHydrationWarning className={`${robotoMono.variable} ${gugi.variable}`}>
 
                 <Providers>
+                    {/* O Wrapper envolve tudo o que deve aparecer após o loading */}
+
                     <LaserBackground />
                     <header>
                         <Header />
                     </header>
-    
+
                     <main>
                         {children}
                     </main>
+
                     <Footer />
+
                 </Providers>
             </body>
         </html>

@@ -25,6 +25,13 @@
     "paths": {
       "@/*": [
         "./src/*"
+      ],
+      "@/core/*": [
+        "./src/app/core/*"
+      ],      "@/components/*": [
+        "./src/app/components/*"
+      ],      "@assets/*": [
+        "./public/assets/*"
       ]
     },
     "typeRoots": [
