@@ -1,6 +1,6 @@
 'use client';
 
-import NavigationProvider from './context/NavigationContext';
+import NavigationProvider from './core/context/NavigationContext';
 
 export default function Providers({ children }: { children: React.ReactNode }) {
     return (

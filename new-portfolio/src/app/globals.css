@@ -1,40 +1,44 @@
 @import "tailwindcss";
 
 :root {
+  /* --- Globais e Backgrounds --- */
   --background: #000000;
   --foreground: #171717;
+  --bg-header: #ffffffd7;
 
-  --bg-header: #ffffff00;
-  /* Tema neutro */
-  --bg-primary-n: #222222; /* Cinza bem escuro */
-  --bg-secondary-c: #afafaf; /* Cinza claro */
-  --color-text-n: #f0f0f0; /* Cinza quase branco */
-  --color-text-secondary: #aaaaaa; /* Cinza neutro */
-  /* Tema escuro */
-  --bg-primary: #000000; /* Preto puro */
-  --bg-secondary: #1a1a1a; /* Preto levemente suavizado */
-  --color-text: #3e3c3c; /* preto puro */
+  /* --- Tema Neutro --- */
+  --bg-primary-n: #222222;
+  --bg-secondary-c: #afafaf;
+  --color-text-n: #f0f0f0;
+  --color-text-secondary: #8f8f8f;
+
+  /* --- Tema Escuro (Seus valores originais) --- */
+  --bg-primary: #000000;
+  --bg-secondary: #1a1a1a;
+  --color-text: #3e3c3c;
   --color-text-p: #060606;
-  --color-text-d: #ffff; /* Cinza claro */
-  --color-text-secondary: #cccccc; /* Cinza claro */
+  --color-text-d: #ffffff;
 
-  /* Tema claro */
-  --bg-primary-c: #ffffff; /* Branco puro */
-  --bg-secondary-c: #f5f5f5; /* Cinza muito claro */
-  --color-text-c: #ffffff; /* Cinza escuro */
-  --color-text-secondary-c: #666666; /* Cinza médio */
+  /* --- Tema Claro --- */
+  --bg-primary-c: #ffffff;
+  --bg-secondary-c: #f5f5f5;
+  --color-text-c: #ffffff;
+  --color-text-secondary-c: #666666;
+
+  /* --- Escala de Verdes (Sua sequência primary-c-X) --- */
   --primary-c-0-1: #c4f58c;
   --primary-c-0-2: #a8f05b;
-  --primary-c-0-3: #4f4f4f; /*#A5FE31; */
+  --primary-c-0-3: #4f4f4f;
   --primary-c-0-4: #80c52c;
   --primary-c-0-5: #4a7614;
   --primary-c-0-6: #2d5200;
-  --primary-c-1: #8BC34A; 
-  --primary-c-2:  #91bf27;/* #81cb13; */
-  --primary-c-3: #0e0e0e; /*#437209; */
+  --primary-c-1: #8BC34A;
+  --primary-c-2: #91bf27;
+  --primary-c: #91bf27;
+  --primary-c-3: #0e0e0e;
   --primary-c-4: #1b2f02;
 
-  /* ================= Logo ================= */
+  /* --- Logo e Identidade --- */
   --logo-fill-primary: #ffffff;
   --logo-stroke-primary: #91bf27;
   --logo-stroke-secondary: #595959;
@@ -43,14 +47,44 @@
   --logo-gradient-stop3: #171717;
   --gradient-start: #ffffff00;
   --gradient-mid: #eeffdc00;
-
-
   --gradient-line: linear-gradient(90deg, rgb(23, 23, 23) 0%, rgb(10, 10, 10) 100%);
 
-  /* e assim por diante */
-  --font-roboto: var(--font-roboto);
-  --font-title:  var(--font-title);
+  /* --- Tipografia --- */
+  --font-roboto: var(--font-roboto); /* Certifique-se que estas fontes estão carregadas no Layout */
+  --font-title: var(--font-title);
   --font-4: 400;
+
+  /* --- Tokens de Layout (Adicionados para facilitar) --- */
+  --section-pt: 8rem;
+  --section-pb: 8rem;
+  --main-content-gap: 4rem;
+  --main-content-width: 75%;
+}
+
+:root {
+  /* --- 📏 FONT SIZES (Escala Modular) --- */
+  --text-xs: 0.75rem;     /* 12px - Legendas minúsculas */
+  --text-sm: 0.875rem;    /* 14px - Textos secundários / Menu */
+  --text-base: 1rem;      /* 16px - Texto padrão (corpo) */
+  --text-md: 1.125rem;    /* 18px - Introduções / Cards */
+  --text-lg: 1.25rem;     /* 20px - Subtítulos menores */
+  --text-xl: 1.5rem;      /* 24px - Títulos de seções (H3) */
+  --text-2xl: 1.875rem;   /* 30px - Títulos de destaque (H2) */
+  --text-3xl: 2.25rem;    /* 36px - Títulos principais (H1) */
+  --text-4xl: 3rem;       /* 48px - Hero / Destaque visual */
+  --text-huge: 4.5rem;    /* 72px - Números ou Impacto (Scene 3D) */
+
+  /* --- ✒️ FONT WEIGHTS (Espessura) --- */
+  --fw-light: 300;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+
+  /* --- ↔️ LINE HEIGHT (Espaçamento entre linhas) --- */
+  --lh-tight: 1.2;        /* Para títulos */
+  --lh-normal: 1.5;       /* Para leitura de parágrafos */
+  --lh-relaxed: 1.8;
 }
 
 @theme dark {
@@ -81,6 +115,28 @@ body {
   height: 100vh;
 }
 
+/* No seu AboutMe.module.css */
+.title {
+  font-size: var(--text-2xl);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
+  color: var(--primary-c-1); /* Usando sua cor original */
+}
+
+.titleSubtitle {
+  font-size: var(--text-lg);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-normal);
+  color: var(--color-text-secondary);
+}
+
+.description {
+  font-size: var(--text-base);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-normal);
+  color: var(--color-text);
+}
+
 main {
   display: flex;
   flex-direction: column;
@@ -92,8 +148,8 @@ main {
 
 .sectionWrapper {
   min-height: 100vh;
-  padding-top: 8rem; /* Ajuste conforme seu header */
-  padding-bottom: 8rem;
+  padding-top: 4rem; /* Ajuste conforme seu header */
+  padding-bottom: 4rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-start; /* Ou center, se quiser centralizar tudo */
@@ -104,7 +160,7 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 4rem;
+    gap: 2rem;
     width: 75%;
     min-height: 80vh;
 }
@@ -140,6 +196,7 @@ main {
 
 .area-continer-contact-me {
   width: 100%;
+  min-height: fit-content;
 }
 
 .footerContentIcon {
@@ -174,7 +231,8 @@ main {
 }
 
 .area-content-scene3D {
-  max-width: 60%;
+  max-width: 50%;
+  width: 100%;
   display: flex;
   order: 1;
 }
@@ -212,12 +270,12 @@ main {
         width: 100%;
         max-width: 80%;
         order:initial;
-        height: auto;
+        height: 55vh;
     }
     .areaContentRedeSocial {
         order: 1;
         position: absolute;
-        inset: 20rem 0 0 2rem;
+        inset: 22rem 0 0 3rem;
         display: flex;
     }
     .area-content-emphasis {
@@ -232,7 +290,9 @@ main {
     }
 
     .area-content-scene3D {
+        width: 100%;
         max-width: 100%;
+        height: 40vh;
         display: flex;
         order: 1;
     }
@@ -240,7 +300,7 @@ main {
 
 @media screen and (max-width: 480px) {
     .areaContentRedeSocial {
-        inset: 6rem 0 0 .40rem;
+        inset: 8rem 0 0 1rem;
         z-index: 0;
     }
     .main-content {
@@ -249,7 +309,9 @@ main {
     .area-content-emphasis {
         padding: 1rem;
     }
-
+    .area-content-scene3D {
+        height: 35vh;
+    }
     .area-content-timeline {
         margin-top: 5rem;
         position: absolute;
@@ -264,9 +326,13 @@ main {
 }
 
 @media screen and (max-width: 420px) {
-  .main-content {
-    margin-top: 5rem;
-    gap: 8rem;
-  }
+    .main-content {
+        margin-top: 5rem;
+    }
+    .area-content-scene3D {
+        height: 35vh;
+    }
+    .areaContentRedeSocial {
+        inset: 8rem 0 0 1rem;
+    }
 }
-

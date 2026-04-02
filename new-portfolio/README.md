@@ -6,6 +6,7 @@ First, run the development server:
 
 ```bash
 npm run dev
+npx next dev -H 0.0.0.0 --webpack
 # or
 yarn dev
 # or

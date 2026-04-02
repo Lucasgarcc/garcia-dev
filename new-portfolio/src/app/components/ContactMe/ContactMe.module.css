@@ -1,12 +1,12 @@
 .contactContainer {
-    margin-top: 6rem;
+    margin-top: 1rem;
     background-color: #99c40c;
     max-width: 100%;
     height: auto;
 }
 
 .contactFormContainer {
-    margin: 4rem auto;
+    margin: 7rem auto;
     margin-bottom: 0;
     padding: 2rem;
     /*background: linear-gradient(90deg, rgb(67, 92, 33) 100%, rgb(47, 90, 5) 100%);*/
@@ -28,7 +28,6 @@
     width: 200px;
 }
 
-/* IMAGEM */
 .perfilIContainer {
     position: relative;
     display: flex;
@@ -44,7 +43,6 @@
     position: absolute;
     top: -12.8%;
     bottom: 0;
-    /*  fixa a base da imagem no fundo */
     overflow: hidden;
     border-radius: 16px;
     z-index: 0;

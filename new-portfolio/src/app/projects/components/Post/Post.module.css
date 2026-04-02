@@ -1,0 +1,38 @@
+
+.postContainer	{
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: center;  
+    width: 100%;
+    height: auto;  
+}
+.imageWrapper	{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.postTitle	{
+    font-family: var(--font-roboto-mono);
+}
+.postContent	{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+
+@media screen and (max-width: 1024px) {
+
+    .postContent {
+        flex-direction: column;
+    }
+
+    .postContainer {
+        grid-template-columns: 1fr;
+    }
+    
+}

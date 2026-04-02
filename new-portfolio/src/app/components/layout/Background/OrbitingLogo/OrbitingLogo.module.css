@@ -1,0 +1,38 @@
+.logoContainer {
+    overflow: hidden;
+    width: max-content;
+    height: 50px;
+    position: absolute;
+    top: 40%;
+    left: 70%;
+    z-index: 1000;
+    transform-style: preserve-3d;
+}
+
+.logo {
+    width: 55%;
+    height: 100%;
+    object-fit: contain;
+}
+
+@media screen and (max-width: 1568px) {
+    .logo {
+        width: 100%;
+    }
+    .logoContainer {
+        top: 40%;
+        left: 70%;
+        width: 25px;
+        height: 45px;
+    }
+}
+
+@media screen and (max-width: 428px) {
+    .logo {
+        max-width: 60%;
+    }
+    .logoContainer {
+        max-width: 100%;
+        left: 80%;
+    }
+}
