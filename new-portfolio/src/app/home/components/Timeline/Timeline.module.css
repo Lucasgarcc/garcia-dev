@@ -135,13 +135,13 @@
 
 .content:hover .year {
   font-size: 0.8rem;
-  color: var(--logo-gradient-stop2);
+  color: var(--primary-c-3);
 }
 
 
 .content:hover h3{
 
-  color: var(--logo-gradient-stop2);
+  color: var(--primary-c-3);
 }
 .timelineItem:hover::before {
   background: rgb(86, 153, 4);
@@ -151,7 +151,7 @@
   color: var(--color-text-secondary-c) !important;
 }
 .content:hover .year .IconCalendary{
-  color: var(--logo-gradient-stop2);
+  color: var(--primary-c-3);
 }
 
 /* Responsivo */
