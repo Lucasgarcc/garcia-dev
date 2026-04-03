@@ -1,5 +1,5 @@
 .link {
-  padding: .5rem;
+  padding: .2rem;
   color: var(--color-text-n);
   transition: .3s ease;
   text-decoration: none;
@@ -81,3 +81,7 @@
 }
 
 
+@media screen and (max-width: 480px )  {
+
+
+}

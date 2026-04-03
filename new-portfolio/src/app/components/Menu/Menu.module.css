@@ -1,7 +1,7 @@
 .menuContainer {
     margin: .4rem auto;
     margin-inline-start: auto;
-    padding: .4rem .3rem;
+    padding: .3rem .4rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -11,8 +11,7 @@
     position: fixed;
     inset: 0 0 auto;
     z-index: 1000;
-        background: linear-gradient(var(--gradient-line));
-   /* border-radius: .6rem; */
+    background: linear-gradient(var(--gradient-line));
     border-radius: 1rem .5rem 1rem;
     border: 1px solid var(--logo-stroke-secondary);
 
@@ -27,7 +26,6 @@
     width: auto;
     gap: 1.5rem;
     background: linear-gradient(var(--gradient-line));
-   /* border-radius: .6rem; */
     border-radius: .5rem  .5rem .5rem;
     border: 1px solid var(--logo-stroke-secondary);
 }
@@ -102,10 +100,10 @@
         opacity: 1;
         transform: translateX(0);
         flex-direction: column;
-        position: fixed;
-        inset: 4rem auto 1rem auto;
-        padding: 4rem 2rem;
-        
+        margin: 0 auto;
+        position:initial;
+        inset: 0;
+        min-height: max-content;
     }
 
     .menuContainer{
@@ -115,9 +113,6 @@
         text-align: justify;
         height: 8.5vh;
         inset: 0;
-         /*background: linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0) 100%);
-        backdrop-filter: blur(2.5px); Desfoca o que está atrás, destacando os itens
-        -webkit-backdrop-filter: blur(2px); */
     }
 
     .logo {
@@ -133,7 +128,6 @@
         inset: .5rem 0 auto auto;
         border-radius: 2rem 0 2rem;
         border-radius: 1.5rem .5rem 1.5rem;
-
     }
 
     .showMenu.menuContent{
@@ -160,7 +154,6 @@
         width: 24px;
     }
 
-
     .hamburger.showMenu  {
       margin: 20rem;
     }
@@ -172,12 +165,14 @@
         place-items: center;   /* Centraliza horizontal e verticalmente */
         position: absolute;
         right: 1.5rem;
-        width: 45px;
-        height: 50px;
+        width: 50px;
+        height: 25px;
         background: var(--bg-secondary);
         border: 1px solid var(--color-text-secondary-c);
+        backdrop-filter: blur(10px); 
         border-radius: 8px;
         z-index: 2100;
+        transition: 0.3s ease;
     }
 
     /* 2. Faz todas as barras ocuparem a mesma célula do Grid (sobrepostas) */
@@ -185,14 +180,19 @@
         grid-area: 1 / 1;      /* Todas as barras na mesma posição */
         position: relative;
         margin: 0 auto;
-        top: .5rem;            /* Reset do left: 23% que estava na bar3 */
+        top: .5rem;   
+        backdrop-filter: blur(10px);         /* Reset do left: 23% que estava na bar3 */
+    }
+
+    .hamburger.active:hover .hamburger.showMenu {
+        background: var(--color-text);
     }
 
     /* 3. Animação do X sem usar Translates complexos */
     .hamburger.active .bar1 {
         transform: translateX(1px) translateY(-2px) rotate(45deg);
         background: var(--color-text-secondary-c);
-        width: 20px;
+        width: 22px;
     }
 
     .hamburger.active .bar2 {
@@ -202,16 +202,36 @@
     .hamburger.active .bar3 {
         transform: translateX(-9px) translateY(-2px) rotate(-45deg);
         background: var(--color-white);
-        width: 18px;           /* Garante que ambas tenham o mesmo tamanho no X */
+        width: 20px;           /* Garante que ambas tenham o mesmo tamanho no X */
     }
+
     .hamburger.showMenu  {
       margin: 20rem;
+    }
+
+    /* 1. Efeito no Container do Hamburger (o quadrado) */
+    .hamburger.active:hover {
+        background: var(--color-text-secondary-c); /* Inverte a cor de fundo */
+        border-color: var(--bg-secondary-c);
+        cursor: pointer;
+    }
+
+    /* Efeito nas Barras [X] quando o container recebe hover */
+    .hamburger.active:hover .bar1,
+    .hamburger.active:hover .bar3 {
+        background: var(--color-text) !important; /* Faz o X ficar da cor do fundo original */
+    }
+
+    /* Remova ou substitua aqueles que tinham .showMenu no meio: */
+    .hamburger.active:hover span {
+        /* Este você já tem, apenas garanta que a cor contraste com o novo fundo */
+        background: var(--bg-secondary);
     }
 
 }
 
 @media screen and (max-width: 480px )  {
-    
+
     .hamburger {
         right: 2rem;
         top: 1.5rem;
@@ -221,12 +241,12 @@
         top: 1.5rem;
     }
 
-    .showMenu {
-        inset: 2rem auto 1rem auto;
-    }
-
     .active.menuContainer {
         width: 70%;
-        height: 90vh;
+        height: 84vh;
+    }
+
+    .showMenu.menuContent{
+        gap: 0;
     }
 }
