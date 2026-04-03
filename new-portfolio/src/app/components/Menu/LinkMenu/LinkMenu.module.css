@@ -1,13 +1,13 @@
 .link {
   padding: .5rem;
-  color: var(--color-text);
+  color: var(--color-text-n);
   transition: .3s ease;
   text-decoration: none;
-  font-family: var(--font-title) ;
+  font-family: var(--text-xl) ;
 }
 
 .link:hover {
-  color: var(--bg-primary-n)
+  color: var(--color-text-secondary);
 }
 
 .underline {
@@ -39,14 +39,45 @@
   color: #a3a3a3;
 }
 
+.MobileContainer {
+    padding: inherit;
+    display: flex;
+    max-width: fit-content;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: center;
+    gap: .5rem;
+}
 
+.iconWrapper {
+    display: none; /* Escondido por padrão (Desktop) */
+    font-size: 1.2rem;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+/* MOBILE */
 @media screen and (max-width: 768px )  {
-  
+    .link {
+        width: 100%;
+        padding: 0.8rem 0;
+        align-items: flex-start;
+        justify-content: flex-start; /* Alinha à esquerda no menu mobile */
+    }
+
   .link:hover {
     color: var(--color-text-secondary-c);
   }
-
+    .link p {
+        margin: .4rem;
+    }
   .active {
     color: var(--logo-stroke-primary);
   }
+    .iconWrapper {
+        display: flex; /* Mostra o ícone no mobile */
+        color: var(--color-primary); /* Ou a cor que preferir para os ícones */
+    }
 }
+
+

@@ -1,27 +1,37 @@
 .menuContainer {
-    margin: 0;
-    padding: 2.5rem;
+    margin: .4rem auto;
+    margin-inline-start: auto;
+    padding: .4rem .3rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
-    width: 100%;
+    width: 99%;
     max-width: 100%;
     position: fixed;
     inset: 0 0 auto;
     z-index: 1000;
-    background: linear-gradient(180deg, var(--bg-header), rgba(255, 255, 255, 0) 100%);
-    backdrop-filter: blur(3px); /* Desfoca o que está atrás, destacando os itens */
-    -webkit-backdrop-filter: blur(5px);
+        background: linear-gradient(var(--gradient-line));
+   /* border-radius: .6rem; */
+    border-radius: 1rem .5rem 1rem;
+    border: 1px solid var(--logo-stroke-secondary);
 
 }
+
 .menuContent {
+    padding: .3rem 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
     height: auto;
+    width: auto;
     gap: 1.5rem;
+    background: linear-gradient(var(--gradient-line));
+   /* border-radius: .6rem; */
+    border-radius: .5rem  .5rem .5rem;
+    border: 1px solid var(--logo-stroke-secondary);
 }
+
 /* Ícone do menu (hamburger) */
 .hamburger {
   display: none;
@@ -34,7 +44,7 @@
 .hamburger span {
   width: 28px;
   height: 3px;
-  background: var(--logo-stroke-primary);
+  background: var(--bg-secondary-c);
   border-radius: 5px;
   transition: 0.3s;
 }
@@ -52,14 +62,32 @@
   transform: translateY(-8px) rotate(-45deg);
 }
 
+.icon {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.iconAbout {
+
+  /*filter: brightness(0) invert(4); Deixa branco*/
+  filter: sepia(1) saturate(2) hue-rotate(40deg) brightness(0.8);
+  transition: filter 0.3s; /* Suaviza a mudança */
+}
+
+.iconAbout:hover {
+  filter: grayscale(1) brightness(0.9); /* Exemplo: azul no hover */
+  /* Ou apenas mude a opacidade: */
+  opacity: 0.7;
+}
+
 /* MOBILE */
 @media (max-width: 768px) {
 
     .hamburger {
         display: flex;
         position: absolute;
-        right: 1.5rem;
-        top: 1.2rem;
+        right: 2rem;
+        top: 1.5rem;
     }
 
     .menuContent {
@@ -76,23 +104,20 @@
         flex-direction: column;
         position: fixed;
         inset: 4rem auto 1rem auto;
-        height: 100vh;
         padding: 4rem 2rem;
+        
     }
 
     .menuContainer{
-        padding: 0;
-        margin-bottom: 2rem;
+        margin-top: .1rem ;
         inset: auto 0 auto auto;
         align-items: flex-start;
         text-align: justify;
-        background: transparent;
-        width: 100%;
-        height: 10vh;
+        height: 8.5vh;
         inset: 0;
-        background: linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0) 100%);
-        backdrop-filter: blur(2.5px); /* Desfoca o que está atrás, destacando os itens */
-        -webkit-backdrop-filter: blur(2px);
+         /*background: linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0) 100%);
+        backdrop-filter: blur(2.5px); Desfoca o que está atrás, destacando os itens
+        -webkit-backdrop-filter: blur(2px); */
     }
 
     .logo {
@@ -100,22 +125,24 @@
     }
 
     .active.menuContainer {
-        padding: 1rem;
-        width: 60%;
-        height: 60vh;
+        padding: 1.5rem;
+        width: 50%;
+        height: 97vh;
+        justify-content: center;
+        align-items: center;
         inset: .5rem 0 auto auto;
         border-radius: 2rem 0 2rem;
-    }
+        border-radius: 1.5rem .5rem 1.5rem;
 
-    .active.menuContainer {
-        background: linear-gradient(190deg, var(--bg-primary-n) 40%, rgba(21, 21, 21, 0.934) 100%);
     }
 
     .showMenu.menuContent{
         display: flex;
         align-items: flex-start;
-        justify-content: flex-start;
+        justify-content: center;
         flex-direction: column;
+        background: transparent;
+        border: none;
         gap: 1rem;
     }
 
@@ -123,12 +150,8 @@
         width: 24px;;
     }
 
-   .hamburger.active{
-        top: 2rem;
-    }
-
     .hamburger .bar2 {
-        background-color: var(--bg-primary-n);
+        background-color: var(--logo-stroke-primary);
     }
 
     .bar3 {
@@ -137,23 +160,50 @@
         width: 24px;
     }
 
-    /* Quando o ícone está ativo (hambúrguer vira X) */
+
+    .hamburger.showMenu  {
+      margin: 20rem;
+    }
+
+     /* 1. O container do botão vira um Grid centralizado */
+    .hamburger.active {
+        padding: 1rem 0 2rem;
+        display: grid;         /* Grid facilita centralização absoluta */
+        place-items: center;   /* Centraliza horizontal e verticalmente */
+        position: absolute;
+        right: 1.5rem;
+        width: 45px;
+        height: 50px;
+        background: var(--bg-secondary);
+        border: 1px solid var(--color-text-secondary-c);
+        border-radius: 8px;
+        z-index: 2100;
+    }
+
+    /* 2. Faz todas as barras ocuparem a mesma célula do Grid (sobrepostas) */
+    .hamburger.active span {
+        grid-area: 1 / 1;      /* Todas as barras na mesma posição */
+        position: relative;
+        margin: 0 auto;
+        top: .5rem;            /* Reset do left: 23% que estava na bar3 */
+    }
+
+    /* 3. Animação do X sem usar Translates complexos */
     .hamburger.active .bar1 {
-        transform: translateY(-4px) rotate(320deg);
-        background-color: var(--color-text-secondary-c);
-        z-index: var(--z-fixed);
+        transform: translateX(1px) translateY(-2px) rotate(45deg);
+        background: var(--color-text-secondary-c);
+        width: 20px;
     }
 
     .hamburger.active .bar2 {
-        opacity: 0; /* Esconde a barra do meio */
-        background-color: var(--bg-primary-n);
-        z-index: var(--z-fixed);
+        opacity: 0;
     }
 
     .hamburger.active .bar3 {
-        transform: translateY(-20px) translateX(-6px) rotate(41deg);
+        transform: translateX(-9px) translateY(-2px) rotate(-45deg);
+        background: var(--color-white);
+        width: 18px;           /* Garante que ambas tenham o mesmo tamanho no X */
     }
-
     .hamburger.showMenu  {
       margin: 20rem;
     }
@@ -172,10 +222,11 @@
     }
 
     .showMenu {
-        inset: 3rem auto 1rem auto;
+        inset: 2rem auto 1rem auto;
     }
 
     .active.menuContainer {
-        width: 65%;
+        width: 70%;
+        height: 90vh;
     }
 }

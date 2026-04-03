@@ -11,17 +11,28 @@ const LinkMenu = ({
     underline = false,
     active = false,
     onClick,
+    icon
 }: link & { onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void }) => {
     return (
-
+  
         <NextLink
             id={id}
             href={href}
             onClick={onClick}
             className={`${styles.link} ${underline ? styles.underline : ''} ${active ? styles.active : ''}`}
         >
-            {children}
+            
+            {/* O ícone agora fica dentro do link para melhor área de clique */}
+            <div className={ icon ? styles.MobileContainer : ''}>
+                {icon && <span className={styles.iconWrapper}>{icon}</span>}
+                <p>
+                    {children}
+                </p>
+            </div>
+    
         </NextLink>
+        
+
     );
 };
 
