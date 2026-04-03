@@ -6,7 +6,7 @@ export interface NavItem {
     id: string;
     label: string;
     href: string;
-    icon: ReactNode;
+    icon?: ReactNode;
     underline?: boolean;
     active?: boolean;
 }
