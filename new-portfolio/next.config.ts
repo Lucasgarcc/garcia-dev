@@ -1,24 +1,27 @@
 
-/** @type {import('next').NextConfig} */
+import type { NextConfig } from 'next';
 
-const nextConfig: import('next').NextConfig = {
-  reactStrictMode: true,
+const nextConfig: NextConfig = {
+    reactStrictMode: true,
 
   experimental: {
     forceSwcTransforms: true,
   },
 
-    webpack(config: any) {
+    webpack(config: { module?: { rules: unknown[] } }) {
     // Encontra a regra que carrega arquivos que contenham SVG, protegendo o acesso a test
-    const fileLoaderRule = config.module.rules.find(
-        (rule: any) => rule.test instanceof RegExp && rule.test.test('.svg')
+    const fileLoaderRule = config.module?.rules.find(
+        (rule): rule is { test: RegExp; exclude?: RegExp } => {
+            const candidate = rule as { test?: unknown };
+            return candidate.test instanceof RegExp && candidate.test.test('.svg');
+        }
     );
 
     if (fileLoaderRule) {
         fileLoaderRule.exclude = /\.svg$/i;
     }
 
-    config.module.rules.push({
+    config.module!.rules.push({
         test: /\.svg$/i,
         issuer: /\.[jt]sx?$/,
         use: [
