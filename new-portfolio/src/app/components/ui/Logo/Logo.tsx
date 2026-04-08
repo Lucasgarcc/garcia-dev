@@ -10,7 +10,6 @@ const Logo = ({
     strokeThird,
     colorPrimary,
     colorSecondary,
-    colorThird,
     className = '',
     style = {} }: LogoProps) => {
 

@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useEffect, useRef, useState } from 'react';
+import { createContext, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import type { NavigationTypes, NavigationPage } from '@/core/interfaces/navigation';
 
@@ -29,10 +29,13 @@ const NavigationProvider = ({ children }: { children: React.ReactNode }) => {
     const [active, setActive] = useState<string | null>(null);
 
     // refs ativas por página
-    const pageRefs =
-        page === 'home'
-            ? { intro, about, timeline, diferencial, contato }
-            : { post, skills, experience, portfolio, posts, differential };
+    const pageRefs = useMemo(
+        () =>
+            page === 'home'
+                ? { intro, about, timeline, diferencial, contato }
+                : { post, skills, experience, portfolio, posts, differential },
+        [page]
+    );
 
     // ---------- INTERSECTION OBSERVER ----------
     useEffect(() => {
@@ -56,7 +59,7 @@ const NavigationProvider = ({ children }: { children: React.ReactNode }) => {
         });
 
         return () => observer.disconnect();
-    }, [page]);
+    }, [page, pageRefs]);
 
     // ---------- SCROLL ----------
     const scrollToSection = (id: string) => {

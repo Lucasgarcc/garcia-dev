@@ -27,15 +27,6 @@ const slideFromRightY = {
     visible: { opacity: 1, x: 0 },
 };
 
-const slideFromLeft = {
-    hidden: { opacity: 0, x: -60 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.8 } },
-};
-
-const slideFromRight = {
-    hidden: { opacity: 0, x: 60 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.8 } },
-};
 
 const MainLayout = ({ children }: MainLayoutProps) => {
 
@@ -57,7 +48,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
                     whileInView="visible"
                     viewport={{ once: false, amount: 0.3 }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
-                    className="main-content"
+                    className="intro-content"
                 >
                     <motion.div
                         initial="hidden"
@@ -66,7 +57,6 @@ const MainLayout = ({ children }: MainLayoutProps) => {
                         transition={{ duration: 0.4 }}
                         className="area-content-scene3D">
                         <Scene3D />
-
                     </motion.div>
                     <motion.div
                         className="areaContentRedeSocial">

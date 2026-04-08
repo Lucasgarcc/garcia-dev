@@ -1,6 +1,6 @@
 .sectionWrapper {
   min-height: 100vh;
-  padding-top: 4rem; /* Ajuste conforme seu header */
+  padding-top: 8rem; /* Ajuste conforme seu header */
   padding-bottom: 4rem;
   display: flex;
   flex-direction: column;
@@ -17,39 +17,52 @@
     color: var(--bg-primary);
 }
 
-.aboutContentText {
+.aboutContent {
     display: grid;
     grid-template-columns: 1fr 1fr; 
     justify-content: center;
     align-items: center;
-    gap: .5rem;
+    gap: 10rem;
     align-items: center;   
     width: 100%;
 }
 
+.aboutContentText {
+    grid-area: 0 / 2 /3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+    flex-direction: column;  
+    width: 100%;
+}
+
 .aboutContentImage {
-    grid-area: 1 / 1 / 3;
     font-size: 1.1rem;
     line-height: 1.6;
 }
 
 .aboutContentDescription {
     margin-top: 10rem;
-    grid-area: 0 / 2 /3;
     font-size: 1.1rem;
     line-height: 1.6;
+    width: 100%;
+    font-size: 1rem;
 }
 
 .aboutContentStatis {
-    grid-area: 3 /2 / 2;
-    display: flex;
     max-width: min-content;
-    justify-items: center;
-    align-items: center;
     gap: 2rem;
 }
+
+.aboutContentDescription,
+.aboutContentStatis,
 .aboutContentButton {
-    grid-area: 12/ 2 / 3;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-self: start;
 }
 
 @media screen and (max-width: 1700px) {
@@ -60,63 +73,55 @@
         gap: 2rem;
     }
     .aboutContentText {
-        display: grid;
-        grid-template-columns: 1fr 1fr; 
-        justify-content: center;
         gap: 1rem;
-        align-items: center;   
-        width: 100%;
     }
     .aboutContentDescription {
-        grid-area: 1 / 2 /3;
+        padding-left: 2rem;
         text-align: center;
     }
     .aboutContentStatis {
-        grid-area: 3 /1 / 3;
         text-align: center;
         margin-top: 1rem;
         width: 100%;
         height: 100%;
     }
-    .aboutContentButton {
-        grid-area: 2/ 2 / 3;
-        text-align: center;
+    .aboutContentButton {      
         margin-top: .6rem;
+        padding: 0 2rem 0 2rem;
+        text-align: center;
+  
     }
     .aboutContentImage {
-         margin-top: 5rem;
-        grid-area: 1 / 1 /3;
+        margin-top: 5rem;
         max-width: 90%;
     }
-    
+
 } 
 
-@media screen and (max-width: 1200px) {
-
-    .aboutContentText {
+@media screen and (max-width: 1268px) {
+    .aboutContent {
         display: flex;
         flex-direction: column;
         align-items: center;
+        gap: 1rem;
         width: 100%;
     }
     .aboutContentDescription {
-        order: 2;
-        width: 70%
-    }
-    .aboutContentStatis {
-        order: 3;
         width: 90%;
-        width: min-content;
+        padding-left: 0;
     }
     .aboutContentButton {
-        order: 4;
-        margin-top: 1.5rem;
+        display: flex;
+        justify-content: center;
+        align-self: center;
     }
-    .aboutContentImage {
-        order: 1;
-        margin-bottom: 1.2rem;
-        width: 65%;
+    .aboutContentDescription,
+    .aboutContentStatis,
+    .aboutContentButton {
+        justify-content: center;
+        align-self: center;
     }
+    
 }
 
 @media screen and (max-width: 768px) {
@@ -134,26 +139,29 @@
     .aboutContentStatis {
        height: auto;
        flex-direction: column;
+       gap: 0;
     }
     .aboutContentButton {
+        display: flow-root;
         padding: 0 2rem 0 2rem;
         width: 90%;
     }
 }
 
 @media screen and (max-width: 480px) {
-
+    .aboutContent {
+        gap: .5rem;
+    }
     .title {
         font-size: 1.6rem !important;
     }
-    .aboutContentDescription {
-        width: 80%;
-    }
     .aboutContentButton {
-        padding: 0;
         width: 100%;
     }
     .aboutContentImage {
         width: 100%;
     } 
+    .aboutContentStatis {
+       gap: 0;
+    }
 }

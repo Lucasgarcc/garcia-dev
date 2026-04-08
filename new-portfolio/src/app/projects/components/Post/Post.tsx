@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import styles from './Post.module.css';
 import { motion } from 'framer-motion';
 import Typography from '@mui/material/Typography';
@@ -40,18 +39,20 @@ const Post = ({ title, content, imageUrl = null }: PostProps) => {
                     <h1 className='titleSubtitle'>{title}</h1>
                     {imageUrl && (
                         <div className={styles.imageWrapper}>
-                            <img
+                            <Image
                                 src={imageUrl}
                                 alt={title}
                                 className={styles.postImage}
-                                loading="lazy"
+                                width={1200}
+                                height={675}
+                                sizes="(max-width: 768px) 100vw, 60vw"
                             />
                         </div>
                     )}
                 </div>
 
                 <div className={styles.textContent}>
-                    <h2 className={`${styles.postTitle} title}`}>{title}</h2>
+                    <h2 className={`${styles.postTitle} title`}>{title}</h2>
                     <p className={`${styles.postContent} description`} >{content}</p>
                 </div>
             </motion.div>
