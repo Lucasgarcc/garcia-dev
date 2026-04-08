@@ -24,6 +24,7 @@ const ViableResume = () => {
                     ":hover": {
                         backgroundColor: "var(--primary-c-0-4)",
                         color: "var(--primary-c-0-5)",
+                        border: "1px solid var(--primary-c-0-2)",
                         transform: "translateY(-2px)",
                     },
                     transition: "all 0.3s ease",

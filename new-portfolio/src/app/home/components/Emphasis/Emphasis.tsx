@@ -13,7 +13,7 @@ const Home = () => {
 			className={Scene3D.areaContainer}
 		>
 			<Typography className={Scene3D.title} variant="h2" gutterBottom fontFamily={'var(--font-title)'} fontWeight={450}>
-				<span className={Scene3D.titleDetail}>Eai</span>, Eu sou Lucas
+				<span className={Scene3D.titleDetail}>Eai</span>, Sou Lucas
 			</Typography>
 			<Typography className={Scene3D.titleSubtitle} variant="h4" gutterBottom>
 			 <span>{'< '}</span> Desenvolvedor / <span className={Scene3D.titleDetail}> Frontend </span> <span>{' >'}</span>
@@ -29,6 +29,7 @@ const Home = () => {
                     ":hover": {
                         backgroundColor: "var(--primary-c-0-4)",
                         color: "var(--primary-c-0-5)",
+                        border: "1px solid var(--primary-c-0-2)",
                         transform: "translateY(-2px)",
                     },
                     transition: "all 0.3s ease",
@@ -36,7 +37,7 @@ const Home = () => {
                 }}>
 
 				<a href="https://wa.link/i3xug3" target="_blank" className="button button-flex" aria-label="Contate-me">
-					contate-me <i className="uil uil-message button-icone"></i>
+					Contate-me <i className="uil uil-message button-icone"></i>
 				</a>
 			</Button>
 			
