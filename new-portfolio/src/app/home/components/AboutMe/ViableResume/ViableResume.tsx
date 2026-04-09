@@ -17,10 +17,12 @@ const ViableResume = () => {
                 sx={{
                     backgroundColor: 'var(--primary-c-3)',
                     marginTop: '1rem',
+                    fontFamily: 'var(--font-roboto)',
                     padding: '.5rem',
                     textAlign: 'center',
                     fontSize: '1.1rem',
                     color: 'var(--color-text-n)',
+                    border: "1px solid var(--color-text-n)",
                     ":hover": {
                         backgroundColor: "var(--primary-c-0-4)",
                         color: "var(--primary-c-0-5)",

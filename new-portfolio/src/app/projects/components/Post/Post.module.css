@@ -3,11 +3,14 @@
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    gap: 5rem;
     align-items: center;  
     width: 100%;
     height: auto;  
+    position: relative;
+    z-index: 1000;
 }
+
 .imageWrapper	{
     width: 100%;
     height: 100%;
@@ -15,9 +18,41 @@
     justify-content: center;
     align-items: center;
 }
-.postTitle	{
-    font-family: var(--font-roboto-mono);
+
+.imageWrapper > img {
+    border-radius: .5rem;
+    object-fit: contain;
+    border-right: inset;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0);
+    filter: drop-shadow(0 0 1px rgba(47, 46, 46, 0.36))
+    drop-shadow(0 0 2px rgba(97, 97, 97, 0.156))
+    drop-shadow(0 0 1px rgba(43, 43, 43, 0.163));
 }
+
+.postTitle	{
+    margin-right: 1rem;
+    background: linear-gradient(
+        90deg,         /* Direção: da esquerda para a direita */
+        var(--primary-c-0-3) 0%,    /* Roxo (início da palavra) */
+        var(--color-text) 50%,   /* Rosa/Magenta (meio) */
+        var(--bg-secondary) 100%   /* Laranja/Coral (final) */
+    );
+    -webkit-background-clip: text; /* Necessário para Webkit/Blink */
+    background-clip: text;         /* Padrão atual, mas mantenha o de cima */
+
+    /* 3. Torna o texto transparente para o fundo aparecer através dele */
+    -webkit-text-fill-color: transparent; /* Necessário para Webkit/Blink */
+    color: transparent;
+}
+
+.postTitleProject {
+    font-family: var(--font-roboto);
+    font-size: var(--text-2xl);
+    font-weight: var(--fw-bold);
+    line-height: var(--lh-tight);
+    color: var(--primary-c-0-3); 
+}
+
 .postContent	{
     display: flex;
     flex-direction: column;
@@ -28,6 +63,7 @@
 @media screen and (max-width: 1024px) {
 
     .postContent {
+
         flex-direction: column;
     }
 

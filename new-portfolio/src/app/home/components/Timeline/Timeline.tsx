@@ -81,7 +81,7 @@ const Timeline: React.FC = () => {
 				Qualificações
 			</Typography>
 			<Typography
-				fontSize={18}
+				fontSize={20}
 				fontWeight={500}
 				color='var(--primary-c-0-3)'
 				textAlign="center"

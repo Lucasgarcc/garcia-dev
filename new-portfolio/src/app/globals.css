@@ -49,6 +49,7 @@
   --gradient-mid: #eeffdc00;
   --gradient-line: 90deg, rgb(23, 23, 23) 0%, rgb(10, 10, 10) 100%;
   /* --- Tipografia --- */
+  --font-roboto: 'Roboto' sans-serif;
   --font-roboto: var(--font-roboto); /* Certifique-se que estas fontes estão carregadas no Layout */
   --font-title: var(--font-title);
   --font-4: 400;
@@ -112,6 +113,7 @@ body {
   /*color: var(--color-text);*/
   font-family:  var(--font-roboto);
   height: 100vh;
+  box-sizing: border-box;
 }
 
 /* No seu AboutMe.module.css */
@@ -143,6 +145,18 @@ main {
   justify-content: center;
   width: 100%;
   overflow-x: hidden;
+}
+
+.project-layout {
+    margin: 8rem auto;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1200px;
+    overflow-x: hidden;
 }
 
 .sectionWrapper {
@@ -225,7 +239,7 @@ main {
 .areaContentRedeSocial {
     order: 1;
     position: absolute;
-    inset: 20rem  auto auto 12rem;
+    inset: 28rem  auto auto 12rem;
     display: flex;
 }
 
@@ -240,7 +254,7 @@ main {
 
 .area-content-emphasis {
   color: var(--foreground);
-  margin: 0 auto;
+  margin: 8rem auto;
   width: 100%;
   padding: 2rem;
   border-radius: 8px;
@@ -261,7 +275,7 @@ main {
         margin-top: 4rem;
         flex-flow: row;
         justify-content: center;
-        gap: 2rem;
+        gap: 0;
         display: flex;
         align-items: center;
         flex-direction: column;
@@ -278,7 +292,7 @@ main {
     .areaContentRedeSocial {
         order: 1;
         position: absolute;
-        inset: 22rem 0 0 3rem;
+        inset:  20rem 0 0 3rem;
         display: flex;
     }
     .area-content-emphasis {
@@ -288,6 +302,9 @@ main {
 }
 
 @media screen and (max-width: 768px) {
+    .project-layout {
+        margin: 4rem auto;
+    }
     .intro-content {
         margin-top: 9rem;
         gap: 0;
@@ -295,13 +312,16 @@ main {
     .areaContentRedeSocial {
         inset: 10rem 0 0 4rem;
     }
-
     .area-content-scene3D {
         height: 35vh;
     }
 }
 
 @media screen and (max-width: 480px) {
+    .intro-content {
+        width: 100%;
+        letter-spacing: normal;
+    }
     .areaContentRedeSocial {
         inset: 5rem 0 0 1rem;
         z-index: 0;
@@ -337,6 +357,6 @@ main {
         align-items: center;
     }
     .areaContentRedeSocial {
-        inset: 5rem 0 0 1rem;
+        inset: 6rem 0 0 1.5rem;
     }
 }

@@ -147,9 +147,12 @@ const ContactMe = () => {
                                     backgroundColor: 'var(--primary-c-3)', marginTop: '1rem', color: 'var(--color-text-n)',
                                     textAlign: 'center',
                                     fontSize: '1.1rem',
+                                    border: "1px solid var(--color-text-n)",
                                     ":hover": {
                                         backgroundColor: "var(--primary-c-0-4)",
                                         color: "var(--primary-c-0-5)",
+                                        fontFamily: 'var(--font-roboto)',
+                                        border: "1px solid var(--primary-c-0-2)",
                                         transform: "translateY(-2px)",
                                     },
                                     transition: "all 0.3s ease",

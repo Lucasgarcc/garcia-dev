@@ -41,12 +41,12 @@ const AboutMe = () => {
                         <CodeCard />
                     </div>
                     <div className={Styles.aboutContentText}>
-                        <Typography className={Styles.aboutContentDescription} variant="body1" marginTop={5} maxWidth={'100%'} letterSpacing={0} textAlign={'justify'}>
+                        <Typography className={Styles.aboutContentDescription} display={'block'} variant="body1" marginTop={5} fontWeight={450} fontSize={20} maxWidth={'100%'} letterSpacing={0}>
 
                             Desenvolvedor Web e criador de experiências digitais que unem design, propósito e tecnologia.
-                            Trabalho com foco em Frontend e UI/UX Design, desenvolvendo interfaces que conectam pessoas e ideias.
+                            Trabalho com foco em Frontend e <strong className={Styles.aboutDatailsText}>UI/UX Design</strong>,  desenvolvendo interfaces que conectam pessoas e ideias.
                             Acredito que cada projeto é uma oportunidade de evoluir — técnica e pessoalmente — e sigo construindo minha trajetória com curiosidade, resiliência e vontade de ir além.
-                            Meu objetivo é crescer como Desenvolvedor Frontend Pleno e, no futuro, expandir meus horizontes como Full Stack, sempre mantendo o olhar criativo e a busca pela excelência em cada detalhe.
+                            Meu objetivo é crescer como Desenvolvedor Frontend Pleno e, no futuro, expandir meus horizontes como <strong className={Styles.aboutDatailsText}>Full Stack</strong>, sempre mantendo o olhar criativo e a busca pela excelência em cada detalhe.
 
                         </Typography>
 

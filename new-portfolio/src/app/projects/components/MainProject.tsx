@@ -29,7 +29,7 @@ const MainProject = ({ children }: ProjectsProps) => {
     return (
 
         <>
-            <div className="main-layout">
+            <div className="project-layout">
                 {children}
                 {/* Seção principal */}
                 <motion.section

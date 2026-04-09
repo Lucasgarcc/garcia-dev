@@ -10,7 +10,7 @@ const MainLayout = dynamic(() => import('./home/MainLayout'), {
 
 export default function Page() {
 
-    return <MainLayout />;
+    return <MainLayout children = { null } />;
 
 }
 

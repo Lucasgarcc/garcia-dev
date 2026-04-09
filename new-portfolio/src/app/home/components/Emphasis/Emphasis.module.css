@@ -1,21 +1,57 @@
 .areaContainer {
-  color: var(--color-text);
+    margin-top: 8rem;
+    color: var(--color-text);
 }
 
 .titleDetail {
-  color: var(--primary-c-0-3);
+    color: var( --color-text-secondary-c);
+}
+
+.datails {
+    font-family: var(--font-title);
+        background: linear-gradient(
+        90deg,         /* Direção: da esquerda para a direita */
+        var(--primary-c-0-3) 0%,    /* Roxo (início da palavra) */
+        var(--color-text) 50%,   /* Rosa/Magenta (meio) */
+        var(--bg-secondary) 100%   /* Laranja/Coral (final) */
+    );
+    -webkit-background-clip: text; /* Necessário para Webkit/Blink */
+    background-clip: text;         /* Padrão atual, mas mantenha o de cima */
+
+    /* 3. Torna o texto transparente para o fundo aparecer através dele */
+    -webkit-text-fill-color: transparent; /* Necessário para Webkit/Blink */
+    color: transparent;
 }
 
 .titleSubtitle {
-  flex-wrap: wrap;
-  padding-bottom: .8rem;
+    flex-wrap: wrap;
+    padding-bottom: .8rem;
+}
+
+.description {
+    text-align: justify;
+    hyphens: auto;
+}
+
+@media screen and (max-width: 1568px) {
+    .areaContainer {
+        margin-top: 0rem;
+    }
 }
 
 @media screen and (max-width: 480px) {
-  .title{
-    font-size: 1.759rem !important;
-  }
-  .titleSubtitle {
-    font-size: 1.2rem !important;
-  }
+    .areaContainer {
+        padding: .5rem 1rem;
+    }
+    .title{
+        font-size: 2.7rem !important;
+    }
+    .titleSubtitle {
+        font-size: 1.5rem !important;
+        white-space: nowrap;
+    }    
+    .description {
+        font-size: .9rem;
+        letter-spacing: normal;
+    }
 }
