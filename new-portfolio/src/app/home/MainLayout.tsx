@@ -40,6 +40,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
         <>
             <main className="main-layout">
                 {children}
+
                 {/* Seção principal */}
                 <motion.section
                     id="intro"

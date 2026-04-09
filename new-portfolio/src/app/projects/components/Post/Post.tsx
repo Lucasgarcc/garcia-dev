@@ -25,14 +25,12 @@ const Post = ({ title, content, imageUrl = null }: PostProps) => {
                 gutterBottom
                 fontWeight={500}
             >
-                <strong >
-
-                    PROJETO DESTAQUE
-                </strong>
+                <span className={styles.postTitle} >
+                    PROJETO 
+                    DESTAQUE 
+                </span>
             </Typography>
             <motion.div className={styles.postContainer}>
-
-
 
                 <div className={styles.postContent}>
 
@@ -52,7 +50,7 @@ const Post = ({ title, content, imageUrl = null }: PostProps) => {
                 </div>
 
                 <div className={styles.textContent}>
-                    <h2 className={`${styles.postTitle} title`}>{title}</h2>
+                    <h2 className={styles.postTitleProject}>{title}</h2>
                     <p className={`${styles.postContent} description`} >{content}</p>
                 </div>
             </motion.div>

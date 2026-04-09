@@ -28,7 +28,7 @@
 .ContentSection {
     width: max-content;
     position: relative;
-    border: 5px solid var(--color-text-secondary);
+    border: 4.5px solid var(--color-text-secondary);
     border-radius: 2rem;
 }
 
@@ -169,7 +169,7 @@
     }
     .ContentSection {
         width: 100%;
-        height: 97%;
+        height: 100%;
 
     }
     .CodeContainer {
@@ -181,8 +181,8 @@
 
 @media screen  and (max-width: 600px){
    .CodeSectionContainer {
-        padding: 2.5rem 2.5rem;
-
+        padding: 4rem;
+        padding: 2.5rem 0rem;
     }
 }
 

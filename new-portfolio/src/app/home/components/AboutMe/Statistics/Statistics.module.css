@@ -11,121 +11,121 @@
 }
 
 .StatisticBox {
-  padding: 4rem;
-  position: relative;
-  width: 160px;
-  height: 140px;
-  border-radius: 16px;
-  background: linear-gradient(
-    135deg,
-    rgb(13, 13, 13),
-    rgb(16, 16, 16)
-  );
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 4rem;
+    position: relative;
+    width: 160px;
+    height: 140px;
+    border-radius: 16px;
+    background: linear-gradient(
+        135deg,
+        rgb(13, 13, 13),
+        rgb(16, 16, 16)
+    );
 
-  /* sombra sutil */
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--color-text-secondary);
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+    /* sombra sutil */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
 
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .StatisticBox:hover {
-  background: linear-gradient(135deg, rgb(26, 26, 26), rgb(27, 27, 27));
+    background: linear-gradient(135deg, rgb(26, 26, 26), rgb(27, 27, 27));
 
-  transform: translateX(10px) rotate3d(10, 1, 10, 10deg);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
-  cursor: pointer;
+    transform: translateX(10px) rotate3d(10, 1, 10, 10deg);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+    cursor: pointer;
 }
 
 /* texto principal */
 .StatisticBox span:first-child {
-  font-size: 2rem;
-  font-weight: bold;
-  color: var(var(--color-text-p), #b6ff50da);
-  text-shadow: 0 0 8px rgb(153, 255, 69);
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(var(--color-text-d), #b6ff50da);
+    text-shadow: 0 0 8px var(--primary-c-0-4);
 }
 
 /* texto principal */
 .StatisticBox:hover span:first-child {
-
-  color: var(var(--color-text-p), #75b916da);
-  text-shadow: 0 0 8px rgb(132, 255, 32);
+    color: var(var(--primary-c-0-5), #75b916da);
+    text-shadow: 0 0 8px var(--primary-c-0-2);
 }
 
 
 /* subtítulo */
 .StatisticBox span:last-child {
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.85);
-  letter-spacing: 0.5px;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.85);
+    letter-spacing: 0.5px;
 }
 
 /* efeito espelhado só com rotação */
 .StatisticBox::after {
-  content: attr(data-text);
-  position: absolute;
-  bottom: -55%;
-  left: 50%;
-  transform: translateX(-50%) rotateX(180deg);
-  transform-origin: top center;
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: rgba(255, 255, 255, 0.25);
-  opacity: 0.3;
-  pointer-events: none;
+    content: attr(data-text);
+    position: absolute;
+    bottom: -55%;
+    left: 50%;
+    transform: translateX(-50%) rotateX(180deg);
+    transform-origin: top center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.25);
+    opacity: 0.3;
+    pointer-events: none;
 
-  /* gradiente para sumir aos poucos */
-  background: linear-gradient(to top, rgba(34, 34, 34, 0.6), transparent);
-  --background-clip: text;
-  -webkit-text-fill-color: transparent;
+    /* gradiente para sumir aos poucos */
+    background: linear-gradient(to top, rgba(34, 34, 34, 0.6), transparent);
+    --background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 
 @media screen and (max-width: 1768px) {
-  .ContainerStatistics {
-    justify-content: center;
-    align-items: center;
-  }
+    .ContainerStatistics {
+        justify-content: center;
+        align-items: center;
+    }
 
-  .StatisticBox {
-    width: 40%;
-  }
+    .StatisticBox {
+        width: 40%;
+    }
 
-  .StatisticBox span:first-child {
-    font-size: 1.5rem;
-  }
+    .StatisticBox span:first-child {
+        font-size: 1.5rem;
+    }
 
-  .StatisticBox span:last-child {
-    font-size: 0.8rem;
-  }
+    .StatisticBox span:last-child {
+        font-size: 0.8rem;
+    }
 
-  .StatisticBox::after {
-    font-size: 1.2rem;
-    bottom: -45%;
-  }
+    .StatisticBox::after {
+        font-size: 1.2rem;
+        bottom: -45%;
+    }
 }
 
 @media screen and (max-width: 768px) {
-  .ContainerStatistics {
-    flex-direction: column;
-  }
-  .StatisticBox {
-    padding: 3rem;
-    width: 80%;
-  }
+    .ContainerStatistics {
+        flex-direction: column;
+    }
+    .StatisticBox {
+        padding: 3rem;
+        width: 80%;
+    }
 }
 
 @media screen and (max-width: 480px) {
-  .StatisticBox {
-    padding: 2rem;
-    width: 90%;
+    .StatisticBox {
+        padding: 2rem;
+        width: max-content;
 
-  }
+    }
 }

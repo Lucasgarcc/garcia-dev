@@ -7,7 +7,7 @@
     height: clamp(28px, 4vw, 50px);*/
     position: absolute;
     top: 30%;
-    left: 40%;
+    left: 35%;
     z-index: 1000;
     transform-style: preserve-3d;
 }
@@ -17,6 +17,10 @@
     height: 100%;
     object-fit: contain;
     isolation: isolate;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0);
+    filter: drop-shadow(0 0 1px rgba(47, 46, 46, 0.36))
+    drop-shadow(0 0 1px rgba(97, 97, 97, 0.168))
+    drop-shadow(0 0 1px rgba(43, 43, 43, 0.175));
 }
 
 @media screen and (max-width: 1568px) {
@@ -56,7 +60,6 @@
 
     .logoContainer {
         top: 18%;
-        left: 67%;
         width: clamp(30px, 1vw, 26px);
         height: clamp(38px, 1vw, 26px);
     }

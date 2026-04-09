@@ -15,17 +15,19 @@ const Home = () => {
 			<Typography className={Scene3D.title} variant="h2" gutterBottom fontFamily={'var(--font-title)'} fontWeight={450}>
 				<span className={Scene3D.titleDetail}>Eai</span>, Sou Lucas
 			</Typography>
-			<Typography className={Scene3D.titleSubtitle} variant="h4" gutterBottom>
+            <Typography className={Scene3D.titleSubtitle} fontWeight={450} variant="h4" gutterBottom>
 			 <span>{'< '}</span> Desenvolvedor / <span className={Scene3D.titleDetail}> Frontend </span> <span>{' >'}</span>
 			</Typography>
  
-			<Typography variant="body1" maxWidth={550}  textAlign={'justify'}>
+            <Typography className={Scene3D.description} variant="body1" display={'block'} fontWeight={450} fontSize={20} maxWidth={'100%'} marginBottom={4} letterSpacing={0} fontFamily={'var(--font-roboto)'}>
 				
-				Sou um desenvolvedor Frontend apaixonado por criar experiências digitais incríveis. Com uma sólida formação em design e desenvolvimento web, estou sempre em busca de novos desafios e oportunidades para aprimorar minhas habilidades.
+                Sou um desenvolvedor Frontend apaixonado por <strong className={Scene3D.datails}>criar experiências</strong> digitais incríveis. Com uma sólida formação em design e <strong className={Scene3D.datails}>desenvolvimento web</strong>, estou sempre em busca de novos desafios e oportunidades para aprimorar minhas habilidades.
 			</Typography>
-			<Button variant="contained" sx={{ backgroundColor: 'var(--primary-c-3)', marginTop: '1rem', color: 'var(--color-text-n)',
+            <Button variant="contained" sx={{ backgroundColor: 'var(--primary-c-3)', marginTop: '1rem', color: 'var(--color-text-n)',
+                    fontFamily: 'var(--font-roboto)',
                     textAlign: 'center',
                     fontSize: '1.1rem',
+                    border: "1px solid var(--color-text-n)",
                     ":hover": {
                         backgroundColor: "var(--primary-c-0-4)",
                         color: "var(--primary-c-0-5)",
