@@ -66,7 +66,7 @@ export default function OrbitLogos() {
         <>
             <div className={Scene3D.areaContainer} ref={containerRef}>
                 {/* Card com foto central */}
-                <ProfileCard image={profile} alt="Minha foto"/>
+                <ProfileCard image={profile} alt="Meu Avatar Ghibli"/>
 
                 {/* Logos Orbitando - passa logosLength dinamicamente */}
                 {logos.map((logo, index) => (
