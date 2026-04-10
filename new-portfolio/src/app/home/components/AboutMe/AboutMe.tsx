@@ -22,8 +22,8 @@ const AboutMe = () => {
                 color='var(--primary-c-2)'  
                 textTransform={'uppercase'}
                 variant="h4"
-                className={Styles.title}
-                marginBottom={10}
+                marginBottom={0}
+                className={Styles.aboutTitle}
                 textAlign={'center'} 
                 fontFamily='var(--font-title)' 
                 gutterBottom fontWeight={450}>
@@ -36,10 +36,14 @@ const AboutMe = () => {
                 transition={{ duration: 0.3, delay: 0.2 }}
                 className={Styles.aboutMeContainer}>
                 <div className={Styles.aboutContent}>
-                    <div
+                    <motion.div
+                        initial={{ opacity: 0, x: -60 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: false, amount: 0 }}
+                        transition={{ duration: 0.8, delay: 0.4 }}
                         className={Styles.aboutContentImage}>
                         <CodeCard />
-                    </div>
+                    </motion.div>
                     <div className={Styles.aboutContentText}>
                         <Typography className={Styles.aboutContentDescription} display={'block'} variant="body1" marginTop={5} fontWeight={450} fontSize={20} maxWidth={'100%'} letterSpacing={0}>
 
@@ -73,7 +77,7 @@ const AboutMe = () => {
                             initial={{ opacity: 0, x: -60 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: false, amount: 0 }}
-                            transition={{ duration: 0.8, delay: 0.6 }}
+                            transition={{ duration: 0.8, delay: 0.4 }}
                             className={Styles.aboutContentButton}>
                             <ViableResume />
                         </motion.div>

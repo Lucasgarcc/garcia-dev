@@ -3,15 +3,29 @@
 import { ReactNode } from 'react';
 import { motion } from 'framer-motion';
 import Emphasis from './components/Emphasis/Emphasis';
-import RedeSocial from './components/Emphasis/RedeSocial/RedeSocial';
-import Scene3D from '@/components/layout/Background/Scene3D';
 import AboutMe from './components/AboutMe/AboutMe';
 import MouseRole from './components/MouseRole/MouseRole';
 import Timeline from './components/Timeline/Timeline';
 import Differential from './components/Differential/Differential';
-import ContactMe from '@/components/ContactMe/ContactMe';
 import { useNavigation } from '@/core/context/NavigationContext';
+import dynamic from 'next/dynamic';
+import Skeleton from '../components/ui/Skeleton/Skeleton';
 
+const Scene3D = dynamic(() => import('../components/layout/Background/Scene3D'), {
+    ssr: false,
+    loading: () => <Skeleton width="80%" height="auto" />
+
+});
+const RedeSocial = dynamic(() => import('./components/Emphasis/RedeSocial/RedeSocial'), {
+    ssr: false,
+    loading: () => <Skeleton width="80%" height="auto" />
+
+});
+const ContactMe = dynamic(() => import('../components/ContactMe/ContactMe'), {
+    ssr: false,
+    loading: () => <Skeleton width="100%" height="auto" />
+
+});
 
 interface MainLayoutProps {
     children?: ReactNode;
