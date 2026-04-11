@@ -1,0 +1,75 @@
+/*.grid {
+    display: grid;
+   Cria 6 colunas iguais 
+    grid-template-columns: repeat(6, 1fr);
+    justify-items: center;
+    gap: 3rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}*/
+
+/* RESPONSIVIDADE 
+@media (max-width: 1024px) {
+    .grid {
+        display: inline-grid;
+        justify-items: center;
+        grid-template-columns: repeat(4, 1fr);  4 colunas em tablets 
+    }
+}
+
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(3, 1fr); 3 colunas em mobile 
+        gap: 3.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .grid {
+        column-gap: 0;
+        grid-template-columns: repeat(2, 1fr); 2 colunas em celulares pequenos 
+    }
+}*/
+
+.wrapper {
+    width: 100%;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem 0;
+    position: relative;
+    z-index: 0;
+
+}
+
+.fadeMask {
+    width: 100%;
+    position: relative;
+    z-index: -2;
+    /* Efeito de fade-out nas laterais */
+    mask-image: linear-gradient(
+        to right,
+        transparent,
+        black 15%,
+        black 85%,
+        transparent
+    );
+    overflow: hidden;
+}
+
+.row {
+    display: flex;
+    gap: 2rem;
+    width: max-content;
+}
