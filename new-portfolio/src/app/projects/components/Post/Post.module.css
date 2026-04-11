@@ -1,6 +1,6 @@
-
 .postContainer	{
     margin: 0 auto;
+    padding: 2rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 5rem;
@@ -30,19 +30,8 @@
 }
 
 .postTitle	{
-    margin-right: 1rem;
-    background: linear-gradient(
-        90deg,         /* Direção: da esquerda para a direita */
-        var(--primary-c-0-3) 0%,    /* Roxo (início da palavra) */
-        var(--color-text) 50%,   /* Rosa/Magenta (meio) */
-        var(--bg-secondary) 100%   /* Laranja/Coral (final) */
-    );
-    -webkit-background-clip: text; /* Necessário para Webkit/Blink */
-    background-clip: text;         /* Padrão atual, mas mantenha o de cima */
-
-    /* 3. Torna o texto transparente para o fundo aparecer através dele */
-    -webkit-text-fill-color: transparent; /* Necessário para Webkit/Blink */
-    color: transparent;
+    padding-left: 2rem;
+    background: var(--background-text-liner);
 }
 
 .postTitleProject {
