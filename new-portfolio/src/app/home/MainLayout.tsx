@@ -113,8 +113,8 @@ const MainLayout = ({ children }: MainLayoutProps) => {
 
                 {/* Diferencial */}
                 <motion.section
-                    id="diferencial"
-                    ref={homeRefs.diferencial}
+                    id="differential"
+                    ref={homeRefs.differential}
                     variants={slideFromRightY}
                     initial="hidden"
                     whileInView="visible"
@@ -127,8 +127,8 @@ const MainLayout = ({ children }: MainLayoutProps) => {
 
                 {/*-- Contato  */}
                 <motion.section
-                    id="contato"
-                    ref={homeRefs.contato}
+                    id="contact"
+                    ref={homeRefs.contact}
                     variants={slideFromLeftY}
                     initial="hidden"
                     whileInView="visible"

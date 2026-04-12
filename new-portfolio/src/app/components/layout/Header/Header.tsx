@@ -14,7 +14,8 @@ const Header = () => {
             { id: 'intro', label: 'Home', href: '/', page: 'home', type: 'section' },
             { id: 'about', label: 'Sobre', href: '/', page: 'home', type: 'section' },
             { id: 'timeline', label: 'Experiência', href: '/', page: 'home', type: 'section' },
-            { id: 'contato', label: 'Contato', href: '/', page: 'home', type: 'section' },
+            { id: 'differential', label: 'Diferêncial', href: '/', page: 'home', type: 'section' },
+            { id: 'contact', label: 'Contato', href: '/', page: 'home', type: 'section' },
             { id: 'projects', label: 'Projetos', href: '/projects', page: 'projects', type: 'route' },
         ]
         : [

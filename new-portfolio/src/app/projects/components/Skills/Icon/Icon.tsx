@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 import React from 'react';
 
 // Use SkillIconProps para tipar as props do componente
-const Icon = ({ name, icon, shadowColor }: SkillIconProps) => {
+const Icon = ({ name, icon, shadowColor, className }: SkillIconProps) => {
 
     const dynamicStyles = {
         '--shadow-color': shadowColor,

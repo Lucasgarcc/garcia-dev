@@ -15,8 +15,8 @@ const NavigationProvider = ({ children }: { children: React.ReactNode }) => {
     const intro = useRef<HTMLElement>(null);
     const about = useRef<HTMLElement>(null);
     const timeline = useRef<HTMLElement>(null);
-    const diferencial = useRef<HTMLElement>(null);
-    const contato = useRef<HTMLElement>(null);
+    const differential = useRef<HTMLElement>(null);
+    const contact = useRef<HTMLElement>(null);
 
     // ---------- PROJECTS REFS ----------
     const post = useRef<HTMLElement>(null);
@@ -24,7 +24,7 @@ const NavigationProvider = ({ children }: { children: React.ReactNode }) => {
     const experience = useRef<HTMLElement>(null);
     const portfolio = useRef<HTMLElement>(null);
     const posts = useRef<HTMLElement>(null);
-    const differential = useRef<HTMLElement>(null);
+
 
     const [active, setActive] = useState<string | null>(null);
 
@@ -32,7 +32,7 @@ const NavigationProvider = ({ children }: { children: React.ReactNode }) => {
     const pageRefs = useMemo(
         () =>
             page === 'home'
-                ? { intro, about, timeline, diferencial, contato }
+                ? { intro, about, timeline, differential, contact }
                 : { post, skills, experience, portfolio, posts, differential },
         [page]
     );
@@ -80,7 +80,7 @@ const NavigationProvider = ({ children }: { children: React.ReactNode }) => {
             value={{
                 page,
                 refs: {
-                    home: { intro, about, timeline, diferencial, contato },
+                    home: { intro, about, timeline, differential, contact },
                     projects: { post, skills, experience, portfolio, posts, differential },
                 },
                 active,

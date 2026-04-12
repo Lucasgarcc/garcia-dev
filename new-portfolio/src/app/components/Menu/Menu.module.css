@@ -67,15 +67,13 @@
 
 .iconAbout {
 
-  /*filter: brightness(0) invert(4); Deixa branco*/
-  filter: sepia(1) saturate(2) hue-rotate(40deg) brightness(0.8);
+    font-size: .3rem ;
+  /*
   transition: filter 0.3s; /* Suaviza a mudança */
 }
 
 .iconAbout:hover {
-  filter: grayscale(1) brightness(0.9); /* Exemplo: azul no hover */
-  /* Ou apenas mude a opacidade: */
-  opacity: 0.7;
+
 }
 
 @media screen and (max-width: 768px) and (max-height:768px ) {
@@ -128,7 +126,7 @@
     .active.menuContainer {
         padding: 1.5rem;
         width: 50%;
-        height: 97vh;
+        height: 60vh;
         justify-content: center;
         align-items: center;
         inset: .5rem 0 auto auto;
@@ -166,12 +164,12 @@
 
      /* 1. O container do botão vira um Grid centralizado */
     .hamburger.active {
-        padding: 1rem 0 2rem;
+        padding: .2rem 0 2rem;
         display: grid;         /* Grid facilita centralização absoluta */
         place-items: center;   /* Centraliza horizontal e verticalmente */
         position: absolute;
         right: 1.5rem;
-        width: 50px;
+        width: 40px;
         height: 25px;
         background: var(--bg-secondary);
         border: 1px solid var(--color-text-secondary-c);
@@ -196,9 +194,9 @@
 
     /* 3. Animação do X sem usar Translates complexos */
     .hamburger.active .bar1 {
-        transform: translateX(1px) translateY(-2px) rotate(45deg);
+        transform: translateX(-1px) translateY(4px) rotate(45deg);
         background: var(--color-text-secondary-c);
-        width: 22px;
+        width: 16px;
     }
 
     .hamburger.active .bar2 {
@@ -206,9 +204,9 @@
     }
 
     .hamburger.active .bar3 {
-        transform: translateX(-9px) translateY(-2px) rotate(-45deg);
+        transform: translateX(-9px) translateY(4px) rotate(-45deg);
         background: var(--color-white);
-        width: 20px;           /* Garante que ambas tenham o mesmo tamanho no X */
+        width: 15px;           /* Garante que ambas tenham o mesmo tamanho no X */
     }
 
     .hamburger.showMenu  {
@@ -249,8 +247,8 @@
     }
 
     .active.menuContainer {
-        width: 70%;
-        height: 84vh;
+        width: 60%;
+        height: 65vh;
     }
 
     .showMenu.menuContent{
