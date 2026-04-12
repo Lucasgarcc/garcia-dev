@@ -9,6 +9,7 @@
     border-radius: 1rem;
     gap: 1rem;
     border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: -4px 0 12px rgba(0, 0, 0, 0.25);
     cursor: pointer;
     transition: border-color 0.3s ease;
     z-index: 1;
@@ -43,7 +44,6 @@
 }
 
 /* Tooltip Estilizado */
-/* Tooltip Estilizado */
 .tooltip {
     margin-top: .5rem;
     position: absolute;
@@ -53,7 +53,6 @@
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
     font-size: 0.6rem;
-    /* 1. Removido opacity: 0 */
     
     /* Mantemos para ele não interceptar cliques quando invisível */
     pointer-events: none;
@@ -68,7 +67,6 @@
 }
 
 .skillCard:hover .tooltip {
-    /* 2. Removido opacity: 1 */
     position: absolute;
     z-index: 1000;
     visibility: visible; /* Torna visível instantaneamente com cor sólida */
@@ -100,4 +98,11 @@
 /* Ajuste no hover para a borda da pontinha também mudar de cor */
 .skillCard:hover .tooltip::before {
     border-color: var(--color-text-secondary-c);
+}
+
+@media screen and (max-width: 428px) {
+    .skillCard {
+        width: 70px;
+        box-shadow: -4px 0 12px rgba(0, 0, 0, 0.25);
+    }
 }

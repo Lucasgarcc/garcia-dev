@@ -1,0 +1,71 @@
+.cardFront {
+    background: linear-gradient(var(--gradient-line));
+    width: 400px;
+    height: 320px;
+    max-width: 100%;
+    padding: 2.5rem;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Alinha o conteúdo na parte de baixo */
+    gap: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.cardFront:hover {
+    background-size: 300% 300%;
+    animation: var(--moveGradient) 3s ease infinite;
+    transform: translateY(-5px);
+}
+
+.iconContainer {
+    color: var(--primary-c); /* Cor azul do ícone */
+    font-size: 2rem;
+    margin-bottom: auto; /* Joga o ícone para o topo */
+}
+
+.title {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.2;
+    margin: 0;
+}
+
+.seeMore {
+    background: none;
+    border: none;
+    color: var(--primary-c);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 0;
+    width: fit-content;
+    transition: gap 0.2s ease;
+}
+
+.seeMore:hover {
+    color: var(--primary-c-0-1);
+    gap: 0.8rem; /* Efeito visual na seta ao passar o mouse */
+}
+
+@media screen and (max-width: 1024px) {
+    .cardFront {
+        margin: 1rem;
+        width: 380px;
+        height: 300px;
+    }
+
+}
+
+@media screen and (max-width: 428px) {
+    .cardFront {
+        margin: 1rem;
+        width:  80vw;
+        height: 280px;
+
+    }
+
+}

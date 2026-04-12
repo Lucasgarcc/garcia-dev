@@ -24,25 +24,25 @@ const SkillGrid = ({ skills }: SkillGridProps) => {
             // Linha 1: Direita para Esquerda
             controlsRow1.start({
                 x: [0, -1000],
-                transition: { duration: 25, repeat: Infinity, ease: "linear" }
+                transition: { duration: 30, repeat: Infinity, ease: "linear" }
             });
 
             // Linha 2: Esquerda para Direita (começa deslocado)
             controlsRow2.start({
                 x: [-1000, 0],
-                transition: { duration: 25, repeat: Infinity, ease: "linear" }
+                transition: { duration: 30, repeat: Infinity, ease: "linear" }
             });
         };
 
         startAnimations();
 
         // Timer para parar as duas animações suavemente
-        const timer = setTimeout(() => {
-            controlsRow1.stop();
-            controlsRow2.stop();
-        }, 6000);
+        /*    const timer = setTimeout(() => {
+                controlsRow1.stop();
+                controlsRow2.stop();
+            }, 6000);
 
-        return () => clearTimeout(timer);
+            return () => clearTimeout(timer);*/
     }, [controlsRow1, controlsRow2]);
 
     return (

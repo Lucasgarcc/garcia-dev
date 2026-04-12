@@ -35,7 +35,7 @@
 
 .wrapper {
     width: 100%;
-    height: 500px;
+    height: auto;
     display: flex;
     justify-content: center;
     overflow: hidden;
@@ -46,30 +46,46 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    padding: 2rem 0;
-    position: relative;
-    z-index: 0;
-
+    justify-content: center;
+    column-gap: 2rem;
+    padding: 1rem 0;
 }
 
+/* No container das linhas */
 .fadeMask {
     width: 100%;
-    position: relative;
-    z-index: -2;
-    /* Efeito de fade-out nas laterais */
+    /* Mantemos a máscara, mas garantimos espaço para o tooltip */
     mask-image: linear-gradient(
         to right,
         transparent,
-        black 15%,
-        black 85%,
+        black 10%,
+        black 90%,
         transparent
     );
-    overflow: hidden;
+    
+    /* Aumentamos o padding inferior para o tooltip aparecer */
+    padding-bottom: 60px; 
+    margin-bottom: -40px; /* Compensa o padding para não empurrar o resto do layout */
+    overflow: visible !important; /* Tenta forçar a visibilidade */
 }
 
 .row {
     display: flex;
     gap: 2rem;
     width: max-content;
+    padding: 10px 0;
+    /* Garante que o overflow da linha em si não corte o tooltip */
+    overflow: visible; 
+}
+
+@media screen and (max-width: 1024px) {
+    .wrapper {
+        margin-bottom: 3rem;
+    }
+}
+
+@media screen and (max-width: 428px) {
+    .container {
+        gap: 1rem; 
+    }
 }
