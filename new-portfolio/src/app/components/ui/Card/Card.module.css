@@ -106,6 +106,7 @@
 @media screen and (max-width: 428px) {
     .card{
         padding: 2.5rem 2.5rem;
+        gap: 3rem;
         width: 100%;
     }
     .closeButton {
