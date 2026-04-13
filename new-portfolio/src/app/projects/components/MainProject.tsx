@@ -3,6 +3,7 @@ import React, { ReactNode } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigation } from '@/core/context/NavigationContext';
 import Post from './Post/Post';
+import Skills from './Skills/Skils';
 
 interface ProjectsProps {
     children?: ReactNode;
@@ -28,8 +29,8 @@ const MainProject = ({ children }: ProjectsProps) => {
 
     return (
 
-        <>
-            <div className="project-layout">
+        <div className="project-container">
+            <div className="project-content">
                 {children}
                 {/* Seção principal */}
                 <motion.section
@@ -39,7 +40,7 @@ const MainProject = ({ children }: ProjectsProps) => {
                     whileInView="visible"
                     viewport={{ once: false, amount: 0.3 }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
-                    className="main-content"
+                    className="area-post-content"
                 >
 
                     <motion.div
@@ -47,7 +48,7 @@ const MainProject = ({ children }: ProjectsProps) => {
                         whileInView="visible"
                         viewport={{ once: true, amount: 0.2 }}
                         transition={{ duration: 0.4 }}
-                        className="">
+                        className="contatiner">
 
                         <Post
                             title='Dogs Social'
@@ -56,31 +57,19 @@ const MainProject = ({ children }: ProjectsProps) => {
                         />
 
                     </motion.div>
-                    <motion.div
-                        className="areaContentRedeSocial">
-                    </motion.div>
-                    <motion.div
-                        variants={slideFromLeftY}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: false, amount: 0.3 }}
-                        transition={{ duration: 0.8 }}
-                        className="area-content-emphasis">
-
-                    </motion.div>
+      
                 </motion.section>
 
-                {/* Sobre mim */}
+                {/* Skills */}
                 <motion.section
-                    id="about"
+                    id="skills"
                     ref={projectRefs.skills}
-                    variants={slideFromLeftY}
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.3 }}
-                    className="area-content-about-me"
+                    className="area-content-skills"
                 >
-
+                    <Skills />
                 </motion.section>
 
                 {/* Linha do tempo */}
@@ -106,23 +95,11 @@ const MainProject = ({ children }: ProjectsProps) => {
                     viewport={{ once: false, amount: 0.3 }}
                     transition={{ duration: 0.8, delay: 0.4 }}
                     className="area-continer-differential"
+
                 >
                 </motion.section>
 
-                {/*-- Contato  */}
-                <motion.section
-                    id="contato"
-                    ref={projectRefs.posts}
-                    variants={slideFromLeftY}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: false, amount: 0.3 }}
-                    transition={{ duration: 0.8, delay: 0.5 }}
-                    className="area-continer-contact-me"
 
-                >
-
-                </motion.section>
                 {/*-- Contato  */}
                 <motion.section
                     id="contato"
@@ -138,7 +115,7 @@ const MainProject = ({ children }: ProjectsProps) => {
 
                 </motion.section>
             </div>
-        </>
+        </div>
     );
 }
 export default MainProject;

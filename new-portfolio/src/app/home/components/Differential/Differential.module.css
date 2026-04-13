@@ -41,14 +41,10 @@
     /*background: linear-gradient(135deg, #030202, #000000, #0a0a0a, #222222, #0a0a0a);*/
 
     background-size: 300% 300%;
-    animation: moveGradient 3s ease infinite;
+    animation: var(--moveGradient) 3s ease infinite;
     transform: translateY(-5px);
 }
-@keyframes moveGradient {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
+
 .differentialIcon {
     transition: transform 0.3s ease;
     filter: drop-shadow(0 0 5px rgba(128, 197, 44, 0.896));

@@ -1,64 +1,78 @@
 @import "tailwindcss";
 
 :root {
-  /* --- Globais e Backgrounds --- */
-  --background: #000000;
-  --foreground: #171717;
-  --bg-header: #ffffffd7;
+    /* --- Globais e Backgrounds --- */
+    --background: #000000;
+    --foreground: #171717;
+    --bg-header: #ffffffd7;
 
-  /* --- Tema Neutro --- */
-  --bg-primary-n: #222222;
-  --bg-secondary-c: #afafaf;
-  --color-text-n: #f0f0f0;
-  --color-text-secondary: #8f8f8f;
+    /* --- Tema Neutro --- */
+    --bg-primary-n: #222222;
+    --bg-secondary-c: #afafaf;
+    --color-text-n: #f0f0f0;
+    --color-text-secondary: #8f8f8f;
 
-  /* --- Tema Escuro (Seus valores originais) --- */
-  --bg-primary: #000000;
-  --bg-secondary: #1a1a1a;
-  --color-text: #3e3c3c;
-  --color-text-p: #060606;
-  --color-text-d: #ffffff;
+    /* --- Tema Escuro (Seus valores originais) --- */
+    --bg-primary: #000000;
+    --bg-secondary: #1a1a1a;
+    --color-text: #3e3c3c;
+    --color-text-p: #060606;
+    --color-text-d: #ffffff;
 
-  /* --- Tema Claro --- */
-  --bg-primary-c: #ffffff;
-  --bg-secondary-c: #f5f5f5;
-  --color-text-c: #ffffff;
-  --color-text-secondary-c: #666666;
+    /* --- Tema Claro --- */
+    --bg-primary-c: #ffffff;
+    --bg-secondary-c: #f5f5f5;
+    --color-text-c: #ffffff;
+    --color-text-secondary-c: #666666;
 
-  /* --- Escala de Verdes (Sua sequência primary-c-X) --- */
-  --primary-c-0-1: #c4f58c;
-  --primary-c-0-2: #a8f05b;
-  --primary-c-0-3: #4f4f4f;
-  --primary-c-0-4: #80c52c;
-  --primary-c-0-5: #4a7614;
-  --primary-c-0-6: #2d5200;
-  --primary-c-1: #8BC34A;
-  --primary-c-2: #91bf27;
-  --primary-c: #91bf27;
-  --primary-c-3: #0e0e0e;
-  --primary-c-4: #1b2f02;
-  
-  /* --- Logo e Identidade --- */
-  --logo-fill-primary: #ffffff;
-  --logo-stroke-primary: #91bf27;
-  --logo-stroke-secondary: #595959;
-  --logo-gradient-stop1: #fffffffa;
-  --logo-gradient-stop2: #ffffff;
-  --logo-gradient-stop3: #ffffff;
-  --gradient-start: #ffffff00;
-  --gradient-mid: #eeffdc00;
-  --gradient-line: 90deg, rgb(23, 23, 23) 0%, rgb(10, 10, 10) 100%;
-  /* --- Tipografia --- */
-  --font-roboto: 'Roboto' sans-serif;
-  --font-roboto: var(--font-roboto); /* Certifique-se que estas fontes estão carregadas no Layout */
-  --font-title: var(--font-title);
-  --font-4: 400;
+    /* --- Escala de Verdes (Sua sequência primary-c-X) --- */
+    --primary-c-0-1: #c4f58c;
+    --primary-c-0-2: #a8f05b;
+    --primary-c-0-3: #4f4f4f;
+    --primary-c-0-4: #80c52c;
+    --primary-c-0-5: #4a7614;
+    --primary-c-0-6: #2d5200;
+    --primary-c-1: #8BC34A;
+    --primary-c-2: #91bf27;
+    --primary-c: #91bf27;
+    --primary-c-3: #0e0e0e;
+    --primary-c-4: #1b2f02;
+    
+    /* --- Logo e Identidade --- */
+    --logo-fill-primary: #ffffff;
+    --logo-stroke-primary: #91bf27;
+    --logo-stroke-secondary: #595959;
+    --logo-gradient-stop1: #fffffffa;
+    --logo-gradient-stop2: #ffffff;
+    --logo-gradient-stop3: #ffffff;
+    --gradient-start: #ffffff00;
+    --gradient-mid: #eeffdc00;
+    --gradient-line: 90deg, rgb(23, 23, 23) 0%, rgb(10, 10, 10) 100%;
+    --background-text-liner:  
+            90deg,         /* Direção: da esquerda para a direita */
+            var(--primary-c-0-3) 0%,    /* Roxo (início da palavra) */
+            var(--color-text) 50%,   /* Rosa/Magenta (meio) */
+            var(--bg-secondary) 100%   /* Laranja/Coral (final) */
+        ;
 
-  /* --- Tokens de Layout (Adicionados para facilitar) --- */
-  --section-pt: 8rem;
-  --section-pb: 8rem;
-  --main-content-gap: 4rem;
-  --main-content-width: 75%;
+    /* --- Tipografia --- */
+    --font-roboto: 'Roboto' sans-serif;
+    --font-roboto: var(--font-roboto); /* Certifique-se que estas fontes estão carregadas no Layout */
+    --font-title: var(--font-title);
+    --font-4: 400;
+
+     --big-font-size: 2rem;
+    --h1-font-size: 1.5rem;
+    --h2-font-size: 1.25rem;
+    --h3-font-size: 1.125rem;
+    --normal-font-size: .938rem;
+    --small-font-size: .813rem;
+    --smaller-font-size: .75rem;
+    /* --- Tokens de Layout (Adicionados para facilitar) --- */
+    --section-pt: 8rem;
+    --section-pb: 8rem;
+    --main-content-gap: 4rem;
+    --main-content-width: 75%;
 }
 
 :root {
@@ -85,6 +99,13 @@
   --lh-tight: 1.2;        /* Para títulos */
   --lh-normal: 1.5;       /* Para leitura de parágrafos */
   --lh-relaxed: 1.8;
+
+  /* Animation Move hover Cards */
+    --moverGradient: @keyframes moveGradient {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
 }
 
 @theme dark {
@@ -108,6 +129,8 @@
     --foreground: #ffffff;
   }
 }
+
+
 
 body {
   /*color: var(--color-text);*/
@@ -147,18 +170,6 @@ main {
   overflow-x: hidden;
 }
 
-.project-layout {
-    margin: 8rem auto;
-    padding: 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    width: 100%;
-    max-width: 1200px;
-    overflow-x: hidden;
-}
-
 .sectionWrapper {
   min-height: 100vh;
   padding-top: 4rem; /* Ajuste conforme seu header */
@@ -181,7 +192,9 @@ main {
 .area-content-about-me,
 .area-continer-timeline,
 .area-continer-differential,
-.area-continer-contact-me {
+.area-continer-contact-me,
+.area.post-content,
+.area-content-skills {
   min-height: 100vh; /* mantém padrão */
 }
 
@@ -358,5 +371,57 @@ main {
     }
     .areaContentRedeSocial {
         inset: 6rem 0 0 1.5rem;
+    }
+}
+
+
+
+/* Projects */
+
+.project-content {
+    margin: 8rem auto;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    overflow-x: hidden;
+}
+.contatiner {
+    max-width: 1200px;
+    box-sizing: border-box;
+}
+
+.area.post-content {
+    margin-top: 8rem;
+    max-width: max-content;
+}
+
+.area-content-skills {
+    width: 100%;
+    margin-top: 22rem;
+}
+
+/* Para Mobile */
+@media (max-width: 480px) {
+    .area-content-skills {
+        margin-top: 10rem;
+    }
+}
+
+/* Para Tablets e Ipads */
+@media (max-width: 768px) {
+    .area-content-skills {
+        margin-top: 15rem;
+    }
+
+}
+
+/* Para Desktops (opcional: reduzir o padding se o max-width já for suficiente) */
+@media (min-width: 1200px) {
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
 }

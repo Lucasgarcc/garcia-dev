@@ -8,26 +8,30 @@ import { useNavigation } from '@/core/context/NavigationContext';
 import LinkMenu from './LinkMenu/LinkMenu';
 import { NavItem } from '@/core/interfaces/nav';
 import styles from './Menu.module.css';
-import { FaHome } from "react-icons/fa";
-import { FcAbout } from "react-icons/fc";
-import { MdViewTimeline } from "react-icons/md";
+import OtherHousesIcon from '@mui/icons-material/OtherHouses';
+import  AnnouncementIcon  from '@mui/icons-material/Announcement';
+import ViewTimelineIcon from '@mui/icons-material/ViewTimeline';
 import { FaLightbulb } from 'react-icons/fa';
-import { IoChatboxEllipsesSharp } from "react-icons/io5";
-import { FaFolder } from "react-icons/fa";
+import ContactMailIcon from '@mui/icons-material/ContactMail';
+import FolderIcon from '@mui/icons-material/Folder';
+import PsychologyIcon from '@mui/icons-material/Psychology';
+import MmsIcon from '@mui/icons-material/Mms';
 
 const Menu = ({ items }: { items: NavItem[] }) => {
     const { scrollToSection, active, setActive, page } = useNavigation();
     const [open, setOpen] = useState(false);
 
     const iconMap: Record<string, React.ReactNode> = {
-        home: <FaHome className = { styles.icon } />,
-        intro: <FaHome className={styles.icon} />,
-        about: <FcAbout className={styles.iconAbout}/>,
-        timeline: <MdViewTimeline className = {styles.icon
+        home: <OtherHousesIcon sx={{ fontSize: 20 }} className = { styles.icon } />,
+        intro: <OtherHousesIcon sx={{ fontSize: 20 }} className={styles.icon} />,
+        about: <AnnouncementIcon sx={{ fontSize: 20 }} className={styles.iconAbout}/>,
+        timeline: <ViewTimelineIcon className = {styles.icon
     } />,
-        diferencial: <FaLightbulb className={styles.icon} />,
-        contato: <IoChatboxEllipsesSharp className={styles.icon} />,
-        projects: <FaFolder className={styles.icon} />,
+        differential: <FaLightbulb className={styles.icon} />,
+        contact: <ContactMailIcon sx={{ fontSize: 20 }} className={styles.icon} />,
+        projects: <FolderIcon sx={{ fontSize: 20 }} className={styles.icon} />,
+        post: <MmsIcon sx={{ fontSize: 20 }} className={styles.icon} />,
+        skills: <PsychologyIcon sx={{ fontSize: 32 }} className={styles.icon} />
     };
 
 

@@ -1,0 +1,91 @@
+/*.grid {
+    display: grid;
+   Cria 6 colunas iguais 
+    grid-template-columns: repeat(6, 1fr);
+    justify-items: center;
+    gap: 3rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}*/
+
+/* RESPONSIVIDADE 
+@media (max-width: 1024px) {
+    .grid {
+        display: inline-grid;
+        justify-items: center;
+        grid-template-columns: repeat(4, 1fr);  4 colunas em tablets 
+    }
+}
+
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(3, 1fr); 3 colunas em mobile 
+        gap: 3.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .grid {
+        column-gap: 0;
+        grid-template-columns: repeat(2, 1fr); 2 colunas em celulares pequenos 
+    }
+}*/
+
+.wrapper {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    column-gap: 2rem;
+    padding: 1rem 0;
+}
+
+/* No container das linhas */
+.fadeMask {
+    width: 100%;
+    /* Mantemos a máscara, mas garantimos espaço para o tooltip */
+    mask-image: linear-gradient(
+        to right,
+        transparent,
+        black 10%,
+        black 90%,
+        transparent
+    );
+    
+    /* Aumentamos o padding inferior para o tooltip aparecer */
+    padding-bottom: 60px; 
+    margin-bottom: -40px; /* Compensa o padding para não empurrar o resto do layout */
+    overflow: visible !important; /* Tenta forçar a visibilidade */
+}
+
+.row {
+    display: flex;
+    gap: 2rem;
+    width: max-content;
+    padding: 10px 0;
+    /* Garante que o overflow da linha em si não corte o tooltip */
+    overflow: visible; 
+}
+
+@media screen and (max-width: 1024px) {
+    .wrapper {
+        margin-bottom: 3rem;
+    }
+}
+
+@media screen and (max-width: 428px) {
+    .container {
+        gap: 1rem; 
+    }
+}
