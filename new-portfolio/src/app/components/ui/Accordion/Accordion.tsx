@@ -11,7 +11,12 @@ const Accordion = ({ icon, title, subtitle, content, className }: AccordionProps
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <div className={`${styles.accordionWrapper} ${className} ${isOpen ? styles.accordionWrapperOpen : styles.accordionWrapper} `}>
+        <motion.div className={`${styles.accordionWrapper} ${className} `} 
+            animate={{
+                padding: isOpen ? '2rem 1.5rem' : '1.2rem'
+            }}
+            transition={{ duration: 0.4 }}
+        >
             <div className={styles.header} onClick={() => setIsOpen(!isOpen)}>
                 <div className={styles.titleGroup}>
                     <span className={styles.mainIcon}>{icon}</span>
@@ -34,9 +39,13 @@ const Accordion = ({ icon, title, subtitle, content, className }: AccordionProps
                     <motion.ul
                         className={styles.list}
                         initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
+                        animate={{ 
+                            padding: '2rem 1.5rem', height: 'auto', 
+                            opacity: 1 
+                        }}
                         exit={{ height: 0, opacity: 0 }}
                         transition={{
+                            padding: { duration: 0.4 },
                             height: { duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }, // Ease mais natural
                             opacity: { duration: 0.25 }
                         }}
@@ -66,7 +75,7 @@ const Accordion = ({ icon, title, subtitle, content, className }: AccordionProps
                     </motion.ul>
                 )}
             </AnimatePresence>
-        </div>
+        </motion.div>
     );
 };
 
