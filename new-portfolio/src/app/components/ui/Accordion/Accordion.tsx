@@ -1,0 +1,73 @@
+'use client';
+
+import { useState } from 'react';
+import { AccordionProps } from '@/app/core/interfaces/accordion';
+import styles from './Accordion.module.css';
+import { motion, AnimatePresence } from 'framer-motion';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { Icon } from '@mui/material';
+
+const Accordion = ({ icon, title, subtitle, content, className }: AccordionProps) => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    return (
+        <div className={`${styles.accordionWrapper} ${className} ${isOpen ? styles.accordionWrapperOpen : styles.accordionWrapper} `}>
+            <div className={styles.header} onClick={() => setIsOpen(!isOpen)}>
+                <div className={styles.titleGroup}>
+                    <span className={styles.mainIcon}>{icon}</span>
+                    <div>
+                        <h2 className={styles.title}>{title}</h2>
+                        {subtitle && <span className={styles.subtitle}>{subtitle}</span>}
+                    </div>
+                </div>
+
+                <motion.div
+                    animate={{ rotate: isOpen ? 180 : 0 }}
+                    transition={{ duration: 0.3 }}
+                >
+                    <ExpandMoreIcon className={styles.arrow} />
+                </motion.div>
+            </div>
+
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.ul
+                        className={styles.list}
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{
+                            height: { duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }, // Ease mais natural
+                            opacity: { duration: 0.25 }
+                        }}
+                    >
+                        {content.map((item, i) => (
+                            <li key={i} className={styles.listItem}>
+                                <div className={styles.itemHeader}>
+                                    <div className={styles.itemName}>
+                                        {/* Se for um componente, renderiza como <Icon />.*/}
+                                        {item.iconStask}
+                                        <span>{item.title}</span>
+                                    </div>
+
+                                </div>
+
+                                {/* Barra de Progresso Minimalista */}
+                                <div className={styles.progressBack}>
+                                    <motion.div
+                                        className={styles.progressFront}
+                                        initial={{ width: 0 }}
+                                        animate={{ width: `${item.progess}%` }}
+                                        transition={{ duration: 2, delay: 0.2 }}
+                                    />
+                                </div>
+                            </li>
+                        ))}
+                    </motion.ul>
+                )}
+            </AnimatePresence>
+        </div>
+    );
+};
+
+export default Accordion;

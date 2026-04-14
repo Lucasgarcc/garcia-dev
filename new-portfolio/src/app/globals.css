@@ -37,6 +37,9 @@
     --primary-c: #91bf27;
     --primary-c-3: #0e0e0e;
     --primary-c-4: #1b2f02;
+
+    /* --- Escala de Verdes tons escuros --- */
+    --secondary-c-1: #4b6c40;
     
     /* --- Logo e Identidade --- */
     --logo-fill-primary: #ffffff;
@@ -398,24 +401,27 @@ main {
     max-width: max-content;
 }
 
-.area-content-skills {
+.area-content-skills, 
+.area-continer-technicalLevel {
     width: 100%;
     margin-top: 22rem;
 }
 
-/* Para Mobile */
-@media (max-width: 480px) {
-    .area-content-skills {
-        margin-top: 10rem;
-    }
-}
-
 /* Para Tablets e Ipads */
 @media (max-width: 768px) {
-    .area-content-skills {
+    .area-content-skills,
+    .area-continer-technicalLevel {
         margin-top: 15rem;
     }
 
+}
+
+/* Para Mobile */
+@media (max-width: 480px) {
+    .area-content-skills,
+    .area-continer-technicalLevel {
+        margin-top: 10rem;
+    }
 }
 
 /* Para Desktops (opcional: reduzir o padding se o max-width já for suficiente) */
