@@ -21,7 +21,7 @@ const NavigationProvider = ({ children }: { children: React.ReactNode }) => {
     // ---------- PROJECTS REFS ----------
     const post = useRef<HTMLElement>(null);
     const skills = useRef<HTMLElement>(null);
-    const experience = useRef<HTMLElement>(null);
+    const technicalLevel = useRef<HTMLElement>(null);
     const portfolio = useRef<HTMLElement>(null);
     const posts = useRef<HTMLElement>(null);
 
@@ -33,7 +33,7 @@ const NavigationProvider = ({ children }: { children: React.ReactNode }) => {
         () =>
             page === 'home'
                 ? { intro, about, timeline, differential, contact }
-                : { post, skills, experience, portfolio, posts, differential },
+                : { post, skills, technicalLevel, portfolio, posts, differential },
         [page]
     );
 
@@ -81,7 +81,7 @@ const NavigationProvider = ({ children }: { children: React.ReactNode }) => {
                 page,
                 refs: {
                     home: { intro, about, timeline, differential, contact },
-                    projects: { post, skills, experience, portfolio, posts, differential },
+                    projects: { post, skills, technicalLevel, portfolio, posts, differential },
                 },
                 active,
                 setActive,

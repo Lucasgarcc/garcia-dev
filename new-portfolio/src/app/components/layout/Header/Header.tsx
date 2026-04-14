@@ -21,7 +21,8 @@ const Header = () => {
         : [
             { id: 'home', label: 'Home', href: '/', page: 'home', type: 'route' },
             { id: 'post', label: 'Post', href: '/projects', page: 'projects', type: 'section' },
-            { id: 'skills', label: 'Skills', href: '/projects', page: 'projects', type: 'section' },
+            { id: 'skills', label: 'Habilidades', href: '/projects', page: 'projects', type: 'section' },
+            { id: 'technicalLevel', label: 'Nível Técnico', href: '/projects', page: 'projects', type: 'section' },
             { id: 'portfolio', label: 'Portfólio', href: '/projects', page: 'projects', type: 'section' },
         ];
 

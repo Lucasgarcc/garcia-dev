@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { useNavigation } from '@/core/context/NavigationContext';
 import Post from './Post/Post';
 import Skills from './Skills/Skils';
+import TechnicalLevel from './TechnicalLevel/TechnicalLevel';
 
 interface ProjectsProps {
     children?: ReactNode;
@@ -72,17 +73,16 @@ const MainProject = ({ children }: ProjectsProps) => {
                     <Skills />
                 </motion.section>
 
-                {/* Linha do tempo */}
+                {/* Nível Técnico */}
                 <motion.section
-                    id="timeline"
-                    ref={projectRefs.experience}
-                    variants={slideFromRightY}
+                    id="technicalLevel"
+                    ref={projectRefs.technicalLevel}
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: false, amount: 0.3 }}
-                    className="area-continer-timeline"
+                    className="area-continer-technicalLevel"
                 >
-
+                    <TechnicalLevel />
                 </motion.section>
 
                 {/* Diferencial */}
