@@ -1,7 +1,6 @@
 .accordionWrapper {
     background: var(--primary-c);
     margin-bottom: 1.5rem;
-    padding: 1rem;
     position: relative;
     border-radius: 0.5rem;
     width: 30%;
@@ -43,7 +42,6 @@
     opacity: 0.5;
 }
 
-
 .header {
     display: flex;
     justify-content: space-between;
@@ -51,6 +49,17 @@
     cursor: pointer;
 }
 
+.iconArrow > path {
+    stroke: var(--primary-c-0-1);
+    stroke-width: .4px ;
+}
+
+.iconArrow {
+    color:  #515151;
+}
+.iconArrow:hover {
+    color: var(--primary-c-0-1);
+} 
 
 .titleGroup {
     gap: 1rem;
