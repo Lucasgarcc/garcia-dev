@@ -22,6 +22,16 @@
     font-size: 1.2rem;
 }
 
+.iconFront,
+.iconBack {
+    color: #515151;
+}
+
+.iconFront:hover, 
+.iconBack:hover {
+ color: var(--primary-c-0-1);
+}
+
 @media screen and (max-width: 428px)  {
     .technicalContainer {
         padding: 1.5rem;
