@@ -49,6 +49,17 @@
     cursor: pointer;
 }
 
+.iconArrow > path {
+    stroke: var(--primary-c-0-1);
+    stroke-width: .4px ;
+}
+
+.iconArrow {
+    color:  #515151;
+}
+.iconArrow:hover {
+    color: var(--primary-c-0-1);
+} 
 
 .titleGroup {
     gap: 1rem;

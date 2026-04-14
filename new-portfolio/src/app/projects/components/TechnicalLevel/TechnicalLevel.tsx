@@ -135,12 +135,12 @@ const TechnicalLevel = () => {
                 >
 
                 <Accordion title="Front End Developer" 
-                    icon={<CodeIcon />} 
+                    icon={<CodeIcon  className={styles.iconFront}/>} 
                     content={frontEnd} 
                 />
                 
                     <Accordion title="Back End Developer"
-                        icon={<GrNetworkDrive fontSize={'21'} />}
+                    icon={<GrNetworkDrive fontSize={'21'} className={styles.iconBack} />}
                         content={backEnd}
                 />
   

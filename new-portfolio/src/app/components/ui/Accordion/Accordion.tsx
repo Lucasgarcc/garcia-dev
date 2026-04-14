@@ -5,7 +5,7 @@ import { AccordionProps } from '@/app/core/interfaces/accordion';
 import styles from './Accordion.module.css';
 import { motion, AnimatePresence } from 'framer-motion';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { Icon } from '@mui/material';
+
 
 const Accordion = ({ icon, title, subtitle, content, className }: AccordionProps) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -30,7 +30,7 @@ const Accordion = ({ icon, title, subtitle, content, className }: AccordionProps
                     animate={{ rotate: isOpen ? 180 : 0 }}
                     transition={{ duration: 0.3 }}
                 >
-                    <ExpandMoreIcon className={styles.arrow} />
+                    <ExpandMoreIcon className={styles.iconArrow} sx={isOpen ? { color: 'var(--primary-c-0-1)', fontSize: 30 } : {fontSize: 30}}/>
                 </motion.div>
             </div>
 
@@ -40,7 +40,7 @@ const Accordion = ({ icon, title, subtitle, content, className }: AccordionProps
                         className={styles.list}
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ 
-                            padding: '2rem 1.5rem', height: 'auto', 
+                            padding: '1rem 1rem', height: 'auto', 
                             opacity: 1 
                         }}
                         exit={{ height: 0, opacity: 0 }}
