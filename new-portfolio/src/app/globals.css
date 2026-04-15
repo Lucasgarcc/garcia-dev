@@ -377,8 +377,6 @@ main {
     }
 }
 
-
-
 /* Projects */
 
 .project-content {
@@ -396,21 +394,24 @@ main {
     box-sizing: border-box;
 }
 
-.area.post-content {
+.area-container-post {
     margin-top: 8rem;
     max-width: max-content;
 }
 
-.area-content-skills, 
-.area-continer-technicalLevel {
+
+.area-container-skills, 
+.area-container-technicalLevel,
+.area-container-articles {
     width: 100%;
     margin-top: 22rem;
 }
 
 /* Para Tablets e Ipads */
 @media (max-width: 768px) {
-    .area-content-skills,
-    .area-continer-technicalLevel {
+    .area-container-skills,
+    .area-continer-technicalLevel,
+    .area-continer-articles  {
         margin-top: 15rem;
     }
 
@@ -418,9 +419,13 @@ main {
 
 /* Para Mobile */
 @media (max-width: 480px) {
-    .area-content-skills,
-    .area-continer-technicalLevel {
+    .area-container-skills,
+    .area-continer-technicalLevel,
+    .area-continer-articles  {
         margin-top: 10rem;
+    }
+    .area-container-post {
+        margin-top: 5rem;
     }
 }
 

@@ -23,6 +23,7 @@ const Header = () => {
             { id: 'post', label: 'Post', href: '/projects', page: 'projects', type: 'section' },
             { id: 'skills', label: 'Habilidades', href: '/projects', page: 'projects', type: 'section' },
             { id: 'technicalLevel', label: 'Nível Técnico', href: '/projects', page: 'projects', type: 'section' },
+            { id: 'articles', label: 'Artigos Tech', href: '/projects', page: 'projects', type: 'section' },
             { id: 'portfolio', label: 'Portfólio', href: '/projects', page: 'projects', type: 'section' },
         ];
 
