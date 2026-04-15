@@ -5,6 +5,7 @@ import { useNavigation } from '@/core/context/NavigationContext';
 import Post from './Post/Post';
 import Skills from './Skills/Skils';
 import TechnicalLevel from './TechnicalLevel/TechnicalLevel';
+import Articles from './Articles/Articles';
 
 interface ProjectsProps {
     children?: ReactNode;
@@ -41,7 +42,7 @@ const MainProject = ({ children }: ProjectsProps) => {
                     whileInView="visible"
                     viewport={{ once: false, amount: 0.3 }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
-                    className="area-post-content"
+                    className="area-container-post"
                 >
 
                     <motion.div
@@ -58,7 +59,7 @@ const MainProject = ({ children }: ProjectsProps) => {
                         />
 
                     </motion.div>
-      
+
                 </motion.section>
 
                 {/* Skills */}
@@ -68,7 +69,7 @@ const MainProject = ({ children }: ProjectsProps) => {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.3 }}
-                    className="area-content-skills"
+                    className="area-container-skills"
                 >
                     <Skills />
                 </motion.section>
@@ -80,10 +81,32 @@ const MainProject = ({ children }: ProjectsProps) => {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: false, amount: 0.3 }}
-                    className="area-continer-technicalLevel"
+                    className="area-container-technicalLevel"
                 >
                     <TechnicalLevel />
                 </motion.section>
+
+                {/* Artigos */}
+                <motion.section
+                    id="articles"
+                    ref={projectRefs.articles}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: false, amount: 0.3 }}
+                    transition={{ duration: 0.8, delay: 0.4 }}
+                    className="area-container-articles"
+
+                >
+                    {/*
+                        <Link href={`/articles/${posts[0].slug}`} scroll={false}>
+                            <Button>
+                                Ler Artigo completo
+                            </Button>
+                        </Link> 
+                    */}
+                        <Articles />
+                    </motion.section>
+
 
                 {/* Diferencial */}
                 <motion.section
@@ -94,7 +117,7 @@ const MainProject = ({ children }: ProjectsProps) => {
                     whileInView="visible"
                     viewport={{ once: false, amount: 0.3 }}
                     transition={{ duration: 0.8, delay: 0.4 }}
-                    className="area-continer-differential"
+                    className="area-container-differential"
 
                 >
                 </motion.section>
@@ -109,7 +132,7 @@ const MainProject = ({ children }: ProjectsProps) => {
                     whileInView="visible"
                     viewport={{ once: false, amount: 0.3 }}
                     transition={{ duration: 0.8, delay: 0.5 }}
-                    className="area-continer-contact-me"
+                    className="area-container-contact-me"
 
                 >
 

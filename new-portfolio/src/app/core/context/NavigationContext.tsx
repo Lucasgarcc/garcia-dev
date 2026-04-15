@@ -9,7 +9,11 @@ const NavigationContext = createContext<NavigationTypes | null>(null);
 const NavigationProvider = ({ children }: { children: React.ReactNode }) => {
     const pathname = usePathname();
 
-    const page: NavigationPage = pathname.startsWith('/projects') ? 'projects' : 'home';
+    const page: NavigationPage = useMemo(() => {
+        if (pathname.startsWith('/articles')) return 'articles';
+        if (pathname.startsWith('/projects')) return 'projects';
+        return 'home';
+    }, [pathname]);
 
     // ---------- HOME REFS ----------
     const intro = useRef<HTMLElement>(null);
@@ -23,19 +27,28 @@ const NavigationProvider = ({ children }: { children: React.ReactNode }) => {
     const skills = useRef<HTMLElement>(null);
     const technicalLevel = useRef<HTMLElement>(null);
     const portfolio = useRef<HTMLElement>(null);
-    const posts = useRef<HTMLElement>(null);
+    const articles = useRef<HTMLElement>(null);
 
+    // ---------- ARTICLES REFS (Novo) ----------
+    // Referências para a estrutura modular do artigo
+    const artContent = useRef<HTMLElement>(null); 
+    const artCode = useRef<HTMLElement>(null);   
+    const artRelated = useRef<HTMLElement>(null); 
 
     const [active, setActive] = useState<string | null>(null);
 
     // refs ativas por página
-    const pageRefs = useMemo(
-        () =>
-            page === 'home'
-                ? { intro, about, timeline, differential, contact }
-                : { post, skills, technicalLevel, portfolio, posts, differential },
-        [page]
-    );
+    const pageRefs = useMemo(() =>{
+        switch (page) {
+            case 'articles':
+                return { artContent, artCode, artRelated };
+            case 'projects':
+                return { post, skills, technicalLevel, articles, portfolio,  differential };
+            default:
+                return { intro, about, timeline, differential, contact };
+            }
+     
+    }, [page]);
 
     // ---------- INTERSECTION OBSERVER ----------
     useEffect(() => {
@@ -81,7 +94,8 @@ const NavigationProvider = ({ children }: { children: React.ReactNode }) => {
                 page,
                 refs: {
                     home: { intro, about, timeline, differential, contact },
-                    projects: { post, skills, technicalLevel, portfolio, posts, differential },
+                    projects: { post, skills, technicalLevel, articles ,portfolio, differential },
+                    articles: { artContent, artCode, artRelated }
                 },
                 active,
                 setActive,
