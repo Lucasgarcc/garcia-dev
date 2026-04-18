@@ -7,7 +7,7 @@ const nextConfig: NextConfig = {
     },
 
     webpack(config) {
-        // 1. Localiza a regra padrão do Next.js que gerencia SVGs para excluí-la
+        // Localiza a regra padrão do Next.js que gerencia SVGs para excluí-la
         const fileLoaderRule = config.module.rules.find((rule: any) =>
             rule.test?.test?.('.svg'),
         );
@@ -16,9 +16,9 @@ const nextConfig: NextConfig = {
             fileLoaderRule.exclude = /\.svg$/i;
         }
 
-        // 2. Adiciona as novas regras separadas
+        //  Adiciona as novas regras separadas
         config.module.rules.push(
-            // Regra A: Quando o import terminar em ?url, trata como recurso estático (URL string)
+  
             {
                 test: /\.svg$/i,
                 resourceQuery: /url/, // *.svg?url
@@ -27,7 +27,10 @@ const nextConfig: NextConfig = {
                     filename: 'static/chunks/images/[name].[hash][ext]',
                 },
             },
-            // Regra B: Quando o import NÃO tiver ?url, trata como Componente React (SVGR)
+            {
+                test: /\.md$/,
+                type: 'asset/source', // Isso faz o Next.js ler o .md como string pura
+            },
             {
                 test: /\.svg$/i,
                 issuer: fileLoaderRule.issuer,

@@ -4,3 +4,7 @@ export interface BlogCardProps {
     size: 'small' | 'large' | 'tall';
     post: Post;
 }
+
+export interface ArticleGridProps {
+    relatedPosts: Post[]; // Aqui você mata o erro 'any'
+}

@@ -1,5 +1,6 @@
 export interface MainArticleProps {
     post: {
+        slug: string;
         title: string;
         content: string;
         category: string;
@@ -7,3 +8,4 @@ export interface MainArticleProps {
         readTime?: string;
     };
 }
+

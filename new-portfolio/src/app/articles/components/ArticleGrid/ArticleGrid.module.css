@@ -1,0 +1,52 @@
+.gridContainer {
+    padding: 2rem; /* Espaço generoso após o conteúdo do artigo */
+    padding-bottom: 5rem;
+    isolation: isolate;
+}
+
+.gridHeader {
+    margin-bottom: 3rem;
+}
+
+.gridTitle {
+    font-family: var(--font-title);
+    font-size: 1.5rem;
+    color: var(--color-purple-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+}
+
+/*.gridLayout  {
+    padding: 2rem;
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: auto;  Altura base para os blocos
+    gap: 1.5rem;
+}
+*/
+
+.gridLayout {
+    display: grid;
+    /* Grid responsivo que você já domina */
+    grid-template-columns: repeat(auto-fill, minmax(18%, 1fr));
+    gap: 1.5rem;
+}
+/* Exemplo de como usar os tamanhos da sua interface */
+.gridLayout  :global(.large) {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.gridLayout  :global(.tall) {
+  grid-row: span 2;
+}
+
+@media (max-width: 768px) {
+  .gridLayout  {
+    padding: .5rem;
+    grid-template-columns: 1fr;
+    max-width: 100%; 
+    /* No mobile vira lista única */
+  }
+}

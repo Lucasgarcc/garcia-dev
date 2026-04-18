@@ -97,15 +97,9 @@ const MainProject = ({ children }: ProjectsProps) => {
                     className="area-container-articles"
 
                 >
-                    {/*
-                        <Link href={`/articles/${posts[0].slug}`} scroll={false}>
-                            <Button>
-                                Ler Artigo completo
-                            </Button>
-                        </Link> 
-                    */}
-                        <Articles />
-                    </motion.section>
+        
+                    <Articles />
+                </motion.section>
 
 
                 {/* Diferencial */}

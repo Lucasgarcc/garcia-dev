@@ -20,11 +20,17 @@ declare module '*.svg?url' {
     export default content;
 }
 
-
 declare module '*.svg' {
     import React from 'react';
     const ReactComponent: React.FC<React.SVGProps<SVGSVGElement>>;
     export default ReactComponent;
 }
 
-// ... as outras declarações de .png, .jpg, etc.
+declare module '*.md' {
+    const content: string;
+    export default content;
+}
+
+// No seu arquivo de definições (.d.ts)
+declare module 'react-markdown';
+declare module 'remark-gfm';

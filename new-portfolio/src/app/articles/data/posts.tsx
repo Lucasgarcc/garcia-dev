@@ -1,7 +1,15 @@
 import { Post } from '@/core/interfaces/post';
+
+/* bg images */
 import avatar from '../../../assets/avatar.png';
 import architecture from '../../../assets/bg-architecture.svg?url';
 import mind from '../../../assets/mind.webp';
+
+/* Markdowns Mds */
+import fremeworkMd  from './contentMds/JS.md';
+import nginxMd from './contentMds/Nginx.md';
+import mindMd from './contentMds/Mind.md'
+import architectureMd from './contentMds/architecture.md';
 
 export const posts: Post[] = [
     {
@@ -10,10 +18,10 @@ export const posts: Post[] = [
         excerpt: 'Como construir um sistema de reatividade e renderização sem depender de bibliotecas externas.',
         tags: ['Front End Developement'],
         imageUrl: 'https://wallpaperbat.com/img/156532-javascript-minimalism-wallpaper-hd-desktop-and-mobile-background.jpg', // Imagem 3D/técnica sutil
-        author: { name: 'Lucas Garcia', avatar: avatar.src},
-        date: '10 min read',
+        author: { name: 'Lucas Garcia', avatar: avatar.src },
+        date: 'Abril 18, 2026',
         category: 'JavaScript',
-        content: 'Conteúdo completo...'
+        content: fremeworkMd
     },
     {
         slug: 'nginx-reverse-proxy',
@@ -22,9 +30,9 @@ export const posts: Post[] = [
         tags: ['DevOps'],
         imageUrl: 'https://nginxblog-8de1046ff5a84f2c-endpoint.azureedge.net/blobnginxbloga72cde487e/wp-content/uploads/2024/11/Feature-LI-Alt-1200x628-2.png',
         author: { name: 'Lucas Garcia', avatar: avatar.src },
-        date: 'Feb 16, 2021',
+        date: 'Março 16, 2026',
         category: 'Orquestrador Front End',
-        content: 'Conteúdo técnico sobre Nginx...'
+        content: nginxMd
     },
     {
         slug: 'escalabilidade-frontend',
@@ -34,8 +42,8 @@ export const posts: Post[] = [
         imageUrl: architecture,
         author: { name: 'Lucas Garcia', avatar: avatar.src },
         category: 'Arquitetura de Software',
-        date: 'Feb 18, 2021',
-        content: 'Patterns de escalabilidade...'
+        date: 'Março 20, 2026',
+        content: architectureMd
     },
     {
         slug: 'pensamento-logico-dev',
@@ -45,7 +53,7 @@ export const posts: Post[] = [
         imageUrl: mind.src,
         author: { name: 'Lucas Garcia', avatar: avatar.src },
         category: 'Lógica',
-        date: 'Feb 20, 2021',
-        content: 'Metodologias de lógica...'
+        date: 'Abril 10, 2026',
+        content: mindMd 
     }
 ];
