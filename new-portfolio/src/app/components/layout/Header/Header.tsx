@@ -44,12 +44,9 @@ const Header = () => {
         <AppBar
             position="fixed"
             sx={{
-                background: 'rgba(255, 255, 255, 0.05)', // Transparência leve
-                backdropFilter: 'blur(10px)', // Efeito "Glassmorphism"
+                background: 'none', // Efeito "Glassmorphism"
                 color: 'var(--color-header)',
-                boxShadow: 'none',
-                borderBottom: '1px solid rgba(255, 255, 255, 0.1)', // Linha sutil
-                top: 0,
+                boxShadow: 'none', 
                 zIndex: 1100
             }}
         >

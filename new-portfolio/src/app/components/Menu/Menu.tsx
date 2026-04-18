@@ -18,6 +18,8 @@ import MmsIcon from '@mui/icons-material/Mms';
 import InsightsIcon from '@mui/icons-material/Insights';
 import FeedIcon from '@mui/icons-material/Feed';
 import { MdPsychology } from "react-icons/md";
+import SpeakerNotesIcon from '@mui/icons-material/SpeakerNotes';
+
 const Menu = ({ items }: { items: NavItem[] }) => {
     const { scrollToSection, active, setActive, page } = useNavigation();
     const [open, setOpen] = useState(false);
@@ -35,6 +37,7 @@ const Menu = ({ items }: { items: NavItem[] }) => {
         skills: <MdPsychology fontSize={26.5} />,
         technicalLevel: <InsightsIcon sx={{ fontSize: 25 }} className={styles.icon} />,
         articles: <FeedIcon sx={{ fontSize: 25 }} className={styles.icon} />,
+        artRelated: <SpeakerNotesIcon sx={{ fontSize: 23 }} className={styles.icon} />
     };
 
 
