@@ -1,38 +1,3 @@
-/*.grid {
-    display: grid;
-   Cria 6 colunas iguais 
-    grid-template-columns: repeat(6, 1fr);
-    justify-items: center;
-    gap: 3rem;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
-}*/
-
-/* RESPONSIVIDADE 
-@media (max-width: 1024px) {
-    .grid {
-        display: inline-grid;
-        justify-items: center;
-        grid-template-columns: repeat(4, 1fr);  4 colunas em tablets 
-    }
-}
-
-@media (max-width: 768px) {
-    .grid {
-        grid-template-columns: repeat(3, 1fr); 3 colunas em mobile 
-        gap: 3.5rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .grid {
-        column-gap: 0;
-        grid-template-columns: repeat(2, 1fr); 2 colunas em celulares pequenos 
-    }
-}*/
-
 .wrapper {
     width: 100%;
     height: auto;

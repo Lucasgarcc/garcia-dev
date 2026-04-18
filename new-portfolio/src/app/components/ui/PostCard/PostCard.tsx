@@ -16,7 +16,7 @@ const PostCard = ({ size, post }: BlogCardProps) => {
     
     return (
         /* <Link href={`/articles/${post.slug}`} scroll={false} className={`${styles.linkWrapper} ${sizeClass}`}>*/
-        <Link href={`/projects`} scroll={false} className={`${styles.linkWrapper} ${sizeClass}`}>
+        <Link href={`/articles/${post.slug}`} scroll={false} className={`${styles.linkWrapper} ${sizeClass}`}>
             <motion.article
                 className={`${styles.baseCard} ${sizeClass}`}
                 whileHover={{ scale: 1.02, boxShadow: "0px 10px 40px rgba(0,0,0,0.5)" }}
