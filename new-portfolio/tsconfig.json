@@ -47,7 +47,8 @@
     "src/**/*.ts",
     "src/**/*.tsx",
     "globals.d.ts",
-    ".next/dev/types/**/*.ts"
+    ".next/dev/types/**/*.ts",
+    "src/svg.d.ts"
   ],
   "exclude": [
     "node_modules"

@@ -81,11 +81,17 @@
 @media screen and (max-width: 1024px) {
     .wrapper {
         margin-bottom: 3rem;
+        align-items: center;
     }
 }
 
 @media screen and (max-width: 428px) {
     .container {
+        max-width: 95%;
         gap: 1rem; 
+    }
+
+    .fadeMask {
+     max-width: 400px;
     }
 }

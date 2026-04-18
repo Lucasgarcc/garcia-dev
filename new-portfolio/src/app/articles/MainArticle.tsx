@@ -2,28 +2,26 @@
 
 import { motion } from 'framer-motion';
 import { useNavigation } from '@/core/context/NavigationContext';
-
-
-interface MainArticleProps {
-    post: {
-        title: string;
-        content: string;
-    };
-}
-
+import { MainArticleProps } from '@/core/interfaces/mainArticle/mainArticle';
+import ArticleHeader
+ from './components/ArticleHeader/ArticleHeader';
 const MainArticle = ({ post }: MainArticleProps) => {
+    
     const { page, refs } = useNavigation();
 
-    
     if (page !== 'articles') return null;
 
     return (
         <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="article-wrapper"
+            className="mainArticle"
         >
-            <section ref={refs.articles.artContent} id="artContent">
+            <ArticleHeader
+                title={post.title}
+                category={post.category || 'Tech'} // Garanta que seu post tenha essa prop
+                date={post.date}
+                readTime={post.readTime}
+            />
+            <section ref={refs.articles.artContent} className='sectionWrapper' id="artContent">
                 <h1>{post.title}</h1>
                 <div className="markdown-body">
                     {post.content}

@@ -48,6 +48,9 @@
     --logo-gradient-stop1: #fffffffa;
     --logo-gradient-stop2: #ffffff;
     --logo-gradient-stop3: #ffffff;
+    
+    --JS-bg-color: #facc15;
+
     --gradient-start: #ffffff00;
     --gradient-mid: #eeffdc00;
     --gradient-line: 90deg, rgb(23, 23, 23) 0%, rgb(10, 10, 10) 100%;
@@ -171,6 +174,16 @@ main {
   justify-content: center;
   width: 100%;
   overflow-x: hidden;
+}
+
+.mainLayout{
+  position: relative;
+  z-index: 10;
+}
+
+.mainArticle {
+    width: 100%;
+	min-height: 100vh;
 }
 
 .sectionWrapper {
@@ -395,7 +408,7 @@ main {
 }
 
 .area-container-post {
-    margin-top: 8rem;
+    margin-top: 5rem;
     max-width: max-content;
 }
 
@@ -404,8 +417,9 @@ main {
 .area-container-technicalLevel,
 .area-container-articles {
     width: 100%;
-    margin-top: 22rem;
+    margin-top: 10rem;
 }
+
 
 /* Para Tablets e Ipads */
 @media (max-width: 768px) {
@@ -425,7 +439,7 @@ main {
         margin-top: 10rem;
     }
     .area-container-post {
-        margin-top: 5rem;
+        margin-top: 1.5rem;
     }
 }
 

@@ -4,16 +4,16 @@ import styles from './PostCard.module.css'
 import { motion } from "framer-motion";
 import Image from 'next/image'; 
 import Link from 'next/link';
-import { Post } from '@/app/articles/data/posts'; 
+import { BlogCardProps } from '@/app/core/interfaces/blogCard';
 
-interface BlogCardProps {
-    size: 'small' | 'large' | 'tall';
-    post: Post;
-}
 
 const PostCard = ({ size, post }: BlogCardProps) => {
     const sizeClass = styles[`card${size.charAt(0).toUpperCase() + size.slice(1)}`];
 
+    const bgUrl = typeof post.imageUrl === 'object'
+        ? (post.imageUrl as any).src
+        : post.imageUrl;
+    
     return (
         /* <Link href={`/articles/${post.slug}`} scroll={false} className={`${styles.linkWrapper} ${sizeClass}`}>*/
         <Link href={`/projects`} scroll={false} className={`${styles.linkWrapper} ${sizeClass}`}>
@@ -22,9 +22,7 @@ const PostCard = ({ size, post }: BlogCardProps) => {
                 whileHover={{ scale: 1.02, boxShadow: "0px 10px 40px rgba(0,0,0,0.5)" }}
                 style={{
                     // Aplicação da imagem de fundo técnica
-                    backgroundImage: `linear-gradient(to bottom, rgba(30,30,40,0.4) 0%, rgba(30,30,40,0.95) 100%), url(${post.imageUrl})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center'
+                    backgroundImage: `linear-gradient(to bottom, rgba(30,30,40,0.2) 0%, rgba(30,30,40,0.95) 100%), url("${bgUrl}")`,
                 }}
             >
                 {/* 1. Tag (Badge) */}

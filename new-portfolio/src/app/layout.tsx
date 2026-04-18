@@ -61,7 +61,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
                         <Header />
                     </header>
 
-                    <main>
+                    <main className='mainLayout'>
                         {children}
                     </main>
 
