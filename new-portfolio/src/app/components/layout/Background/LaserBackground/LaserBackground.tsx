@@ -34,8 +34,11 @@ export default function InteractiveLaserLines() {
             init={particlesInit}
             ref={particlesRef}
             options={{
-                fullScreen: { enable: true },
-                background: { color: 'var(--background)' },
+                fullScreen: { 
+                    enable: true, 
+                    zIndex: -1
+                },
+                background: { color: 'transparent' },
                 fpsLimit: 120,
                 interactivity: {
                     events: {

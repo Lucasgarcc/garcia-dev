@@ -112,8 +112,9 @@ const TechnicalLevel = () => {
                 transition={{ duration: 0.8 }}
             >
                 <Typography
-                    className={styles.TchnicalTitle}
+                    className={styles.technicalTitle}
                     textTransform={'uppercase'}
+                    marginTop={8}
                     variant="h4"
                     align='center'
                     textAlign={'center'}
