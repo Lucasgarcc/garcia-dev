@@ -52,7 +52,7 @@ export const posts: Post[] = [
         tags: ['Engineering'],
         imageUrl: mind.src,
         author: { name: 'Lucas Garcia', avatar: avatar.src },
-        category: 'Lógica',
+        category: 'Raciocínio Lógico',
         date: 'Abril 10, 2026',
         content: mindMd 
     }
