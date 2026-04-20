@@ -29,7 +29,7 @@ const Header = () => {
         ],
         // Fallback para páginas de artigos ou rotas desconhecidas
         article: [
-            { id: 'projects', label: 'Projetos', href: '/projects', page: 'projects', type: 'route' },
+            { id: 'projects', label: 'Portfólio', href: '/projects', page: 'projects', type: 'route' },
             { id: 'artContent', label: 'Conteúdo', href: '/articles', page: 'articles', type: 'section' },
             { id: 'artRelated', label: 'Outros Artigos', href: '/articles', page: 'articles', type: 'section' },
         ]
