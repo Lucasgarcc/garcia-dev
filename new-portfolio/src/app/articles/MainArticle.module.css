@@ -1,0 +1,101 @@
+
+.container {
+    margin: 0 auto;
+    padding: 2rem;
+    width: 100%;
+    max-width: 1200px;
+    box-sizing: border-box;
+}
+
+.artcleTitle {
+    background: var(--background-text-liner);
+}
+/* O container que abraça o post.content */
+.markdownBody {
+
+    line-height: 1.8;
+    font-size: 1.125rem;
+    font-family: var(--font-inter); /* Ou sua fonte de leitura */
+}
+
+/* Títulos dentro do conteúdo */
+.markdownBody h2 {
+    font-family: var(--font-title);
+    font-size: 2rem;
+    margin: 3rem 0 1.5rem 0;
+    font-weight: 700;
+}
+
+.markdownBody h3 {
+    color: var(--primary-c-3); /* Use seu roxo para subtítulos */
+    font-size: 1.5rem;
+    margin: 2rem 0 1rem 0;
+}
+
+/* Parágrafos e espaçamento */
+.markdownBody p {
+    margin-bottom: 1.5rem;
+}
+
+/* Listas estilizadas */
+.markdownBody ul, .markdownBody ol {
+    margin: 1.5rem 0;
+    padding-left: 1.5rem;
+}
+
+.markdownBody li {
+  margin-bottom: 0.5rem;
+}
+
+/* Links no estilo "Under the Hood" */
+.markdownBody a {
+  color: #4a880c;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(155, 247, 85, 0.3);
+  transition: all 0.2s ease;
+}
+
+.markdownBody a:hover {
+  background: rgba(204, 247, 85, 0.1);
+  border-bottom-color: #538d03;
+}
+
+/* Citações (Blockquotes) */
+.markdownBody blockquote {
+  border-left: 4px solid #8dd900;
+  padding: 1rem 2rem;
+  background: rgba(255, 255, 255, 0.03);
+  margin: 2rem 0;
+  font-style: italic;
+  border-radius: 0 8px 8px 0;
+}
+
+.relatedSection {
+    padding: 2rem;
+}
+
+.relatedTitle {
+    padding-left: 2rem;
+    color: var(--color-text-secondary-c);
+}
+
+/* Imagens responsivas */
+.markdownBody img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin: 2rem 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0rem  1rem;
+    }
+    .markdownBody {
+        padding: 1rem;
+    }
+    .relatedSection {
+        padding: 0rem;
+    }
+}

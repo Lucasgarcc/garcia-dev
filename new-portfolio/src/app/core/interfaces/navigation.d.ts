@@ -1,6 +1,5 @@
-import type React from 'react';
 
-export type NavigationPage = 'home' | 'projects';
+export type NavigationPage = 'home' | 'projects' | 'articles'; 
 
 export type SectionRefs = Record<
     string,
@@ -13,6 +12,7 @@ export interface NavigationTypes {
     refs: {
         home: SectionRefs;
         projects: SectionRefs;
+        articles: SectionRefs;
     };
 
     active: string | null;

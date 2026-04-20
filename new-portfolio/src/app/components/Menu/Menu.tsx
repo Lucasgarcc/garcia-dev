@@ -14,8 +14,11 @@ import ViewTimelineIcon from '@mui/icons-material/ViewTimeline';
 import { FaLightbulb } from 'react-icons/fa';
 import ContactMailIcon from '@mui/icons-material/ContactMail';
 import FolderIcon from '@mui/icons-material/Folder';
-import PsychologyIcon from '@mui/icons-material/Psychology';
 import MmsIcon from '@mui/icons-material/Mms';
+import InsightsIcon from '@mui/icons-material/Insights';
+import FeedIcon from '@mui/icons-material/Feed';
+import { MdPsychology } from "react-icons/md";
+import SpeakerNotesIcon from '@mui/icons-material/SpeakerNotes';
 
 const Menu = ({ items }: { items: NavItem[] }) => {
     const { scrollToSection, active, setActive, page } = useNavigation();
@@ -31,7 +34,10 @@ const Menu = ({ items }: { items: NavItem[] }) => {
         contact: <ContactMailIcon sx={{ fontSize: 20 }} className={styles.icon} />,
         projects: <FolderIcon sx={{ fontSize: 20 }} className={styles.icon} />,
         post: <MmsIcon sx={{ fontSize: 20 }} className={styles.icon} />,
-        skills: <PsychologyIcon sx={{ fontSize: 32 }} className={styles.icon} />
+        skills: <MdPsychology fontSize={26.5} />,
+        technicalLevel: <InsightsIcon sx={{ fontSize: 25 }} className={styles.icon} />,
+        articles: <FeedIcon sx={{ fontSize: 25 }} className={styles.icon} />,
+        artRelated: <SpeakerNotesIcon sx={{ fontSize: 23 }} className={styles.icon} />
     };
 
 

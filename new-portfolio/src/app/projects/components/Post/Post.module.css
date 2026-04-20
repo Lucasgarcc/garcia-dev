@@ -52,12 +52,18 @@
 @media screen and (max-width: 1024px) {
 
     .postContent {
-
         flex-direction: column;
+    }
+    .postTitle {
+        margin: .4rem !important;
+        padding-left: initial;
+        padding: .5rem 1.5rem;
     }
 
     .postContainer {
         grid-template-columns: 1fr;
+        padding: .5rem 2rem;
+        gap: 3rem;
     }
     
 }

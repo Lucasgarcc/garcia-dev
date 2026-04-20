@@ -1,55 +1,66 @@
-
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
     reactStrictMode: true,
+    experimental: {
+        forceSwcTransforms: true,
+    },
 
-  experimental: {
-    forceSwcTransforms: true,
-  },
+    webpack(config) {
+        // Localiza a regra padrão do Next.js que gerencia SVGs para excluí-la
+        const fileLoaderRule = config.module.rules.find((rule: any) =>
+            rule.test?.test?.('.svg'),
+        );
 
-    webpack(config: { module?: { rules: unknown[] } }) {
-    // Encontra a regra que carrega arquivos que contenham SVG, protegendo o acesso a test
-    const fileLoaderRule = config.module?.rules.find(
-        (rule): rule is { test: RegExp; exclude?: RegExp } => {
-            const candidate = rule as { test?: unknown };
-            return candidate.test instanceof RegExp && candidate.test.test('.svg');
+        if (fileLoaderRule) {
+            fileLoaderRule.exclude = /\.svg$/i;
         }
-    );
 
-    if (fileLoaderRule) {
-        fileLoaderRule.exclude = /\.svg$/i;
-    }
-
-    config.module!.rules.push({
-        test: /\.svg$/i,
-        issuer: /\.[jt]sx?$/,
-        use: [
+        //  Adiciona as novas regras separadas
+        config.module.rules.push(
+  
             {
-                loader: '@svgr/webpack',
-                options: {
-                icon: true,
-                svgo: true,
-                svgoConfig: {
-                    plugins: [
-                        {
-                            name: 'removeViewBox',
-                            active: false,
-                        },
-                    ],
-                    },
-                    svgProps: {
-                        fill: 'currentColor',
-                        stroke: 'currentColor'
-                    },
+                test: /\.svg$/i,
+                resourceQuery: /url/, // *.svg?url
+                type: 'asset/resource',
+                generator: {
+                    filename: 'static/chunks/images/[name].[hash][ext]',
                 },
             },
-        ],
-    });
+            {
+                test: /\.md$/,
+                type: 'asset/source', // Isso faz o Next.js ler o .md como string pura
+            },
+            {
+                test: /\.svg$/i,
+                issuer: fileLoaderRule.issuer,
+                resourceQuery: { not: [...(fileLoaderRule.resourceQuery?.not || []), /url/] },
+                use: [
+                    {
+                        loader: '@svgr/webpack',
+                        options: {
+                            icon: true,
+                            svgo: true,
+                            svgoConfig: {
+                                plugins: [
+                                    {
+                                        name: 'removeViewBox',
+                                        active: false,
+                                    },
+                                ],
+                            },
+                            svgProps: {
+                                fill: 'currentColor',
+                                stroke: 'currentColor'
+                            },
+                        },
+                    },
+                ],
+            },
+        );
 
-    return config;
-    }
-
+        return config;
+    },
 };
 
 export default nextConfig;
