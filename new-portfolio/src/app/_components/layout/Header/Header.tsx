@@ -1,7 +1,7 @@
 'use client';
 
 import { AppBar, Toolbar, Typography } from '@mui/material';
-import Menu from '@/components/Menu/Menu';
+import Menu from '@/app/_components/Menu/Menu';
 import styles from './Header.module.css';
 import { NavItem } from '@/core/interfaces/nav';
 import { useNavigation } from '@/core/context/NavigationContext';
@@ -29,7 +29,7 @@ const Header = () => {
         ],
         // Fallback para páginas de artigos ou rotas desconhecidas
         article: [
-            { id: 'projects', label: 'Projetos', href: '/projects', page: 'projects', type: 'route' },
+            { id: 'projects', label: 'Portfólio', href: '/projects', page: 'projects', type: 'route' },
             { id: 'artContent', label: 'Conteúdo', href: '/articles', page: 'articles', type: 'section' },
             { id: 'artRelated', label: 'Outros Artigos', href: '/articles', page: 'articles', type: 'section' },
         ]
@@ -46,7 +46,7 @@ const Header = () => {
             sx={{
                 background: 'none', // Efeito "Glassmorphism"
                 color: 'var(--color-header)',
-                boxShadow: 'none', 
+                boxShadow: 'none',
                 zIndex: 1100
             }}
         >

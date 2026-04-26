@@ -3,7 +3,7 @@
 import styles from './TechnicalLevel.module.css';
 import { motion } from 'framer-motion';
 import { Typography } from '@mui/material';
-import Accordion from '@/app/components/ui/Accordion/Accordion';
+import Accordion from '@/app/_components/ui/Accordion/Accordion';
 import { BsFiletypeHtml } from "react-icons/bs";
 import { BsFiletypeScss } from "react-icons/bs";
 
@@ -83,14 +83,14 @@ const backEnd = [
     {
         title: 'SQL',
         progess: 50,
-        iconStask: <PiFileSql  className={styles.icon} />
+        iconStask: <PiFileSql className={styles.icon} />
     },
     {
         title: 'Postgresql',
         progess: 40,
-        iconStask: <SiPostgresql 
+        iconStask: <SiPostgresql
             strokeWidth={.6} // Aumente este valor para engrossar
-            stroke="currentColor" className={styles.icon} 
+            stroke="currentColor" className={styles.icon}
         />
     },
     {
@@ -98,7 +98,7 @@ const backEnd = [
         progess: 60,
         iconStask: <RiNpmjsLine className={styles.icon} />
     },
-    
+
 ];
 
 
@@ -125,28 +125,28 @@ const TechnicalLevel = () => {
                 >
                     Nível Técnico
                 </Typography>
-            
-            </motion.div>   
-                <motion.div
-                    initial={{ opacity: 0, x: -60 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: false, amount: 0 }}
-                    transition={{ duration: 0.8, delay: 0.4 }}
-                    className={`${styles.technicalContainer} contatiner`}
-                >
 
-                <Accordion title="Front End Developer" 
-                    icon={<CodeIcon  className={styles.iconFront}/>} 
-                    content={frontEnd} 
-                />
-                
-                    <Accordion title="Back End Developer"
-                    icon={<GrNetworkDrive fontSize={'21'} className={styles.iconBack} />}
-                        content={backEnd}
-                />
-  
             </motion.div>
-   
+            <motion.div
+                initial={{ opacity: 0, x: -60 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: false, amount: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className={`${styles.technicalContainer} contatiner`}
+            >
+
+                <Accordion title="Front End Developer"
+                    icon={<CodeIcon className={styles.iconFront} />}
+                    content={frontEnd}
+                />
+
+                <Accordion title="Back End Developer"
+                    icon={<GrNetworkDrive fontSize={'21'} className={styles.iconBack} />}
+                    content={backEnd}
+                />
+
+            </motion.div>
+
         </>
     )
 };

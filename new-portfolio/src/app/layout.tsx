@@ -2,11 +2,11 @@
 import './globals.css';
 import { Roboto_Mono } from 'next/font/google';
 import type { ReactNode } from 'react';
-import Header from '@/components/layout/Header/Header';
-import LaserBackground from '@/components/layout/Background/LaserBackground/LaserBackground';
+import Header from '@/app/_components/layout/Header/Header';
+import LaserBackground from '@/app/_components/layout/Background/LaserBackground/LaserBackground';
 import localFont from "next/font/local";
 import Providers from './Providers';
-import Footer from '@/components/layout/Footer/Footer';
+import Footer from '@/app/_components/layout/Footer/Footer';
 
 const gugi = localFont({
     src: [
