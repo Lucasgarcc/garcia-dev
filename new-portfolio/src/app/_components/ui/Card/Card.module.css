@@ -1,0 +1,119 @@
+.overlay {   
+    margin:  0 auto;
+    padding: 0 1rem;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.826);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.cardHeader {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card {
+    padding: 4.5rem 2.5rem ;
+    position: relative;
+    inset: -2rem  0rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    width: 32%;
+    height: auto;
+    background-color: var(--primary-c-0-1);
+    color: var(--color-text-c);
+    border-radius: .25rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .16);
+    transition: all 0.2s ease;
+}
+
+.closeButton {
+    position: relative;
+    inset: -3rem 0rem 0;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;    
+}
+
+.closeButton:hover {
+    padding: .5rem;
+    background: transparent;
+    color: #79a447;
+}
+
+.title, 
+.subtitle {
+    margin-bottom: var(--mb-1);
+    font-weight: var(--fw-bold);
+    font-family: var(--font-roboto);
+     color: #4b6c40;
+}
+
+.title {
+    font-size: var(--h2-font-size);
+}
+
+.subtitle {
+    font-size: var(--h3-font-size);
+}
+
+.list {
+    list-style: none;
+    display: grid;
+    row-gap: 1rem;
+    gap: 1.5rem;
+}
+
+.listItem {
+    display: inline-flex;
+    gap: 2rem;
+    color: var(--color-text);
+
+}
+.icon {
+    color: #298a05;
+}
+
+@media screen and (max-width: 1568px) {
+    .card{
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .card{
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .card{
+        width: 80%;
+        gap: 4.5rem;
+        height: 46%;
+    }
+    .closeButton  {
+      inset: -2rem 2rem 0;
+    }
+}
+
+@media screen and (max-width: 428px) {
+    .card{
+        padding: 2.5rem 2.5rem;
+        gap: 3rem;
+        width: 100%;
+    }
+    .closeButton {
+        inset: -2rem 2.5rem 0;
+    }
+
+    .list {
+        gap: 1rem;
+    }
+}
