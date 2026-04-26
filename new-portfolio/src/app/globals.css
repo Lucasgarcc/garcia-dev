@@ -50,6 +50,21 @@
     --logo-gradient-stop3: #ffffff;
     
     --JS-bg-color: #facc15;
+    --bg-grey: #6b7280;
+    --bg-orange: #ff4824;
+    --bg-blue: #4977ff;
+    --bg-yellow: #facc15;
+    --bg-red: #c90000;
+    --bg-green: #66ff00;
+    --bg-purple: #a78bfa;
+    --bg-furquiose: #03ffc8;
+
+    --tree-line: #30363d;
+    --tree-main: #58a6ff;
+    --tree-text: #f0f6fc;
+    --bg-dark: #0d1117;
+
+    --accent-blue: #1a9edb;
 
     --gradient-start: #ffffff00;
     --gradient-mid: #eeffdc00;
@@ -393,7 +408,8 @@ main {
 /* Projects */
 
 .project-content {
-    margin: 8rem auto;
+    margin: 0 auto;
+    margin-top: 6rem; /* Espaço para o scroll inicial */
     padding: 1.5rem;
     display: flex;
     align-items: center;
@@ -415,7 +431,8 @@ main {
 
 .area-container-skills, 
 .area-container-technicalLevel,
-.area-container-articles {
+.area-container-articles,
+.area-container-projects {
     width: 100%;
     margin-top: 10rem;
 }

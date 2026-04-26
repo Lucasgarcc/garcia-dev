@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import styles from './SkillExperience.module.css';
 import { CardUi } from "@/app/core/interfaces/cardUi";
 import { HiArrowRight } from "react-icons/hi";
-import Card from "../../../../components/ui/Card/Card"; 
+import Card from "../../../../_components/ui/Card/Card";
 
 const SkillExperience = ({ title, subtitle, icon, content }: CardUi) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
