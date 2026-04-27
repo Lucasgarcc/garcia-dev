@@ -136,7 +136,7 @@
 
 .contentGraph3D > canvas {
     pointer-events: auto; /* Só o canvas pega clique */
-    /*touch-action: none;    Impede o browser de tentar scrollar */
+    -webkit-tap-highlight-color: transparent;
 }
 
 .hidden2D {
@@ -192,8 +192,9 @@
         height: 100vh;
     }
     .contentGraph3D {
-        inset: 8rem 0 0;
-        height: 80vh;
+        inset: 0rem 0 0;
+        width: 100vw;
+        height: 90vh;
     }
     .buttonClose3D {
         max-width: 100%;

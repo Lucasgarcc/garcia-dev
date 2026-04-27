@@ -72,7 +72,7 @@ const GitGraph = () => {
 
             if (dist < threshold) {
                 hitDetected = true;
-                applyZoom(xPos, yBase - 200);
+                applyZoom(xPos, yBase - 100);
             }
         });
 
@@ -113,7 +113,7 @@ const GitGraph = () => {
         });
 
         gsap.to(illoRef.current, {
-            zoom: isMobile ? 0.35 : 0.45,
+            zoom: isMobile ? 0.40 : 0.45,
             duration: 0.8,
             ease: "power3.inOut"
         });
@@ -138,7 +138,7 @@ const GitGraph = () => {
             dragRotate: true,
             sortVerts: true,
             translate: { x: 0, y: 0, z: 0 },
-            zoom: isMobile ? 0.35 : 0.45,
+            zoom: isMobile ? 0.40 : 0.45,
         });
 
         illo.onDragStart = () => {
@@ -222,7 +222,7 @@ const GitGraph = () => {
             // Retângulo base
             const rect = new Zdog.Rect({
                 addTo: projectGroup,
-                width: 160, //260 8 projects
+                width: 200, //260 8 projects
                 height: 60,
                 translate: { x: xPos, y: yBase - 220 },
                 stroke: 10,
