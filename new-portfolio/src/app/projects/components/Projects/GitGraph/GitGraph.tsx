@@ -1,11 +1,12 @@
 'use client';
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, ReactNode } from 'react';
 import Zdog from 'zdog';
 import gsap from 'gsap';
 import gitProjects from '../data/gitProjects';
 import { useProjectsSelection } from '../context/ProjectsSelectionContext';
 import styles from './GitGraph.module.css';
 import useMediaQuery from '@/core/hooks/MediaQuery/MediQuery';
+import { LightingNode, ZdogIllustration } from '@/core/interfaces/gitProject'
 
 const COLORS = {
     main: '#378CE7',
@@ -20,75 +21,121 @@ const GitGraph = () => {
     const { selectedProjectId, setSelectedProject } = useProjectsSelection();
 
     // Refs para persistência de estado sem re-render
+    const nodesRef = useRef<LightingNode[]>([]);
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const illoRef = useRef<Zdog.Illustration | null>(null);
     const isInteractingRef = useRef(false);
     const isZoomedRef = useRef(false);
     const lastInteractionTimeRef = useRef(Date.now());
 
-    let spacingY = (selectedProjectId ? 260 : isMobile ? 260 : 200); //210 - selectedP.3D com 8 projects
+    let spacingY = (selectedProjectId ? 255  : isMobile && selectedProjectId ? 280 : isMobile ? 250 : 240); //210 - selectedP.3D com 8 projects
     const centerX = 250;
     let branchOffset = selectedProjectId ? 250 : 250;
-    const totalHeight = (selectedProjectId ? gitProjects.length + 1 : gitProjects.length + 1.7) * spacingY;
+    const heightMultiplier = selectedProjectId && isMobile ? 1 :  1.7 ;
+    const totalHeight = (gitProjects.length + heightMultiplier) && (selectedProjectId ? gitProjects.length + 1.5 : gitProjects.length + 1.7) * spacingY;
 
     isMobile ? (branchOffset = 250) && (spacingY = 270) : branchOffset = 230;
 
     const handleInteraction = (event: React.MouseEvent | React.TouchEvent) => {
+        // 1. Previne comportamentos estranhos do mobile (como scroll enquanto tenta clicar)
+        if (event.cancelable) event.preventDefault();
         event.stopPropagation();
+
         if (!canvasRef.current || !illoRef.current) return;
 
-        // Atualiza o tempo da última interação sempre que houver um clique/toque
         lastInteractionTimeRef.current = Date.now();
 
         const rect = canvasRef.current.getBoundingClientRect();
-        const touch = 'touches' in event.nativeEvent ?
-            (event.nativeEvent.touches[0] || event.nativeEvent.changedTouches[0]) :
-            (event as React.MouseEvent);
 
+        // 2. Normalização precisa para Mobile
+        let clientX, clientY;
+        if ('touches' in event.nativeEvent) {
+            // Usamos changedTouches para capturar o ponto exato do fim do toque ou toque rápido
+            const touch = event.nativeEvent.touches[0] || event.nativeEvent.changedTouches[0];
+            clientX = touch.clientX;
+            clientY = touch.clientY;
+        } else {
+            clientX = (event as React.MouseEvent).clientX;
+            clientY = (event as React.MouseEvent).clientY;
+        }
+
+        // 3. Ajuste de escala do Canvas (crucial para Mobile)
         const scaleX = canvasRef.current.width / rect.width;
         const scaleY = canvasRef.current.height / rect.height;
-        const mouseX = (touch.clientX - rect.left) * scaleX;
-        const mouseY = (touch.clientY - rect.top) * scaleY;
+        const mouseX = (clientX - rect.left) * scaleX;
+        const mouseY = (clientY - rect.top) * scaleY;
 
-        let hitDetected = false;
+        let bestCandidate = { index: -1, z: -Infinity, x: 0, y: 0 };
 
         gitProjects.forEach((project, i) => {
             const isRight = i % 2 !== 0;
             const xPos = isRight ? 180 : -180;
-            const yBase = isMobile ? 350 - (i * totalHeight / 10) : 500 - (i * totalHeight / 10);
+            const yBase = isMobile ? 350 - (i * totalHeight / 10) : 100 - (i * totalHeight / 10);
 
-            const getProjectedPos = (x: number, y: number) => {
-                const point = new Zdog.Vector({ x, y });
-                const transformed = point.rotate(illoRef.current!.rotate).add(illoRef.current!.translate);
+            const getProjectedPoint = (x: number, y: number) => {
+                // Criamos o vetor com a posição exata do desenho
+                let v = new Zdog.Vector({ x, y, z: 0 });
+
+                // APLICAMOS AS TRANSFORMAÇÕES NA ORDEM CORRETA
+                v.rotate(illoRef.current!.rotate);
+                v.add(illoRef.current!.translate);
+
                 return {
-                    x: (transformed.x * illoRef.current!.zoom) + (canvasRef.current!.width / 2),
-                    y: (transformed.y * illoRef.current!.zoom) + (canvasRef.current!.height / 2)
+                    x: (v.x * illoRef.current!.zoom) + (canvasRef.current!.width / 2),
+                    y: (v.y * illoRef.current!.zoom) + (canvasRef.current!.height / 2),
+                    z: v.z
                 };
             };
 
-            const posName = getProjectedPos(xPos, yBase);
-            const dist = Math.sqrt(Math.pow(mouseX - posName.x, 2) + Math.pow(mouseY - posName.y, 2));
-            const threshold = illoRef.current!.zoom < 0.5 ? 120 : 60;
+            // Alvos: Focamos 100% na Label e no Nó do Galho (longe do centro)
+            const labelPos = getProjectedPoint(xPos, yBase - 220);
+            const nodePos = getProjectedPoint(xPos, yBase);
 
-            if (dist < threshold) {
-                hitDetected = true;
-                applyZoom(xPos, yBase - 200);
+            // No panorâmico, o raio de colisão precisa ser grande o suficiente para o dedo
+            const currentZoom = illoRef.current!.zoom;
+            const hitRadius = isMobile ? ((totalHeight / 8) / currentZoom ) * 0.5 : 60;
+
+            const fingerOffset = isMobile ? 30 : 0;
+
+            const distLabel = Math.sqrt(
+                Math.pow(mouseX - labelPos.x, 2) +
+                Math.pow(mouseY - (labelPos.y + fingerOffset), 2)
+            );
+     
+            const distNode = Math.sqrt(Math.pow(mouseX - nodePos.x, 2) + Math.pow(mouseY - nodePos.y, 2));
+
+            if (distLabel < hitRadius || distNode < hitRadius) {
+              
+                if (labelPos.z > bestCandidate.z) {
+                    bestCandidate = {
+                        index: i,
+                        z: labelPos.z,
+                        x: xPos,
+                        y: yBase - 100
+                    };
+                }
             }
         });
 
-        if (!hitDetected && isZoomedRef.current) resetZoom();
+        if (bestCandidate.index !== -1) {
+            applyZoom(bestCandidate.x, bestCandidate.y);
+        } else if (isZoomedRef.current) {
+            resetZoom();
+        }
+
     };
 
     const applyZoom = (targetX: number, targetY: number) => {
         if (!illoRef.current) return;
+
+        // Trava lógica em vez de desligar a propriedade
         isZoomedRef.current = true;
-        illoRef.current.dragRotate = false; // Desabilita rotação manual durante o zoom
 
         gsap.to(illoRef.current, {
             zoom: 1.1,
             duration: 0.8,
             ease: "power3.out",
-            overwrite: true
+            overwrite: true // Evita conflitos de cliques rápidos
         });
 
         gsap.to(illoRef.current.translate, {
@@ -102,8 +149,8 @@ const GitGraph = () => {
 
     const resetZoom = () => {
         if (!illoRef.current) return;
+
         isZoomedRef.current = false;
-        illoRef.current.dragRotate = true; // Reabilita rotação manual
 
         gsap.to(illoRef.current.translate, {
             x: 0,
@@ -113,7 +160,7 @@ const GitGraph = () => {
         });
 
         gsap.to(illoRef.current, {
-            zoom: isMobile ? 0.35 : 0.45,
+            zoom: isMobile ? 0.40 : 0.45,
             duration: 0.8,
             ease: "power3.inOut"
         });
@@ -132,24 +179,26 @@ const GitGraph = () => {
         }
 
         const canvas = canvasRef.current;
+
         const illo = new Zdog.Illustration({
             element: canvas,
             padding: 20,
             dragRotate: true,
             sortVerts: true,
             translate: { x: 0, y: 0, z: 0 },
-            zoom: isMobile ? 0.35 : 0.45,
+            zoom: isMobile ? 0.40 : 0.45,
         });
 
         illo.onDragStart = () => {
+            if (isZoomedRef.current) return;
+
             isInteractingRef.current = true;
 
-            // Mata qualquer animação de rotação em curso e traz para a frente
             gsap.to(illo.rotate, {
-                x: -0.1, // Sua inclinação padrão de visualização
-                y: 0,    // TOTALMENTE DE FRENTE
+                x: -0.1,
+                y: 0,
                 duration: 0.6,
-                ease: "power2.out"
+                ease: "power3.out"
             });
         };
 
@@ -174,97 +223,57 @@ const GitGraph = () => {
         // NOTA: O tronco global foi removido para ser processado em segmentos 
         // dentro do loop, garantindo o balanço de profundidade (Z-index).
 
-        gitProjects.forEach((project, i) => {
+        nodesRef.current = [];
 
+        gitProjects.forEach((project, i) => {
             const isRight = i % 2 !== 0;
             const xPos = isRight ? 180 : -180;
             const yBase = isMobile ? 350 - (i * totalHeight / 10) : 100 - (i * totalHeight / 10); //400
 
-            // Grupo que encapsula o nó central e seu respectivo pedaço de tronco
             const projectGroup = new Zdog.Group({
                 addTo: illo,
                 sortVerts: true,
             });
 
-            // --- TÉCNICA DE BALANCEAMENTO DE Z-INDEX ---
-
-            // 1. Segmento do Tronco (Pedaço unificado ao grupo)
+            // 1. Segmento do Tronco
             new Zdog.Shape({
                 addTo: projectGroup,
-                path: [{ y: -spacingY / 2 }, { y: spacingY / 2 }],
+                path: [{ y: -spacingY / 3 }, { y: spacingY / 2 }],
                 stroke: 8,
                 color: COLORS.line,
-                translate: { y: yBase + 120, z: -2 }, // Ligeiramente atrás do nó
-            });
-
-            // 2. Nó do tronco (O centro colorido)
-            new Zdog.Shape({
-                addTo: projectGroup,
-                translate: {
-                    y: yBase + 120,
-                    x: 0,
-                    z: 0
-                },
-                color: project.colorBranch,
-                stroke: 50,
-            });
-
-            // 3. Objeto Invisível de Contra-balanço (Técnica da Documentação)
-            // Garante que o centroide do grupo permaneça estável na rotação
-            new Zdog.Shape({
-                addTo: projectGroup,
-                visible: false,
                 translate: { y: yBase + 120, z: -2 },
             });
 
-            // --- FIM DA TÉCNICA DE BALANCEAMENTO ---
-
-            // Retângulo base
+            // 2. Retângulo base (Label)
             const rect = new Zdog.Rect({
                 addTo: projectGroup,
-                width: 160, //260 8 projects
+                width: 260,
                 height: 60,
                 translate: { x: xPos, y: yBase - 220 },
                 stroke: 10,
                 depth: 100,
                 color: 'rgba(52, 52, 52, 1)',
-                leftFace: 'rgba(52, 52, 52, 1)',
-                rightFace: 'rgba(52, 52, 52, 1)',
-                topFace: 'rgba(52, 52, 52, 1)',
-                bottomFace: 'rgba(52, 52, 52, 1)',
                 fill: true,
             });
 
-            // Texto (Face frontal)
-            new Zdog.Text({
-                addTo: rect,
-                font: myFont,
-                backface: false,
-                value: project.id.toUpperCase(),
-                fontSize: 20,
-                textAlign: 'center',
-                textBaseline: 'middle',
-                color: '#fff',
-                fill: true,
-                translate: { z: 8 }
+            // --- TEXTOS ---
+            [{ z: 8, r: 0 }, { z: 8, r: Math.PI }].forEach(face => {
+                new Zdog.Text({
+                    addTo: rect,
+                    font: myFont,
+                    backface: false,
+                    value: project.id.toUpperCase(),
+                    fontSize: 20,
+                    textAlign: 'center',
+                    textBaseline: 'middle',
+                    color: '#fff',
+                    fill: true,
+                    translate: { z: face.z },
+                    rotate: { y: face.r }
+                });
             });
 
-            // Texto de Trás (Espelhado para leitura correta no verso)
-            new Zdog.Text({
-                addTo: rect,
-                font: myFont,
-                backface: false,
-                value: project.id.toUpperCase(),
-                fontSize: 20,
-                textAlign: 'center',
-                textBaseline: 'middle',
-                color: '#fff',
-                fill: true,
-                translate: { z: 8 },
-                rotate: { y: Math.PI }
-            });
-
-            // Linha (Curva Bezier) conexão com nós
+            // 3. Conexões (Bezier e Ramo)
             new Zdog.Shape({
                 addTo: projectGroup,
                 path: [
@@ -282,65 +291,57 @@ const GitGraph = () => {
                 color: project.colorBranch,
             });
 
-            // Linhas do Ramo
             new Zdog.Shape({
                 addTo: projectGroup,
-                path: [{ y: yBase }, { y: yBase - 150 }],
-                translate: { x: xPos, },
+                path: [{ y: yBase }, { y: yBase - 120 }],
+                translate: { x: xPos },
                 stroke: 8,
                 color: project.colorBranch,
             });
 
-            // Círculo inferior da Branch
-            new Zdog.Shape({
-                addTo: projectGroup,
-                translate: { x: xPos, y: yBase },
-                color: project.colorBranch,
-                stroke: 50,
-            });
-
-            // Círculo superior da Branch
-            new Zdog.Shape({
-                addTo: projectGroup,
-                translate: { x: xPos, y: yBase - 150 },
-                color: project.colorBranch,
-                stroke: 50,
-            });
-
-            // --- Novos Nós com Contorno de Luz (Efeito Anel) ---
-
-            // Definimos as propriedades do efeito de anel
-            const outerStroke = 52; // Stroke maior (o contorno de luz)
-            const innerStroke = 45; // Stroke menor (a cor do nó)
-            const nodeGlowColor = '#fff'; // Cor de luz suave para o contorno
+            // --- NOVOS NÓS COM EFEITO DE ILUMINAÇÃO ---
+            const outerStroke = 52;
+            const innerStroke = 45;
 
             [yBase + 120, yBase, yBase - 150].forEach((y, index) => {
                 const nodePos = {
                     x: index === 0 ? 0 : xPos,
                     y: y,
-                    z: index === 0 ? 1 : 4 // Nó central tem Z menor para não atravessar o tronco
+                    z: index === 0 ? 1 : 4
                 };
 
-                // 1. O ANEL DE LUZ (Efeito Externo)
+                // A. O ANEL DE LUZ (Contorno fixo)
                 new Zdog.Shape({
                     addTo: projectGroup,
                     translate: nodePos,
-                    updateSort: true, // Força recalculo da profundidade
-                    color: nodeGlowColor, // Luz suave que brilha ao redor
+                    color: '#fff',
                     stroke: outerStroke,
-                    fill: false, // Só queremos a borda, não o preenchimento
+                    fill: false,
                 });
 
-                // 2. O CENTRO COLORIDO (Nó Interno)
-                // Usamos um Z-offset de +2 para garantir que o centro 
-                // fique visualmente À FRENTE do anel de luz
-                new Zdog.Shape({
+                // B. O CENTRO COLORIDO (O que vai reagir ao animate)
+                const coreNode = new Zdog.Shape({
                     addTo: projectGroup,
                     translate: { ...nodePos, z: nodePos.z + 2 },
-                    updateSort: true,
                     color: project.colorBranch,
                     stroke: innerStroke,
                     fill: true,
+                });
+
+                // C. O PONTO ESPECULAR (Brilho fixo de "vidro")
+                new Zdog.Shape({
+                    addTo: coreNode,
+                    stroke: 8,
+                    translate: { x: -10, y: -10, z: 12 },
+                    color: 'rgba(255, 255, 255, 0.4)',
+                });
+
+                // (TypeScript / Lighting Engine)
+                // Aqui salvamos a referência para que o loop mude a cor dinamicamente
+                nodesRef.current.push({
+                    shape: coreNode as unknown as { color: string },
+                    baseColor: project.colorBranch, // Cor que você definiu
+                    highlightColor: project.colorBranch       // Alvo do brilho
                 });
             });
         });
@@ -350,15 +351,52 @@ const GitGraph = () => {
         // Loop de Animação
         let frameId: number;
 
+
+        const lerpColor = (color1: string, color2: string, factor: number) => {
+            // Converte hex para RGB simples (ex: #ff0000)
+            const r1 = parseInt(color1.substring(1, 3), 16);
+            const g1 = parseInt(color1.substring(3, 5), 16);
+            const b1 = parseInt(color1.substring(5, 7), 16);
+
+            const r2 = parseInt(color2.substring(1, 3), 16);
+            const g2 = parseInt(color2.substring(3, 5), 16);
+            const b2 = parseInt(color2.substring(5, 7), 16);
+
+            const r = Math.round(r1 + factor * (r2 - r1));
+            const g = Math.round(g1 + factor * (g2 - g1));
+            const b = Math.round(b1 + factor * (b2 - b1));
+
+            return `rgb(${r}, ${g}, ${b})`;
+        };
+
         const animate = () => {
             const now = Date.now();
+            const illo = illoRef.current;
+            if (!illo) return;
 
-            // Só aplicamos forças automáticas se NÃO estivermos interagindo
+            // 1. Definição da Luz (estática no espaço)
+            const lightVector = new Zdog.Vector({ x: 1, y: -1, z: 1 });
+
+            // 2. Atualizar todos os objetos que devem reagir à luz
+            // Você pode armazenar seus nós em um Array na criação para iterar aqui
+            nodesRef.current.forEach((nodeObj)  => {
+                const { shape, baseColor, highlightColor } = nodeObj;
+
+                // Calcula a Normal do objeto baseada na rotação do mundo
+                const normal = new Zdog.Vector({ z: 1 }).rotate(illo.rotate);
+
+                // Produto Escalar (Dot Product)
+                const dot = normal.x * lightVector.x + normal.y * lightVector.y + normal.z * lightVector.z;
+
+                // Mapeia o dot (-1 a 1) para um fator de brilho (0.2 a 1.0 para não ficar preto total)
+                const brightness = Math.max(0.2, (dot + 1) / 2);
+
+                shape.color = lerpColor(baseColor, highlightColor, brightness);
+            });
+
+            // 3. Lógica de Rotação Automática (Sua lógica atual)
             if (!isInteractingRef.current && !isZoomedRef.current) {
-                const timeSinceInteraction = now - lastInteractionTimeRef.current;
-
-                // Se ficou 6 segundos parado, volta a girar
-                if (timeSinceInteraction > 6000) {
+                if (now - lastInteractionTimeRef.current > 6000) {
                     illo.rotate.y += 0.005;
                 }
             }
@@ -470,12 +508,15 @@ const GitGraph = () => {
                         <canvas
                             ref={canvasRef}
                             onClick={handleInteraction}
-                            onTouchStart={handleInteraction} // Listener para mobile
+                            onTouchStart={handleInteraction} 
+                            onMouseDown={handleInteraction}
                             width={400}
-                            height={ isMobile ? 1150 : 1050}
+                            height={ isMobile ? 1150 : 990}
                             style={{
+                                maxWidth:'100vw',
                                 height: '100vh',
                                 cursor: 'grab',
+                                touchAction: 'none',
                             }}
                         />
                     </div>

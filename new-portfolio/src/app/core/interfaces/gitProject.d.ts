@@ -9,7 +9,7 @@ export interface GitProject {
 
     // Metadados Estilo Git
     branch: string; // Nome da ramificação (ex: 'feature/vanilla-logic')
-    colorBranch?: string; // Cor personalizada para a linha do projeto (opcional)
+    colorBranch: string; // Cor personalizada para a linha do projeto (opcional)
     commitHash?: string;    // Hash simulado (ex: 'a1b2c3d')
     order: number;          // Ordem cronológica para o cálculo de profundidade Z
 
@@ -23,3 +23,21 @@ export interface GitProject {
     image?: string;         // Caminho da imagem de preview ou diagrama técnico
     status: 'completed' | 'in-progress' | 'archived'; // Estado atual do projeto
 }
+// Interface simplificada para o objeto Illustration do Zdog
+
+export interface ZdogIllustration {
+    rotate: { x: number; y: number; z: number };
+    translate: { x: number; y: number; z: number };
+    zoom: number;
+    updateRenderGraph: () => void;
+}
+// Interface para o motor de iluminação
+export interface LightingNode {
+    shape: {
+        color: string;
+        // Se precisar de mais propriedades no futuro, adicione aqui
+    };
+    baseColor: string;
+    highlightColor: string;
+}
+

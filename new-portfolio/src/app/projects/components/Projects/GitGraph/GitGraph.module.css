@@ -73,7 +73,7 @@
 }
 
 .containerGraph2D {
-    margin-top: 7rem;
+    margin-top: 5rem;
     padding: 1rem;
     width: 100vw;
     height: 90vh;
@@ -100,7 +100,7 @@
 
 .contentGraph3D {
     position: relative;
-    inset: 0rem 0 0;
+    inset: 10rem 0 0;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -135,8 +135,8 @@
 }
 
 .contentGraph3D > canvas {
-    pointer-events: auto; /* Só o canvas pega clique */
-    /*touch-action: none;    Impede o browser de tentar scrollar */
+    pointer-events: auto !important; /* Só o canvas pega clique */
+    -webkit-tap-highlight-color: transparent !important;
 }
 
 .hidden2D {
@@ -186,14 +186,15 @@
 
 @media (max-width: 600px) {
     .containerGraph2D {
-        margin-top: 5rem;
+        margin-top: 6rem;
     }
     .containerGraph3D {
         height: 100vh;
     }
     .contentGraph3D {
-        inset: 8rem 0 0;
-        height: 80vh;
+        inset: 3rem 0 0;
+        width: 100vw;
+        height: 90vh;
     }
     .buttonClose3D {
         max-width: 100%;
