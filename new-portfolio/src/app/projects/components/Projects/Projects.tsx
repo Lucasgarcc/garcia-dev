@@ -190,11 +190,17 @@ const Projects = () => {
                                         ))}
                                     </div>
                                 </div>
-
                                 <footer className="mt-8 flex gap-4">
+
                                     {selectedProjectData.deployUrl && (
-                                        <a href={selectedProjectData.deployUrl} target="_blank" className={`${styles.deployLink} flex-1 text-center py-2 rounded-lg font-medium`}>
-                                            Ver Projeto
+                                        <a href={selectedProjectData.deployUrl} target="_blank" className={`${styles.deployLink} flex-1 text-center py-2 rounded-lg transition-colors font-medium`}>
+                                            Ver Mais
+                                        </a>
+                                    )}
+
+                                    {selectedProjectData.repoUrl && (
+                                        <a href={selectedProjectData.repoUrl} target="_blank" className={`${styles.repoLink} flex-1 text-center py-2 rounded-lg`}>
+                                            GitHub
                                         </a>
                                     )}
                                 </footer>

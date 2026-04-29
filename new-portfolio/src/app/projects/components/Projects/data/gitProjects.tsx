@@ -3,7 +3,7 @@ import { GitProject } from '@/core/interfaces/gitProject';
 const gitProjects: GitProject[] = [
     {
         id: 'flux-framework',
-        title: 'Flux Framework',
+        title: 'Framework JavaScript Puro',
         description: 'Desenvolvimento de uma camada de estrutura do zero para entender reatividade e manipulação de DOM sob o capô.',
         branch: 'feature/vanilla-logic',
         colorBranch: '#ff4824', // orange
