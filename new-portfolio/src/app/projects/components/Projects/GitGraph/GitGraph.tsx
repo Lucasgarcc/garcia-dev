@@ -520,7 +520,7 @@ const GitGraph = () => {
                 })}
             </svg>
             {/* MODO 3D OVERLAY */}
-            {isMode3D && (
+            {isMode3D && selectedProject && (
 
                 <div className={styles.containerGraph3D}>
                     {/* Container relativo com tamanho fixo igual ao canvas visual */}
