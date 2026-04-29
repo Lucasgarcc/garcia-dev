@@ -16,7 +16,7 @@ export interface GitProject {
     // Links e Referências
     tags: string[];         // Tecnologias e conceitos (ex: ['JS', 'Design Patterns'])
     slug: string;           // Slug para buscar o conteúdo Markdown do artigo
-    githubUrl: string;      // Link do repositório
+    repoUrl: string;      // Link do repositório
     deployUrl?: string;     // Link opcional da aplicação rodando (Vercel/Nginx)
 
     // Visual
@@ -31,6 +31,7 @@ export interface ZdogIllustration {
     zoom: number;
     updateRenderGraph: () => void;
 }
+
 // Interface para o motor de iluminação
 export interface LightingNode {
     shape: {
@@ -41,3 +42,14 @@ export interface LightingNode {
     highlightColor: string;
 }
 
+// Iterface Provider de Context 
+export interface ProjectsSelectionContextType {
+    selectedProject: string | null;
+    selectedProjectData: GitProject | null; // Adicionamos os dados completos aqui
+    isMode3D: boolean; // Novo estado
+    setIsMode3D: (active: boolean) => void; // Nova função
+    setSelectedProject: (id: string | null) => void;
+    hoveredProject: string | null;
+    setSelectedProject: (id: string | null) => void;
+    setHoveredProject: (id: string | null) => void;
+}
