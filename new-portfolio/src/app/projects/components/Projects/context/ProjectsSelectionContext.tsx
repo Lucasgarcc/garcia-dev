@@ -5,7 +5,6 @@ import React, { createContext, useState, ReactNode, useCallback } from 'react';
 
 export const ProjectsSelectionContext = createContext<ProjectsSelectionContextType | undefined>(undefined);
 
-
 // No Provider, você recebe a lista de projetos como prop
 export const ProjectsSelectionProvider = ({
     children,
@@ -17,16 +16,19 @@ export const ProjectsSelectionProvider = ({
     const [selectedProject, setSelectedProjectId] = useState<string | null>(null);
     const [hoveredProject, setHoveredProjectId] = useState<string | null>(null);
     const [isMode3D, setIsMode3D] = useState(false);
+    const [isCardOpen, setIsCardOpen] = useState(false);
+
     // Derivamos o objeto completo automaticamente quando o ID muda
     const selectedProjectData = projects?.find(p => p.id === selectedProject) || null;
 
     const handleSelectProject = useCallback((id: string | null) => {
         setSelectedProjectId(id);
-        if (id) setIsMode3D(true);
+        if (id) setIsMode3D(true); setIsCardOpen(true); 
     }, []);
 
     const handleHoverProject = useCallback((id: string | null) => {
         setHoveredProjectId(id);
+        if (id) setIsMode3D(true);
     }, []);
 
     return (
@@ -35,7 +37,9 @@ export const ProjectsSelectionProvider = ({
                 selectedProject: selectedProject,
                 selectedProjectData,
                 isMode3D,
-                setIsMode3D, // Agora o pai tem acesso a tudo
+                setIsMode3D,
+                isCardOpen,
+                setIsCardOpen, // Agora o pai tem acesso a tudo
                 hoveredProject,
                 setSelectedProject: handleSelectProject,
                 setHoveredProject: handleHoverProject,

@@ -154,26 +154,26 @@
 }
 
 .buttonClose3D {
-  position: absolute;
-  bottom: 30%;
-  padding-left: 3rem;  /* px-12 (12 * 0.25rem) */
-  padding-right: 3rem;
-  padding-top: 1rem;   /* py-4 (4 * 0.25rem) */
-  padding-bottom: 1rem;
-  background-color: var(--primary-c);
-  color: var(--color-text);
-  border-radius:.4rem; /* rounded-full */
-  border: 1px solid var(--primary-c-0-1);
-  font-weight: 700;      /* font-bold */
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); /* shadow-2xl */
-  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1); /* transition-all padrão do Tailwind */
-  z-index: 60;
+    position: absolute;
+    bottom: 35%;
+    left: 70%;
+    padding: 1rem 1rem;
+    background-color: var(--bg-primary-c);
+    color: var(--color-text);
+    border-radius:.4rem; /* rounded-full */
+    border: 1px solid var(--color-text-secondary);
+    font-weight: 700;      /* font-bold */
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); /* shadow-2xl */
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1); /* transition-all padrão do Tailwind */
+    z-index: 60;
+    cursor: pointer;
 }
 
 .buttonClose3D:hover {
-    background-color: var(--primary-c-0-1);
-    border-color: var(--primary-c-4);
-  transform: scale(1.05); /* hover:scale-105 */
+    background-color: var(--color-text-secondary);
+    color: var(--color-text-p);
+    border-color: var(--bg-primary-c);
+    transform: scale(1.05); /* hover:scale-105 */
 }
 
 .visible3D {
@@ -186,24 +186,31 @@
 
 @media (max-width: 600px) {
     .containerGraph2D {
-        margin-top: 6rem;
+        margin-top: .5rem;
     }
     .containerGraph3D {
         height: 100vh;
     }
     .contentGraph3D {
-        inset: 3rem 0 0;
+        inset: 0rem 0 0;
         width: 100vw;
         height: 90vh;
     }
+    .svg2D {
+        padding: 2rem !important;
+    }
+}
+
+@media (max-width: 428px) {
     .buttonClose3D {
-        bottom: 40%;
+        bottom: 36%;
+        left: 80%;
+        padding: .5rem !important;
         max-width: 100%;
         padding: 1rem;
         text-align: center;
-        font-size: 1rem;
     }
-    .svg2D {
-        padding: 2rem !important;
+    .icon {
+        font-size: 1rem;
     }
 }

@@ -7,10 +7,11 @@ import { useProjectsSelection } from '../context/ProjectsSelectionContext';
 import styles from './GitGraph.module.css';
 import useMediaQuery from '@/core/hooks/MediaQuery/MediQuery';
 import { LightingNode} from '@/core/interfaces/gitProject'
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
 const COLORS = {
-    main: '#378CE7',
-    line: '#378CE7',//'var(--bg-blue)'
+    main: '#FFF6F6',
+    line: '#FFF6F6',//branco
     text: '#ffffff'
 };
 
@@ -18,9 +19,16 @@ let isZfontInitialized = false;
 
 const GitGraph = () => {
     
-  
-    const { selectedProject, isMode3D, setIsMode3D, setSelectedProject } = useProjectsSelection();
-    const isMobile = useMediaQuery('(max-width: 768px)');
+    const { 
+        selectedProject,
+        isMode3D,
+        setIsMode3D, 
+        isCardOpen, 
+        setIsCardOpen,
+        setSelectedProject
+    } = useProjectsSelection();
+
+    const isMobile = useMediaQuery('(max-width: 1024px)');
 
     // Refs para persistência de estado sem re-render
     const nodesRef = useRef<LightingNode[]>([]);
@@ -31,7 +39,7 @@ const GitGraph = () => {
     const lastInteractionTimeRef = useRef(Date.now());
 
     let spacingY = (selectedProject
-                    ? 255  : isMobile && selectedProject
+                    ? 260  : isMobile && selectedProject
                     ? 280 : isMobile 
                     ? 250 : 240); //210 - selectedP.3D com 8 projects
     
@@ -40,18 +48,20 @@ const GitGraph = () => {
 
     const heightMultiplier = selectedProject && isMobile ? 1 :  1.7 ;
     const totalHeight = (gitProjects.length + heightMultiplier) 
-                        && (selectedProject ? gitProjects.length + 1.4 : gitProjects.length + 1.7) 
+                        && (selectedProject ? gitProjects.length + 1.2 : gitProjects.length + 1.7) 
                         * spacingY;
 
     isMobile ? (branchOffset = 250) && (spacingY = 270) : branchOffset = 230;
-
+    
     const toggleMode = (projectId: string) => {
 
-       setSelectedProject(projectId);
-        return setIsMode3D(true);
+        setSelectedProject(projectId);
+       return setIsMode3D(true);
         
     }
 
+    const shouldShowCloseButton = isMobile ? isCardOpen : !isMode3D || !isCardOpen;
+  
     const handleInteraction = (event: React.MouseEvent | React.TouchEvent) => {
         // 1. Previne comportamentos estranhos do mobile (como scroll enquanto tenta clicar)
         if (event.cancelable) event.preventDefault();
@@ -520,7 +530,7 @@ const GitGraph = () => {
                 })}
             </svg>
             {/* MODO 3D OVERLAY */}
-            {isMode3D && selectedProject && (
+            {selectedProject && (
 
                 <div className={styles.containerGraph3D}>
                     {/* Container relativo com tamanho fixo igual ao canvas visual */}
@@ -541,15 +551,17 @@ const GitGraph = () => {
                         />
                     </div>
 
-                    <button   
-                        className={`${styles.buttonClose3D}`}
-                        onClick={() => {
-                            setIsMode3D(false);
-                            setSelectedProject(null); // Limpa seleção ao sair do 3D
-                        }}
-                    >
-                        FECHAR
-                    </button>
+                   {shouldShowCloseButton && (
+                        <button   
+                            className={`${styles.buttonClose3D}`}
+                            onClick={() => {
+                                setIsMode3D(false);
+                                setSelectedProject(null); // Limpa seleção ao sair do 3D
+                            }}
+                        >                        
+                            <ExitToAppIcon sx={{ fontSize: 35 }} />
+                        </button>
+                    )}
                 </div>
             )}
         </div>

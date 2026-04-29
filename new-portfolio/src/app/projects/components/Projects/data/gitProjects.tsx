@@ -62,7 +62,7 @@ const gitProjects: GitProject[] = [
         title: 'Books',
         description: `O Book busca criar uma comunidade engajada de leitores, além de receber recomendações personalizadas que enriqueçam suas jornadas literárias`,
         branch: 'feature/book',
-        colorBranch: '#c90000', //var(--bg-red)',
+        colorBranch: '#BF092F', //var(--bg-red)',
         commitHash: 'f7a3b1d',
         order: 4,
         tags: ['API RESTful', 'React', 'Full Stack'],

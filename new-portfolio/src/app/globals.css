@@ -411,7 +411,6 @@ main {
 .project-content {
     margin: 0 auto;
     margin-top: 6rem; /* Espaço para o scroll inicial */
-    padding: 1.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
