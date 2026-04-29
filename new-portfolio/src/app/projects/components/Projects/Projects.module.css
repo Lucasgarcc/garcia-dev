@@ -82,16 +82,7 @@
     filter: drop-shadow(0 0 5px rgba(88, 166, 255, 0.6));
 }
 
-/* 6. CLASSES DE APOIO PARA RESPONSIVIDADE */
-@media (max-width: 768px) {
-    .projectsWrapper {
-        min-height: 600vh; /* Mais scroll no mobile para não ficar rápido demais */
-    }
-    
-    .projectsTitle {
-        font-size: 1.8rem !important;
-    }
-}
+
 .projectsWrapper {
     position: relative;
     width: 100%;
@@ -202,10 +193,11 @@
 .detailsModal {
     position: absolute;
     /* Centralizado próximo à branch */
-    left: 60%; 
-    top: 40%;
-    width: 320px;
-    background: rgba(15, 20, 25, 0.85);
+    padding: 2rem;
+    left: 65%; 
+    top: 30%;
+    width: 380px;
+    background: linear-gradient(var(--gradient-line));
     backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
@@ -234,6 +226,48 @@
 .project-group:hover .node-branch {
     filter: brightness(1.2);
     transition: filter 0.3s;
+}
+
+.titleDetailModal {
+    font-family: var(--font-altric), sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* Datails tag */
+.tagDatailModal {
+    padding: .5rem;
+    border-radius: .3rem;
+}
+
+/* Details Links */
+.deployLink {
+    max-width: 150px;
+    background: var(--primary-c);
+    color: var(--primary-c-0-5);
+    color: var(--primary-c-3);
+    font-family: var(--font-roboto);
+    border-radius:.4rem; /* rounded-full */
+    border: 1px solid var(--primary-c-0-1);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); /* shadow-2xl */
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1); /* transition-all padrão do Tailwind */
+}
+.deployLink:hover {
+    background-color: var(--primary-c-0-1);
+    border-color: var(--secondary-c-1);
+}
+
+.repoLink {
+    max-width: 150px; 
+    background: var(--bg-primary-n);
+    border: 1px solid var(--color-text-secondary);
+    transition: .3s all;
+}
+
+.repoLink:hover {
+    background-color: var(--logo-stroke-secondary);
+    border-color: var(--primary-c-3);
+    color: var(--color-text-p);
 }
 
 
@@ -271,7 +305,7 @@
     animation: gridPulse 1s linear infinite;
     
     opacity: 0;
-    transition: opacity cubic-bezier(0.86, 0, 0.07, 1) ease-in-out;
+    transition: opacity cubic-bezier(0.175, 0.885, 0.32, 1.275) ease-in-out;
 }
 
 /* Quando o projeto ganha foco, o chão "acende" */
@@ -311,10 +345,30 @@
     will-change: transform, opacity;
 }
 
+/* Button ver detalhe do Projeto modo Mobile */
+.btnVeiwProjectMobile {
+    font-family: var(--font-altric), sans-serif;
+    background: var(--bg-primary-n);
+    border: 1px solid var(--color-text-secondary);
+    color: var(--color-text-c);
+    border-radius: .4rem;
+}
+
+/*  RESPONSIVIDADE */
 @media (max-width: 768px) {
+    .projectsWrapper {
+        padding: 0;
+        min-height: 100vh; /* Mais scroll no mobile para não ficar rápido demais */
+    }
+    .projectsTitle {
+        font-size: 1.8rem !important;
+    }
     .detailsModal {
+        top: 30%;
+        left: 20%;
         padding: 1rem;
-        width: 50%;
+        width: 80%;
+        max-width: 100%;
         transform: rotateY(0deg) rotateX(0deg) translateZ(100px);
     }
     .perspectiveStage {
@@ -332,5 +386,9 @@
     }
     .btnExplore {
         font-size: 2rem;
+    }
+    .btnVeiwProjectMobile{
+        width: 80vw;
+        
     }
 }

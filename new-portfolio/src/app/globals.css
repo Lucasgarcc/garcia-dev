@@ -80,6 +80,7 @@
     --font-roboto: 'Roboto' sans-serif;
     --font-roboto: var(--font-roboto); /* Certifique-se que estas fontes estão carregadas no Layout */
     --font-title: var(--font-title);
+    --font-altric: var(--font-altric);
     --font-4: 400;
 
      --big-font-size: 2rem;

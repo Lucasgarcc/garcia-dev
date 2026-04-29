@@ -6,7 +6,7 @@ import gitProjects from '../data/gitProjects';
 import { useProjectsSelection } from '../context/ProjectsSelectionContext';
 import styles from './GitGraph.module.css';
 import useMediaQuery from '@/core/hooks/MediaQuery/MediQuery';
-import { LightingNode, ZdogIllustration } from '@/core/interfaces/gitProject'
+import { LightingNode} from '@/core/interfaces/gitProject'
 
 const COLORS = {
     main: '#378CE7',
@@ -17,8 +17,10 @@ const COLORS = {
 let isZfontInitialized = false;
 
 const GitGraph = () => {
+    
+  
+    const { selectedProject, isMode3D, setIsMode3D, setSelectedProject } = useProjectsSelection();
     const isMobile = useMediaQuery('(max-width: 768px)');
-    const { selectedProjectId, setSelectedProject } = useProjectsSelection();
 
     // Refs para persistência de estado sem re-render
     const nodesRef = useRef<LightingNode[]>([]);
@@ -28,13 +30,27 @@ const GitGraph = () => {
     const isZoomedRef = useRef(false);
     const lastInteractionTimeRef = useRef(Date.now());
 
-    let spacingY = (selectedProjectId ? 255  : isMobile && selectedProjectId ? 280 : isMobile ? 250 : 240); //210 - selectedP.3D com 8 projects
+    let spacingY = (selectedProject
+                    ? 255  : isMobile && selectedProject
+                    ? 280 : isMobile 
+                    ? 250 : 240); //210 - selectedP.3D com 8 projects
+    
     const centerX = 250;
-    let branchOffset = selectedProjectId ? 250 : 250;
-    const heightMultiplier = selectedProjectId && isMobile ? 1 :  1.7 ;
-    const totalHeight = (gitProjects.length + heightMultiplier) && (selectedProjectId ? gitProjects.length + 1.5 : gitProjects.length + 1.7) * spacingY;
+    let branchOffset = selectedProject ? 250 : 250;
+
+    const heightMultiplier = selectedProject && isMobile ? 1 :  1.7 ;
+    const totalHeight = (gitProjects.length + heightMultiplier) 
+                        && (selectedProject ? gitProjects.length + 1.4 : gitProjects.length + 1.7) 
+                        * spacingY;
 
     isMobile ? (branchOffset = 250) && (spacingY = 270) : branchOffset = 230;
+
+    const toggleMode = (projectId: string) => {
+
+       setSelectedProject(projectId);
+        return setIsMode3D(true);
+        
+    }
 
     const handleInteraction = (event: React.MouseEvent | React.TouchEvent) => {
         // 1. Previne comportamentos estranhos do mobile (como scroll enquanto tenta clicar)
@@ -68,6 +84,7 @@ const GitGraph = () => {
         let bestCandidate = { index: -1, z: -Infinity, x: 0, y: 0 };
 
         gitProjects.forEach((project, i) => {
+
             const isRight = i % 2 !== 0;
             const xPos = isRight ? 180 : -180;
             const yBase = isMobile ? 350 - (i * totalHeight / 10) : 100 - (i * totalHeight / 10);
@@ -87,7 +104,7 @@ const GitGraph = () => {
                 };
             };
 
-            // Alvos: Focamos 100% na Label e no Nó do Galho (longe do centro)
+            // Focamos 100% na Label e no Nó do Galho (longe do centro)
             const labelPos = getProjectedPoint(xPos, yBase - 220);
             const nodePos = getProjectedPoint(xPos, yBase);
 
@@ -105,7 +122,9 @@ const GitGraph = () => {
             const distNode = Math.sqrt(Math.pow(mouseX - nodePos.x, 2) + Math.pow(mouseY - nodePos.y, 2));
 
             if (distLabel < hitRadius || distNode < hitRadius) {
-              
+
+                setSelectedProject(project.id);
+
                 if (labelPos.z > bestCandidate.z) {
                     bestCandidate = {
                         index: i,
@@ -118,6 +137,7 @@ const GitGraph = () => {
         });
 
         if (bestCandidate.index !== -1) {
+            
             applyZoom(bestCandidate.x, bestCandidate.y);
         } else if (isZoomedRef.current) {
             resetZoom();
@@ -420,7 +440,7 @@ const GitGraph = () => {
             {/* SVG ORIGINAL  GSAP */}
             <svg
                 viewBox={`75 0 350 ${totalHeight}`}
-                className={`${styles.svg2D} ${selectedProjectId ? styles.hidden2D : styles.visible2D}`}
+                className={`${styles.svg2D} ${selectedProject ? styles.hidden2D : styles.visible2D}`}
                 style={{ width: '100%', padding: '4rem' }}
             >
                 <line
@@ -441,7 +461,7 @@ const GitGraph = () => {
                     return (
                         <g
                             key={project.id}
-                            onClick={() => setSelectedProject(project.id)}
+                            onClick={() => toggleMode(project.id)}
                             style={{ cursor: 'pointer', padding: '6rem' }}
                         >   
 
@@ -500,7 +520,7 @@ const GitGraph = () => {
                 })}
             </svg>
             {/* MODO 3D OVERLAY */}
-            {selectedProjectId && (
+            {isMode3D && (
 
                 <div className={styles.containerGraph3D}>
                     {/* Container relativo com tamanho fixo igual ao canvas visual */}
@@ -523,7 +543,10 @@ const GitGraph = () => {
 
                     <button   
                         className={`${styles.buttonClose3D}`}
-                        onClick={() => setSelectedProject(null)}
+                        onClick={() => {
+                            setIsMode3D(false);
+                            setSelectedProject(null); // Limpa seleção ao sair do 3D
+                        }}
                     >
                         FECHAR
                     </button>

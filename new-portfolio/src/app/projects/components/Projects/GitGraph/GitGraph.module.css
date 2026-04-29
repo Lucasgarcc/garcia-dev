@@ -100,7 +100,7 @@
 
 .contentGraph3D {
     position: relative;
-    inset: 10rem 0 0;
+    inset: 3rem 0 0;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -197,6 +197,7 @@
         height: 90vh;
     }
     .buttonClose3D {
+        bottom: 40%;
         max-width: 100%;
         padding: 1rem;
         text-align: center;

@@ -1,6 +1,6 @@
 // app/layout.tsx
 import './globals.css';
-import { Roboto_Mono } from 'next/font/google';
+import { Aldrich, Roboto_Mono } from 'next/font/google';
 import type { ReactNode } from 'react';
 import Header from '@/app/_components/layout/Header/Header';
 import LaserBackground from '@/app/_components/layout/Background/LaserBackground/LaserBackground';
@@ -24,6 +24,13 @@ export const metadata = {
     description: 'Site profissional de Lucas Garcia, desenvolvedor Frontend.',
 };
 
+const aldric = Aldrich({
+    subsets: ['latin'],
+    weight: ['400'],
+    variable: '--font-altric',
+    display: 'swap',
+})
+
 const robotoMono = Roboto_Mono({
     subsets: ['latin'],
     weight: ['400', '500', '700'],
@@ -45,13 +52,13 @@ export default function RootLayout({ children }: RootLayoutProps) {
                 <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
                 <link rel="manifest" href="/site.webmanifest" />
                 <meta name="theme-color" content="#000000" />
-                <meta name="description" content="Portfólio pessoal com animações 3D e projetos modernos" />
+                <meta name="description" content="Portfólio pessoal com designer profissional e projetos modernos" />
                 <meta name="keywords" content="portfólio, desenvolvedor, frontend, projetos, animações 3D" />
                 <meta name="author" content="Lucas Garcia" />
                 <meta property="og:title" content="Meu Portfólio" />
                 <meta property="og:description" content="Portfólio pessoal com animações 3D e projetos modernos" />
             </head>
-            <body suppressHydrationWarning className={`${robotoMono.variable} ${gugi.variable}`}>
+            <body suppressHydrationWarning className={`${robotoMono.variable} ${aldric.variable} ${gugi.variable}`}>
 
                 <Providers>
                     {/* O Wrapper envolve tudo o que deve aparecer após o loading */}

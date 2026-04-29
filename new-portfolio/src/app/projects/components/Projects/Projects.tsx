@@ -5,22 +5,36 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import styles from './Projects.module.css';
 import GitGraph from '../Projects/GitGraph/GitGraph';
 import { useProjectsSelection } from './context/ProjectsSelectionContext';
+import WrapperCard from '@/app/_components/ui/WrapperCard/WrapperCard';
+import useMediaQuery from '@/app/core/hooks/MediaQuery/MediQuery';
+import { BsArrowRight } from 'react-icons/bs';
 
 if (typeof window !== 'undefined') {
     gsap.registerPlugin(ScrollTrigger);
 }
 
 const Projects = () => {
+
+    const isMobile = useMediaQuery('(max-width: 1500px)');
+
     const mainRef = useRef(null);
     const container3DRef = useRef(null);
     const pathRef = useRef(null);
     const labelCurveSwipe = `{ Explorar Projetos }`;
 
-    // 1. Volte o estado para false para a animação inicial funcionar
+
     const [isActive, setIsActive] = useState(false);
     const [isTransitioning, setIsTransitioning] = useState(false);
+    // Dentro do seu componente Projects
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const { selectedProjectId, setSelectedProject } = useProjectsSelection();
+    const { 
+        selectedProjectData, 
+        selectedProject, 
+        isMode3D, 
+        setIsMode3D,
+        setSelectedProject 
+    } = useProjectsSelection();
 
     const start = "M 0 100 V 50 Q 50 0 100 50 V 100 z";
     const end = "M 0 100 V 0 Q 50 0 100 0 V 100 z";
@@ -114,20 +128,92 @@ const Projects = () => {
                 </div>
             )}
 
+
             <div className={styles.perspectiveStage} style={{ visibility: isActive ? 'visible' : 'hidden' }}>
-                <div ref={container3DRef} className={styles.gitGraphContainer}>
+
+                {/* CONTAINER 3D: Removido o 'fixed inset-0 z-[100]' para não bloquear a tela */}
+                <div ref={container3DRef}
+                    className={`${styles.gitGraphContainer} transition-all duration-700
+                        ${isModalOpen
+                                        ? 'filter blur-sm scale-[0.95] opacity-50 pointer-events-none' // Bloqueia interação SÓ quando o modal abrir
+                                        : 'filter-none scale-100 opacity-100'
+                                    }
+                    `}>
                     <GitGraph />
                 </div>
 
-                {selectedProjectId && (
-                    <div className={styles.detailsModal}>
-                        <h3>Projeto: {selectedProjectId}</h3>
-                        <button onClick={() => {
-                            setSelectedProject(null);
-                            gsap.to(container3DRef.current, { rotationX: 0, rotationY: 0, z: 0, duration: 1 });
-                            gsap.to(".project-group", { opacity: 1, filter: "none", duration: 0.5 });
-                        }}>Fechar</button>
-                    </div>
+                {selectedProjectData && (
+                    <>
+                        {/* OVERLAY DE BLUR: Garanta que o z-index seja menor que o do WrapperCard */}
+                        <div className={`
+                fixed inset-0 z-[80] transition-all duration-700
+                ${isModalOpen ? 'backdrop-blur-md bg-black/40 pointer-events-auto' : 'backdrop-blur-none pointer-events-none'}
+            `} onClick={() => setIsModalOpen(false)} />
+
+                        {/* MODAL DETALHADO */}
+                        <div className={`fixed inset-0 z-[100] flex items-center justify-center p-4 transition-all duration-500
+                ${isModalOpen
+                                ? 'translate-y-0 opacity-100 pointer-events-auto'
+                                : 'translate-y-full opacity-0 pointer-events-none'
+                            } 
+                ${!isMobile ? 'lg:translate-y-0 lg:opacity-100 lg:pointer-events-auto' : ''} 
+            `}>
+                            <WrapperCard
+                                className={`${styles.detailsModal} max-w-2xl border-t-4`}
+                                style={{ borderTopColor: selectedProjectData.colorBranch }}
+                            >
+                                <header className="flex justify-between items-start">
+                                    <h2 className={`${styles.titleDetailModal} text-3xl font-bold text-white`}>
+                                        {selectedProjectData.title || selectedProjectData.id}
+                                    </h2>
+                                    <button
+                                        className="text-white/50 hover:text-white transition-colors text-2xl"
+                                        onClick={() => {
+                                            setIsModalOpen(false);
+                                            setIsMode3D(true);
+                                            setSelectedProject(null);
+                                            gsap.to(container3DRef.current, { rotationX: 0, rotationY: 0, z: 0, duration: 1 });
+                                            gsap.to(".project-group", { z: 0, opacity: 1, filter: "none", scale: 1, duration: 0.5 });
+                                        }}
+                                    >
+                                        ✕
+                                    </button>
+                                </header>
+
+                                <div className="mt-6 space-y-4">
+                                    <p className="text-gray-200 leading-relaxed">{selectedProjectData.description}</p>
+                                    <div className="flex flex-wrap gap-2 pt-4">
+                                        {selectedProjectData.tags?.map((tag: string) => (
+                                            <span key={tag} className={`${styles.tagDatailModal} px-3 py-1 bg-white/5 border border-white/10 text-xs text-gray-200`}>
+                                                {tag}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                <footer className="mt-8 flex gap-4">
+                                    {selectedProjectData.deployUrl && (
+                                        <a href={selectedProjectData.deployUrl} target="_blank" className={`${styles.deployLink} flex-1 text-center py-2 rounded-lg font-medium`}>
+                                            Ver Projeto
+                                        </a>
+                                    )}
+                                </footer>
+                            </WrapperCard>
+                        </div>
+
+                        {/* MINI MENU MOBILE: Corrigido o !selectedProject */}
+                        {!isModalOpen && isMobile && (selectedProject && isMode3D) && (
+                            <div className="fixed bottom-15 left-1/2 -translate-x-1/2 z-[110]">
+                                <button
+                                    onClick={() => setIsModalOpen(true)}
+                                    className={`${styles.btnVeiwProjectMobile} px-6 py-3 font-bold shadow-lg flex items-center gap-2 animate-bounce`}
+                                >
+                                    <span>Detalhes: {selectedProjectData.id}</span>
+                                    <BsArrowRight size={18} />
+                                </button>
+                            </div>
+                        )}
+                    </>
                 )}
             </div>
         </div>

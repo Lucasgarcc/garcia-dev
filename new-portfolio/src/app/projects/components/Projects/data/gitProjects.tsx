@@ -11,7 +11,8 @@ const gitProjects: GitProject[] = [
         order: 0,
         tags: ['Vanilla JS', 'Observer Pattern', 'State Management'],
         slug: 'lacuna-invisivel-base-trunfo-ias',
-        githubUrl: 'https://github.com/Lucasgarcc/Flux-framework',
+        repoUrl: 'https://github.com/Lucasgarcc/Flux-framework',
+        deployUrl: 'https://flux-framework.vercel.app',
         status: 'completed'
     },
     {
@@ -24,7 +25,8 @@ const gitProjects: GitProject[] = [
         order: 1,
         tags: ['Web', 'App', 'Front End', 'React'],
         slug: 'aplicativo-media-social',
-        githubUrl: 'https://github.com/Lucasgarcc/dog-social',
+        repoUrl: 'https://github.com/Lucasgarcc/dog-social',
+        deployUrl: 'https://dog-social-media.vercel.app',
         status: 'in-progress'
     },
     {
@@ -37,7 +39,8 @@ const gitProjects: GitProject[] = [
         order: 2,
         tags: ['Web', 'App', 'Front End', 'React','Atomic Design'],
         slug: 'gestao-time',
-        githubUrl: 'https://github.com/Lucasgarcc/organo',
+        repoUrl: 'https://github.com/Lucasgarcc/organo',
+        deployUrl: 'https://organo-garc.vercel.app',
         status: 'completed'
     },
     {
@@ -50,7 +53,8 @@ const gitProjects: GitProject[] = [
         order: 3, // Cor personalizada para este projeto
         tags: ['API RESTful', 'Fastify', 'Postgreslq'],
         slug: 'ciclo-completo-api-restful-dados',
-        githubUrl: 'https://github.com/Lucasgarcc/node-zero',
+        repoUrl: 'https://github.com/Lucasgarcc/node-zero',
+        deployUrl: 'https://node-zero-w4ml.onrender.com/videos',
         status: 'completed'
     },
     {
@@ -61,9 +65,10 @@ const gitProjects: GitProject[] = [
         colorBranch: '#c90000', //var(--bg-red)',
         commitHash: 'f7a3b1d',
         order: 4,
-        tags: ['API RESTful', 'React'],
+        tags: ['API RESTful', 'React', 'Full Stack'],
         slug: 'recomendacao-livros',
-        githubUrl: 'https://github.com/Lucasgarcc/Book',
+        repoUrl: 'https://github.com/Lucasgarcc/Book',
+        deployUrl: 'https://book-ideal.vercel.app',
         status: 'in-progress'
     },
     {
@@ -76,7 +81,8 @@ const gitProjects: GitProject[] = [
         order: 5,
         tags: ['Nginx', 'Infrastructure', 'Security'],
         slug: 'identidade-visual',
-        githubUrl: 'https://github.com/Lucasgarcc/barber-shop',
+        repoUrl: 'https://github.com/Lucasgarcc/barber-shop',
+        deployUrl: 'https://barber-shop-gar.vercel.app',
         status: 'completed'
     },
     /*{
