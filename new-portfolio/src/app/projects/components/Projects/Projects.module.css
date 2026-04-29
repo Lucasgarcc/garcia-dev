@@ -54,7 +54,7 @@
   justify-content: center;
   align-items: center;
   z-index: 100;
-  background: rgba(13, 17, 23, 0.9);
+  background: rgb(13, 14, 14);
   backdrop-filter: blur(20px);
   cursor: pointer;
 }
@@ -74,14 +74,13 @@
 /* Estilo Base para os Nodes do SVG (opcional, caso queira estilizar via CSS) */
 /* Ancoramos o global a uma classe local do módulo para o Next.js aceitar */
 .gitGraphContainer :global(.git-branch-path) {
-    filter: drop-shadow(0 0 8px rgba(0, 112, 243, 0.4));
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.496));
     transition: stroke 0.3s ease;
 }
 
 .gitGraphContainer :global(.git-commit-node) {
-    filter: drop-shadow(0 0 5px rgba(88, 166, 255, 0.6));
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.496));
 }
-
 
 .projectsWrapper {
     position: relative;
@@ -270,6 +269,9 @@
     color: var(--color-text-p);
 }
 
+.btnCloseDatailModal {
+    cursor: pointer;
+}
 
 /* Isso permite que os elementos <g> do SVG saiam do plano */
 .gitGraphContainer svg {
@@ -308,10 +310,16 @@
     transition: opacity cubic-bezier(0.175, 0.885, 0.32, 1.275) ease-in-out;
 }
 
-/* Quando o projeto ganha foco, o chão "acende" */
-.perspectiveStage.is-active::before {
+
+.perspectiveStage.mode-3d-on::before {
     opacity: 1;
 }
+
+
+.perspectiveStage:has(.detailsModal)::before {
+    opacity: 1;
+}
+
 
 @keyframes gridPulse {
     0% {
@@ -345,6 +353,10 @@
     will-change: transform, opacity;
 }
 
+.containerMenuMobile {
+    bottom: 11rem;
+}
+
 /* Button ver detalhe do Projeto modo Mobile */
 .btnVeiwProjectMobile {
     font-family: var(--font-altric), sans-serif;
@@ -357,14 +369,22 @@
 /*  RESPONSIVIDADE */
 @media (max-width: 768px) {
     .projectsWrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         padding: 0;
-        min-height: 100vh; /* Mais scroll no mobile para não ficar rápido demais */
+        min-height: 120vh;
+        /* Impede a seleção de texto */
+        user-select: none;
+        -webkit-user-select: none; /* Safari */
+        -moz-user-select: none;    /* Firefox */
+        -ms-user-select: none;     /* IE10+ */
     }
     .projectsTitle {
         font-size: 1.8rem !important;
     }
     .detailsModal {
-        top: 30%;
+        top: 10%;
         left: 20%;
         padding: 1rem;
         width: 80%;
@@ -372,7 +392,7 @@
         transform: rotateY(0deg) rotateX(0deg) translateZ(100px);
     }
     .perspectiveStage {
-        perspective: inherit; /* Aumentamos para uma lente mais dramática */
+        perspective: 1000px; /* Aumentamos para uma lente mais dramática */
         width: 100vw;
         height: 100vh;
     }
@@ -387,8 +407,11 @@
     .btnExplore {
         font-size: 2rem;
     }
+}
+
+@media (max-width: 428px) {
     .btnVeiwProjectMobile{
         width: 80vw;
-        
+        text-align: center;
     }
 }

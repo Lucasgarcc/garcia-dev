@@ -45,10 +45,12 @@ export interface LightingNode {
 // Iterface Provider de Context 
 export interface ProjectsSelectionContextType {
     selectedProject: string | null;
-    selectedProjectData: GitProject | null; // Adicionamos os dados completos aqui
-    isMode3D: boolean; // Novo estado
-    setIsMode3D: (active: boolean) => void; // Nova função
-    setSelectedProject: (id: string | null) => void;
+    selectedProjectData: GitProject | null; 
+    isMode3D: boolean; 
+    setIsMode3D: (active: boolean) => void; 
+    isCardOpen: boolean;
+    setIsCardOpen: (active: boolean) => void; 
+    setSelectedProject: (id: string | null) => void; 
     hoveredProject: string | null;
     setSelectedProject: (id: string | null) => void;
     setHoveredProject: (id: string | null) => void;

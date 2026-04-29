@@ -15,7 +15,7 @@ if (typeof window !== 'undefined') {
 
 const Projects = () => {
 
-    const isMobile = useMediaQuery('(max-width: 1500px)');
+    const isMobile = useMediaQuery('(max-width: 1024px)');
 
     const mainRef = useRef(null);
     const container3DRef = useRef(null);
@@ -30,9 +30,10 @@ const Projects = () => {
 
     const { 
         selectedProjectData, 
-        selectedProject, 
-        isMode3D, 
-        setIsMode3D,
+        selectedProject,  
+        isMode3D,
+        isCardOpen,
+        setIsCardOpen,
         setSelectedProject 
     } = useProjectsSelection();
 
@@ -51,7 +52,10 @@ const Projects = () => {
     };
 
     const onProjectSelect = (id: string) => {
+    
         setSelectedProject(id);
+        setIsCardOpen(true);
+  
         const tl3D = gsap.timeline();
         tl3D.to(container3DRef.current, {
             rotationX: 40,
@@ -105,9 +109,10 @@ const Projects = () => {
                 });
             });
         }, mainRef);
-
+    
         return () => ctx.revert();
     }, [isActive]);
+    
 
     return (
         <div ref={mainRef} className={styles.projectsWrapper}>
@@ -128,8 +133,13 @@ const Projects = () => {
                 </div>
             )}
 
-
-            <div className={styles.perspectiveStage} style={{ visibility: isActive ? 'visible' : 'hidden' }}>
+            <div
+                className={`
+                    ${styles.perspectiveStage} 
+                    ${isMode3D ? styles['mode-3d-on'] : ''}
+                `} 
+                style={{ visibility: isActive ? 'visible' : 'hidden'}}
+            >
 
                 {/* CONTAINER 3D: Removido o 'fixed inset-0 z-[100]' para não bloquear a tela */}
                 <div ref={container3DRef}
@@ -142,22 +152,23 @@ const Projects = () => {
                     <GitGraph />
                 </div>
 
-                {selectedProjectData && (
+                {selectedProjectData && selectedProject && isCardOpen && (
                     <>
                         {/* OVERLAY DE BLUR: Garanta que o z-index seja menor que o do WrapperCard */}
                         <div className={`
-                fixed inset-0 z-[80] transition-all duration-700
-                ${isModalOpen ? 'backdrop-blur-md bg-black/40 pointer-events-auto' : 'backdrop-blur-none pointer-events-none'}
-            `} onClick={() => setIsModalOpen(false)} />
+                                fixed inset-0 z-[80] transition-all duration-700
+                                ${isModalOpen ? 'backdrop-blur-md bg-black/40 pointer-events-auto' : 'backdrop-blur-none pointer-events-none'}
+                            `} onClick={() => setIsModalOpen(false)} />
 
-                        {/* MODAL DETALHADO */}
-                        <div className={`fixed inset-0 z-[100] flex items-center justify-center p-4 transition-all duration-500
-                ${isModalOpen
-                                ? 'translate-y-0 opacity-100 pointer-events-auto'
-                                : 'translate-y-full opacity-0 pointer-events-none'
-                            } 
-                ${!isMobile ? 'lg:translate-y-0 lg:opacity-100 lg:pointer-events-auto' : ''} 
-            `}>
+                                        {/* MODAL DETALHADO */}
+                                        <div className={`fixed inset-0 z-[100] flex items-center justify-center p-4 transition-all duration-500
+                                ${isModalOpen
+                                                ? 'translate-y-0 opacity-100 pointer-events-auto'
+                                                : 'translate-y-full opacity-0 pointer-events-none'
+                                            } 
+                                ${!isMobile ? 'lg:translate-y-0 lg:opacity-100 lg:pointer-events-auto' : ''} 
+                            `}>
+                                
                             <WrapperCard
                                 className={`${styles.detailsModal} max-w-2xl border-t-4`}
                                 style={{ borderTopColor: selectedProjectData.colorBranch }}
@@ -167,13 +178,11 @@ const Projects = () => {
                                         {selectedProjectData.title || selectedProjectData.id}
                                     </h2>
                                     <button
-                                        className="text-white/50 hover:text-white transition-colors text-2xl"
+                                        className={`${styles.btnCloseDatailModal} text-white/50 hover:text-white transition-colors text-2xl`}
                                         onClick={() => {
+
                                             setIsModalOpen(false);
-                                            setIsMode3D(true);
-                                            setSelectedProject(null);
-                                            gsap.to(container3DRef.current, { rotationX: 0, rotationY: 0, z: 0, duration: 1 });
-                                            gsap.to(".project-group", { z: 0, opacity: 1, filter: "none", scale: 1, duration: 0.5 });
+                                            setIsCardOpen(false);
                                         }}
                                     >
                                         ✕
@@ -208,14 +217,15 @@ const Projects = () => {
                         </div>
 
                         {/* MINI MENU MOBILE: Corrigido o !selectedProject */}
-                        {!isModalOpen && isMobile && (selectedProject && isMode3D) && (
-                            <div className="fixed bottom-15 left-1/2 -translate-x-1/2 z-[110]">
+                        {!isModalOpen && isMobile && (
+                            <div className={`${styles.containerMenuMobile} fixed left-1/2 -translate-x-1/2 z-[110]`}>
                                 <button
                                     onClick={() => setIsModalOpen(true)}
-                                    className={`${styles.btnVeiwProjectMobile} px-6 py-3 font-bold shadow-lg flex items-center gap-2 animate-bounce`}
+                                    className={`${styles.btnVeiwProjectMobile} px-6 py-3 font-bold shadow-lg 
+                                    flex justify-center items-center gap-2 animate-bounce`}
                                 >
                                     <span>Detalhes: {selectedProjectData.id}</span>
-                                    <BsArrowRight size={18} />
+                                    <BsArrowRight size={18} className={styles.icon}/>
                                 </button>
                             </div>
                         )}
