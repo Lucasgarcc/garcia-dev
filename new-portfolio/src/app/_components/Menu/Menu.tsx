@@ -25,7 +25,7 @@ const Menu = ({ items }: { items: NavItem[] }) => {
     const [open, setOpen] = useState(false);
 
     const iconMap: Record<string, React.ReactNode> = {
-        home: <OtherHousesIcon sx={{ fontSize: 20 }} className={styles.icon} />,
+        home: <OtherHousesIcon sx={{ fontSize: 24 }} className={styles.icon} />,
         intro: <OtherHousesIcon sx={{ fontSize: 20 }} className={styles.icon} />,
         about: <AnnouncementIcon sx={{ fontSize: 20 }} className={styles.iconAbout} />,
         timeline: <ViewTimelineIcon className={styles.icon
@@ -34,7 +34,7 @@ const Menu = ({ items }: { items: NavItem[] }) => {
         contact: <ContactMailIcon sx={{ fontSize: 20 }} className={styles.icon} />,
         projects: <FolderIcon sx={{ fontSize: 20 }} className={styles.icon} />,
         post: <MmsIcon sx={{ fontSize: 20 }} className={styles.icon} />,
-        skills: <MdPsychology fontSize={26.5} />,
+        skills: <MdPsychology fontSize={26.5} className={styles.icon} />,
         technicalLevel: <InsightsIcon sx={{ fontSize: 25 }} className={styles.icon} />,
         articles: <FeedIcon sx={{ fontSize: 25 }} className={styles.icon} />,
         artRelated: <SpeakerNotesIcon sx={{ fontSize: 23 }} className={styles.icon} />

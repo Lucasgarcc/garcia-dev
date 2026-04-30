@@ -1,5 +1,5 @@
 'use client';
-import React, { useLayoutEffect, useRef, useState } from 'react';
+import { useLayoutEffect, useRef, useState, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import styles from './Projects.module.css';
@@ -8,6 +8,8 @@ import { useProjectsSelection } from './context/ProjectsSelectionContext';
 import WrapperCard from '@/app/_components/ui/WrapperCard/WrapperCard';
 import useMediaQuery from '@/app/core/hooks/MediaQuery/MediQuery';
 import { BsArrowRight } from 'react-icons/bs';
+import { InteractiveGrid } from '@/app/_components/ui/InteractiveGrid/InteractiveGrid';
+import { ScrollHelper } from '@/app/_components/helpers/ScrollHelper/ScrollHelper';
 
 if (typeof window !== 'undefined') {
     gsap.registerPlugin(ScrollTrigger);
@@ -25,8 +27,8 @@ const Projects = () => {
 
     const [isActive, setIsActive] = useState(false);
     const [isTransitioning, setIsTransitioning] = useState(false);
-    // Dentro do seu componente Projects
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isVisible, setIsVisible] = useState(true);
 
     const { 
         selectedProjectData, 
@@ -82,6 +84,19 @@ const Projects = () => {
     useLayoutEffect(() => {
         if (!isActive) return;
 
+        const handleScroll = () => {
+            // Se o usuário estiver no topo (menos de 50px de scroll), mostra.
+            // Se ele rolar para baixo (iniciando o GitGraph), esconde.
+            if (window.scrollY > 5000) {
+                console.log(window.scroll)
+                setIsVisible(false);
+            } else {
+                setIsVisible(true);
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+
         let ctx = gsap.context(() => {
             // 3. RECUPERANDO A ANIMAÇÃO DO GRAPH (O que estava faltando)
             const tl = gsap.timeline({
@@ -110,9 +125,11 @@ const Projects = () => {
             });
         }, mainRef);
     
-        return () => ctx.revert();
+        return () => {
+            ctx.revert(); 
+            window.removeEventListener("scroll", handleScroll)
+        };
     }, [isActive]);
-    
 
     return (
         <div ref={mainRef} className={styles.projectsWrapper}>
@@ -139,17 +156,22 @@ const Projects = () => {
                     ${isMode3D ? styles['mode-3d-on'] : ''}
                 `} 
                 style={{ visibility: isActive ? 'visible' : 'hidden'}}
-            >
+                >                  
+                {/* Wrapper para fixar o helper no canto direito inferior */}
+                <div className={`
+                        fixed bottom-150 right-10 z-[120] transition-all 
+                        duration-1000 pointer-events-none
+                        ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}
+                    `}
+                >
+                    <ScrollHelper text="Role para explorar" />
+                </div>
 
-                {/* CONTAINER 3D: Removido o 'fixed inset-0 z-[100]' para não bloquear a tela */}
-                <div ref={container3DRef}
-                    className={`${styles.gitGraphContainer} transition-all duration-700
-                        ${isModalOpen
-                                        ? 'filter blur-sm scale-[0.95] opacity-50 pointer-events-none' // Bloqueia interação SÓ quando o modal abrir
-                                        : 'filter-none scale-100 opacity-100'
-                                    }
-                    `}>
-                    <GitGraph />
+                <div ref={container3DRef} className={styles.gitGraphContainer}>
+                    <InteractiveGrid>
+       
+                        <GitGraph />
+                    </InteractiveGrid>
                 </div>
 
                 {selectedProjectData && selectedProject && isCardOpen && (
@@ -178,7 +200,7 @@ const Projects = () => {
                                         {selectedProjectData.title || selectedProjectData.id}
                                     </h2>
                                     <button
-                                        className={`${styles.btnCloseDatailModal} text-white/50 hover:text-white transition-colors text-2xl`}
+                                        className={`${styles.btnCloseDatailModal} text-white/50 hover:text-white transition-colors`}
                                         onClick={() => {
 
                                             setIsModalOpen(false);
@@ -225,7 +247,7 @@ const Projects = () => {
                                     flex justify-center items-center gap-2 animate-bounce`}
                                 >
                                     <span>Detalhes: {selectedProjectData.id}</span>
-                                    <BsArrowRight size={18} className={styles.icon}/>
+                                    <BsArrowRight size={18} strokeWidth={.9} className={styles.icon}/>
                                 </button>
                             </div>
                         )}

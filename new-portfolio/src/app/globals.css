@@ -21,7 +21,7 @@
 
     /* --- Tema Claro --- */
     --bg-primary-c: #ffffff;
-    --bg-secondary-c: #f5f5f5;
+    --bg-secondary-g-l: #f5f5f5;
     --color-text-c: #ffffff;
     --color-text-secondary-c: #666666;
 
@@ -437,6 +437,9 @@ main {
     margin-top: 10rem;
 }
 
+.area-container-projects {
+    margin: 0rem;
+}
 
 /* Para Tablets e Ipads */
 @media (max-width: 768px) {

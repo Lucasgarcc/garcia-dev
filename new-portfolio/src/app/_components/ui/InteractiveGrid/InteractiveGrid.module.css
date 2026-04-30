@@ -1,0 +1,40 @@
+/* GlowGrid.module.css */
+.container {
+  position: relative;
+  width: 100%;
+  height: auto; /* Ou 100vh para hero */
+  border-radius: 12px;
+  /*border: 1px solid rgba(255, 255, 255, 0.1);*/
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+/* Camada que dá a profundidade e o aspecto de "vidro" escuro */
+.vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at center,
+    transparent 20%,
+    rgba(0, 0, 0, 0.5) 70%,
+    #000 100%
+  );
+  /* Sombra interna para dar volume ao card */
+  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.9);
+}
+
+.content {
+  position: relative;
+  z-index: 3;
+}
