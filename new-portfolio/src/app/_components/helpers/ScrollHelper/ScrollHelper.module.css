@@ -1,0 +1,56 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    pointer-events: none;
+}
+
+.iconWrapper {
+    width: 100px;
+    height: 100px;
+}
+
+.svgElement {
+    width: 100%;
+    height: 100%;
+    /* Inclinamos levemente a mão inteira para uma pose natural */
+    transform: rotate(-10deg);
+}
+
+.text {
+    color: var(--color-text);
+    font-family: var(--font-altric);
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    animation: fingerScroll 2.5s infinite cubic-bezier(0.45, 0.05, 0.55, 0.95);
+}
+
+/* --- ANIMAÇÃO SÓ DO DEDO INDICADOR --- */
+.movingFinger {
+    animation: fingerScroll 2.5s infinite cubic-bezier(0.45, 0.05, 0.55, 0.95);
+    transform-origin: 450px 600px;/* Ponto de articulação na base do dedo */
+}
+
+@keyframes fingerScroll {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0.8; }
+    20% { opacity: 1; }
+    50% { transform: translateY(80px) rotate(5deg); } /* Dedo desce e flexiona */
+    80% { opacity: 0; }
+    100% { transform: translateY(80px) rotate(5deg); opacity: 0; }
+}
+
+/* --- ANIMAÇÃO DA CALDA (RASTRO) --- */
+.trail {
+    animation: trailFlow 2.5s infinite cubic-bezier(0.45, 0.05, 0.55, 0.95);
+}
+
+@keyframes trailFlow {
+    0% { height: 0; opacity: 0; transform: translateY(100px); }
+    20% { opacity: 1; }
+    50% { height: 300px; transform: translateY(0); }
+    80% { opacity: 0; }
+    100% { opacity: 0; }
+}

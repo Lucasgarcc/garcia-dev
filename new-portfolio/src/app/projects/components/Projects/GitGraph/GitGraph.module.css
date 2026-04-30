@@ -170,12 +170,15 @@
 }
 
 .buttonClose3D:hover {
-    background-color: var(--color-text-secondary);
+    background-color: var(--bg-secondary-c);
     color: var(--color-text-p);
     border-color: var(--bg-primary-c);
     transform: scale(1.05); /* hover:scale-105 */
 }
 
+.icon {
+    color: var(--color-text);
+}
 .visible3D {
     display: initial;
 }
@@ -203,7 +206,7 @@
 
 @media (max-width: 428px) {
     .buttonClose3D {
-        bottom: 36%;
+        bottom: 40%;
         left: 80%;
         padding: .5rem !important;
         max-width: 100%;

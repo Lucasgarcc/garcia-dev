@@ -6,7 +6,7 @@ const gitProjects: GitProject[] = [
         title: 'Framework JavaScript Puro',
         description: 'Desenvolvimento de uma camada de estrutura do zero para entender reatividade e manipulação de DOM sob o capô.',
         branch: 'feature/vanilla-logic',
-        colorBranch: '#ff4824', // orange
+        colorBranch: '#2C2C2C', // '#ff4824'orange
         commitHash: 'f7a3b1d',
         order: 0,
         tags: ['Vanilla JS', 'Observer Pattern', 'State Management'],
@@ -34,7 +34,7 @@ const gitProjects: GitProject[] = [
         title: 'Site Web React',
         description: ' Organo é uma aplicação desenvolvida em React que visa facilitar a gestão entre times',
         branch: 'feature/frontend-expert',
-        colorBranch: '#a78bfa ', //var(--bg-purple) 
+        colorBranch: '#91bf27', //'#a78bfa' var(--bg-purple) 
         commitHash: 'd9a1f5e',
         order: 2,
         tags: ['Web', 'App', 'Front End', 'React','Atomic Design'],
@@ -48,7 +48,7 @@ const gitProjects: GitProject[] = [
         title: 'RESTful Data Engine',
         description: 'Arquitetura de comunicação entre sistemas focada em métodos HTTP puros e integridade de dados no banco, cadastra e deleta.',
         branch: 'feature/rest-api',
-        colorBranch: '#03ffc8',//'var(--bg-furquiose)',
+        colorBranch: '#2C2C2C',//'#03ffc8' 'var(--bg-furquiose)',
         commitHash: 'c4b3a2f',
         order: 3, // Cor personalizada para este projeto
         tags: ['API RESTful', 'Fastify', 'Postgreslq'],
@@ -62,7 +62,7 @@ const gitProjects: GitProject[] = [
         title: 'Books',
         description: `O Book busca criar uma comunidade engajada de leitores, além de receber recomendações personalizadas que enriqueçam suas jornadas literárias`,
         branch: 'feature/book',
-        colorBranch: '#BF092F', //var(--bg-red)',
+        colorBranch: '#91bf27', //'#BF092F' var(--bg-red)',
         commitHash: 'f7a3b1d',
         order: 4,
         tags: ['API RESTful', 'React', 'Full Stack'],
@@ -76,10 +76,10 @@ const gitProjects: GitProject[] = [
         title: 'Barber Shop Barbearia',
         description: 'Landing Page de barbearia personalizada foco em identidade visual.',
         branch: 'feature/infra-scaling',
-        colorBranch: '#facc15', //var(--bg-yellow) 
+        colorBranch: '#2C2C2C', //'#facc15' var(--bg-yellow) 
         commitHash: 'b8e2d4c',
         order: 5,
-        tags: ['Nginx', 'Infrastructure', 'Security'],
+        tags: ['UX/UI', 'Design', 'Front End','HTML', 'CSS', 'JavaScript'],
         slug: 'identidade-visual',
         repoUrl: 'https://github.com/Lucasgarcc/barber-shop',
         deployUrl: 'https://barber-shop-gar.vercel.app',

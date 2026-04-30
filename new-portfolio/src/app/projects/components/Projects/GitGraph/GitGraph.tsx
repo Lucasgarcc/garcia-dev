@@ -24,7 +24,6 @@ const GitGraph = () => {
         isMode3D,
         setIsMode3D, 
         isCardOpen, 
-        setIsCardOpen,
         setSelectedProject
     } = useProjectsSelection();
 
