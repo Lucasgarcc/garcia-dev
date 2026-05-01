@@ -170,7 +170,7 @@
 }
 
 .buttonClose3D:hover {
-    background-color: var(--bg-secondary-c);
+    background-color: var(--bg-secondary-g);
     color: var(--color-text-p);
     border-color: var(--bg-primary-c);
     transform: scale(1.05); /* hover:scale-105 */

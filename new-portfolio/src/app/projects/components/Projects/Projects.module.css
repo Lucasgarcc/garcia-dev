@@ -283,7 +283,7 @@
 }
 
 .repoLink:hover {
-    background-color: var(--bg-secondary-c);
+    background-color: var(--bg-secondary-g);
     border-color: var(--primary-c-3);
     color: var(--color-text-p);
 }

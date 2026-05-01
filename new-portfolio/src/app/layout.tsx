@@ -17,6 +17,7 @@ const gugi = localFont({
         },
     ],
     variable: "--font-title",
+    fallback: ['sans-serif'],
 });
 
 export const metadata = {
@@ -29,6 +30,7 @@ const aldric = Aldrich({
     weight: ['400'],
     variable: '--font-altric',
     display: 'swap',
+    fallback: ['sans-serif'],
 })
 
 const robotoMono = Roboto_Mono({
@@ -36,6 +38,7 @@ const robotoMono = Roboto_Mono({
     weight: ['400', '500', '700'],
     variable: '--font-roboto-mono',
     display: 'swap',
+    fallback: ['sans-serif'],
 });
 
 interface RootLayoutProps {
