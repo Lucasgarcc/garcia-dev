@@ -25,7 +25,7 @@ const Post = ({ title, content, imageUrl = null }: PostProps) => {
                 textTransform="uppercase"
                 marginTop={8}
                 marginBottom={4}
-                fontFamily="var(--font-title)"
+                fontFamily="var(--font-altric)"
                 gutterBottom
                 fontWeight={500}
              className={styles.postTitle} >

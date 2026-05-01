@@ -1,11 +1,13 @@
 'use client';
-import React, { ReactNode } from 'react';
+
+import { ReactNode } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigation } from '@/core/context/NavigationContext';
 import Post from './Post/Post';
 import Skills from './Skills/Skils';
 import TechnicalLevel from './TechnicalLevel/TechnicalLevel';
 import Articles from './Articles/Articles';
+import Projects from './Projects/Projects';
 
 interface ProjectsProps {
     children?: ReactNode;
@@ -97,40 +99,23 @@ const MainProject = ({ children }: ProjectsProps) => {
                     className="area-container-articles"
 
                 >
-        
+
                     <Articles />
                 </motion.section>
 
-
-                {/* Diferencial */}
+                {/* Projetos */}
                 <motion.section
-                    id="diferencial"
+                    id="portfolio"
                     ref={projectRefs.portfolio}
-                    variants={slideFromRightY}
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: false, amount: 0.3 }}
                     transition={{ duration: 0.8, delay: 0.4 }}
-                    className="area-container-differential"
-
+                    className="area-container-projects"
                 >
+                    <Projects />
                 </motion.section>
 
-
-                {/*-- Contato  */}
-                <motion.section
-                    id="contato"
-                    ref={projectRefs.differential}
-                    variants={slideFromLeftY}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: false, amount: 0.3 }}
-                    transition={{ duration: 0.8, delay: 0.5 }}
-                    className="area-container-contact-me"
-
-                >
-
-                </motion.section>
             </div>
         </div>
     );

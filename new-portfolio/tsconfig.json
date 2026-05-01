@@ -23,16 +23,10 @@
       }
     ],
     "paths": {
-      "@/*": [
-        "./src/*"
-      ],
-      "@/core/*": [
-        "./src/app/core/*"
-      ],      "@/components/*": [
-        "./src/app/components/*"
-      ],      "@assets/*": [
-        "./public/assets/*"
-      ]
+      "@/*": ["./src/*"],
+      "@/core/*": ["./src/app/core/*"],
+      "@/components/*": ["./src/app/_components/*"],
+      "@assets/*": ["./public/assets/*"]
     },
     "typeRoots": [
       "./node_modules/@types",

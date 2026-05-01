@@ -8,7 +8,8 @@
 
     /* --- Tema Neutro --- */
     --bg-primary-n: #222222;
-    --bg-secondary-c: #afafaf;
+    --bg-secondary-c: #f0f0f0;
+    --bg-secondary-g: #afafaf;
     --color-text-n: #f0f0f0;
     --color-text-secondary: #8f8f8f;
 
@@ -21,7 +22,7 @@
 
     /* --- Tema Claro --- */
     --bg-primary-c: #ffffff;
-    --bg-secondary-c: #f5f5f5;
+    --bg-secondary-g-l: #f5f5f5;
     --color-text-c: #ffffff;
     --color-text-secondary-c: #666666;
 
@@ -50,6 +51,21 @@
     --logo-gradient-stop3: #ffffff;
     
     --JS-bg-color: #facc15;
+    --bg-grey: #6b7280;
+    --bg-orange: #ff4824;
+    --bg-blue: #4977ff;
+    --bg-yellow: #facc15;
+    --bg-red: #c90000;
+    --bg-green: #66ff00;
+    --bg-purple: #a78bfa;
+    --bg-furquiose: #03ffc8;
+
+    --tree-line: #30363d;
+    --tree-main: #58a6ff;
+    --tree-text: #f0f6fc;
+    --bg-dark: #0d1117;
+
+    --accent-blue: #1a9edb;
 
     --gradient-start: #ffffff00;
     --gradient-mid: #eeffdc00;
@@ -65,6 +81,7 @@
     --font-roboto: 'Roboto' sans-serif;
     --font-roboto: var(--font-roboto); /* Certifique-se que estas fontes estão carregadas no Layout */
     --font-title: var(--font-title);
+    --font-altric: var(--font-altric);
     --font-4: 400;
 
      --big-font-size: 2rem;
@@ -393,8 +410,8 @@ main {
 /* Projects */
 
 .project-content {
-    margin: 8rem auto;
-    padding: 1.5rem;
+    margin: 0 auto;
+    margin-top: 6rem; /* Espaço para o scroll inicial */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -415,11 +432,15 @@ main {
 
 .area-container-skills, 
 .area-container-technicalLevel,
-.area-container-articles {
+.area-container-articles,
+.area-container-projects {
     width: 100%;
     margin-top: 10rem;
 }
 
+.area-container-projects {
+    margin: 0rem;
+}
 
 /* Para Tablets e Ipads */
 @media (max-width: 768px) {
