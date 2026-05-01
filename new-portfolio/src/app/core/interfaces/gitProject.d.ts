@@ -6,7 +6,7 @@ export interface GitProject {
     id: string;             // Identificador único (ex: 'flux-framework')
     title: string;          // Nome do projeto
     description: string;    // Breve resumo focado no problema resolvido
-
+    subDescription?: string;
     // Metadados Estilo Git
     branch: string; // Nome da ramificação (ex: 'feature/vanilla-logic')
     colorBranch: string; // Cor personalizada para a linha do projeto (opcional)

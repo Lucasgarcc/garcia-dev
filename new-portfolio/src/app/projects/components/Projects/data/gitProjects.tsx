@@ -16,9 +16,10 @@ const gitProjects: GitProject[] = [
         status: 'completed'
     },
     {
-        id: 'Dog Social',
+        id: 'Dogs Social',
         title: 'Aplicativo de Midia Social',
         description: `Plataforma de rede social completa dedicada a entusiastas de cães. O projeto permite que donos criem perfis para seus pets, compartilhem momentos e interajam com uma comunidade apaixonada por animais. Desenvolvido com foco em escalabilidade e experiência do usuário (UX)`,
+        subDescription: 'Projeto de rede social para amantes de cães, onde os usuários podem criar perfis para seus pets, compartilhar fotos, histórias e interagir com outros donos de cães.O objetivo é criar uma comunidade online para entusiastas de cães se conectarem, compartilharem experiências e celebrarem o amor pelos seus amigos peludos.',
         branch: 'feature/infra-scaling',
         commitHash: 'b8e2d4c',
         colorBranch: '#91bf27', // verde 

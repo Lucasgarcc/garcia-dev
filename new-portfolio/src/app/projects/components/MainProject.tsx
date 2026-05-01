@@ -8,10 +8,12 @@ import Skills from './Skills/Skils';
 import TechnicalLevel from './TechnicalLevel/TechnicalLevel';
 import Articles from './Articles/Articles';
 import Projects from './Projects/Projects';
-
+import gitProjects from './Projects/data/gitProjects';
 interface ProjectsProps {
     children?: ReactNode;
 }
+
+const project = gitProjects.find(p => p.id === 'Dogs Social');
 
 const slideFromLeftY = {
     hidden: { opacity: 0, x: -60 },
@@ -53,13 +55,16 @@ const MainProject = ({ children }: ProjectsProps) => {
                         viewport={{ once: true, amount: 0.2 }}
                         transition={{ duration: 0.4 }}
                         className="contatiner">
-
-                        <Post
-                            title='Dogs Social'
-                            content='Projeto de rede social para amantes de cães, onde os usuários podem criar perfis para seus pets, compartilhar fotos, histórias e interagir com outros donos de cães. O objetivo é criar uma comunidade online para entusiastas de cães se conectarem, compartilharem experiências e celebrarem o amor pelos seus amigos peludos.'
-                            imageUrl='/assets/dog-social.jpeg'
-                        />
-
+                            
+                       {project && ( 
+                            <Post
+                                title={project.id}
+                                content={project.subDescription}
+                                imageUrl='/assets/dog-social.jpeg'
+                                deploy={project.deployUrl}
+                                github={project.repoUrl}
+                            />
+                       )}
                     </motion.div>
 
                 </motion.section>

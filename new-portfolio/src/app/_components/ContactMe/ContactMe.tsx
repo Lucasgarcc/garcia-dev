@@ -76,8 +76,6 @@ const ContactMe = () => {
                 Contato
             </Typography>
             <motion.div
-                animate={{ opacity: 2, y: 0 }}
-                transition={{ duration: 0.5 }}
                 className={Styles.contactContainer}
             >
 
@@ -99,9 +97,7 @@ const ContactMe = () => {
                             }}
                         />
                     </figure>
-
-
-                    <div>
+                    <div className={Styles.containerForm}>
                         <h5 className={Styles.contactFormTitle}>
                             <span className={Styles.contactFormContentTitle}>
                                 <GrContact color='var(--primary-c-0-1)' /> Entrar em contato

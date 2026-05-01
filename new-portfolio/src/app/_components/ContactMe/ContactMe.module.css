@@ -1,8 +1,6 @@
 .contactContainer {
     margin-top: 1rem;
     background-color: #99c40c;
-    max-width: 100%;
-    height: auto;
 }
 
 .contactFormContainer {
@@ -39,7 +37,7 @@
     max-width: 420px;
     height: 600px;
     position: absolute;
-    top: -12.8%;
+    top: -12.4%;
     bottom: 0;
     overflow: hidden;
     border-radius: 16px;
@@ -61,6 +59,10 @@
     transform: scale(1.05);
     /* zoom sutil ao passar o mouse */
     filter: brightness(1.1);
+}
+
+.containerForm {
+    display: block;
 }
 
 .contactFormTitle {

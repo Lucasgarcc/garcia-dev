@@ -36,7 +36,7 @@ export default function InteractiveLaserLines() {
             options={{
                 fullScreen: { 
                     enable: true, 
-                    zIndex: -1
+                    zIndex: 1
                 },
                 background: { color: 'transparent' },
                 fpsLimit: 120,

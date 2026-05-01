@@ -1,67 +1,137 @@
-.postContainer	{
+/* Container principal do Projeto Destaque */
+.postContainer {
     margin: 0 auto;
     padding: 2rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 5rem;
+    gap: 9rem;
     align-items: center;  
-    width: 100%;
-    height: auto;  
-    position: relative;
-    z-index: 1000;
+    width: 100vw;
+    max-width: 100%;
+    background: rgba(254, 254, 254, 0.7);
+
 }
 
-.imageWrapper	{
+/* 1. O Wrapper que segura os badges e a imagem */
+.relativeWrapper {
+    position: relative;
     width: 100%;
-    height: 100%;
+    max-width: 500px; /* Ajuste conforme necessário */
+    display: flex;
+    justify-content: center;
+}
+
+/* 2. Estilização dos Badges (Glassmorphism) */
+.badge {
+    position: absolute;
+    z-index: 20; /* Acima da imagem */
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 12px 20px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--primary-c-0-3);
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+/* Posicionamento estratégico para não cobrir o centro da imagem */
+.badgeTopLeft {
+    top: 90px;
+    left: 30px;
+}
+
+.badgeBottomRight {
+    bottom: 10px;
+    right: -40px;
+}
+
+/* Esta classe vai envolver o imageWrapper no seu JSX */
+.blobShadow {
+    filter: drop-shadow(10px 5px 5px rgba(0, 0, 0, 0.25));
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.imageWrapper > img {
-    border-radius: .5rem;
-    object-fit: contain;
-    border-right: inset;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0);
-    filter: drop-shadow(0 0 1px rgba(47, 46, 46, 0.36))
-    drop-shadow(0 0 2px rgba(97, 97, 97, 0.156))
-    drop-shadow(0 0 1px rgba(43, 43, 43, 0.163));
+/* o Image Wrapper para não cortar os badges */
+.imageWrapper {
+    position: relative;
+    width: 100%;
+    max-width: 600px; /* Ou o tamanho que você desejar para o projeto */
+    aspect-ratio: 1 / 1; /* Blobs funcionam melhor em containers quadrados */
+    clip-path: url(#blobClip);
+    -webkit-clip-path: url(#blobClip);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    box-shadow: rgba(0, 0, 0, 0.1);
 }
 
-.postTitle	{
-    padding-left: 2rem;
-    background: var(--background-text-liner);
+.postImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Zoom leve para garantir que as curvas do blob capturem a imagem */
+    transform: scale(1.1);
+}
+
+
+.postContent {
+    font-size: 1.5rem;
+    max-width: 100%;
+} 
+
+.postTitle {
+    font-size: 3rem;
 }
 
 .postTitleProject {
-    font-size: var(--text-2xl);
-    line-height: var(--lh-tight);
-    color: var(--primary-c-0-3); 
+    font-size: 3rem;
+    font-family: var(--font-roboto);
+    font-weight: var(--fw-medium);
+    color: var(--primary-c-0-3);
 }
 
-.postContent	{
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+.buttons,
+.button {
+    display: flex !important;
+    justify-content: flex-start !important;
+    align-self: center !important;
+    gap: 1rem;
 }
 
+.button {
+    gap: .5rem;
+}
 
+/* Responsividade corrigida */
 @media screen and (max-width: 1024px) {
-
-    .postContent {
-        flex-direction: column;
-    }
-    .postTitle {
-        margin: .4rem !important;
-        padding-left: initial;
-        padding: .5rem 1.5rem;
-    }
-
     .postContainer {
         grid-template-columns: 1fr;
-        padding: .5rem 2rem;
-        gap: 3rem;
+        gap: 4rem;
+        width: 100%;
+    }
+    .postContent {
+        font-size: 1.2rem;
+    }
+    .postTitleProject {
+        font-size: 2rem;
+    }
+    .badgeTopLeft {
+        left: 0; /* Traz para dentro em telas menores */
     }
     
+    .badgeBottomRight {
+        right: 0;
+    }
 }
