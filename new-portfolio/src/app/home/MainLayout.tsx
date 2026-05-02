@@ -133,7 +133,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: false, amount: 0.3 }}
-                    transition={{ duration: 0.8, delay: 0.5 }}
+                    transition={{ duration: 0.3, delay: 0.5 }}
                     className="area-continer-contact-me"
 
                 >
