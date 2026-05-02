@@ -46,11 +46,13 @@
 .badgeTopLeft {
     top: 90px;
     left: 30px;
+    filter: drop-shadow(2px 1px 3px rgba(0, 0, 0, 0.25));
 }
 
 .badgeBottomRight {
     bottom: 10px;
     right: -40px;
+    filter: drop-shadow(2px 1px 3px rgba(0, 0, 0, 0.25));
 }
 
 /* Esta classe vai envolver o imageWrapper no seu JSX */
@@ -119,7 +121,6 @@
     .postContainer {
         grid-template-columns: 1fr;
         gap: 4rem;
-        width: 100%;
     }
     .postContent {
         font-size: 1.2rem;
@@ -130,8 +131,19 @@
     .badgeTopLeft {
         left: 0; /* Traz para dentro em telas menores */
     }
-    
     .badgeBottomRight {
         right: 0;
+    }
+    .blobShadow {
+        filter: drop-shadow(2px 1px 3px rgba(0, 0, 0, 0.25));
+    }
+    .imageWrapper {
+        max-width: 100%;
+    }
+}
+
+@media screen and (max-width: 428px) {
+    .badgeTopLeft {
+        top: 30px;
     }
 }

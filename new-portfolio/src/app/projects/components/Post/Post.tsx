@@ -9,6 +9,7 @@ import { IoIosLock } from "react-icons/io";
 import { PiDog } from "react-icons/pi";
 import { FiGithub } from "react-icons/fi";
 import { BsArrowRight } from 'react-icons/bs';
+import useMediaQuery from '@/app/core/hooks/MediaQuery/MediQuery';
 
 // Variantes corrigidas para usar a chave 'floating'
 const floatingVariants = (delay: number = 0): Variants => ({
@@ -24,7 +25,6 @@ const floatingVariants = (delay: number = 0): Variants => ({
     }
 });
 
-
 interface PostProps {
     title: string;
     content?: string;
@@ -34,6 +34,10 @@ interface PostProps {
 }
 
 const Post = ({ title, content, imageUrl = null, deploy, github }: PostProps) => {
+
+    const isMobile = useMediaQuery('(max-width: 428px)');
+
+
     return (
         <motion.div
             initial={{ opacity: 0, y: 90 }}
@@ -46,7 +50,7 @@ const Post = ({ title, content, imageUrl = null, deploy, github }: PostProps) =>
                 <defs>
                     <clipPath id="blobClip" clipPathUnits="objectBoundingBox">
                         <path
-                            transform="scale(0.0066) translate(70, 75)"
+                            transform={`${isMobile ? 'scale(0.0066) translate(66, 70)' : 'scale(0.0066) translate(70, 75)'}`}
                             d="M39,-68.8C46.8,-63,46.9,-45,55.7,-31.5C64.5,-18.1,82.1,-9,87.2,2.9C92.3,14.9,84.9,29.8,76.1,43.4C67.4,57,57.2,69.3,44.3,70.7C31.4,72,15.7,62.5,3.2,57C-9.4,51.5,-18.7,50.1,-31.1,48.4C-43.5,46.7,-58.9,44.8,-64,36.7C-69.1,28.6,-63.9,14.3,-60.2,2.2C-56.4,-10,-54.1,-19.9,-50.4,-30.5C-46.7,-41,-41.6,-52.2,-33,-57.6C-24.4,-63,-12.2,-62.6,1.7,-65.6C15.6,-68.5,31.1,-74.7,39,-68.8Z"
                         />
                     </clipPath>
