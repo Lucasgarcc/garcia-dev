@@ -1,35 +1,64 @@
 /* Container principal do Projeto Destaque */
 .postContainer {
     margin: 0 auto;
-    padding: 2rem;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 9rem;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 4rem; /* Reduzi o gap para não separar tanto no desktop */
     align-items: center;  
-    width: 100vw;
-    max-width: 100%;
+    width: 100%;
+    max-width: 1200px;
     background: rgba(254, 254, 254, 0.7);
-
 }
 
-/* 1. O Wrapper que segura os badges e a imagem */
+/* O Wrapper agora é um Grid para sobrepor imagem e contorno */
 .relativeWrapper {
     position: relative;
     width: 100%;
-    max-width: 500px; /* Ajuste conforme necessário */
-    display: flex;
-    justify-content: center;
+    max-width: 800px; 
+    height: auto;
+    display: grid;
+    place-items: center; /* Centraliza tudo um em cima do outro */
+        filter: drop-shadow(10px 10px 15px rgba(0, 0, 0, 0.15));
 }
 
-/* 2. Estilização dos Badges (Glassmorphism) */
+/* O contorno (SVG) e a Sombra */
+.blobOutline {
+    grid-area: 1 / 1; /* Ocupa a primeira célula do grid */
+    width: 100%;
+    height: auto;
+    z-index: 3;
+    transform: scale(1.05);
+    filter: drop-shadow(10px 10px 15px rgba(0, 0, 0, 0.15));
+}
+
+/* O wrapper da imagem com o clip-path */
+.imageWrapper {
+    padding: 2rem;
+    grid-area: 1 / 1; /* Ocupa a mesma célula que o contorno */
+    width: 100%; /* Levemente menor que o contorno para criar a borda */
+    height: 100%;
+    clip-path: url(#blobClip);
+    -webkit-clip-path: url(#blobClip);
+    z-index: 2;
+    overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.1);
+}
+
+.postImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Estilização dos Badges (Glassmorphism) */
 .badge {
     position: absolute;
-    z-index: 20; /* Acima da imagem */
+    z-index: 20; 
     background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    padding: 12px 20px;
-    border-radius: 16px;
+    padding: 10px 18px;
+    border-radius: .4rem;
     border: 1px solid rgba(255, 255, 255, 0.3);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     font-weight: 600;
@@ -42,7 +71,6 @@
     white-space: nowrap;
 }
 
-/* Posicionamento estratégico para não cobrir o centro da imagem */
 .badgeTopLeft {
     top: 90px;
     left: 30px;
@@ -50,47 +78,26 @@
 }
 
 .badgeBottomRight {
-    bottom: 10px;
-    right: -40px;
-    filter: drop-shadow(2px 1px 3px rgba(0, 0, 0, 0.25));
+    bottom: 10%;
+    right: 20%;
 }
 
-/* Esta classe vai envolver o imageWrapper no seu JSX */
-.blobShadow {
-    filter: drop-shadow(10px 5px 5px rgba(0, 0, 0, 0.25));
-    width: 100%;
+.postInfoContainer{
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 480px;
+    gap: 1.5rem;
 }
-
-/* o Image Wrapper para não cortar os badges */
-.imageWrapper {
-    position: relative;
-    width: 100%;
-    max-width: 600px; /* Ou o tamanho que você desejar para o projeto */
-    aspect-ratio: 1 / 1; /* Blobs funcionam melhor em containers quadrados */
-    clip-path: url(#blobClip);
-    -webkit-clip-path: url(#blobClip);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-    box-shadow: rgba(0, 0, 0, 0.1);
-}
-
-.postImage {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    /* Zoom leve para garantir que as curvas do blob capturem a imagem */
-    transform: scale(1.1);
-}
-
 
 .postContent {
+    width: 100%;
     font-size: 1.5rem;
     max-width: 100%;
+    text-align: justify;
+    hyphens: auto;
+    letter-spacing: 0;
 } 
 
 .postTitle {
@@ -101,14 +108,14 @@
     font-size: 3rem;
     font-family: var(--font-roboto);
     font-weight: var(--fw-medium);
-    color: var(--primary-c-0-3);
+    color: var(--secondary-c-1);
 }
 
 .buttons,
 .button {
     display: flex !important;
     justify-content: flex-start !important;
-    align-self: center !important;
+    align-self: flex-start !important;
     gap: 1rem;
 }
 
@@ -116,9 +123,14 @@
     gap: .5rem;
 }
 
+.badge > .icon{
+    color: var(--secondary-c-1);
+}
+
 /* Responsividade corrigida */
 @media screen and (max-width: 1024px) {
     .postContainer {
+        padding: .2rem;
         grid-template-columns: 1fr;
         gap: 4rem;
     }
@@ -129,9 +141,11 @@
         font-size: 2rem;
     }
     .badgeTopLeft {
+        top: 10%;
         left: 0; /* Traz para dentro em telas menores */
     }
     .badgeBottomRight {
+        bottom: 20%;
         right: 0;
     }
     .blobShadow {
@@ -143,7 +157,28 @@
 }
 
 @media screen and (max-width: 428px) {
+    .postContainer {
+        width: 100%;
+        gap: 2rem;
+    }
+    .postInfoContainer {
+        width: 100%;
+        gap: 1.5rem;
+    }
+    .relativeWrapper{
+        width: 100%;
+    }
+    .imageWrapper {
+        padding: 1rem;
+    }
+    .badge {
+        padding: 5px 11px;
+        font-size: 0.55rem;
+    }
     .badgeTopLeft {
         top: 30px;
+    }
+    .badge > .icon{
+       font-size: .98rem;
     }
 }
