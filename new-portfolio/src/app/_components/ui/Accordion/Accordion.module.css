@@ -3,7 +3,7 @@
     margin-bottom: 1.5rem;
     position: relative;
     border-radius: 0.5rem;
-    width: 30%;
+    width: 28%;
     margin-bottom: 0 1rem;
     border-radius: 1.5rem .5rem 1.5rem;
     border: 1px solid var(--logo-stroke-secondary);
@@ -44,7 +44,7 @@
 
 .header {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;  
     cursor: pointer;
 }
@@ -57,17 +57,20 @@
 .iconArrow {
     color:  #515151;
 }
+
 .iconArrow:hover {
     color: var(--primary-c-0-1);
 } 
 
-.titleGroup {
-    gap: 1rem;
-}
 .titleGroup,
 .mainIcon {
     display: flex;
     align-items: center;
+}
+
+.titleGroup {
+    gap: 3rem;
+
 }
 
 .mainIcon {
@@ -76,6 +79,7 @@
 }
 
 .title {
+    text-align: center;
     font-size: 1.25rem;
     font-weight: 500;
     color: #4b6c40;
@@ -130,6 +134,30 @@
     border-radius: 2px;
 }
 
+.pullDownBtn {
+    background: none;
+    border: none;
+    color: var(--secondary-c-1);
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.pullDownBtn:hover {
+    opacity: 1;
+}
+
+.quantilyItem {
+    font-size: 1rem;
+    color: var(--bg-grey);
+}
 @media (max-width: 1024px) {
     .accordionWrapper  {
         width: 70%;
