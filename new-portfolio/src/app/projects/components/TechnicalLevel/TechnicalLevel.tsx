@@ -7,8 +7,8 @@ import Accordion from '@/app/_components/ui/Accordion/Accordion';
 import { BsFiletypeHtml } from "react-icons/bs";
 import { BsFiletypeScss } from "react-icons/bs";
 
-
 import { FaNodeJs } from "react-icons/fa";
+import { FaLaravel } from "react-icons/fa6";
 import { RiNpmjsLine } from "react-icons/ri";
 import { SiPostgresql } from "react-icons/si";
 import { PiFileSql } from "react-icons/pi";
@@ -79,6 +79,11 @@ const backEnd = [
         title: 'Node',
         progess: 50, // Seguindo o typo 'progess' da sua interface
         iconStask: <FaNodeJs className={styles.icon} />
+    },
+    {
+        title: 'Laravel',
+        progess: 30, // Seguindo o typo 'progess' da sua interface
+        iconStask: <FaLaravel className={styles.icon} />
     },
     {
         title: 'SQL',
