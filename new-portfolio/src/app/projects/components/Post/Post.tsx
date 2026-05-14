@@ -10,6 +10,7 @@ import { PiDog } from "react-icons/pi";
 import { FiGithub } from "react-icons/fi";
 import { BsArrowRight } from 'react-icons/bs';
 import useMediaQuery from '@/app/core/hooks/MediaQuery/MediQuery';
+import { PostProps } from '@/app/core/interfaces/post';
 
 const floatingVariants = (delay: number = 0): Variants => ({
     floating: {
@@ -24,15 +25,12 @@ const floatingVariants = (delay: number = 0): Variants => ({
     }
 });
 
-interface PostProps {
-    title: string;
-    content?: string;
-    imageUrl?: string | null;
-    deploy?: string;
-    github?: string;
-}
+const blob = `
+   M88.5,60.5Q79,71,71,80.5Q63,90,51,87Q39,84,26.5,80Q14,76,10,63Q6,50,9.5,36.5Q13,23,24.5,15Q36,7,50,6.5Q64,6,70.5,18.5Q77,31,87.5,40.5Q98,50,88.5,60.5Z
+`
 
 const Post = ({ title, content, imageUrl = null, deploy, github }: PostProps) => {
+   
     const isMobile = useMediaQuery('(max-width: 428px)');
 
     return (
@@ -49,7 +47,7 @@ const Post = ({ title, content, imageUrl = null, deploy, github }: PostProps) =>
                     <clipPath id="blobClip" clipPathUnits="objectBoundingBox">
                         <path
                             transform="scale(0.01)"
-                            d="M83.5,65Q74,80,57,87.5Q40,95,23.5,83Q7,71,13,53Q19,35,29,18.5Q39,2,56,11.5Q73,21,83,35.5Q93,50,83.5,65Z"
+                            d={blob}
                         />
                     </clipPath>
                 </defs>
@@ -85,7 +83,7 @@ const Post = ({ title, content, imageUrl = null, deploy, github }: PostProps) =>
                                 <clipPath id="blobClip" clipPathUnits="objectBoundingBox">
                                     <path
                                         transform="scale(0.01)"
-                                        d="M83.5,65Q74,80,57,87.5Q40,95,23.5,83Q7,71,13,53Q19,35,29,18.5Q39,2,56,11.5Q73,21,83,35.5Q93,50,83.5,65Z"
+                                            d={blob}
                                     />
                                     </clipPath>
                                 </defs>
@@ -110,8 +108,8 @@ const Post = ({ title, content, imageUrl = null, deploy, github }: PostProps) =>
                             {/* SVG VISÍVEL (O Contorno que já está ok) */}
                             <svg viewBox="0 0 100 100" className={styles.blobOutline}>
                                 <path
-                                    d="M83.5,65Q74,80,57,87.5Q40,95,23.5,83Q7,71,13,53Q19,35,29,18.5Q39,2,56,11.5Q73,21,83,35.5Q93,50,83.5,65Z"
-                                    transform="translate(-7, -2)"
+                                    d={blob}
+                                    transform="translate(-3.5, 0)"
                                     stroke="var(--secondary-c-1)"
                                     strokeWidth="1"
                                     fill="none"

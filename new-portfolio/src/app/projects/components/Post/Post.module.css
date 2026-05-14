@@ -14,7 +14,7 @@
 .relativeWrapper {
     position: relative;
     width: 100%;
-    max-width: 800px; 
+    max-width: max-content; 
     height: auto;
     display: grid;
     place-items: center; /* Centraliza tudo um em cima do outro */
@@ -28,7 +28,7 @@
     height: auto;
     z-index: 3;
     transform: scale(1.05);
-    filter: drop-shadow(10px 10px 15px rgba(0, 0, 0, 0.15));
+    filter: drop-shadow(3px 3px 3px rgba(128, 255, 0, 0.148));
 }
 
 /* O wrapper da imagem com o clip-path */
@@ -72,14 +72,14 @@
 }
 
 .badgeTopLeft {
-    top: 90px;
-    left: 30px;
+    top: 20%;
+    left: 0%;
     filter: drop-shadow(2px 1px 3px rgba(0, 0, 0, 0.25));
 }
 
 .badgeBottomRight {
-    bottom: 10%;
-    right: 20%;
+    bottom: 20%;
+    right: 10%;
 }
 
 .postInfoContainer{
@@ -87,7 +87,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    width: 480px;
+    width: 470px;
     gap: 1.5rem;
 }
 
