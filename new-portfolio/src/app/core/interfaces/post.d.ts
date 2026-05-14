@@ -14,3 +14,11 @@ export interface Post {
     date: string; // Ex: 'Feb 25, 2021'
     content: string;
 }
+
+export interface PostProps {
+    title: string;
+    content?: string;
+    imageUrl?: string | null;
+    deploy?: string;
+    github?: string;
+}
