@@ -259,30 +259,46 @@
 }
 
 /* Details Links */
-.deployLink {
+
+.buttonDeploy,
+.buttonRepo{
+    padding: .2rem .4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     max-width: 150px;
+    gap: .5rem;
+    border-radius:.4rem; /* rounded-full */
+    transition: gap 0.2s ease;
+}
+
+.buttonDeploy:hover,
+.buttonRepo:hover {
+    gap: 0.8rem; /* Efeito visual na seta ao passar o mouse */
+}
+
+.buttonDeploy {
     background: var(--primary-c);
     color: var(--primary-c-0-5);
     color: var(--primary-c-3);
     font-family: var(--font-roboto);
-    border-radius:.4rem; /* rounded-full */
     border: 1px solid var(--primary-c-0-1);
     box-shadow: 0 25px 50px -12px rgba(171, 171, 171, 0.218); /* shadow-2xl */
     transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1); /* transition-all padrão do Tailwind */
 }
-.deployLink:hover {
+.buttonDeploy:hover {
     background-color: var(--primary-c-0-1);
     border-color: var(--secondary-c-1);
 }
 
-.repoLink {
+.buttonRepo {
     max-width: 150px; 
     background: var(--bg-primary-n);
     border: 1px solid var(--color-text-secondary);
     transition: .3s all;
 }
 
-.repoLink:hover {
+.buttonRepo:hover {
     background-color: var(--bg-secondary-g);
     border-color: var(--primary-c-3);
     color: var(--color-text-p);
@@ -394,10 +410,12 @@
     transition: gap 0.2s ease;
 }
 
-.btnVeiwProjectMobile:hover {
+.btnVeiwProjectMobile:hover{
     color: var(--bg-primary-c);
     gap: 0.8rem; /* Efeito visual na seta ao passar o mouse */
 }
+
+
 
 .icon {
     font-family: var(--font-altric)!important;
@@ -449,7 +467,8 @@
 
 @media (max-width: 428px) {
     .btnVeiwProjectMobile{
-        width: 80vw;
+        width: 50vw;
+        font-size: .5rem;
         text-align: center;
     }
 }

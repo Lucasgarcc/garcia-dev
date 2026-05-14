@@ -5,11 +5,19 @@ import { AccordionProps } from '@/app/core/interfaces/accordion';
 import styles from './Accordion.module.css';
 import { motion, AnimatePresence } from 'framer-motion';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
 const Accordion = ({ icon, title, subtitle, content, className }: AccordionProps) => {
     const [isOpen, setIsOpen] = useState(false);
 
+    // Estado para o pull down interno
+    const [isExpanded, setIsExpanded] = useState(false);
+
+    const item_limit = 4;
+    const hasMoreItems = content.length > item_limit;
+
+    const displayedContent = isExpanded ? content : content.slice(0, item_limit);
     return (
         <motion.div className={`${styles.accordionWrapper} ${className} `} 
             animate={{
@@ -50,18 +58,19 @@ const Accordion = ({ icon, title, subtitle, content, className }: AccordionProps
                             opacity: { duration: 0.25 }
                         }}
                     >
-                        {content.map((item, i) => (
-                            <li key={i} className={styles.listItem}>
+                        {displayedContent.map((item, i) => (
+                            <motion.li
+                                layout // Mantém a transição suave ao adicionar/remover itens
+                                key={i}
+                                className={styles.listItem}
+                            >
                                 <div className={styles.itemHeader}>
                                     <div className={styles.itemName}>
-                                        {/* Se for um componente, renderiza como <Icon />.*/}
                                         {item.iconStask}
                                         <span>{item.title}</span>
                                     </div>
-
                                 </div>
 
-                                {/* Barra de Progresso Minimalista */}
                                 <div className={styles.progressBack}>
                                     <motion.div
                                         className={styles.progressFront}
@@ -70,9 +79,39 @@ const Accordion = ({ icon, title, subtitle, content, className }: AccordionProps
                                         transition={{ duration: 2, delay: 0.2 }}
                                     />
                                 </div>
-                            </li>
+                            </motion.li>
                         ))}
+
+                        {/* Botão de Pull Down inserido como o último item da lista */}
+                        {hasMoreItems && (
+                            <li className={styles.pullDownWrapper}>
+                                <button
+                                    className={styles.pullDownBtn}
+                                    onClick={(e) => {
+                                        e.stopPropagation(); // Evita fechar o accordion
+                                        setIsExpanded(!isExpanded);
+                                    }}
+                                >
+                                    <motion.div
+                                        animate={{ y: isExpanded ? 0 : [0, 4, 0] }}
+                                        transition={{ repeat: Infinity, duration: 1.5 }}
+                                    >
+                                        {isExpanded ? <KeyboardArrowUpIcon className={styles.iconArrow} /> : <KeyboardArrowDownIcon className={styles.iconArrow} />}
+                                    </motion.div>
+                                    <span>
+                                        {isExpanded ? (
+                                            'Recolher'
+                                        ) : (
+                                            <>
+                                                Ver Mais{' '}
+                                            </>
+                                        )}
+                                    </span>
+                                </button>
+                            </li>
+                        )}
                     </motion.ul>
+                    
                 )}
             </AnimatePresence>
         </motion.div>

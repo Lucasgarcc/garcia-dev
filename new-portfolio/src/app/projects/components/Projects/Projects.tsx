@@ -10,6 +10,7 @@ import useMediaQuery from '@/app/core/hooks/MediaQuery/MediQuery';
 import { BsArrowRight } from 'react-icons/bs';
 import { InteractiveGrid } from '@/app/_components/ui/InteractiveGrid/InteractiveGrid';
 import { ScrollHelper } from '@/app/_components/helpers/ScrollHelper/ScrollHelper';
+import { FiGithub } from "react-icons/fi";
 
 if (typeof window !== 'undefined') {
     gsap.registerPlugin(ScrollTrigger);
@@ -161,7 +162,7 @@ const Projects = () => {
                 <div className={`
                         fixed bottom-150 right-10 z-[120] transition-all 
                         duration-1000 pointer-events-none
-                        ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}
+                        ${isVisible && !isMode3D ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}
                     `}
                 >
                     <ScrollHelper text="Role para explorar" />
@@ -169,7 +170,6 @@ const Projects = () => {
 
                 <div ref={container3DRef} className={styles.gitGraphContainer}>
                     <InteractiveGrid>
-       
                         <GitGraph />
                     </InteractiveGrid>
                 </div>
@@ -224,15 +224,24 @@ const Projects = () => {
                                 <footer className="mt-8 flex gap-4">
 
                                     {selectedProjectData.deployUrl && (
-                                        <a href={selectedProjectData.deployUrl} target="_blank" className={`${styles.deployLink} flex-1 text-center py-2 rounded-lg transition-colors font-medium`}>
+                                        <span className={styles.buttonDeploy}>  
+                                             <a href={selectedProjectData.deployUrl} target="_blank" className={`${styles.deployLink} flex-1 text-center py-2 rounded-lg transition-colors font-medium`}>
                                             Ver Mais
-                                        </a>
+                                        </a> 
+                                            <BsArrowRight size={18} className={styles.icon}/>
+                                        </span>
+                                     
                                     )}
 
                                     {selectedProjectData.repoUrl && (
-                                        <a href={selectedProjectData.repoUrl} target="_blank" className={`${styles.repoLink} flex-1 text-center py-2 rounded-lg`}>
-                                            GitHub
-                                        </a>
+                                        <span className={styles.buttonRepo}>
+                                            <a href={selectedProjectData.repoUrl} target="_blank" className={`${styles.repoLink} flex-1 text-center py-2 rounded-lg`}>
+                                                GitHub
+                                            </a>
+                                            <FiGithub className={styles.icon}/>
+                                        </span>
+      
+                                        
                                     )}
                                 </footer>
                             </WrapperCard>

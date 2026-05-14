@@ -145,15 +145,12 @@
   --font-geist-mono: 'Courier New', monospace;
 }
 
-
 @media (prefers-color-scheme: dark) {
   :root {
     --background:  var(--bg-primary-n);
     --foreground: #ffffff;
   }
 }
-
-
 
 body {
   /*color: var(--color-text);*/

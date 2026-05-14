@@ -43,7 +43,7 @@ const NavigationProvider = ({ children }: { children: React.ReactNode }) => {
             case 'articles':
                 return { artContent, artCode, artRelated };
             case 'projects':
-                return { post, skills, technicalLevel, articles, portfolio,  differential };
+                return { post, skills, technicalLevel, articles, portfolio };
             default:
                 return { intro, about, timeline, differential, contact };
             }
