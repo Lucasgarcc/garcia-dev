@@ -147,7 +147,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background:  var(--bg-primary-n);
+    --background:  var(--primary-c-4);
     --foreground: #ffffff;
   }
 }
@@ -220,15 +220,19 @@ main {
 }
 
 .area-content-about-me,
-.area-continer-timeline,
-.area-continer-differential,
-.area-continer-contact-me,
+.area-container-timeline,
+.area-container-differential,
+.area-container-contact-me,
 .area.post-content,
 .area-content-skills {
-  min-height: 100vh; /* mantém padrão */
+    min-height: 100vh; /* mantém padrão */
 }
 
-.area-continer-timeline {
+.area-content-about-me {
+    width: 100%;
+}
+
+.area-container-timeline {
 	position: relative;
 	width: 100%;
 	min-height: 100vh;
@@ -250,7 +254,7 @@ main {
 	align-items: center;
 }
 
-.area-continer-contact-me {
+.area-container-contact-me {
   width: 100%;
   min-height: fit-content;
 }
