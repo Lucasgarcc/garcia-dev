@@ -69,7 +69,7 @@ const ContactMe = () => {
                 variant="h4"
                 align='center'
                 textAlign={'center'}
-                fontFamily='var(--font-title)'
+                fontFamily='var(--font-altric)'
                 gutterBottom
                 fontWeight={500}
             >
@@ -143,6 +143,7 @@ const ContactMe = () => {
                                     backgroundColor: 'var(--primary-c-3)', marginTop: '1rem', color: 'var(--color-text-n)',
                                     textAlign: 'center',
                                     fontSize: '1.1rem',
+                                    borderRadius: '.4rem',
                                     border: "1px solid var(--color-text-n)",
                                     ":hover": {
                                         backgroundColor: "var(--primary-c-0-4)",

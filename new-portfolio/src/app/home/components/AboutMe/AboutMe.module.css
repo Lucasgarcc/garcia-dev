@@ -1,10 +1,10 @@
 .sectionWrapper {
-  min-height: 100vh;
-  padding-top: 8rem; /* Ajuste conforme seu header */
-  padding-bottom: 4rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start; /* Ou center, se quiser centralizar tudo */
+    min-height: 100vh;
+    padding-top: 8rem; /* Ajuste conforme seu header */
+    padding-bottom: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; 
 }
 
 .aboutMeContainer {
@@ -15,6 +15,7 @@
     width: 100%;
     max-width: 1200px;
     color: var(--bg-primary);
+    background: rgba(254, 254, 254, 0.835);
 }
 
 .aboutContent {
@@ -22,26 +23,67 @@
     grid-template-columns: 1fr 1fr; 
     justify-content: center;
     align-items: center;
-    gap: 10rem;
+    gap: 3rem;
     align-items: center;   
     width: 100%;
 }
 
 .aboutContentText {
-    margin-top: 5rem;
-    grid-area: 0 / 2 /3;
+    grid-area: 1 / 2 /3;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: .5rem;
     flex-direction: column;  
-    width: 100%;
+    width: 500px;
+}
+
+.containerHero {
+    border-radius: 10% !important;
+    border-radius: 10%;
+}
+
+/* Estilização dos Badges (Glassmorphism) */
+.badge {
+    position: absolute;
+    z-index: 20; 
+    padding: 10px 18px;
+    border-radius: .4rem;
+    font-weight: 600;
+    font-size: 0.85rem;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.badgeTopLeft {
+    top: 20%;
+    left: 70%;
+}
+
+.badgeBottomRight {
+    bottom: 5%;
+    right: 15%;
 }
 
 .aboutContentImage {
-    margin-top: 5rem;
-    font-size: 1.1rem;
-    line-height: 1.6;
+    width: 850px;
+    background:  transparent;
+    position: relative;
+}
+
+.imageBio {
+    filter: drop-shadow(5px 5px 5px rgba(153, 173, 1, 0.292));
+}
+
+.badge > img {
+    filter: drop-shadow(5px 1px 5px rgba(68, 68, 68, 0.768));
+}
+
+.imageBio{
+  width: 95%;
 }
 
 .aboutContentDescription {
@@ -54,7 +96,11 @@
 
 .aboutContentStatis {
     max-width: min-content;
-    gap: 2rem;
+    gap: 3rem;
+}
+
+.aboutContentButton {
+    width: 50%;
 }
 
 .aboutContentDescription,
@@ -68,10 +114,11 @@
 }
 
 .aboutDatailsText {
-    font-family: var(--font-title);
+    font-family: var(--font-altric);
 
     color: var(--primary-c);
 }
+
 
 @media screen and (max-width: 1700px) {
     .aboutContent {
@@ -104,7 +151,9 @@
         margin-top: 5rem;
         max-width: 90%;
     }
-
+    .badge > img{
+       max-width: 80%;
+    }  
 } 
 
 @media screen and (max-width: 1368px) {
@@ -116,6 +165,8 @@
         width: 100%;
     }
     .aboutContentText {
+        width: 100%;
+        max-width: max-content;
         margin-top: 2.5rem;
     }
     .aboutContentDescription {
@@ -133,10 +184,14 @@
         justify-content: center;
         align-self: center;
     }
-    
+
 }
 
 @media screen and (max-width: 768px) {
+    .aboutContent { 
+        gap: .5rem
+    }
+
     .aboutTitle {
         margin-bottom: 0;
     }
@@ -160,14 +215,22 @@
         display: flow-root;
         padding: 0 2rem 0 2rem;
         width: 90%;
+    } 
+    .badgeBottomRight {
+        right: 5%;
     }
 }
 
 @media screen and (max-width: 480px) {
+    .imageBio {
+        width: 105vw;
+        max-width: fit-content;
+    }
     .aboutContent {
         gap: .5rem;
     }
     .aboutContentText {
+        width: 100%;
         margin-top: 0;
     }
     .aboutTitle  {
@@ -186,5 +249,22 @@
     } 
     .aboutContentStatis {
        gap: 0;
+    }
+    .badgeTopLeft {
+        top: 20%;
+        left: 70%; /* Traz para dentro em telas menores */
+    }
+    .badgeBottomRight {
+        right: -20%;
+    }
+    .badge {
+        padding: 5px 11px;
+        font-size: 0.55rem;
+    }
+    .badge > img{
+       max-width: 50%;
+    }    
+    .badgeTopLeft > img {
+        max-width: 70%;
     }
 }

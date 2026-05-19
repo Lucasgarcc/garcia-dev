@@ -1,10 +1,11 @@
 .sectionWrapper {
-  min-height: 100vh;
-  padding-top: 4rem; /* Ajuste conforme seu header */
-  padding-bottom: 4rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start; /* Ou center, se quiser centralizar tudo */
+    min-height: 100vh;
+    padding-top: 4rem; /* Ajuste conforme seu header */
+    padding-bottom: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Ou center, se quiser centralizar tudo */
+    background: rgba(254, 254, 254, 0.7);
 }
 
 .differentialContainer {
@@ -27,7 +28,6 @@
     padding: 1.5rem;
     border-radius: 8px;
     color: white;
-    box-shadow: 0 0 5px 3px rgba(203, 255, 139, 0.9);  
     transition: 
         background 0.6s ease,
         box-shadow 0.6s ease,
@@ -54,7 +54,6 @@
     transition: transform 0.3s ease;
     color: gradient(90deg, var(--primary-c-0-4), var(--primary-c-0-2));
     filter: drop-shadow(0 0 5px var(--primary-c-0-4));
-
 }
 .differentialTitle {
     font-size: 1.5rem;
@@ -64,7 +63,6 @@
 }
 
 .differentialSubTitle {
-    font-weight: 600;
     /* Corrigido de "semi-bold" (valor inválido) */
     margin-bottom: 1rem;
 }
