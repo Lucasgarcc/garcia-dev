@@ -25,7 +25,7 @@ const Differential = () => {
             className={Styles.differentialTitle}
             marginBottom={8}
             textAlign="center"
-            fontFamily="var(--font-title)"
+            fontFamily="var(--font-altric)"
             gutterBottom
             fontWeight={500}
         >
@@ -45,7 +45,7 @@ const Differential = () => {
                     className={Styles.differentialSubTitle}
                     fontFamily="var(--font-title)"
                     gutterBottom
-                    fontWeight={500}
+                    fontWeight={300}
                 >
                     <strong>
                     <FaLightbulb
@@ -93,7 +93,7 @@ const Differential = () => {
                         className={Styles.differentialSubTitle}
                         fontFamily="var(--font-title)"
                         gutterBottom
-                        fontWeight={500}
+                        fontWeight={300}
                     >
                         <strong>
                         <GiBrain
