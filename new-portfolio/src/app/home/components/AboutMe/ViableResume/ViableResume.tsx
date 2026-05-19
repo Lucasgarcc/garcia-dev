@@ -21,11 +21,12 @@ const ViableResume = () => {
                     padding: '.5rem',
                     textAlign: 'center',
                     fontSize: '1.1rem',
+                    borderRadius: '.4rem',
                     color: 'var(--color-text-n)',
                     border: "1px solid var(--color-text-n)",
                     ":hover": {
                         backgroundColor: "var(--primary-c-0-4)",
-                        color: "var(--primary-c-0-5)",
+                        color: "var(--secondary-c-1)",
                         border: "1px solid var(--primary-c-0-2)",
                         transform: "translateY(-2px)",
                     },

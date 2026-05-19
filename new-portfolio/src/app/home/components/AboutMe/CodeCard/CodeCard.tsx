@@ -1,6 +1,6 @@
 'use client';
 import Style from './CodeCard.module.css';
-
+import TypingEffect from '@/app/_components/ui/Animations/TypingEffect/TypingEffect';
 
 const CodeCard = () => {
 
@@ -33,7 +33,9 @@ const CodeCard = () => {
                     <div className={Style.CircularShadow}></div>
                     {/* Seção do código. */}
                     <div className={`${Style.ContentSection} bg-[#111111]`}>
-                    <div className={Style.CodeContainer} dangerouslySetInnerHTML={{ __html: codeContent }}/>
+                    <div className={Style.CodeContainer}>
+                        <TypingEffect text={codeContent} />
+                    </div>
                     </div>
 
                 </div>
