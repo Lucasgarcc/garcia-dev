@@ -1,14 +1,16 @@
 .areaContainer {
+    background: rgb(254, 254, 254);
     margin-top: 8rem;
     color: var(--color-text);
 }
 
 .titleDetail {
+    background: rgba(254, 254, 254, 0.7);
     color: var( --color-text-secondary-c);
 }
 
 .datails {
-    font-family: var(--font-title);
+    font-family: var(--font-altric);
         background: linear-gradient(
         90deg,         /* Direção: da esquerda para a direita */
         var(--primary-c-0-3) 0%,    /* Roxo (início da palavra) */
@@ -24,8 +26,12 @@
 }
 
 .titleSubtitle {
+    display: flex;
+    gap: .4rem;
     flex-wrap: wrap;
+    font-weight: 400;
     padding-bottom: .8rem;
+    font-family:  var(--font-altric);
 }
 
 .description {
@@ -44,10 +50,10 @@
         padding: .5rem 1rem;
     }
     .title{
-        font-size: 2.7rem !important;
+        font-size: 2.4rem !important;
     }
     .titleSubtitle {
-        font-size: 1.5rem !important;
+        font-size: 1.4rem !important;
         white-space: nowrap;
     }    
     .description {

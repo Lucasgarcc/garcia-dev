@@ -2,6 +2,14 @@
 import { Typography, Button } from '@mui/material';
 import { motion } from 'framer-motion';
 import Scene3D from './Emphasis.module.css';
+import RotateWords from '@/app/_components/ui/Animations/RotateWords/RotateWords';
+import GradualSpacing from '@/app/_components/ui/Animations/GradualSpaing/GradualSpaing';
+
+const wordTitle = [
+    'Front End',
+    'Back End',
+    'Front End'
+]
 
 const Home = () => {
 	return (
@@ -12,13 +20,20 @@ const Home = () => {
 			transition={{ duration: 0.5 }}
 			className={Scene3D.areaContainer}
 		>
-			<Typography className={Scene3D.title} variant="h2" gutterBottom fontFamily={'var(--font-title)'} fontWeight={450}>
-				<span className={Scene3D.titleDetail}>Eai</span>, Sou Lucas
+			<Typography className={Scene3D.title} variant="h2" gutterBottom fontFamily={'var(--font-title)'} fontWeight={500}>
+                <GradualSpacing> 
+                    <span className={Scene3D.titleDetail}>Eai</span>
+                    <span style={{ color: 'var(--primary-c)' }}>,</span> 
+                    Sou Lucas 
+                </GradualSpacing>
 			</Typography>
+
             <Typography className={Scene3D.titleSubtitle} fontWeight={450} variant="h4" gutterBottom>
-			 <span>{'< '}</span> Desenvolvedor / <span className={Scene3D.titleDetail}> Frontend </span> <span>{' >'}</span>
+                <span style={{ color: 'var(--primary-c)' }}>{'< '}</span>Desenvolvedor <span style={{ color: 'var(--primary-c)' }}> / </span>
+                    <RotateWords text="" className={Scene3D.titleDetail} words={[wordTitle[0], wordTitle[1], wordTitle[2]]} />
+                <span style={{ color: 'var(--primary-c)'}}>{' >'}</span>
 			</Typography>
- 
+
             <Typography className={Scene3D.description} variant="body1" display={'block'} fontWeight={450} fontSize={20} maxWidth={'100%'} marginBottom={4} letterSpacing={0} fontFamily={'var(--font-roboto)'}>
 				
                 Sou um desenvolvedor Frontend apaixonado por <strong className={Scene3D.datails}>criar experiências</strong> digitais incríveis. Com uma sólida formação em design e <strong className={Scene3D.datails}>desenvolvimento web</strong>, estou sempre em busca de novos desafios e oportunidades para aprimorar minhas habilidades.
@@ -27,6 +42,7 @@ const Home = () => {
                     fontFamily: 'var(--font-roboto)',
                     textAlign: 'center',
                     fontSize: '1.1rem',
+                    borderRadius: '.4rem',
                     border: "1px solid var(--color-text-n)",
                     ":hover": {
                         backgroundColor: "var(--primary-c-0-4)",
