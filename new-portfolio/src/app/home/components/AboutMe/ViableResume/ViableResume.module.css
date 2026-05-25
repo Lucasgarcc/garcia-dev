@@ -1,5 +1,6 @@
 .VariableResumeButton {
     width: 300px;
+    transition: background-color 0.3s ease-in-out;
 }
 
 @media screen and (max-width: 1200px) {

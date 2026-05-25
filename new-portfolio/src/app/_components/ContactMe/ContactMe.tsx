@@ -19,33 +19,34 @@ const theme = createTheme({
             styleOverrides: {
                 root: {
                     '& .MuiOutlinedInput-root': {
-                        backgroundColor: 'var(--bg-secondary-c)', /* 🎨 fundo do input */
+                        backgroundColor: 'var(--surface-secondary)', /* 🎨 fundo do input */
+                        color: 'var(--text-primary)', /* cor do texto */
                         borderRadius: '8px', /* opcional: cantos arredondados */
                         transition: 'background-color 0.3s ease, border-color 0.3s ease',
 
                         '&:hover': {
-                            backgroundColor: 'var(--bg-secondary-c)', /* fundo ao passar mouse */
+                            backgroundColor: 'var(--surface-secondary)', /* fundo ao passar mouse */
                         },
 
                         '&.Mui-focused': {
-                            backgroundColor: 'var(--bg-secondary-c)', /* fundo ao focar */
+                            backgroundColor: 'var(--surface-secondary)', /* fundo ao focar */
                         },
 
                         '& fieldset': {
-                            borderColor: 'var(--bg-secondary-c)',
+                            borderColor: 'var(--surface-secondary)',
                         },
                         '&:hover fieldset': {
-                            borderColor: 'var(--primary-c-1)',
+                            borderColor: 'var(--green-100)', /* borda ao passar mouse */
                         },
                         '&.Mui-focused fieldset': {
-                            borderColor: 'var(--color-text-secondary-c)',
+                            borderColor: 'var(--text-primary)', /* borda ao focar */
                         },
                     },
                     '& .MuiInputLabel-root': {
-                        color: 'var(--color-text)', /* cor do label */
+                        color: 'var(--text-primary)', /* cor do label */
                     },
                     '& .MuiInputLabel-root.Mui-focused': {
-                        color: 'var(--color-text-p)',
+                        color: 'var(--text-secondary-p)',
                     },
                     '& .MuiOutlinedInput-input': {
                         color: 'var(-color-text-p)', /* texto digitado */
@@ -64,7 +65,7 @@ const ContactMe = () => {
         <ThemeProvider theme={theme}>
             <Typography
 
-                color='var(--primary-c-2)'
+                color='var(--green-500)'
                 textTransform={'uppercase'}
                 variant="h4"
                 align='center'
@@ -100,7 +101,7 @@ const ContactMe = () => {
                     <div className={Styles.containerForm}>
                         <h5 className={Styles.contactFormTitle}>
                             <span className={Styles.contactFormContentTitle}>
-                                <GrContact color='var(--primary-c-0-1)' /> Entrar em contato
+                                <GrContact color='var(--green-100)' /> Entrar em contato
                             </span>
                         </h5>
                         <form className={Styles.contactForm}
@@ -110,9 +111,8 @@ const ContactMe = () => {
                                 name="name"
                                 variant="outlined"
                                 fullWidth
-
                                 required
-                                className={Styles?.contactInput}
+                                className={Styles.contactInput}
                             />
                             <TextField
                                 label="Email"
@@ -123,7 +123,7 @@ const ContactMe = () => {
                                 margin="normal"
                                 required
                                 color="primary"
-                                className={Styles?.contactInput}
+                                className={Styles.contactInput}
                             />
                             <TextField
                                 label="Mensagem"
@@ -134,22 +134,24 @@ const ContactMe = () => {
                                 required
                                 multiline
                                 rows={4}
+                                className={Styles.contactInput}
                             />
                             <Button
                                 type="submit"
                                 variant="contained"
                                 color="primary"
                                 sx={{
-                                    backgroundColor: 'var(--primary-c-3)', marginTop: '1rem', color: 'var(--color-text-n)',
+                                    backgroundColor: 'var(--green-dark)',
+                                    marginTop: '1rem',
                                     textAlign: 'center',
                                     fontSize: '1.1rem',
                                     borderRadius: '.4rem',
-                                    border: "1px solid var(--color-text-n)",
+                                    border: "1px solid var(--text-on-accent)",
                                     ":hover": {
-                                        backgroundColor: "var(--primary-c-0-4)",
-                                        color: "var(--primary-c-0-5)",
+                                        backgroundColor: "var(--green-300)",
+                                        color: "var(--green-700)",
                                         fontFamily: 'var(--font-roboto)',
-                                        border: "1px solid var(--primary-c-0-2)",
+                                        border: "1px solid var(--green-200)",
                                         transform: "translateY(-2px)",
                                     },
                                     transition: "all 0.3s ease",

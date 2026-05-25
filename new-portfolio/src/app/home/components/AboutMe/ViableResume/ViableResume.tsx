@@ -15,19 +15,19 @@ const ViableResume = () => {
                 variant="contained"
                 className={Styles.VariableResumeButton}
                 sx={{
-                    backgroundColor: 'var(--primary-c-3)',
+                    backgroundColor: 'var(--color-accent-button)',
                     marginTop: '1rem',
                     fontFamily: 'var(--font-roboto)',
                     padding: '.5rem',
                     textAlign: 'center',
                     fontSize: '1.1rem',
                     borderRadius: '.4rem',
-                    color: 'var(--color-text-n)',
-                    border: "1px solid var(--color-text-n)",
+                    color: 'var(--text-future)',
+                    border: "1px solid var(--text-on-accent)",
                     ":hover": {
-                        backgroundColor: "var(--primary-c-0-4)",
-                        color: "var(--secondary-c-1)",
-                        border: "1px solid var(--primary-c-0-2)",
+                        backgroundColor: "var(--green-300)",
+                        color: "var(--green-600)",
+                        border: "1px solid var(--green-200)",
                         transform: "translateY(-2px)",
                     },
                     transition: "all 0.3s ease",

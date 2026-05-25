@@ -20,7 +20,7 @@ const Logo = ({
             xmlns="http://www.w3.org/2000/svg"
             style={{
                 "--logo-stroke-primary": colorPrimary,
-                "--logo-stroke-secundary": colorSecondary,
+                "--logo-stroke-secondary": colorSecondary,
                 "--logo-gradient-stop1": strokePrimary,
                 "--logo-gradient-stop2": strokeSecondary,
                 "--logo-gradient-stop3": strokeThird,
@@ -33,7 +33,7 @@ const Logo = ({
             <path className={colorSecondary} d="M126.199 37.68V10.48H131.719V37.68H126.199Z" fill="url(#paint_linear_5)" />
             <path className={colorSecondary} d="M135.364 37.68L141.484 10.48H151.964L158.084 37.68H152.564L151.484 32.76H141.964L140.884 37.68H135.364ZM145.764 15.04L143.004 27.96H150.444L147.684 15.04H145.764Z" fill="url(#paint_linear_6)" />
             <path className={Style.path1} d="M17.5 1.5H15C13.0109 1.5 11.1032 2.29018 9.6967 3.6967C8.29018 5.10322 7.5 7.01088 7.5 9V16.5C7.5 18.4891 6.70982 20.3968 5.3033 21.8033C3.89678 23.2098 1.98912 24 0 24C1.98912 24 3.89678 24.7902 5.3033 26.1967C6.70982 27.6032 7.5 29.5109 7.5 31.5V41.5C7.5 43.4891 8.29018 45.3968 9.6967 46.8033C11.1032 48.2098 13.0109 49 15 49H17.5" stroke="var(--logo-stroke-primary)" strokeWidth="5" strokeLinecap="round" />
-            <path className={Style.path3} d="M167 3H169.5C171.489 3 173.397 3.79018 174.803 5.1967C176.21 6.60322 177 8.51088 177 10.5V18C177 19.9891 177.79 21.8968 179.197 23.3033C180.603 24.7098 182.511 25.5 184.5 25.5C182.511 25.5 180.603 26.2902 179.197 27.6967C177.79 29.1032 177 31.0109 177 33V43C177 44.9891 176.21 46.8968 174.803 48.3033C173.397 49.7098 171.489 50.5 169.5 50.5H167" stroke="var(--logo-stroke-secundary)" strokeWidth="5" strokeLinecap="round" />
+            <path className={Style.path3} d="M167 3H169.5C171.489 3 173.397 3.79018 174.803 5.1967C176.21 6.60322 177 8.51088 177 10.5V18C177 19.9891 177.79 21.8968 179.197 23.3033C180.603 24.7098 182.511 25.5 184.5 25.5C182.511 25.5 180.603 26.2902 179.197 27.6967C177.79 29.1032 177 31.0109 177 33V43C177 44.9891 176.21 46.8968 174.803 48.3033C173.397 49.7098 171.489 50.5 169.5 50.5H167" stroke="var(--logo-stroke-secondary)" strokeWidth="5" strokeLinecap="round" />
             <defs>
                 <linearGradient id="paint_linear_1" x1="87.9735" y1="10" x2="153.473" y2="7.5" gradientUnits="userSpaceOnUse">
                     <stop stopColor="var(--logo-gradient-stop1)" />

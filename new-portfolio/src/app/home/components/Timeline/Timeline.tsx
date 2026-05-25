@@ -147,7 +147,7 @@ const Timeline: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
         >
-            <Typography marginTop={15} color='var(--primary-c-2)' textTransform={'uppercase'}
+            <Typography marginTop={15} color='var(--green-500)' textTransform={'uppercase'}
                 variant="h4" className={Styles.title} marginBottom={4} textAlign={'center'} fontFamily='var(--font-altric)' gutterBottom fontWeight={450}
             >
                 Qualificações

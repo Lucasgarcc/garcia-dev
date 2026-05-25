@@ -18,7 +18,7 @@ const Card = ({ title, subtitle, content, className, onClose }: CardUi) => {
                         <h1 className={styles.title}>{title}</h1>
                         {subtitle && <h3 className={styles.subtitle}>{subtitle}</h3>}
                     </header>
-                    <Button  onClick={onClose} sx={{ color:'var(--primary-c-0-6)'}} className={styles.closeButton}>
+                    <Button  onClick={onClose} sx={{ color:'var(--green-800)'}} className={styles.closeButton}>
                         <CloseIcon sx={{ fontSize: 25 }}/>
                     </Button>
 

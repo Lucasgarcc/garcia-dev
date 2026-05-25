@@ -27,7 +27,7 @@
 .ContentSection {
     width: max-content;
     position: relative;
-    border: 4.5px solid var(--color-text-secondary);
+    border: 4.5px solid var(--text-muted);
     border-radius: 2rem;
 }
 

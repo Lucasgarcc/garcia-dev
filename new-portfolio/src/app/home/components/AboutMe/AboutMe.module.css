@@ -1,10 +1,10 @@
 .sectionWrapper {
-    min-height: 100vh;
     padding-top: 8rem; /* Ajuste conforme seu header */
     padding-bottom: 4rem;
     display: flex;
     flex-direction: column;
     justify-content: flex-start; 
+    background: var(--surface-strong);
 }
 
 .aboutMeContainer {
@@ -14,8 +14,8 @@
     align-items: center;
     width: 100%;
     max-width: 1200px;
-    color: var(--bg-primary);
-    background: rgba(254, 254, 254, 0.835);
+    color: var(--text-secondary-p);
+    background: var(--surface-strong);
 }
 
 .aboutContent {
@@ -39,8 +39,7 @@
 }
 
 .containerHero {
-    border-radius: 10% !important;
-    border-radius: 10%;
+    border-radius: 50% !important;
 }
 
 /* Estilização dos Badges (Glassmorphism) */
@@ -69,17 +68,21 @@
 }
 
 .aboutContentImage {
-    width: 850px;
+    width: 800px;
     background:  transparent;
     position: relative;
 }
 
 .imageBio {
-    filter: drop-shadow(5px 5px 5px rgba(153, 173, 1, 0.292));
+    filter: drop-shadow(5px 5px 5px rgba(197, 197, 197, 0)); /*rgba(153, 173, 1, 0.292)*/
 }
 
 .badge > img {
-    filter: drop-shadow(5px 1px 5px rgba(68, 68, 68, 0.768));
+    filter: drop-shadow(5px 1px 5px rgb(68, 68, 68));
+}
+
+.badgeTopLeft > img {
+    max-width: 80%;
 }
 
 .imageBio{
@@ -91,7 +94,8 @@
     text-align: justify;
     letter-spacing: normal;
     hyphens: auto;
-    width: 100%;
+    width: 100%;  
+    font-size: 1.2rem !important;
 }
 
 .aboutContentStatis {
@@ -115,8 +119,7 @@
 
 .aboutDatailsText {
     font-family: var(--font-altric);
-
-    color: var(--primary-c);
+    color: var(--green-500);
 }
 
 
@@ -197,7 +200,7 @@
     }
     .aboutContentDescription {
         width: 80%;
-        font-size: 1rem;
+        font-size: 1.1rem !important;
     }
     .aboutContentImage {
         margin-top: 3rem;
@@ -223,8 +226,7 @@
 
 @media screen and (max-width: 480px) {
     .imageBio {
-        width: 105vw;
-        max-width: fit-content;
+        width: 100vw;
     }
     .aboutContent {
         gap: .5rem;
@@ -240,6 +242,7 @@
         word-spacing: 0; 
         padding: .5rem 1.5rem;
         width: 100%;
+        box-sizing: border-box;
     }
     .aboutContentButton {
         width: 100%;
@@ -251,11 +254,12 @@
        gap: 0;
     }
     .badgeTopLeft {
-        top: 20%;
-        left: 70%; /* Traz para dentro em telas menores */
+        top: 22%;
+        left: auto;
+        right: -20%;
     }
     .badgeBottomRight {
-        right: -20%;
+        right: -12%;
     }
     .badge {
         padding: 5px 11px;
@@ -265,6 +269,6 @@
        max-width: 50%;
     }    
     .badgeTopLeft > img {
-        max-width: 70%;
+        max-width: 45%;
     }
 }

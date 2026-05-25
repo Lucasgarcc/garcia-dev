@@ -23,7 +23,7 @@ const ArticleHeader = ({title, category, date, readTime}: ArticleHeaderProps)  =
                 className={styles.headerContent}
             >
                 {/* Tag de Categoria */}
-                <span className={`${styles.categoryTag} ${typeCategory === 'JavasCript' ? 'var(--JS-bg-color)' : 'var(--primary-c)'} `}>
+                <span className={`${styles.categoryTag} ${typeCategory === 'JavasCript' ? 'var(--tech-js)' : 'var(--green-500)'} `}>
                     {category}
                 </span>
 

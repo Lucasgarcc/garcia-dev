@@ -1,6 +1,5 @@
 .contentIcon {
     padding: .5rem;
-    background: rgba(254, 254, 254, 0.7);
     position: absolute;
     display: flex;
     margin:  0 auto;
@@ -13,20 +12,21 @@
 
 .Icon {
     cursor: pointer;
+    color: var(--text-muted);
 }
 
 .IconEmph{
-    color:var(--primary-c-2);
+    color:var(--green-500);
 }
 
 .Icon:hover {
     transform: scale(1.1);
     transition: transform 0.3s ease-in-out;
-    color: var(--primary-c-1);
+    color: var(--green-400);
 }
 
 .IconEmph:hover {
-    color: var(--primary-c-0-1);
+    color: var(--green-100);
 }
 
 @media screen and (max-width: 600px) {
