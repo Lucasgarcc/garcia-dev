@@ -19,7 +19,7 @@
 }
 
 .text {
-    color: var(--color-text);
+    color: var(--green-limon);
     font-family: var(--font-altric);
     font-size: 0.65rem;
     font-weight: 800;

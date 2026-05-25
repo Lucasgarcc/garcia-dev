@@ -38,7 +38,7 @@ const Accordion = ({ icon, title, subtitle, content, className }: AccordionProps
                     animate={{ rotate: isOpen ? 180 : 0 }}
                     transition={{ duration: 0.3 }}
                 >
-                    <ExpandMoreIcon className={styles.iconArrow} sx={isOpen ? { color: 'var(--primary-c-0-1)', fontSize: 30 } : {fontSize: 30}}/>
+                    <ExpandMoreIcon className={styles.iconArrow} sx={isOpen ? { color: 'var(--green-100)', fontSize: 30 } : {fontSize: 30}}/>
                 </motion.div>
             </div>
 

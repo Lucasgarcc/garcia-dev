@@ -25,6 +25,26 @@ export const metadata = {
     description: 'Site profissional de Lucas Garcia, desenvolvedor Frontend.',
 };
 
+const themeInitScript = `
+    (() => {
+        try {
+            const storageKey = 'portfolio-theme';
+            const storedTheme = window.localStorage.getItem(storageKey);
+            const resolvedTheme = storedTheme === 'dark' ? 'dark' : 'light';
+            document.documentElement.dataset.theme = resolvedTheme;
+            document.documentElement.style.colorScheme = resolvedTheme;
+
+            const themeMeta = document.querySelector('meta[name="theme-color"]');
+            if (themeMeta) {
+                themeMeta.setAttribute('content', resolvedTheme === 'dark' ? '#050505' : '#f5f5f5');
+            }
+        } catch (error) {
+            document.documentElement.dataset.theme = 'light';
+            document.documentElement.style.colorScheme = 'light';
+        }
+    })();
+`;
+
 const aldric = Aldrich({
     subsets: ['latin'],
     weight: ['400'],
@@ -48,7 +68,7 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
 
     return (
-        <html lang="pt-br">
+        <html lang="pt-br" data-theme="light" suppressHydrationWarning>
             <head>
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                 <link rel="icon" href="/favicon.ico" />
@@ -60,8 +80,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
                 <meta name="author" content="Lucas Garcia" />
                 <meta property="og:title" content="Meu Portfólio" />
                 <meta property="og:description" content="Portfólio pessoal com animações 3D e projetos modernos" />
+                <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
             </head>
-            <body suppressHydrationWarning className={`${robotoMono.variable} ${aldric.variable} ${gugi.variable}`}>
+            <body className={`${robotoMono.variable} ${aldric.variable} ${gugi.variable}`}>
 
                 <Providers>
                     {/* O Wrapper envolve tudo o que deve aparecer após o loading */}

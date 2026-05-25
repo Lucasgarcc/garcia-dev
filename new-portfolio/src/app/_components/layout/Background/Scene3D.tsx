@@ -5,6 +5,7 @@ import Scene3D from './Scene3D.module.css';
 import ProfileCard from './ProfileCard/ProfileCard';
 import OrbitingLogo from './OrbitingLogo/OrbitingLogo';
 import profile from '@assets/profile_ligth.png';
+import profileDark from '@assets/profile_dark.png';
 import react from '@assets/react.png';
 import html from '@assets/html.png';
 import css from '@assets/css3.png';
@@ -12,7 +13,7 @@ import node from '@assets/nodejs-11492982.png';
 import ts from '@assets/typescript.png';
 import js from '@assets/JS.png';
 import angular from '@assets/angular.png';
-
+import { useThemeMode } from '@/core/context/ThemeContext';
 const logos = [react, html, css, node, ts, js, angular];
 
 
@@ -20,6 +21,7 @@ export default function OrbitLogos() {
     const [time, setTime] = useState(0);
     const [radius, setRadius] = useState(150);
     const containerRef = useRef<HTMLDivElement>(null);
+    const { isDark } = useThemeMode();
 
     /**
      * Hook para animação de quadro 
@@ -66,7 +68,7 @@ export default function OrbitLogos() {
         <>
             <div className={Scene3D.areaContainer} ref={containerRef}>
                 {/* Card com foto central */}
-                <ProfileCard image={profile} alt="Meu Avatar Ghibli"/>
+                <ProfileCard image={isDark ? profileDark : profile } alt="Meu Avatar Ghibli"/>
 
                 {/* Logos Orbitando - passa logosLength dinamicamente */}
                 {logos.map((logo, index) => (
