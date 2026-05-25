@@ -1,5 +1,5 @@
 .cardFront {
-    background: linear-gradient(var(--gradient-line));
+    background: var(--gradient-line-detail);
     width: 400px;
     height: 320px;
     max-width: 100%;
@@ -9,7 +9,9 @@
     flex-direction: column;
     justify-content: flex-end; /* Alinha o conteúdo na parte de baixo */
     gap: 1.5rem;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--color-fill);
+    transition: transform 0.2s ease, background-size 0.2s ease;
+    cursor: pointer;
 }
 
 .cardFront:hover {
@@ -19,13 +21,13 @@
 }
 
 .iconContainer {
-    color: var(--primary-c); /* Cor azul do ícone */
+    color: var(--green-500); /* Cor azul do ícone */
     font-size: 2rem;
     margin-bottom: auto; /* Joga o ícone para o topo */
 }
 
 .title {
-    color: white;
+    color: var(--text-primary);
     font-size: 1.5rem;
     font-weight: 600;
     line-height: 1.2;
@@ -35,7 +37,7 @@
 .seeMore {
     background: none;
     border: none;
-    color: var(--primary-c);
+    color: var(--green-500);
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -47,7 +49,7 @@
 }
 
 .seeMore:hover {
-    color: var(--primary-c-0-1);
+    color: var(--green-600);
     gap: 0.8rem; /* Efeito visual na seta ao passar o mouse */
 }
 

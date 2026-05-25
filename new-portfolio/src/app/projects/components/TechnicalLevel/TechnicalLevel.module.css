@@ -18,7 +18,7 @@
 }
 
 .icon {
-    color: var(--color-gray-500);
+    color: var(--tech-grey);
     font-size: 1.2rem;
 }
 
@@ -29,7 +29,7 @@
 
 .iconFront:hover, 
 .iconBack:hover {
- color: var(--primary-c-0-1);
+ color: var(--green-100);
 }
 
 @media screen and (max-width: 428px)  {
