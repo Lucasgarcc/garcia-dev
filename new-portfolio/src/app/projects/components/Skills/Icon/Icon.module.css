@@ -5,7 +5,7 @@
     align-items: center;
     justify-content: center;
     aspect-ratio: 1 / 1;
-    background: var(--bg-primary-n);
+    background: var(--surface-strong);
     border-radius: 1rem;
     gap: 1rem;
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -13,12 +13,13 @@
     cursor: pointer;
     transition: border-color 0.3s ease;
     z-index: 1;
+    
 }
 
 .iconWrapper {
     font-size: 2.5rem; /* Tamanho do ícone */
     z-index: 1;
-    color: var(--color-white);
+    color: var(--text-on-accent);
     transition: transform 0.3s ease;
 }
 
@@ -48,8 +49,8 @@
     margin-top: .5rem;
     position: absolute;
     bottom: -45px;
-    background: var(--bg-primary);
-    color: var(--color-white);
+    background: var(--background);
+    color: var(--text-on-accent);
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
     font-size: 0.6rem;
@@ -62,7 +63,7 @@
     transform: translateY(10px) scale(0.8);
     
     white-space: nowrap;
-    border: 1px solid var(--color-text-secondary-c);
+    border: 1px solid var(--text-secondary);
 
 }
 
@@ -71,7 +72,7 @@
     z-index: 1000;
     visibility: visible; /* Torna visível instantaneamente com cor sólida */
     transform: translateY(0) scale(1.1); 
-    border-color: var(--color-text-secondary-c);
+    border-color: var(--text-secondary);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
@@ -86,18 +87,18 @@
     width: 10px;
     height: 10px;
     
-    background: var(--bg-primary); /* Mesma cor de fundo do tooltip */
+    background: var(--background); /* Mesma cor de fundo do tooltip */
     
     /* Importante: adicionar as bordas para acompanhar o estilo do balão */
-    border-left: 1px solid var(--color-text-secondary-c);
-    border-top: 1px solid var(--color-text-secondary-c);
+    border-left: 1px solid var(--text-secondary);
+    border-top: 1px solid var(--text-secondary);
     
     z-index: -1; /* Fica atrás do texto do tooltip */
 }
 
 /* Ajuste no hover para a borda da pontinha também mudar de cor */
 .skillCard:hover .tooltip::before {
-    border-color: var(--color-text-secondary-c);
+    border-color: var(--text-secondary);
 }
 
 @media screen and (max-width: 428px) {

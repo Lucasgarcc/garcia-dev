@@ -88,7 +88,7 @@
     align-items: center;
     flex-direction: column;
     z-index: 50;
-    color: var(--color-text-d);
+    color: var(--text-secondary-d);
     font-size: 1.2rem;
     background: rgba(26, 26, 26, 0.95);
     backdrop-filter: blur(12px);
@@ -155,9 +155,9 @@
 .buttonEffect span {
 
     animation: none !important;
-    -webkit-text-fill-color: var(--color-text) !important;
+    -webkit-text-fill-color: var(--text-secondary) !important;
     background: transparent !important; 
-    color: var(--color-text) !important;
+    color: var(--text-secondary) !important;
     transition: all 0.3s ease;
 }
 
@@ -207,12 +207,12 @@
     left: 65%; 
     top: 30%;
     width: 380px;
-    background: linear-gradient(var(--gradient-line));
+    background: var(--gradient-line-detail);
     backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
     padding: 24px;
-    color: white;
+    color: var(--text-primary) !important;
     box-shadow: 0 30px 60px rgba(0,0,0,0.8);
     
     /* Impede a seleção de texto */
@@ -240,6 +240,7 @@
 
 .titleDetailModal {
     font-family: var(--font-altric), sans-serif;
+    color: var(--text-primary);
     font-weight: 400;
     font-style: normal;
 }
@@ -250,10 +251,12 @@
     border-radius: .3rem;
     cursor: pointer;
     transition: .3s;
+    border: 1px solid var(--gray-500);
 }
 
 .tagDatailModal:hover {
-    color: var(--primary-c-0-1);
+    color: var(--text-primary );
+    border: 1px solid var(--green-500);
     transform: scale(1.1);
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
@@ -278,43 +281,44 @@
 }
 
 .buttonDeploy {
-    background: var(--primary-c);
-    color: var(--primary-c-0-5);
-    color: var(--primary-c-3);
+    padding: .2rem 1rem ;
+    background: var(--green-500);
+    color: var(--text-button);
     font-family: var(--font-roboto);
-    border: 1px solid var(--primary-c-0-1);
+    border: 1px solid var(--green-100);
     box-shadow: 0 25px 50px -12px rgba(171, 171, 171, 0.218); /* shadow-2xl */
     transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1); /* transition-all padrão do Tailwind */
 }
 .buttonDeploy:hover {
-    background-color: var(--primary-c-0-1);
-    border-color: var(--secondary-c-1);
+    background-color: var(--green-100);
+    border-color: var(--green-200);
 }
 
 .buttonRepo {
     max-width: 150px; 
-    background: var(--bg-primary-n);
-    border: 1px solid var(--color-text-secondary);
+    padding: .2rem 1rem ;
+    background: var(--surface-strong);
+    border: 1px solid var(--text-muted);
     transition: .3s all;
 }
 
 .buttonRepo:hover {
-    background-color: var(--bg-secondary-g);
-    border-color: var(--primary-c-3);
-    color: var(--color-text-p);
+    background-color: var(--gray-200);
+    border-color: var(--text-third);
+    color: var(--gray-500);
 }
 
 .btnCloseDatailModal {
     padding: .2rem .5rem;
     cursor: pointer;
     font-size: 1rem;
-    border:  1px solid var(--color-text-secondary);
+    border:  1px solid var(--text-muted);
     border-radius: .4rem;
 }
 
 .btnCloseDatailModal:hover {
-    background-color: var(--bg-primary-n);
-    color:var(--color-gray-200)
+    background-color: var(--surface-strong);
+    color:var(--text-on-accent)
 }
 /* Isso permite que os elementos <g> do SVG saiam do plano */
 .gitGraphContainer svg {
@@ -403,23 +407,27 @@
 /* Button ver detalhe do Projeto modo Mobile */
 .btnVeiwProjectMobile {
     font-family: var(--font-altric), sans-serif;
-    background: var(--bg-primary-n);
-    border: 1px solid var(--color-text-secondary);
-    color: var(--color-text-c);
+    background: var(--surface-strong);
+    border: 1px solid var(--text-muted);
+    color: var(--text-secondary-c);
     border-radius: .4rem;
     transition: gap 0.2s ease;
 }
 
 .btnVeiwProjectMobile:hover{
-    color: var(--bg-primary-c);
+    color: var(--surface-primary);
     gap: 0.8rem; /* Efeito visual na seta ao passar o mouse */
 }
 
-
-
 .icon {
     font-family: var(--font-altric)!important;
+    transition: color 0.3s ease;
+    cursor: pointer;
+}
 
+.icon:hover {
+    color: var(--gray-500);
+    transition: color 0.3s ease;
 }
 
 /*  RESPONSIVIDADE */

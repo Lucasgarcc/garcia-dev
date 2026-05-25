@@ -9,8 +9,9 @@ import { IoIosLock } from "react-icons/io";
 import { PiDog } from "react-icons/pi";
 import { FiGithub } from "react-icons/fi";
 import { BsArrowRight } from 'react-icons/bs';
-import useMediaQuery from '@/app/core/hooks/MediaQuery/MediQuery';
+
 import { PostProps } from '@/app/core/interfaces/post';
+import { useThemeMode } from '@/app/core/context/ThemeContext'; 
 
 const floatingVariants = (delay: number = 0): Variants => ({
     floating: {
@@ -30,8 +31,8 @@ const blob = `
 `
 
 const Post = ({ title, content, imageUrl = null, deploy, github }: PostProps) => {
-   
-    const isMobile = useMediaQuery('(max-width: 428px)');
+
+    const { isDark } = useThemeMode();
 
     return (
         <motion.div
@@ -62,8 +63,8 @@ const Post = ({ title, content, imageUrl = null, deploy, github }: PostProps) =>
                 fontFamily="var(--font-altric)"
                 gutterBottom
                 fontWeight={500}
-                style={{ background: 'rgba(254, 254, 254, 0.7)' }}
-                className={styles.postTitle} >
+                style={ !isDark ? { background: 'var(--surface-primary)' } : {} }
+                className={styles.postTile} >
                 Projeto destaque
             </Typography>
 
@@ -73,6 +74,12 @@ const Post = ({ title, content, imageUrl = null, deploy, github }: PostProps) =>
                 viewport={{ once: false, amount: 0 }}
                 transition={{ duration: 0.3, delay: 0.2 }}
                 className={styles.postContainer}
+                style={!isDark ? 
+                    {
+                        backgroundColor: 'var(--surface-primary)',
+                        transition: 'background-color 0.3s ease-in -out',
+                    } 
+                    : {}}
             >
                 <div className={styles.postContent}>
                     {imageUrl && (
@@ -94,7 +101,10 @@ const Post = ({ title, content, imageUrl = null, deploy, github }: PostProps) =>
                                 animate="floating" // Chama a chave definida nas variantes
                                 className={`${styles.badge} ${styles.badgeTopLeft}`}
                             >
-                                <IoIosLock fontSize={26.5} className={styles.icon} /> JWT Auth
+                                <IoIosLock fontSize={26.5}
+                                    stroke='var(--green-800)'      
+                                    strokeWidth='4' 
+                                    className={styles.icon} /> JWT Auth
                             </motion.div>
 
                             <motion.div
@@ -102,7 +112,12 @@ const Post = ({ title, content, imageUrl = null, deploy, github }: PostProps) =>
                                 animate="floating"
                                 className={`${styles.badge} ${styles.badgeBottomRight}`}
                             >
-                                <PiDog fontSize={26.5} className={styles.icon} /> Social Feed
+                                <PiDog 
+                                    fontSize={26.5}
+                                    stroke='var(--green-900)'
+                                    strokeWidth='1.5' 
+                                    className={styles.icon} 
+                                    /> Social Feed
                             </motion.div>
 
                             {/* SVG VISÍVEL (O Contorno que já está ok) */}
@@ -110,7 +125,7 @@ const Post = ({ title, content, imageUrl = null, deploy, github }: PostProps) =>
                                 <path
                                     d={blob}
                                     transform="translate(-3.5, 0)"
-                                    stroke="var(--secondary-c-1)"
+                                    stroke="var(--surface-emphasis)"
                                     strokeWidth="1"
                                     fill="none"
                                 />
@@ -144,12 +159,12 @@ const Post = ({ title, content, imageUrl = null, deploy, github }: PostProps) =>
 
                     <div className={styles.buttons}>
                         <Button variant="contained" sx={{
-                            backgroundColor: 'var(--bg-primary-n)', marginTop: '1rem', color: 'var(--color-text-n)',
+                            backgroundColor: 'var(--color-accent-button)', marginTop: '1rem', color: 'var(--text-button)',
                             fontFamily: 'var(--font-roboto)',
                             display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '.5rem',
-                            borderRadius: '.4rem', fontSize: '1.1rem', border: "1px solid var(--color-text-n)",
+                            borderRadius: '.4rem', fontSize: '1.1rem', border: "1px solid var(--text-on-accent)",
                             transition: 'all 0.2s ease',
-                            ":hover": { gap: '1rem', backgroundColor: "var(--primary-c-0-4)", color: "var(--primary-c-0-5)", transform: "translateY(-2px)" },
+                            ":hover": { gap: '1rem', backgroundColor: "var(--green-300)", color: "var(--green-700)", transform: "translateY(-2px)" },
                             textTransform: 'none'
                         }}>
                             <a href={deploy} target="_blank" className="button button-flex"> Ver Mais </a>
@@ -157,12 +172,12 @@ const Post = ({ title, content, imageUrl = null, deploy, github }: PostProps) =>
                         </Button>
 
                         <Button variant="contained" sx={{
-                            backgroundColor: 'var(--primary-c-0-3)', marginTop: '1rem', color: 'var(--color-text-n)',
+                            backgroundColor: 'var(--gray-300)', marginTop: '1rem', color: 'var(--text-third)',
                             fontFamily: 'var(--font-roboto)', borderRadius: '.4rem',
                             display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '.5rem',
-                            fontSize: '1.1rem', border: "1px solid var(--color-text-n)",
+                            fontSize: '1.1rem', border: "1px solid var(--text-on-accent)",
                             transition: 'all 0.2s ease',
-                            ":hover": { gap: '1rem', backgroundColor: "var(--bg-secondary-g)", color: "var(--color-text)", transform: "translateY(-2px)" },
+                            ":hover": { gap: '1rem', backgroundColor: "var(--gray-700)", color: "var(--gray-200)", transform: "translateY(-2px)" },
                             textTransform: 'none'
                         }}>
                             <a href={github} target="_blank" className="button button-flex"> GitHub </a>
