@@ -15,7 +15,7 @@
 
     line-height: 1.8;
     font-size: 1.125rem;
-    font-family: var(--font-inter); /* Ou sua fonte de leitura */
+    font-family: var(--font-roboto); /* Ou sua fonte de leitura */
 }
 
 /* Títulos dentro do conteúdo */
@@ -27,7 +27,7 @@
 }
 
 .markdownBody h3 {
-    color: var(--primary-c-3); /* Use seu roxo para subtítulos */
+    color: var(--green-dark); /* Use seu roxo para subtítulos */
     font-size: 1.5rem;
     margin: 2rem 0 1rem 0;
 }
@@ -76,7 +76,7 @@
 
 .relatedTitle {
     padding-left: 2rem;
-    color: var(--color-text-secondary-c);
+    color: var(--gray-500);
 }
 
 /* Imagens responsivas */
