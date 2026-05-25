@@ -6,6 +6,8 @@ import Styles from './AboutMe.module.css';
 import Statistics from './Statistics/Statistics';
 import CodeCard from './CodeCard/CodeCard';
 import ViableResume from './ViableResume/ViableResume';
+
+import photoBio from '@assets/photbiograp.png';
 import Image from 'next/image';
 import { InteractiveGrid } from '@/app/_components/ui/InteractiveGrid/InteractiveGrid';
 
@@ -46,7 +48,7 @@ const AboutMe = () => {
         >
             <Typography
                 marginTop={10} 
-                color='var(--primary-c-2)'  
+                color='var(--green-500)'  
                 textTransform={'uppercase'}
                 variant="h4"
                 marginBottom={0}
@@ -109,13 +111,12 @@ const AboutMe = () => {
                         </motion.div>
                         <InteractiveGrid className={Styles.containerHero}>
                             <motion.div
-                            
                                 variants={floatingVariantCenter(0)}
                                 animate="floating">
                                 <Image 
 
                                     className={Styles.imageBio}
-                                    src={'/assets/photbiograp.png'}
+                                    src={photoBio}
                                     alt="Rosto imagem de perfil"
                                     width={1100}
                                     height={1100}
@@ -128,7 +129,7 @@ const AboutMe = () => {
  
                     </motion.div>
                     <div className={Styles.aboutContentText}>
-                        <Typography className={Styles.aboutContentDescription} display={'block'} variant="body1" marginTop={5} fontWeight={450} fontSize={20} maxWidth={'100%'} letterSpacing={0}>
+                        <Typography className={Styles.aboutContentDescription} display={'block'} variant="body1" marginTop={5} fontWeight={450} maxWidth={'100%'} letterSpacing={0}>
 
                             Desenvolvedor Web e criador de experiências digitais que unem design, propósito e tecnologia.
                             Sempre coloco a minha criatividade em tudo que crio e faco.

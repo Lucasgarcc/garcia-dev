@@ -1,26 +1,18 @@
 .areaContainer {
-    background: rgb(254, 254, 254);
+    background-color: var(--surface-primary);
     margin-top: 8rem;
-    color: var(--color-text);
+    transition: background-color 0.3s ease-in-out;
 }
 
 .titleDetail {
-    background: rgba(254, 254, 254, 0.7);
-    color: var( --color-text-secondary-c);
+    background-color: var(--surface-primary);
 }
 
 .datails {
     font-family: var(--font-altric);
-        background: linear-gradient(
-        90deg,         /* Direção: da esquerda para a direita */
-        var(--primary-c-0-3) 0%,    /* Roxo (início da palavra) */
-        var(--color-text) 50%,   /* Rosa/Magenta (meio) */
-        var(--bg-secondary) 100%   /* Laranja/Coral (final) */
-    );
+    background: var(--color-accent);
     -webkit-background-clip: text; /* Necessário para Webkit/Blink */
     background-clip: text;         /* Padrão atual, mas mantenha o de cima */
-
-    /* 3. Torna o texto transparente para o fundo aparecer através dele */
     -webkit-text-fill-color: transparent; /* Necessário para Webkit/Blink */
     color: transparent;
 }

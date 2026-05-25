@@ -5,7 +5,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start; /* Ou center, se quiser centralizar tudo */
-    background: rgba(254, 254, 254, 0.7);
+    background: var(--surface-secondary);
 }
 
 .differentialContainer {
@@ -19,7 +19,7 @@
 }
 
 .differentialItem {
-    background: linear-gradient(90deg, rgb(23, 23, 23) 0%, rgba(3, 3, 3, 0.992) 100%);
+    background: var(--surface-fourth);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -47,13 +47,13 @@
 
 .differentialIcon {
     transition: transform 0.3s ease;
-    filter: drop-shadow(0 0 5px rgba(128, 197, 44, 0.896));
+    filter: drop-shadow(0 0 5px rgba(128, 197, 44, 0.755));
 }
 .differentialIcon:hover {
     transform: scale(1.1);
     transition: transform 0.3s ease;
-    color: gradient(90deg, var(--primary-c-0-4), var(--primary-c-0-2));
-    filter: drop-shadow(0 0 5px var(--primary-c-0-4));
+    color: gradient(90deg, var(--green-300), var(--green-200));
+    filter: drop-shadow(0 0 5px var(--green-300));
 }
 .differentialTitle {
     font-size: 1.5rem;
@@ -77,7 +77,7 @@
 }
 
 .differentialDetail {
-    color: var(--color-text);
+    color: var(--text-primary);
     font-size: 3.5rem;
 }
 

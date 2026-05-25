@@ -7,7 +7,7 @@ const Statistics = ({ label, quantity }: StatisticsProps) => {
     return (
         <div className={Styles.ContainerStatistics}>
             <div className={Styles.StatisticBox}>
-                <span className="text-3xl font-bold var(--color-text-p)">
+                <span className="text-3xl font-bold var(--text-secondary-p)">
                     {quantity}+
                 </span>
                 <span className="text-sm text-white">{label}</span>

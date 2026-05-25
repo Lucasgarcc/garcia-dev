@@ -24,7 +24,7 @@
 
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border: 1px solid var(--color-text-secondary);
+    border: 1px solid var(--text-muted);
     font-family: var(--font-altric);
     /* sombra sutil */
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
@@ -48,15 +48,15 @@
 .StatisticBox span:first-child {
     font-size: 2rem;
     font-weight: bold;
-    color: var(var(--color-text-d), #dfffb3da);
+    color: var(var(--text-secondary-d), #dfffb3da);
     text-shadow: 0 0 8px #ccc;
 }
 
-/* texto principal */
+/* texto principal
 .StatisticBox:hover span:first-child {
-   /*text-shadow: 0 0 8px var(--primary-c-0-2); */
+   text-shadow: 0 0 8px var(--green-200); 
 }
-
+ */
 
 /* subtítulo */
 .StatisticBox span:last-child {
