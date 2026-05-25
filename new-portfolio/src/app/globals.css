@@ -1,47 +1,77 @@
 @import "tailwindcss";
 
 :root {
-    /* --- Globais e Backgrounds --- */
-    --background: #000000;
-    --foreground: #171717;
-    --bg-header: #ffffffd7;
+    /* --- Escala Base de Verdes (Identidade do Site) --- */
+    --green-limon-light: #FBFFCA;
+    --green-limon: #b7e901;
+    --green-50: #e6f9d8;
+    --green-100: #c4f58c;
+    --green-200: #a8f05b;
+    --green-300: #80c52c;
+    --green-400: #8BC34A;
+    --green-500: #91bf27; /* Verde Principal Accent */
+    --green-600: #4b6c40;
+    --green-700: #4a7614;
+    --green-800: #2d5200;
+    --green-900: #1b2f02;
+    --green-dark: #0e0e0e;
 
-    /* --- Tema Neutro --- */
-    --bg-primary-n: #222222;
-    --bg-secondary-c: #f0f0f0;
-    --bg-secondary-g: #afafaf;
-    --color-text-n: #f0f0f0;
-    --color-text-secondary: #8f8f8f;
+    /* --- Escala Base de Cinzas (Estrutura e Superfícies) --- */
+    --gray-100: #f5f5f7; /* Texto principal no Light / Detalhes ultra claros */
+    --gray-200: #e5e5ea; /* Texto secundário no Light / Bordas claras */
+    --gray-300: #d1d1d6; /* Linhas divisórias e ícones desativados no Light */
+    --gray-400: #8e8e93; /* Texto muted (placeholder, subtextos de datas) */
+    --gray-500: #636366; /* Cinza médio (bordas neutras ou ícones secundários) */
+    --gray-600: #48484a; /* Estado de hover em cards claros ou bordas no dark */
+    --gray-700: #2c2c2e; /* Fundo de inputs ou cards secundários no modo Dark */
+    --gray-800: #1c1c1e; /* Cor clássica de Cards (Equivalente ao seu antigo #1a1a1a) */
+    --gray-900: #121212; /* Sub-fundo / Seções que precisam destacar do fundo total */
+    --gray-dark: #050505; /* O "Preto Puro" ou quase preto para o background total do site */
 
-    /* --- Tema Escuro (Seus valores originais) --- */
-    --bg-primary: #000000;
-    --bg-secondary: #1a1a1a;
-    --color-text: #3e3c3c;
-    --color-text-p: #060606;
-    --color-text-d: #ffffff;
+    /* --- Cores de Linguagens & Tech Slugs --- */
+    --tech-js: #facc15;
+    --tech-grey: #6b7280;
+    --tech-orange: #ff4824;
+    --tech-blue: #4977ff;
+    --tech-red: #c90000;
+    --tech-green: #66ff00;
+    --tech-purple: #a78bfa;
+    --tech-turquoise: #03ffc8;
 
-    /* --- Tema Claro --- */
-    --bg-primary-c: #ffffff;
-    --bg-secondary-g-l: #f5f5f5;
-    --color-text-c: #ffffff;
-    --color-text-secondary-c: #666666;
+    /* --- Tree Component Graph Variables --- */
+    --tree-line: #30363d;
+    --tree-main: #58a6ff;
+    --tree-text: #f0f6fc;
+    --bg-dark-node: #0d1117;
 
-    /* --- Escala de Verdes (Sua sequência primary-c-X) --- */
-    --primary-c-0-1: #c4f58c;
-    --primary-c-0-2: #a8f05b;
-    --primary-c-0-3: #4f4f4f;
-    --primary-c-0-4: #80c52c;
-    --primary-c-0-5: #4a7614;
-    --primary-c-0-6: #2d5200;
-    --primary-c-1: #8BC34A;
-    --primary-c-2: #91bf27;
-    --primary-c: #91bf27;
-    --primary-c-3: #0e0e0e;
-    --primary-c-4: #1b2f02;
+    /* --- 📏 ESCALA MODULAR DE TIPOGRAFIA --- */
+    --font-roboto: 'Roboto', sans-serif;
+    --text-xs: 0.75rem;     /* 12px */
+    --text-sm: 0.875rem;    /* 14px */
+    --text-base: 1rem;      /* 16px */
+    --text-md: 1.125rem;    /* 18px */
+    --text-lg: 1.25rem;     /* 20px */
+    --text-xl: 1.5rem;      /* 24px */
+    --text-2xl: 1.875rem;   /* 30px */
+    --text-3xl: 2.25rem;    /* 36px */
+    --text-4xl: 3rem;       /* 48px */
+    --text-huge: 4.5rem;    /* 72px */
 
-    /* --- Escala de Verdes tons escuros --- */
-    --secondary-c-1: #4b6c40;
+    --fw-light: 300;
+    --fw-regular: 400;
+    --fw-medium: 500;
+    --fw-semibold: 600;
+    --fw-bold: 700;
     
+    --lh-tight: 1.2;
+    --lh-normal: 1.5;
+
+    /* --- TOKENS DE LAYOUT --- */
+    --section-pt: 8rem;
+    --section-pb: 8rem;
+    --main-content-gap: 4rem;
+    --main-content-width: 75%;
+
     /* --- Logo e Identidade --- */
     --logo-fill-primary: #ffffff;
     --logo-stroke-primary: #91bf27;
@@ -49,114 +79,205 @@
     --logo-gradient-stop1: #fffffffa;
     --logo-gradient-stop2: #ffffff;
     --logo-gradient-stop3: #ffffff;
-    
-    --JS-bg-color: #facc15;
-    --bg-grey: #6b7280;
-    --bg-orange: #ff4824;
-    --bg-blue: #4977ff;
-    --bg-yellow: #facc15;
-    --bg-red: #c90000;
-    --bg-green: #66ff00;
-    --bg-purple: #a78bfa;
-    --bg-furquiose: #03ffc8;
 
-    --tree-line: #30363d;
-    --tree-main: #58a6ff;
-    --tree-text: #f0f6fc;
-    --bg-dark: #0d1117;
+    /* --- Legacy aliases / compatibilidade com nomes antigos --- */
+    --bg-grey: var(--tech-grey);
+    --bg-orange: var(--tech-orange);
+    --bg-blue: var(--tech-blue);
+    --bg-yellow: var(--tech-js);
+    --bg-red: var(--tech-red);
+    --bg-green: var(--tech-green);
+    --bg-purple: var(--tech-purple);
+    --bg-furquiose: var(--tech-turquoise);
 
-    --accent-blue: #1a9edb;
+    --primary-c: var(--green-500);
+    --primary-c-0-1: var(--green-100);
+    --primary-c-0-2: var(--green-200);
+    --primary-c-0-3: #4f4f4f;
+    --primary-c-0-4: var(--green-300);
+    --primary-c-0-5: var(--green-700);
+    --primary-c-0-6: var(--green-800);
+    --primary-c-1: var(--green-400);
+    --primary-c-2: var(--green-500);
+    --primary-c-3: var(--green-dark);
+    --primary-c-4: var(--green-900);
+    --secondary-c-1: var(--green-600);
 
-    --gradient-start: #ffffff00;
-    --gradient-mid: #eeffdc00;
-    --gradient-line: 90deg, rgb(23, 23, 23) 0%, rgb(10, 10, 10) 100%;
-    --background-text-liner:  
-            90deg,         /* Direção: da esquerda para a direita */
-            var(--primary-c-0-3) 0%,    /* Roxo (início da palavra) */
-            var(--color-text) 50%,   /* Rosa/Magenta (meio) */
-            var(--bg-secondary) 100%   /* Laranja/Coral (final) */
-        ;
+    --color-white: #ffffff;
+    --color-gray-200: #e5e7eb;
+    --color-gray-500: var(--tech-grey);
+    --color-purple-primary: var(--green-500);
+    --color-primary: var(--color-accent);
+    --logo-stroke-secundary: var(--logo-stroke-secondary);
 
-    /* --- Tipografia --- */
-    --font-roboto: 'Roboto' sans-serif;
-    --font-roboto: var(--font-roboto); /* Certifique-se que estas fontes estão carregadas no Layout */
-    --font-title: var(--font-title);
-    --font-altric: var(--font-altric);
-    --font-4: 400;
-
-     --big-font-size: 2rem;
-    --h1-font-size: 1.5rem;
+    --bg-tertiary-c: #e0e0e0;
+    --font-inter: var(--font-roboto);
     --h2-font-size: 1.25rem;
     --h3-font-size: 1.125rem;
-    --normal-font-size: .938rem;
-    --small-font-size: .813rem;
-    --smaller-font-size: .75rem;
-    /* --- Tokens de Layout (Adicionados para facilitar) --- */
-    --section-pt: 8rem;
-    --section-pb: 8rem;
-    --main-content-gap: 4rem;
-    --main-content-width: 75%;
+    --mb-1: 1rem;
+    --max-lines: 3;
+    --moveGradient: moveGradient;
 }
 
-:root {
-  /* --- 📏 FONT SIZES (Escala Modular) --- */
-  --text-xs: 0.75rem;     /* 12px - Legendas minúsculas */
-  --text-sm: 0.875rem;    /* 14px - Textos secundários / Menu */
-  --text-base: 1rem;      /* 16px - Texto padrão (corpo) */
-  --text-md: 1.125rem;    /* 18px - Introduções / Cards */
-  --text-lg: 1.25rem;     /* 20px - Subtítulos menores */
-  --text-xl: 1.5rem;      /* 24px - Títulos de seções (H3) */
-  --text-2xl: 1.875rem;   /* 30px - Títulos de destaque (H2) */
-  --text-3xl: 2.25rem;    /* 36px - Títulos principais (H1) */
-  --text-4xl: 3rem;       /* 48px - Hero / Destaque visual */
-  --text-huge: 4.5rem;    /* 72px - Números ou Impacto (Scene 3D) */
+/* ==========================================================================
+   2. VALORES PADRÃO / MODO ESCURO (Base do seu Design das Imagens)
+   ========================================================================== */
+:root, :root[data-theme='dark'] {
+    /* --- Cores de Fundo (Fiel ao seu mockup) --- */
+    --background: #121212;                    /* Fundo geral preto puro/grafite profundo */
+    --bg-header: rgba(12, 12, 12, 0.88);       /* Header blur sutil */
+    
+    /* --- Superfícies e Cards (Seus cards de skills/experiência) --- */
+    --surface-primary: #121212;
+    --surface-secondary: rgba(18, 18, 18, 0.78);
+    --surface-third:  #1a1a1a; 
+    --surface-fourth: #1c1c1e;
+    --surface-strong: #1a1a1a;                 /* Background interno dos cards */
+    --surface-emphasis: var(--green-limon);                /* Cards de destaque ou seções que precisam de mais contraste */
+    --surface-line: rgba(255, 255, 255, 0.08); /* Bordas discretas dos componentes */
+    
+    /* --- Elementos Interativos / Gradientes --- */
+    --surface-contrast: linear-gradient(90deg, #161616 0%, #0a0a0a 100%);
+    --surface-contrast-hover: linear-gradient(90deg, #222222 0%, #121212 100%);
+    
+    /* --- Cores de Texto Semânticas --- */
+    --text-primary: #ffffff;                   /* Títulos principais e destaque */
+    --text-future: var(--green-800);                  /* Títulos futuros ou de destaque secundário */
+    --text-secondary: var(--green-900);
+    --text-third: var(--gray-600);            /* Textos secundários e descrições */
+    --text-muted: #666666; 
+    --text-button: var(--green-800);                     /* Datas e textos pequenos */
+    
+    /* --- Accent / Destaques --- */
+    --color-accent: var(--green-500);          /* O verde principal no escuro */
+    --color-accent-button: var(--green-400); /* Verde limão pa ra botões e elementos de destaque */
+    --color-definition: var(--green-300);
+    --color-accent-hover: var(--green-200); /* Verde mais claro para botões e hover */
+    --color-fill: var(--gray-400);
+    
+    /* --- Logo e Identidade no Escuro --- */
+    --logo-fill: #ffffff;
+    --logo-stroke: var(--green-500);
+    --logo-gradient-start: #f4f4f4;
+    --logo-gradient-end: #d9d9d9;
 
-  /* --- ✒️ FONT WEIGHTS (Espessura) --- */
-  --fw-light: 300;
-  --fw-regular: 400;
-  --fw-medium: 500;
-  --fw-semibold: 600;
-  --fw-bold: 700;
+    /* --- Efeitos Visuais Complexos --- */
+    --background-text-liner: linear-gradient(90deg, var(--green-200) 0%, #ffffff 50%, var(--green-400) 100%);
+    --gradient-line: linear-gradient( 90deg, rgb(23, 23, 23) 0%, rgb(10, 10, 10) 100%);
+    --gradient-line-detail: linear-gradient( 90deg, rgb(23, 23, 23) 0%, rgb(10, 10, 10) 100%);
 
-  /* --- ↔️ LINE HEIGHT (Espaçamento entre linhas) --- */
-  --lh-tight: 1.2;        /* Para títulos */
-  --lh-normal: 1.5;       /* Para leitura de parágrafos */
-  --lh-relaxed: 1.8;
+    /* --- Theme Toggle Switch Button --- */
+    --theme-toggle-bg: rgba(145, 191, 39, 0.12);
+    --theme-toggle-border: rgba(192, 192, 192, 0.304);
+    --theme-toggle-bg-hover: rgba(224, 255, 188, 0.18);
 
-  /* Animation Move hover Cards */
-    --moverGradient: @keyframes moveGradient {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-    }
+    /* --- Legacy semantic aliases no dark --- */
+    --foreground: var(--text-primary);
+    --color-header: var(--text-primary);
+    --bg-primary: var(--background);
+    --bg-secondary: var(--surface-strong);
+    --bg-primary-n: var(--surface-strong);
+    --bg-secondary-c: var(--surface-secondary);
+    --bg-secondary-g: var(--text-muted);
+    --bg-primary-c: var(--text-primary);
+    --bg-secondary-g-l: var(--surface-secondary);
+    --color-text: var(--text-primary);
+    --color-text-p: var(--text-primary);
+    --color-text-d: var(--text-primary);
+    --color-text-c: var(--color-white);
+    --color-text-n: var(--text-primary);
+    --color-text-secondary: var(--text-secondary);
+    --color-text-secondary-c: var(--text-secondary);
+    --surface-node: var(--text-muted);
+    --surface-node-border: var(--surface-line);
 }
 
-@theme dark {
-  --background: var(--bg-primary);
-  --foreground: var(--color-text-d);
-  --font-geist-sans: 'Inter', sans-serif;
-  --font-geist-mono: 'Courier New', monospace;
+/* ==========================================================================
+   3. MODO CLARO (Apenas o que inverte/muda de cor entra aqui)
+   ========================================================================== */
+:root[data-theme='light'] {
+    /* --- Cores de Fundo Invertidas --- */
+    --background: #fdfdfd;
+    --bg-header: rgba(254, 254, 254, 0.9);
+    
+    /* --- Superfícies e Cards Claros --- */
+    --surface-primary: #ffffff;
+    --surface-secondary: #f5f5f7;
+    --surface-third: var(--green-500);
+    --surface-fourth: #1c1c1e;
+    --surface-emphasis: var(--green-500); 
+    --surface-strong: #ededf0;
+    --surface-line: rgba(0, 0, 0, 0.1);
+    
+    /* --- Elementos Interativos / Gradientes Invertidos --- */
+    --surface-contrast: linear-gradient(90deg, #f0f0f0 0%, #e4e4e4 100%);
+ 
+   --surface-contrast-hover: linear-gradient(90deg, #161616 0%, #0a0a0a 100%);
+    /* --- Cores de Texto Semânticas Claros --- */
+    --text-primary: #111111;
+    --text-future: var(--gray-500); 
+    --text-secondary: #444444;
+    --text-third: var(--gray-500);   
+    --text-muted: #888888;
+    --text-button: var(--green-800);  
+    
+    /* --- Accent para o modo Claro (Verde um pouco mais escuro para contraste) --- */
+    --color-accent: var(--green-300);
+    --color-definition: var(--green-400);
+    --color-accent-hover: var(--green-500);
+    --color-fill: var(--green-600);
+    /* --- Logo e Identidade no Claro --- */
+    --logo-fill: #111111;
+    --logo-stroke: var(--green-300);
+    --logo-gradient-start: #111111;
+    --logo-gradient-end: #333333;
+    --logo-gradient-stop1: var(--surface-contrast);
+    --logo-gradient-stop2: var(--surface-contrast);
+    --logo-gradient-stop3: var(--surface-contrast);
+    /* --- Efeitos Visuais Complexos Claros --- */
+    --background-text-liner: linear-gradient(90deg, var(--green-300) 0%, #111111 100%);
+    --gradient-line: linear-gradient(90deg, #ffffff 0%, #ffffff 100%);
+    --gradient-line-detail: linear-gradient(90deg, var(--green-limon-light) 0%,var(--green-limon-light) 100%);
+
+    /* --- Theme Toggle Switch Button Claro --- */
+    --theme-toggle-bg: rgba(0, 0, 0, 0.05);
+    --theme-toggle-border: rgba(0, 0, 0, 0.15);
+    --theme-toggle-bg-hover: var(--green-50);
+
+    /* --- Legacy semantic aliases no light --- */
+    --foreground: var(--text-primary);
+    --color-header: var(--text-primary);
+    --bg-primary: var(--text-primary);
+    --bg-secondary: var(--surface-strong);
+    --bg-primary-n: #222222;
+    --bg-secondary-c: var(--surface-secondary);
+    --bg-secondary-g: #afafaf;
+    --bg-primary-c: var(--surface-primary);
+    --bg-secondary-g-l: var(--surface-secondary);
+    --color-text: var(--text-secondary);
+    --color-text-p: var(--text-primary);
+    --color-text-d: var(--color-white);
+    --color-text-c: var(--color-white);
+    --color-text-n: #f0f0f0;
+    --color-text-secondary: var(--text-muted);
+    --color-text-secondary-c: #666666;
+    --surface-node: var(--text-muted);
+    --surface-node-border: var(--text-secondary);
 }
 
-@theme light {
-  --background: var(--bg-primary-c);
-  --foreground: var(--color-text);
-  --font-geist-sans: 'Inter', sans-serif;
-  --font-geist-mono: 'Courier New', monospace;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background:  var(--primary-c-4);
-    --foreground: #ffffff;
-  }
+@keyframes moveGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 body {
-  /*color: var(--color-text);*/
+  background-color: var(--background);
   font-family:  var(--font-roboto);
-  height: 100vh;
+  min-height: 100vh;
   box-sizing: border-box;
+  overflow-x: hidden;
+  transition: color 0.25s ease, background-color 0.25s ease;
 }
 
 /* No seu AboutMe.module.css */
@@ -187,12 +308,14 @@ main {
   align-items: center;
   justify-content: center;
   width: 100%;
+  min-height: 100vh; 
   overflow-x: hidden;
 }
 
 .mainLayout{
   position: relative;
   z-index: 10;
+  overflow-x: hidden;
 }
 
 .mainArticle {
@@ -226,6 +349,7 @@ main {
 .area.post-content,
 .area-content-skills {
     min-height: 100vh; /* mantém padrão */
+    overflow-x: hidden;
 }
 
 .area-content-about-me {
