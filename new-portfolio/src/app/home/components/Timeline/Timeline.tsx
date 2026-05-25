@@ -1,12 +1,20 @@
 'use client';
 
-import React, {useState } from 'react';
+import React, {useState, useRef, useEffect } from 'react';
 import Styles from './Timeline.module.css';
 import {Typography } from '@mui/material';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { GiGraduateCap } from "react-icons/gi";
 import { ImBriefcase } from "react-icons/im";
 import { BsCalendarWeek } from "react-icons/bs";
+
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+if (typeof window !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
+}
 
 const timelineData = {
 	formacao: [
@@ -62,81 +70,137 @@ const timelineData = {
 		},
 	],
 };
-
+ 
 const Timeline: React.FC = () => {
-	const [activeTab, setActiveTab] = useState<'formacao' | 'trabalho'>('formacao');
+    const [activeTab, setActiveTab] = useState<'formacao' | 'trabalho'>('formacao');
+    const containerRef = useRef<HTMLDivElement>(null);
+    const gridRef = useRef<HTMLDivElement>(null);
+    const progressRef = useRef<HTMLDivElement>(null);
 
-	const data = timelineData[activeTab];
+    // Estado para avisar o GSAP que o Framer Motion terminou de trocar as abas
+    const [isReady, setIsReady] = useState(false);
 
-	return (
+    useGSAP(() => {
+        // Limpeza profunda de Triggers
+        ScrollTrigger.getAll().forEach(t => t.kill());
 
-		<motion.div 
-			initial={{ opacity: 0, y: 90 }}
-			animate={{ opacity: 1, y: 0 }}
-			transition={{ duration: 0.8, ease: "easeOut" }}
-			className={Styles.timelineContainer}>
-			<Typography marginTop={15} color='var(--primary-c-2)' textTransform={'uppercase'} 
-					variant="h4" className={Styles.title} marginBottom={4} textAlign={'center'} fontFamily='var(--font-title)' gutterBottom fontWeight={450}
-				>
-				Qualificações
-			</Typography>
-			<Typography
-				fontSize={20}
-				fontWeight={500}
-				color='var(--primary-c-0-3)'
-				textAlign="center"
-				marginTop={2}
-				marginBottom={5}
-			>
-				Minha Jornada Pessoal
-			</Typography>
+        if (!gridRef.current || !progressRef.current || !isReady) return;
 
-			{/* Tabs */}
-			<div className={Styles.tabs}>
-				<button
-				onClick={() => setActiveTab('formacao')}
-				className={`${Styles.tabButton} ${
-					activeTab === 'formacao' ? Styles.active : ''
-				}`}
-				>
-				<GiGraduateCap size={24} />
-				Formação
-				</button>
-				<button
-				onClick={() => setActiveTab('trabalho')}
-				className={`${Styles.tabButton} ${
-					activeTab === 'trabalho' ? Styles.active : ''
-				}`}
-				>
-				<ImBriefcase size={20} />
-				Trabalho
-				</button>
-			</div>
+        // Reset imediato da barra
+        gsap.set(progressRef.current, { height: '0%' });
 
-			{/* Timeline Grid */}
-			<div className={Styles.timelineGrid}>
-				{data.map((item, index) => (
-				<motion.div
-					key={index}
-					className={`${Styles.timelineItem} ${index % 2 === 0 ? Styles?.left : Styles?.right}`}
-					initial={{ opacity: 0, y: 60, x: index % 2 === 0 ? -50 : 50, scale: 0.95 }}
-					whileInView={{ opacity: 1, y: 0, x: 0, scale: 1 }}
-					transition={{
-						duration: 0.6,
-						delay: index * 0.1, // efeito cascata
-						ease: [0.25, 0.1, 0.25, 1], // ease suave
-					}}
-					viewport={{ once: true, amount: 0.3 }}>
-					<div className={Styles.content}>
-					<h3>{item.title}</h3>
-					<p>{item.location}</p>
-					<span className={Styles.year}> <BsCalendarWeek className={Styles.IconCalendary} size={14} /> {item.year}</span> 
-					</div>
-				</motion.div>
-				))}
-			</div>
-		</motion.div>
-	);
+        const ctx = gsap.context(() => {
+            const triggerHook = 'top 50%';
+
+            // 1. Linha de Progresso
+            gsap.to(progressRef.current, {
+                height: '100%',
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: gridRef.current,
+                    start: triggerHook,
+                    end: 'bottom 50%',
+                    scrub: 0.1,
+                    invalidateOnRefresh: true,
+                }
+            });
+
+            // 2. Itens e Nodes
+            const items = gridRef.current?.querySelectorAll(`.${Styles.timelineItem}`);
+
+            items?.forEach((item) => {
+                const node = item.querySelector(`.${Styles.nodeIndicator}`);
+                const content = item.querySelector(`.${Styles.content}`);
+
+                if (!node || !content) return;
+
+                // Forçamos o estado inicial "escondido" para evitar o bug da imagem 2
+                gsap.set([content, node], { opacity: 0, y: 30 });
+
+                ScrollTrigger.create({
+                    trigger: node,
+                    start: triggerHook,
+                    end: 'bottom 0%',
+                    onEnter: () => {
+                        node.classList.add('node-active');
+                        node.classList.add('active');
+                        gsap.to([content, node], { opacity: 1, y: 0, duration: 0.4, overwrite: true });
+                    },
+                    onLeaveBack: () => {
+                        node.classList.remove('node-active');
+                        node.classList.remove('active');
+                        gsap.to([content, node], { opacity: 0, y: 30, duration: 0.3, overwrite: true });
+                    },
+                });
+            });
+
+            ScrollTrigger.refresh();
+        }, containerRef);
+
+        return () => ctx.revert();
+    }, { dependencies: [activeTab, isReady], scope: containerRef });
+
+    return (
+        <motion.div
+            ref={containerRef}
+            className={Styles.timelineContainer}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+        >
+            <Typography marginTop={15} color='var(--green-500)' textTransform={'uppercase'}
+                variant="h4" className={Styles.title} marginBottom={4} textAlign={'center'} fontFamily='var(--font-altric)' gutterBottom fontWeight={450}
+            >
+                Qualificações
+            </Typography>
+            <div className={Styles.tabs}>
+                <button
+                    onClick={() => { setIsReady(false); setActiveTab('formacao'); }}
+                    className={`${Styles.tabButton} ${activeTab === 'formacao' ? Styles.active : ''}`}
+                >
+                    <GiGraduateCap size={24} className={Styles.icon} /> Formação
+                </button>
+                <button
+                    onClick={() => { setIsReady(false); setActiveTab('trabalho'); }}
+                    className={`${Styles.tabButton} ${activeTab === 'trabalho' ? Styles.active : ''}`}
+                >
+                    <ImBriefcase size={20} className={Styles.icon} /> Trabalho
+                </button>
+            </div>
+
+            <div ref={gridRef} className={Styles.timelineGrid}>
+                <div className={Styles.timelineGuide}></div>
+                <div ref={progressRef} className={Styles.progressLine}></div>
+
+                <AnimatePresence mode="wait" onExitComplete={() => ScrollTrigger.refresh()}>
+                    <motion.div
+                        key={activeTab}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+       
+                        onAnimationComplete={() => setIsReady(true)}
+                    >
+                        {timelineData[activeTab].map((item, index) => (
+                            <div
+                                key={`${activeTab}-${index}`}
+                                className={`${Styles.timelineItem} ${index % 2 === 0 ? Styles.left : Styles.right}`}
+                            >
+                                <div className={Styles.nodeIndicator}></div>
+                                <div className={Styles.content}>
+                                    <h3>{item.title}</h3>
+                                    <p>{item.location}</p>
+                                    <span className={Styles.year}>
+                                        <BsCalendarWeek size={14} /> {item.year}
+                                    </span>
+                                </div>
+                            </div>
+                        ))}
+                    </motion.div>
+                </AnimatePresence>
+            </div>
+        </motion.div>
+    );
 };
 
 export default Timeline;

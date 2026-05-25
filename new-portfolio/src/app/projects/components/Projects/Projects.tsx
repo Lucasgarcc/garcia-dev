@@ -200,7 +200,7 @@ const Projects = () => {
                                         {selectedProjectData.title || selectedProjectData.id}
                                     </h2>
                                     <button
-                                        className={`${styles.btnCloseDatailModal} text-white/50 hover:text-white transition-colors`}
+                                        className={`${styles.btnCloseDatailModal} hover:text-gray transition-colors`}
                                         onClick={() => {
 
                                             setIsModalOpen(false);
@@ -212,10 +212,10 @@ const Projects = () => {
                                 </header>
 
                                 <div className="mt-6 space-y-4">
-                                    <p className="text-gray-200 leading-relaxed">{selectedProjectData.description}</p>
+                                    <p className="leading-relaxed">{selectedProjectData.description}</p>
                                     <div className="flex flex-wrap gap-2 pt-4">
                                         {selectedProjectData.tags?.map((tag: string) => (
-                                            <span key={tag} className={`${styles.tagDatailModal} px-3 py-1 bg-white/5 border border-white/10 text-xs text-gray-200`}>
+                                            <span key={tag} className={`${styles.tagDatailModal} px-3 py-1 bg-white/5 border border-white/10 text-xs `}>
                                                 {tag}
                                             </span>
                                         ))}

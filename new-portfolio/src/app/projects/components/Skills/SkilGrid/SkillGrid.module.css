@@ -27,11 +27,18 @@
         black 90%,
         transparent
     );
-    
+    -webkit-mask-image: linear-gradient(
+        to right,
+        transparent,
+        black 10%,
+        black 90%,
+        transparent
+    );
     /* Aumentamos o padding inferior para o tooltip aparecer */
     padding-bottom: 60px; 
     margin-bottom: -40px; /* Compensa o padding para não empurrar o resto do layout */
     overflow: visible !important; /* Tenta forçar a visibilidade */
+    transform: all 3s /* Força a criação de uma camada de composição */
 }
 
 .row {
@@ -41,6 +48,10 @@
     padding: 10px 0;
     /* Garante que o overflow da linha em si não corte o tooltip */
     overflow: visible; 
+    will-change: transform;
+    transition:  transfom  1s ease-in 1s infinite;/* Força a criação de uma camada de composição */
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
 
 @media screen and (max-width: 1024px) {

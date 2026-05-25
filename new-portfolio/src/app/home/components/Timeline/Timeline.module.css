@@ -3,11 +3,12 @@
     max-width: 1200px;
     box-sizing: border-box;
     padding: 4rem 1rem;
-    color: var(--primary-c-0-5);
+    color: var(--green-700);
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow: hidden;
 }
 
 /* Tabs */
@@ -21,7 +22,7 @@
 .tabButton {
     background: none;
     border: none;
-    color: #aaa;
+    color: var(--text-muted);
     font-size: 1.2rem;
     display: flex;
     align-items: center;
@@ -31,34 +32,85 @@
 }
 
 .tabButton:hover {
-    color: var(--primary-c-0-4);
+    color: var(--text-muted);
     cursor: pointer;
 }
 
 .active {
-    color: var(--primary-c-0-5);
+    color: var(--color-definition);
     font-weight: 600;
 }
 
-/* Linha central */
+/* Linha central e Grid */
 .timelineGrid {
     position: relative;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    max-width: 900px;
     width: 100%;
-    gap: 3rem 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem 0;
 }
 
-.timelineGrid::before {
+/* Guia Cinza ao Fundo */
+.timelineGuide {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    background: var(--surface-line);
+    transform: translateX(-50%);
+}
+
+/* Linha de Progresso (GSAP) */
+.progressLine {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 2px;
+    height: 0%;
+    background: var(--green-400);
+    box-shadow: 0 0 15px var(--green-400);
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+/* Indicador (Node) */
+.nodeIndicator {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--surface-node);
+    border: 2px solid var(--surface-node-border);
+    z-index: 10;
+    transition: all 0.4s ease;
+}
+
+.nodeIndicator:global(.node-active) {
+    background: var(--green-400) !important;
+    border-color: #fff !important;
+    box-shadow: 0 0 15px var(--green-400);
+    transform: translate(-50%, -50%) scale(1.3) !important;
+}
+
+/* O pulso também precisa herdar essa lógica */
+.nodeIndicator:global(.node-active)::after {
     content: '';
     position: absolute;
-    top: 0;
-    left: 50.6%;
-    width: 3px;
-    height: 100%;
-    background: var(--primary-c-1);
-    transform: translateX(-50%);
+    inset: -5px;
+    border: 1px solid var(--green-400);
+    border-radius: 50%;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(2.2); opacity: 0; }
 }
 
 /* Itens */
@@ -73,131 +125,114 @@
   justify-content: flex-start;
 }
 
+/* Manti o seu before original como o losango decorativo */
 .timelineItem::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  width: 14px;
-  height: 14px;
-  background: var(--primary-c-1);
-  border-radius: 5%;
-  border-top-left-radius: 30%;
-  border-bottom-right-radius: 30%;
-  transform: translateY(-50%);
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 14px;
+    height: 14px;
+    background: var(--green-700);
+    border-radius: 5%;
+    border-top-left-radius: 30%;
+    border-bottom-right-radius: 30%;
+    transform: translateY(-50%);
+    display: none;
+}
+
+.active.timelineItem::before {
+    display: block;
 }
 
 .timelineItem.left::before {
-  right: -7px;
+    right: 27rem;
 }
 
 .timelineItem.right::before {
-  left: -7px;
+    left: 27rem;
 }
 
+/* Conteúdo do Card */
 .content {
-  background: var(--bg-primary);
-    color: #c3c3c3;
-  padding: 1.2rem 1.5rem;
-  border-radius: 12px;
-  width: 440px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease, background 0.3s ease;
+    background: var(--surface-third);
+    color: var(--text-primary);
+    padding: 1.2rem 1.5rem;
+    border-radius: 12px;
+    width: 440px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, background 0.3s ease;
 }
 
 .content p {
-  font-size: 0.9rem;
-  margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
 }
 
 .content:hover {
-  background: var(--primary-c-0-1);
-  color: var(--color-text);
-  transform: translateY(-4px);
-  cursor: pointer;
-}
-
-.content h3 {
-  font-size: 1.05rem;
-  color: var(--logo-stroke-primary);
-  font-weight: 600;
-  margin-bottom: 0.3rem;
+    background: var(--green-100);
+    color: var(--green-800);
+    transform: translateY(-4px);
+    border-color: var(--green-400);
+    cursor: pointer;
 }
 
 .year {
     display: flex;
     justify-content: flex-start;
-    width: 100%;
     align-items: center;
     gap: 1rem;
     font-size: 0.8rem;
-    color: var(--color-text-n);
+    color: var(--text-on-accent);
 }
 
-.content:hover .year {
-  font-size: 0.8rem;
-  color: var(--primary-c-3);
-}
-
-
-.content:hover h3{
-
-  color: var(--primary-c-3);
-}
-.timelineItem:hover::before {
-  background: rgb(86, 153, 4);
+.content:hover .year,
+.content:hover h3,
+.content:hover .year .IconCalendary {
+    color: var(--green-dark);
 }
 
 .IconCalendary {
-  color: var(--color-text-secondary-c) !important;
-}
-.content:hover .year .IconCalendary{
-  color: var(--primary-c-3);
+    color: var(--text-secondary) !important;
 }
 
-/* Responsivo */
+/* Responsivo Otimizado */
 @media (max-width: 1024px) {
 
-    .timelineGrid {
-        grid-template-columns: 1fr;
+    .timelineGrid::before, 
+    .progressLine, 
+    .nodeIndicator {
+        left: 20px !important;
+        transform: none !important;
     }
 
-    .timelineGrid::before {
-        left: 10px;
+    .timelineGuide {
+        display: none;
     }
 
     .timelineItem,
     .timelineItem.right {
         justify-content: flex-start;
+        padding-left: 50px;
+    }
+
+    .timelineItem {
+        margin-bottom: 1rem;
     }
 
     .timelineItem::before {
-        left: -2px;
+        left: 14px;
     }
 
     .content {
-        width: calc(100% - .5rem);
+        width: 100%;
     }
 }
 
 @media screen and (max-width: 480px) {
     .timelineContainer {
         padding: .5rem;
-        margin: 0 auto;
     }
-
-    .timelineGrid {
-        max-width: fit-content;
-        width: none;
-    }
-    .content {
-        max-width: 400px;
-    }
-
     .title {
         font-size: 1.6rem !important;
-    }
-
-    .content {
-        width: calc(100% - 1rem);
     }
 }

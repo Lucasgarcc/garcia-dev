@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, useAnimationControls } from 'framer-motion';
 import Icon from '../Icon/Icon';
 import { Skill } from '@/app/core/interfaces/skill';
@@ -13,37 +13,63 @@ interface SkillGridProps {
 const SkillGrid = ({ skills }: SkillGridProps) => {
     const controlsRow1 = useAnimationControls();
     const controlsRow2 = useAnimationControls();
+    const [isMounted, setIsMounted] = useState(false);
 
-    // Divide o array de skills em dois para as duas linhas
+    // Garante que o componente só monte no cliente para evitar erros de cálculo de tamanho
+    useEffect(() => {
+        setIsMounted(true);
+    }, []);
+
+    // Divide o array de skills em duas pistas
     const half = Math.ceil(skills.length / 2);
-    const row1 = skills.slice(0, half);
-    const row2 = skills.slice(half);
+    const baseRow1 = skills.slice(0, half);
+    const baseRow2 = skills.slice(half);
+
+    /* A MÁGICA DO PREENCHIMENTO:
+       Se a sua lista de ícones for pequena, triplicar não basta. 
+       Multiplicamos a lista por 5 ou 6 vezes. Isso garante uma esteira gigante 
+       que cobre qualquer monitor (Ultra-wide, 4K, etc.) e elimina COMPLETAMENTE as lacunas.
+    */
+    const row1 = Array(6).fill(baseRow1).flat();
+    const row2 = Array(6).fill(baseRow2).flat();
 
     useEffect(() => {
+        if (!isMounted) return;
+
         const startAnimations = () => {
+            /* Como multiplicamos a lista por 6 partes idênticas lá em cima,
+               o ponto exato de loop invisível agora passa a ser 1 parte de 6,
+               ou seja: (100 / 6) = -16.666%
+            */
+
             // Linha 1: Direita para Esquerda
             controlsRow1.start({
-                x: [0, -1000],
-                transition: { duration: 30, repeat: Infinity, ease: "linear" }
+                x: [0, "-16.666%"],
+                transition: {
+                    duration: 35, // Velocidade uniforme
+                    repeat: Infinity,
+                    ease: "linear"
+                },
             });
 
-            // Linha 2: Esquerda para Direita (começa deslocado)
+            // Linha 2: Esquerda para Direita
             controlsRow2.start({
-                x: [-1000, 0],
-                transition: { duration: 30, repeat: Infinity, ease: "linear" }
+                x: ["-16.666%", 0],
+                transition: {
+                    duration: 35,
+                    repeat: Infinity,
+                    ease: "linear"
+                }
             });
         };
 
-        startAnimations();
+        // Um leve timeout de 100ms garante que o navegador já renderizou os ícones 
+        // e sabe o tamanho exato da pista antes da animação começar. Isso mata o delay/travamento.
+        const timer = setTimeout(startAnimations, 100);
+        return () => clearTimeout(timer);
+    }, [controlsRow1, controlsRow2, isMounted, row1.length]);
 
-        // Timer para parar as duas animações suavemente
-        /*    const timer = setTimeout(() => {
-                controlsRow1.stop();
-                controlsRow2.stop();
-            }, 6000);
-
-            return () => clearTimeout(timer);*/
-    }, [controlsRow1, controlsRow2]);
+    if (!isMounted) return null;
 
     return (
         <div className={styles.wrapper}>
@@ -52,8 +78,8 @@ const SkillGrid = ({ skills }: SkillGridProps) => {
                 {/* Linha 1 */}
                 <div className={styles.fadeMask}>
                     <motion.div animate={controlsRow1} className={styles.row}>
-                        {[...row1, ...row1, ...row1].map((skill, i) => (
-                            <Icon key={`r1-${i}`} {...skill} />
+                        {row1.map((skill, i) => (
+                            <Icon key={`r1-${skill.id || i}-${i}`} {...skill} />
                         ))}
                     </motion.div>
                 </div>
@@ -61,8 +87,8 @@ const SkillGrid = ({ skills }: SkillGridProps) => {
                 {/* Linha 2 */}
                 <div className={styles.fadeMask}>
                     <motion.div animate={controlsRow2} className={styles.row}>
-                        {[...row2, ...row2, ...row2].map((skill, i) => (
-                            <Icon key={`r2-${i}`} {...skill} />
+                        {row2.map((skill, i) => (
+                            <Icon key={`r2-${skill.id || i}-${i}`} {...skill} />
                         ))}
                     </motion.div>
                 </div>

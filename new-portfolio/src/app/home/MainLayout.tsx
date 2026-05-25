@@ -106,7 +106,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: false, amount: 0.3 }}
-                    className="area-continer-timeline"
+                    className="area-container-timeline"
                 >
                     <Timeline />
                 </motion.section>
@@ -120,7 +120,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
                     whileInView="visible"
                     viewport={{ once: false, amount: 0.3 }}
                     transition={{ duration: 0.8, delay: 0.5 }}
-                    className="area-continer-differential"
+                    className="area-container-differential"
                 >
                     <Differential />
                 </motion.section>
@@ -134,7 +134,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
                     whileInView="visible"
                     viewport={{ once: false, amount: 0.3 }}
                     transition={{ duration: 0.3, delay: 0.5 }}
-                    className="area-continer-contact-me"
+                    className="area-container-contact-me"
 
                 >
                     <ContactMe />

@@ -16,7 +16,7 @@ const Icon = ({ name, icon, shadowColor, className }: SkillIconProps) => {
     return (
         <motion.div
             className={styles.skillCard}
-            whileHover={{ y: -8, transition: { duration: 0.2 } }}
+            whileHover={{ y: -8, transition: { duration: 0.3 } }}
             style={dynamicStyles}
         >
             <div className={styles.iconWrapper}>

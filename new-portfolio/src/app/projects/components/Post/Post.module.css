@@ -7,7 +7,7 @@
     align-items: center;  
     width: 100%;
     max-width: 1200px;
-    background: rgba(254, 254, 254, 0.7);
+    transition: background-color 0.3s ease-in-out, 
 }
 
 /* O Wrapper agora é um Grid para sobrepor imagem e contorno */
@@ -55,15 +55,15 @@
 .badge {
     position: absolute;
     z-index: 20; 
-    background: rgba(255, 255, 255, 0.7);
+    background: var(--surface-strong);
     backdrop-filter: blur(12px);
     padding: 10px 18px;
     border-radius: .4rem;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(220, 220, 220, 0.778);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     font-weight: 600;
     font-size: 0.85rem;
-    color: var(--primary-c-0-3);
+    color: var(--text-muted);
     pointer-events: none;
     display: flex;
     align-items: center;
@@ -93,7 +93,7 @@
 
 .postContent {
     width: 100%;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     max-width: 100%;
     text-align: justify;
     hyphens: auto;
@@ -102,13 +102,15 @@
 
 .postTitle {
     font-size: 3rem;
+    width: 50%;
+    transition: background-color 0.3s ease-in-out, 
 }
 
 .postTitleProject {
     font-size: 3rem;
     font-family: var(--font-roboto);
     font-weight: var(--fw-medium);
-    color: var(--secondary-c-1);
+    color: var(--surface-emphasis);
 }
 
 .buttons,
@@ -124,7 +126,7 @@
 }
 
 .badge > .icon{
-    color: var(--secondary-c-1);
+    color: var(--surface-emphasis);
 }
 
 /* Responsividade corrigida */

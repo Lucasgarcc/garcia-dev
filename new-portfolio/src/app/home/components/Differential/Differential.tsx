@@ -19,13 +19,13 @@ const Differential = () => {
         {/* Título principal */}
         <Typography
             marginTop={8}
-            color="var(--primary-c-2)"
+            color="var(--green-500)"
             textTransform="uppercase"
             variant="h4"
             className={Styles.differentialTitle}
             marginBottom={8}
             textAlign="center"
-            fontFamily="var(--font-title)"
+            fontFamily="var(--font-altric)"
             gutterBottom
             fontWeight={500}
         >
@@ -38,19 +38,19 @@ const Differential = () => {
                 {/* CARD 1 */}
                 <div className={Styles.differentialItem}>
                 <Typography
-                    color="var(--primary-c-0-1)"
+                    color="var(--green-50)"
                     variant="h4"
                     textTransform="uppercase"
                     marginTop={2}
                     className={Styles.differentialSubTitle}
                     fontFamily="var(--font-title)"
                     gutterBottom
-                    fontWeight={500}
+                    fontWeight={300}
                 >
                     <strong>
                     <FaLightbulb
                         size={40}
-                        color="var(--primary-c-0-4)"
+                        color="var(--green-400)"
                         className={Styles.differentialIcon}
                     />{' '}
                     Evolução contínua e domínio técnico em Frontend moderno
@@ -73,7 +73,7 @@ const Differential = () => {
                         <span className={Styles.differentialInfoEmphasis}>
                         <IoMdArrowDropright
                             size={50}
-                            color="var(--primary-c-0-4)"
+                            color="var(--green-limon)"
                         />
                             <div>
                                 União entre domínio técnico, boas práticas de engenharia e foco
@@ -86,19 +86,19 @@ const Differential = () => {
                 {/* CARD 2 */}
                 <div className={Styles.differentialItem}>
                     <Typography
-                        color="var(--primary-c-0-1)"
+                        color="var(--green-50)"
                         variant="h4"
                         textTransform="uppercase"
                         marginTop={2}
                         className={Styles.differentialSubTitle}
                         fontFamily="var(--font-title)"
                         gutterBottom
-                        fontWeight={500}
+                        fontWeight={300}
                     >
                         <strong>
                         <GiBrain
                             size={70}
-                            color="var(--primary-c-0-4)"
+                            color="var(--green-400)"
                             className={Styles.differentialIcon}
                         />{' '}
                         Mentalidade de crescimento e transição estratégica para o Full
@@ -122,7 +122,7 @@ const Differential = () => {
                         <span className={Styles.differentialInfoEmphasis}>
                         <IoMdArrowDropright
                             size={50}
-                            color="var(--primary-c-0-4)"
+                            color="var(--green-limon)"
                         />
                         <div>
                             Mentalidade de crescimento aliada a uma transição estratégica e

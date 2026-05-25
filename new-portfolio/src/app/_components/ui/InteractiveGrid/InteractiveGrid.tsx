@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import styles from './InteractiveGrid.module.css';
 
-export const InteractiveGrid = ({ children }: { children?: React.ReactNode }) => {
+export const InteractiveGrid = ({ children, className }: { children?: React.ReactNode, className?: string }) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
 
@@ -162,7 +162,7 @@ export const InteractiveGrid = ({ children }: { children?: React.ReactNode }) =>
     }, []);
 
     return (
-        <div ref={containerRef} className={styles.container}>
+        <div ref={containerRef} className={`${styles.container} ${className}`}>
             <canvas ref={canvasRef} className={styles.canvas} />
             <div className={styles.content}>{children}</div>
         </div>

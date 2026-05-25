@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 
 import Logo from '@/app/_components/ui/Logo/Logo';
 import { useNavigation } from '@/core/context/NavigationContext';
+import { useThemeMode } from '@/core/context/ThemeContext';
 import LinkMenu from './LinkMenu/LinkMenu';
 import { NavItem } from '@/core/interfaces/nav';
 import styles from './Menu.module.css';
@@ -18,10 +19,12 @@ import MmsIcon from '@mui/icons-material/Mms';
 import InsightsIcon from '@mui/icons-material/Insights';
 import FeedIcon from '@mui/icons-material/Feed';
 import { MdPsychology } from "react-icons/md";
+import { MdDarkMode, MdLightMode } from "react-icons/md";
 import SpeakerNotesIcon from '@mui/icons-material/SpeakerNotes';
 
 const Menu = ({ items }: { items: NavItem[] }) => {
     const { scrollToSection, active, setActive, page } = useNavigation();
+    const { isDark, toggleTheme } = useThemeMode();
     const [open, setOpen] = useState(false);
 
     const iconMap: Record<string, React.ReactNode> = {
@@ -39,7 +42,6 @@ const Menu = ({ items }: { items: NavItem[] }) => {
         articles: <FeedIcon sx={{ fontSize: 25 }} className={styles.icon} />,
         artRelated: <SpeakerNotesIcon sx={{ fontSize: 23 }} className={styles.icon} />
     };
-
 
     const router = useRouter();
 
@@ -93,6 +95,19 @@ const Menu = ({ items }: { items: NavItem[] }) => {
                     )
                 })}
             </div>
+
+            <button
+                type="button"
+                className={styles.themeToggle}
+                onClick={toggleTheme}
+                aria-label={`Ativar modo ${isDark ? 'claro' : 'escuro'}`}
+                title={`Ativar modo ${isDark ? 'claro' : 'escuro'}`}
+            >
+                {isDark ? <MdLightMode className = {styles.icon}  size={18} /> : <MdDarkMode size={18} />}
+                <span className={styles.themeToggleLabel}>
+                    {isDark ? 'Light' : 'Dark'}
+                </span>
+            </button>
         </nav>
     );
 };

@@ -1,31 +1,29 @@
 .areaContainer {
+    background-color: var(--surface-primary);
     margin-top: 8rem;
-    color: var(--color-text);
+    transition: background-color 0.3s ease-in-out;
 }
 
 .titleDetail {
-    color: var( --color-text-secondary-c);
+    background-color: var(--surface-primary);
 }
 
 .datails {
-    font-family: var(--font-title);
-        background: linear-gradient(
-        90deg,         /* Direção: da esquerda para a direita */
-        var(--primary-c-0-3) 0%,    /* Roxo (início da palavra) */
-        var(--color-text) 50%,   /* Rosa/Magenta (meio) */
-        var(--bg-secondary) 100%   /* Laranja/Coral (final) */
-    );
+    font-family: var(--font-altric);
+    background: var(--color-accent);
     -webkit-background-clip: text; /* Necessário para Webkit/Blink */
     background-clip: text;         /* Padrão atual, mas mantenha o de cima */
-
-    /* 3. Torna o texto transparente para o fundo aparecer através dele */
     -webkit-text-fill-color: transparent; /* Necessário para Webkit/Blink */
     color: transparent;
 }
 
 .titleSubtitle {
+    display: flex;
+    gap: .4rem;
     flex-wrap: wrap;
+    font-weight: 400;
     padding-bottom: .8rem;
+    font-family:  var(--font-altric);
 }
 
 .description {
@@ -44,10 +42,10 @@
         padding: .5rem 1rem;
     }
     .title{
-        font-size: 2.7rem !important;
+        font-size: 2.4rem !important;
     }
     .titleSubtitle {
-        font-size: 1.5rem !important;
+        font-size: 1.4rem !important;
         white-space: nowrap;
     }    
     .description {
