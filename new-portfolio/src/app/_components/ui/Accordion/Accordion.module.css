@@ -1,12 +1,12 @@
 .accordionWrapper {
-    background: var(--primary-c);
+    background: var(--green-500);
     margin-bottom: 1.5rem;
     position: relative;
     border-radius: 0.5rem;
     width: 28%;
     margin-bottom: 0 1rem;
     border-radius: 1.5rem .5rem 1.5rem;
-    border: 1px solid var(--logo-stroke-secondary);
+    border: 1px solid var(--color-fill);
     /* 1. Borda sólida na direita e baixo para simular espessura */
     border-right: 6px solid rgb(92, 92, 92);
     border-bottom: 10px solid rgb(92, 92, 92);
@@ -17,6 +17,7 @@
         5px 5px 20px rgba(0, 0, 0, 0.3); /* Sombra externa projetada */
         
     transition: all 0.3s ease;
+    cursor: pointer;
 }
 
 /* Efeito de "apertar" o botão quando o mouse passa ou abre */
@@ -25,8 +26,8 @@
     box-shadow: 
         inset 1px 1px 0px rgba(33, 33, 33, 0.08),
         7px 7px 20px rgba(0, 0, 0, 0.4);
-    border-right-color: var(--bg-primary-n); /* Destaque na lateral ao hover */
-   border-bottom-color: var(--bg-primary-n);
+    border-right-color: var(--surface-strong); /* Destaque na lateral ao hover */
+    border-bottom-color: var(--surface-strong);
 }
 
 
@@ -50,7 +51,7 @@
 }
 
 .iconArrow > path {
-    stroke: var(--primary-c-0-1);
+    stroke: var(--green-100);
     stroke-width: .4px ;
 }
 
@@ -59,7 +60,7 @@
 }
 
 .iconArrow:hover {
-    color: var(--primary-c-0-1);
+    color: var(--green-100);
 } 
 
 .titleGroup,
@@ -74,26 +75,28 @@
 }
 
 .mainIcon {
-    color: var(--color-text); /* Use seu verde/azul */
+    color: var(--tech-grey); /* Use seu verde/azul */
     font-size: 3rem;
 }
 
 .title {
     text-align: center;
+    font-family: var(--font-roboto-mono);
     font-size: 1.25rem;
-    font-weight: 500;
+    font-weight: 450;
     color: #4b6c40;
 }
 
 .subtitle {
     font-size: 0.85rem;
-    color: var(--color-text-secondary);
+    color: var(--text-muted);
 }
 
 .list {
     margin-top: 1rem;
     padding: 1.5rem;
     background: rgb(253, 255, 247);
+    color: var(--text-muted);
     display: flex;
     justify-content: flex-start;
     align-self: center;
@@ -137,7 +140,7 @@
 .pullDownBtn {
     background: none;
     border: none;
-    color: var(--secondary-c-1);
+    color: var(--green-600);
     padding: 10px;
     cursor: pointer;
     display: flex;
@@ -156,7 +159,7 @@
 
 .quantilyItem {
     font-size: 1rem;
-    color: var(--bg-grey);
+    color: var(--tech-grey);
 }
 @media (max-width: 1024px) {
     .accordionWrapper  {

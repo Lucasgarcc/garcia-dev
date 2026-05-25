@@ -39,7 +39,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-origin: border-box;
-    border: 1px solid var(--color-text-secondary-c);
+    border: 1px solid var(--text-muted);
     z-index: 1;
 }
 
@@ -62,9 +62,9 @@
     position: absolute;
     top: 2rem;
     left: 2rem;
-    background: var(--primary-c-2);
-    border: 1px solid var(--primary-c-0-1);
-    color: var(--secondary-c-1);
+    background: var(--green-500);
+    border: 1px solid var(--green-100);
+    color: var(--green-600);
     padding: 0.5rem 1.2rem;
     border-radius: 10px;
     font-size: 0.7rem;
@@ -76,9 +76,9 @@
     transition: all .3s ease-in-out;
 }
 .badge:hover {
-    color: var(--color-text-c);
-    background: var(--bg-primary-n);
-    border: 1px solid var(--color-text-secondary);
+    color: var(--text-secondary-c);
+    background: var(--surface-strong);
+    border: 1px solid var(--text-muted);
 
 }
 

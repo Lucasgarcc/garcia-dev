@@ -1,12 +1,12 @@
 .link {
   padding: .2rem;
-  color: var(--color-text-n);
+  color: var(--text-on-accent);
   transition: .3s ease;
   text-decoration: none;
 }
 
 .link:hover {
-  color: var(--color-text-secondary);
+  color: var(--text-muted);
 }
 
 .underline {
@@ -66,7 +66,7 @@
     }
 
   .link:hover {
-    color: var(--color-text-secondary-c);
+    color: var(--text-secondary);
   }
     .link p {
         margin: .4rem;
@@ -76,7 +76,7 @@
   }
     .iconWrapper {
         display: flex; /* Mostra o ícone no mobile */
-        color: var(--color-primary); /* Ou a cor que preferir para os ícones */
+        color: var(--color-accent); /* Ou a cor que preferir para os ícones */
     }
 }
 

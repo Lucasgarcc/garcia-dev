@@ -6,6 +6,8 @@
   gap: .5 rem;
   width: 100%;
   height: 100%;
+  background: var(--surface-primary);
+  transition: background-color 0.3s ease-in-out;
   cursor: pointer;
 }
 
@@ -14,13 +16,13 @@
 }
 
 .mouseIcon {
-  color: var(--primary-c-3);
+  color: var(--color-accent-button);
   animation: bounceMouse 2s infinite;
   cursor: pointer;
 }
 
 .arrowIcon {
-  color: var(--primary-c-2);
+  color: var(--green-500);
   animation: bounceArrow 1.5s infinite;
 }
 
