@@ -71,7 +71,6 @@
 
 .titleGroup {
     gap: 3rem;
-
 }
 
 .mainIcon {
@@ -161,15 +160,27 @@
     font-size: 1rem;
     color: var(--tech-grey);
 }
+
 @media (max-width: 1024px) {
     .accordionWrapper  {
         width: 70%;
     }
-}
+    .titleGroup {
+        gap: 2rem;
+    }
+    .title {
+        font-family: var(--font-roboto);
+        font-size: 1.1rem;
+        font-weight: 500;
+    }
 
+}
 
 @media (max-width: 428px) {
     .accordionWrapper {
         width: 100%;
+    }
+    .titleGroup {
+        gap: 1.5rem;
     }
 }
