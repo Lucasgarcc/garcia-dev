@@ -1,76 +1,105 @@
 "use client";
 
-import { useRef } from 'react';
+import { useRef, useMemo, useEffect } from 'react';
 import { useFrame } from '@react-three/fiber';
-import { Icosahedron, Edges } from '@react-three/drei';
-import type { EdgesRef } from '@react-three/drei/core/Edges';
 import * as THREE from 'three';
 
 export default function IcosahedronScene() {
-    const meshRef = useRef<THREE.Mesh>(null!);
-    const lineRef = useRef<EdgesRef | null>(null);
+    const groupRef = useRef<THREE.Group>(null!);
+    const lineGeomRef = useRef<THREE.BufferGeometry>(null!);
     const matRef = useRef<THREE.MeshPhongMaterial>(null!);
+    const lineMatRef = useRef<THREE.LineBasicMaterial>(null!);
+
+    const startTimeRef = useRef<number | null>(null);
+
+    // Geramos as geometrias base de forma isolada
+    const { faceGeometry, edgeGeometry } = useMemo(() => {
+        const faces = new THREE.IcosahedronGeometry(1, 0);
+        const edges = new THREE.EdgesGeometry(faces, 15);
+        return { faceGeometry: faces, edgeGeometry: edges };
+    }, []);
+
+    const totalLinesCount = edgeGeometry.attributes.position.count;
+
+    useEffect(() => {
+    
+        if (lineGeomRef.current) {
+            lineGeomRef.current.setDrawRange(0, 0);
+        }
+
+        const rootStyle = getComputedStyle(document.documentElement);
+        const cssColor = rootStyle.getPropertyValue('--surface-five').trim();
+
+        if (cssColor) {
+            const threeColor = new THREE.Color(cssColor);
+            if (lineMatRef.current) lineMatRef.current.color = threeColor;
+            if (matRef.current) matRef.current.color = threeColor;
+        }
+    }, []);
 
     useFrame((state) => {
-        const t = state.clock.getElapsedTime();
+        if (startTimeRef.current === null) {
+            startTimeRef.current = state.clock.getElapsedTime();
+        }
 
-        // 1. Rotação contínua
-        meshRef.current.rotation.y = t * 0.4;
-        meshRef.current.rotation.x = t * 0.2;
+        const localTime = state.clock.getElapsedTime() - startTimeRef.current;
 
-        // 2. Lógica de Construção Gradativa (Loop de 0 a 1)
-        const cycle = (t % 4) / 4; // Um ciclo completo a cada 4 segundos
+        // Rotação infinita e constante
+        if (groupRef.current) {
+            groupRef.current.rotation.y = localTime * 0.4;
+            groupRef.current.rotation.x = localTime * 0.2;
+        }
 
-        // Animação das Faces (Surgem depois das linhas)
+        // Animação linear de 3 segundos de duração
+        const animationTime = Math.min(localTime, 3);
+        const progress = animationTime / 3;
+
+        // CONSTRUÇÃO DO VETOR 
+        if (lineGeomRef.current) {
+            const lineProgress = THREE.MathUtils.smoothstep(progress, 0, 0.7);
+            const currentDrawCount = Math.floor(lineProgress * totalLinesCount);
+
+            lineGeomRef.current.setDrawRange(0, currentDrawCount);
+        }
+
+        // APARECIMENTO DAS FACES
         if (matRef.current) {
-            // As faces começam a aparecer após 30% do ciclo das linhas
-            const faceProgress = THREE.MathUtils.smoothstep(cycle, 0.3, 0.7);
-            matRef.current.opacity = faceProgress * 0.8;
+            const faceProgress = THREE.MathUtils.smoothstep(progress, 0.4, 1);
+            matRef.current.opacity = faceProgress * 0.35;
         }
 
-        // Animação das Linhas (Construção progressiva)
-        const line = lineRef.current;
-        if (line) {
-            const lineProgress = THREE.MathUtils.smoothstep(cycle, 0, 0.5);
-            line.scale.setScalar(0.8 + lineProgress * 0.2);
-            line.material.opacity = lineProgress;
-        }
-
-        // Reset suave no final do ciclo para o loop recomeçar
-        if (cycle > 0.9) {
-            const fadeOut = THREE.MathUtils.smoothstep(cycle, 0.9, 1);
-            matRef.current.opacity = 0.8 * (1 - fadeOut);
-            if (line) {
-                line.material.opacity = 1 - fadeOut;
-            }
+        if (lineMatRef.current) {
+            lineMatRef.current.opacity = 1;
         }
     });
 
     return (
-        <group>
-            <Icosahedron args={[1, 0]} ref={meshRef}>
+        <group ref={groupRef}>
+            <lineSegments>
+                <bufferGeometry
+                    ref={lineGeomRef}
+                    attach="geometry"
+                    index={edgeGeometry.index}
+                    attributes={edgeGeometry.attributes}
+                />
+                <lineBasicMaterial
+                    ref={lineMatRef}
+                    transparent
+                    opacity={1}
+                    depthTest={true}
+                />
+            </lineSegments>
+
+            <mesh geometry={faceGeometry}>
                 <meshPhongMaterial
                     ref={matRef}
-                    color="#f0f0f0"
                     flatShading={true}
                     transparent
-                    opacity={0} // Começa invisível para ser construído
-                    shininess={50}
+                    opacity={0}
+                    shininess={100}
+                    depthWrite={false}
                 />
-
-                <Edges
-                    ref={lineRef}
-                    threshold={15}
-                >
-                    {/* Material das linhas com suporte a transparência para o fade-in */}
-                    <meshBasicMaterial
-                        transparent
-                        opacity={0}
-                        color="#00ffc8"
-                        depthTest={true}
-                    />
-                </Edges>
-            </Icosahedron>
+            </mesh>
         </group>
     );
 }

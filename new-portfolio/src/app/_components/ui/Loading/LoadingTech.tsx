@@ -22,7 +22,7 @@ const LoadingTech = () => {
                 </Canvas>
 
                 <div className={styles.uiContainer}>
-                    <p className={styles.text}>INITIATING 3D CONSTRUCTION...</p>
+                    <p className={styles.text}>Inicializando...</p>
                 </div>
             </div>
         </div>

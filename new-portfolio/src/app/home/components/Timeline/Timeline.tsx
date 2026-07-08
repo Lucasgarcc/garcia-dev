@@ -54,8 +54,12 @@ const timelineData = {
 			title: 'Angular - TypeScript * Ionic & AngularJS',
 			location: 'Guariba - SP / Avulso Online',
 		},
+        {
+            year: '2026',
+            title: 'Next.js - TypeScript',
+            location: 'Guariba - SP / Avulso Online',
+        },
 
-	
 	],
 	trabalho: [
 		{
@@ -64,8 +68,8 @@ const timelineData = {
 			location: 'Guariba - SP / Indústria Plástica',
 		},
 		{
-			year: '2025 - Atual',
-			title: 'Desenvolvedor Front-end Junior (web)',
+			year: '2025 - 2026',
+			title: 'Desenvolvedor Front-end Júnior (web)',
 			location: 'Jaboticabal / F5 Software',
 		},
 	],
@@ -99,7 +103,7 @@ const Timeline: React.FC = () => {
                 scrollTrigger: {
                     trigger: gridRef.current,
                     start: triggerHook,
-                    end: 'bottom 50%',
+                    end: 'bottom 50%, left 50%',
                     scrub: 0.1,
                     invalidateOnRefresh: true,
                 }

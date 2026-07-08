@@ -5,6 +5,7 @@
     flex-direction: column;
     justify-content: flex-start; 
     background: var(--surface-strong);
+    overflow-x: hidden;
 }
 
 .aboutMeContainer {

@@ -1,7 +1,7 @@
 .overlay {
   position: fixed;
   inset: 0;
-  background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
+  background: linear-gradient(circle at center, #1a1a1a 0%, #000 100%);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,13 +24,13 @@
 }
 
 .text {
-  color: #00ffc8;
+  color: var(--green-500);
   font-family: monospace;
-  font-size: 0.7rem;
+  font-size: 0.9rem;
   letter-spacing: 5px;
   text-transform: uppercase;
   animation: blink 1.5s step-end infinite;
-  text-shadow: 0 0 10px rgba(0, 255, 200, 0.5);
+  text-shadow: 0 0 10px var(--green-500), 0 0 20px var(--green-600), 0 0 30px var(--green-400);
 }
 
 @keyframes blink {

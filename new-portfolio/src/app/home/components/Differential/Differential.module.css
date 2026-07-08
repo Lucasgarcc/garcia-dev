@@ -92,6 +92,7 @@
 .differentialDescription span {
     margin: 0 auto;
     margin-top: .8rem;
+    margin-right: .1rem;
     display: flex;
     gap: .5rem;
 
