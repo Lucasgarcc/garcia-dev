@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
 import Logo from '@/app/_components/ui/Logo/Logo';
@@ -23,16 +23,21 @@ import { MdDarkMode, MdLightMode } from "react-icons/md";
 import SpeakerNotesIcon from '@mui/icons-material/SpeakerNotes';
 
 const Menu = ({ items }: { items: NavItem[] }) => {
+
     const { scrollToSection, active, setActive, page } = useNavigation();
     const { isDark, toggleTheme } = useThemeMode();
     const [open, setOpen] = useState(false);
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     const iconMap: Record<string, React.ReactNode> = {
         home: <OtherHousesIcon sx={{ fontSize: 24 }} className={styles.icon} />,
         intro: <OtherHousesIcon sx={{ fontSize: 20 }} className={styles.icon} />,
         about: <AnnouncementIcon sx={{ fontSize: 20 }} className={styles.iconAbout} />,
-        timeline: <ViewTimelineIcon className={styles.icon
-        } />,
+        timeline: <ViewTimelineIcon className={styles.icon} />,
         differential: <FaLightbulb className={styles.icon} />,
         contact: <ContactMailIcon sx={{ fontSize: 20 }} className={styles.icon} />,
         projects: <FolderIcon sx={{ fontSize: 20 }} className={styles.icon} />,
@@ -46,7 +51,6 @@ const Menu = ({ items }: { items: NavItem[] }) => {
     const router = useRouter();
 
     const handleClick = (e: React.MouseEvent, item: NavItem) => {
-
         if (item.type === 'section' && item.page === page) {
             e.preventDefault();
             setActive(item.id);
@@ -55,11 +59,12 @@ const Menu = ({ items }: { items: NavItem[] }) => {
             return;
         }
 
-        // Qualquer outro caso → navegação
         e.preventDefault();
         setOpen(false);
         router.push(item.href);
     };
+
+    const currentIsDark = mounted ? isDark : false;
 
     return (
         <nav className={`${styles.menuContainer} ${open ? styles.active : ''}`}>
@@ -100,12 +105,13 @@ const Menu = ({ items }: { items: NavItem[] }) => {
                 type="button"
                 className={styles.themeToggle}
                 onClick={toggleTheme}
-                aria-label={`Ativar modo ${isDark ? 'claro' : 'escuro'}`}
-                title={`Ativar modo ${isDark ? 'claro' : 'escuro'}`}
+                aria-label={`Ativar modo ${currentIsDark ? 'claro' : 'escuro'}`}
+                title={`Ativar modo ${currentIsDark ? 'claro' : 'escuro'}`}
+                disabled={!mounted} // Opcional: evita cliques falsos antes do carregamento total
             >
-                {isDark ? <MdLightMode className = {styles.icon}  size={18} /> : <MdDarkMode size={18} />}
+                {currentIsDark ? <MdLightMode className={styles.icon} size={18} /> : <MdDarkMode size={18} />}
                 <span className={styles.themeToggleLabel}>
-                    {isDark ? 'Light' : 'Dark'}
+                    {currentIsDark ? 'Light' : 'Dark'}
                 </span>
             </button>
         </nav>

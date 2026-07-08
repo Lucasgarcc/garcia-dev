@@ -7,6 +7,8 @@ import LaserBackground from '@/app/_components/layout/Background/LaserBackground
 import localFont from "next/font/local";
 import Providers from './Providers';
 import Footer from '@/app/_components/layout/Footer/Footer';
+import Script from 'next/script';
+import './globals.css';
 
 const gugi = localFont({
     src: [
@@ -30,7 +32,11 @@ const themeInitScript = `
         try {
             const storageKey = 'portfolio-theme';
             const storedTheme = window.localStorage.getItem(storageKey);
-            const resolvedTheme = storedTheme === 'dark' ? 'dark' : 'light';
+            
+            // Se houver tema salvo, usa ele. Se não houver, checa o tema do sistema operacional.
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const resolvedTheme = storedTheme ? storedTheme : (systemPrefersDark ? 'dark' : 'light');
+
             document.documentElement.dataset.theme = resolvedTheme;
             document.documentElement.style.colorScheme = resolvedTheme;
 
@@ -75,15 +81,25 @@ export default function RootLayout({ children }: RootLayoutProps) {
                 <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
                 <link rel="manifest" href="/site.webmanifest" />
                 <meta name="theme-color" content="#000000" />
-                <meta name="description" content="Portfólio pessoal com designer profissional e projetos modernos" />
-                <meta name="keywords" content="portfólio, desenvolvedor, frontend, projetos, animações 3D" />
+
+                {/* SEO Principal */}
+                <meta name="description" content="Explore o ecossistema de desenvolvimento de Lucas Garcia. Engenharia frontend, arquitetura modular, design systems e experiências digitais interativas." />
+                <meta name="keywords" content="Lucas Garcia, frontend developer, engenheiro frontend, react, nextjs, web development, design systems, animações 3D web, performance web, javascript" />
                 <meta name="author" content="Lucas Garcia" />
-                <meta property="og:title" content="Meu Portfólio" />
-                <meta property="og:description" content="Portfólio pessoal com animações 3D e projetos modernos" />
+
+                {/* Open Graph */}
+                <meta property="og:title" content="Lucas Garcia | Frontend Engineer" />
+                <meta property="og:description" content="Desenvolvimento web focado em performance, interfaces ricas e arquitetura moderna. Conheça meus projetos e ecossistema de desenvolvimento." />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://garciadev.vercel.app" />
                 <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
             </head>
-            <body className={`${robotoMono.variable} ${aldric.variable} ${gugi.variable}`}>
-
+            <body className={`${robotoMono.variable} ${aldric.variable} ${gugi.variable}`} suppressHydrationWarning={true}>
+                <Script
+                    id="theme-initializer"
+                    strategy="beforeInteractive"
+                    dangerouslySetInnerHTML={{ __html: themeInitScript }}
+                />
                 <Providers>
                     {/* O Wrapper envolve tudo o que deve aparecer após o loading */}
 

@@ -9,7 +9,7 @@
     --green-200: #a8f05b;
     --green-300: #80c52c;
     --green-400: #8BC34A;
-    --green-500: #91bf27; /* Verde Principal Accent */
+    --green-500: #9bc33f; /* Verde Principal Accent */
     --green-600: #4b6c40;
     --green-700: #4a7614;
     --green-800: #2d5200;
@@ -130,8 +130,9 @@
     /* --- Superfícies e Cards (Seus cards de skills/experiência) --- */
     --surface-primary: #121212;
     --surface-secondary: rgba(18, 18, 18, 0.78);
-    --surface-third:  #1a1a1a; 
+    --surface-third:  #1e1e20;
     --surface-fourth: #1c1c1e;
+    --surface-five: #dbdbdb;
     --surface-strong: #1a1a1a;                 /* Background interno dos cards */
     --surface-emphasis: var(--green-limon);                /* Cards de destaque ou seções que precisam de mais contraste */
     --surface-line: rgba(255, 255, 255, 0.08); /* Bordas discretas dos componentes */
@@ -205,6 +206,7 @@
     --surface-secondary: #f5f5f7;
     --surface-third: var(--green-500);
     --surface-fourth: #1c1c1e;
+    --surface-five: #a1a1a1;
     --surface-emphasis: var(--green-500); 
     --surface-strong: #ededf0;
     --surface-line: rgba(0, 0, 0, 0.1);

@@ -1,8 +1,8 @@
 .skeleton {
   background: linear-gradient(
     90deg,
-    var(--surface-secondary, #f0f0f0) 25%,
-    var(--surface-strong, #e0e0e0) 50%,
+    var(--surface-secondary, #f0f0f0) 10%,
+    var(--surface-strong, #e0e0e0) 10%,
     var(--surface-secondary, #f0f0f0) 75%
   );
   background-size: 200% 100%;

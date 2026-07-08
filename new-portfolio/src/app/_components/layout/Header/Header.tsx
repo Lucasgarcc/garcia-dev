@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react'; 
 import { AppBar, Toolbar, Typography } from '@mui/material';
 import Menu from '@/app/_components/Menu/Menu';
 import styles from './Header.module.css';
@@ -7,9 +8,14 @@ import { NavItem } from '@/core/interfaces/nav';
 import { useNavigation } from '@/core/context/NavigationContext';
 
 const Header = () => {
-    const { page } = useNavigation();
 
-    // 1. Centralizamos a inteligência dos itens de navegação
+    const { page } = useNavigation();
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
     const navigationMap: Record<string, NavItem[]> = {
         home: [
             { id: 'intro', label: 'Home', href: '/', page: 'home', type: 'section' },
@@ -27,7 +33,6 @@ const Header = () => {
             { id: 'articles', label: 'Artigos Tech', href: '/projects', page: 'projects', type: 'section' },
             { id: 'portfolio', label: 'Portfólio', href: '/projects', page: 'projects', type: 'section' },
         ],
-        // Fallback para páginas de artigos ou rotas desconhecidas
         article: [
             { id: 'projects', label: 'Portfólio', href: '/projects', page: 'projects', type: 'route' },
             { id: 'artContent', label: 'Conteúdo', href: '/articles', page: 'articles', type: 'section' },
@@ -35,16 +40,17 @@ const Header = () => {
         ]
     };
 
-    // 2. Lógica simplificada de seleção (se não achar a página, usa o mapa de artigos)
-    // Verifica se a string da 'page' contém 'article' ou usa a chave direta
-    const currentPageKey = page.includes('article') ? 'article' : page;
+    const currentPageKey = mounted
+        ? (page.includes('article') ? 'article' : page)
+        : 'home';
+
     const navItems = navigationMap[currentPageKey] || navigationMap['home'];
 
     return (
         <AppBar
             position="fixed"
             sx={{
-                background: 'none', // Efeito "Glassmorphism"
+                background: 'none',
                 color: 'var(--color-header)',
                 boxShadow: 'none',
                 zIndex: 1100
@@ -53,7 +59,6 @@ const Header = () => {
             <Toolbar>
                 <Typography component="div" sx={{ flexGrow: 1 }}>
                     <div className={styles.containerToolBar}>
-                        {/* O Menu agora recebe itens validados pela lógica acima */}
                         <Menu items={navItems} />
                     </div>
                 </Typography>
