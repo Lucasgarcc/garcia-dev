@@ -2,9 +2,15 @@
 
 import { useRef, useMemo, useEffect } from 'react';
 import { useFrame } from '@react-three/fiber';
+import useMediaQuery from '@/app/core/hooks/MediaQuery/MediQuery';
 import * as THREE from 'three';
 
-export default function IcosahedronScene() {
+const IcosahedronScene = () => {
+    const isMobile = useMediaQuery('(max-width: 768px)');
+
+    // Define o tamanho responsivo (1 para desktop, 0.65 para mobile)
+    const currentScale = isMobile ? 0.60 : 1;
+
     const groupRef = useRef<THREE.Group>(null!);
     const lineGeomRef = useRef<THREE.BufferGeometry>(null!);
     const matRef = useRef<THREE.MeshPhongMaterial>(null!);
@@ -21,8 +27,9 @@ export default function IcosahedronScene() {
 
     const totalLinesCount = edgeGeometry.attributes.position.count;
 
+    // zera o drawRange antes mesmo do primeiro frame ir para a tela.
     useEffect(() => {
-    
+
         if (lineGeomRef.current) {
             lineGeomRef.current.setDrawRange(0, 0);
         }
@@ -74,7 +81,7 @@ export default function IcosahedronScene() {
     });
 
     return (
-        <group ref={groupRef}>
+        <group ref={groupRef} scale={currentScale}>
             <lineSegments>
                 <bufferGeometry
                     ref={lineGeomRef}
@@ -102,4 +109,6 @@ export default function IcosahedronScene() {
             </mesh>
         </group>
     );
-}
+};
+
+export default IcosahedronScene;
