@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from 'react';
 
-export default function useMediaQuery(query: string) {
+const useMediaQuery = (query: string) => {
     // Inicializamos com false para evitar erro de hidratação
     const [matches, setMatches] = useState(false);
 
@@ -25,3 +25,5 @@ export default function useMediaQuery(query: string) {
 
     return matches;
 }
+
+export default useMediaQuery;
