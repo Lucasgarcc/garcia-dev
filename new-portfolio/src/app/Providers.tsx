@@ -13,13 +13,14 @@ export default function Providers({ children }: { children: React.ReactNode }) {
 
         const timer = setTimeout(() => {
             setIsLoading(false);
-        }, 500);
-        
-        clearTimeout(timer);
+        }, 5000);
+
+        return () => clearTimeout(timer);
     }, []);
 
     return (
-        <ThemeProvider>
+
+       <ThemeProvider>
             <NavigationProvider>
 
                 {isLoading ? (
@@ -31,5 +32,6 @@ export default function Providers({ children }: { children: React.ReactNode }) {
                 )}
             </NavigationProvider>
         </ThemeProvider>
+
     );
 }
