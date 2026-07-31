@@ -24,7 +24,7 @@ const gugi = localFont({
 
 export const metadata = {
     title: 'Garcia Developer',
-    description: 'Site profissional de Lucas Garcia, desenvolvedor Frontend.',
+    description: 'Lucas Garcia - Desenvolvedor Frontend.',
 };
 
 const themeInitScript = `

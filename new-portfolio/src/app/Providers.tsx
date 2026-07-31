@@ -10,9 +10,12 @@ export default function Providers({ children }: { children: React.ReactNode }) {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
+
         const timer = setTimeout(() => {
             setIsLoading(false);
-        }, 10000);
+        }, 500);
+        
+        clearTimeout(timer);
     }, []);
 
     return (
