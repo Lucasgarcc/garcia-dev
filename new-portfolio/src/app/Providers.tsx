@@ -10,13 +10,17 @@ export default function Providers({ children }: { children: React.ReactNode }) {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
+
         const timer = setTimeout(() => {
             setIsLoading(false);
-        }, 10000);
+        }, 5000);
+
+        return () => clearTimeout(timer);
     }, []);
 
     return (
-        <ThemeProvider>
+
+       <ThemeProvider>
             <NavigationProvider>
 
                 {isLoading ? (
@@ -28,5 +32,6 @@ export default function Providers({ children }: { children: React.ReactNode }) {
                 )}
             </NavigationProvider>
         </ThemeProvider>
+
     );
 }
