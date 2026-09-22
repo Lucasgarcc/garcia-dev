@@ -1,16 +1,20 @@
+
 .skeleton {
+  /* Gradiente reajustado para criar uma transição suave e natural */
   background: linear-gradient(
     90deg,
-    var(--surface-secondary, #f0f0f0) 10%,
-    var(--surface-strong, #e0e0e0) 10%,
-    var(--surface-secondary, #f0f0f0) 75%
+    var(--skeleton-bg) 25%,
+    var(--skeleton-shimmer) 50%,
+    var(--skeleton-bg) 75%
   );
   background-size: 200% 100%;
-  animation: shimmer 2s infinite;
+  animation: shimmer 1.6s infinite linear;
+  position: relative;
+  z-index: 50000;
 }
 
 .rectangular {
-  border-radius: 4px;
+  border-radius: 6px;
 }
 
 .circular {

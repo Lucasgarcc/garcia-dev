@@ -22,7 +22,7 @@ const LoadingTech = () => {
                 </Canvas>
 
                 <div className={styles.uiContainer}>
-                    <p className={styles.text}>Inicializando...</p>
+                    <p className={styles.text}>Carregando...</p>
                 </div>
             </div>
         </div>

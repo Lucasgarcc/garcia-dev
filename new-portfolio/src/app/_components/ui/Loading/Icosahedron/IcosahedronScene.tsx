@@ -9,7 +9,7 @@ const IcosahedronScene = () => {
     const isMobile = useMediaQuery('(max-width: 768px)');
 
     // Define o tamanho responsivo (1 para desktop, 0.65 para mobile)
-    const currentScale = isMobile ? 0.60 : 1;
+    const currentScale = isMobile ? 0.50 : 0.75;
 
     const groupRef = useRef<THREE.Group>(null!);
     const lineGeomRef = useRef<THREE.BufferGeometry>(null!);
