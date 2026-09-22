@@ -17,6 +17,7 @@
     transform-style: preserve-3d;
     overflow: visible;
     perspective: 400px;
+    z-index: 1000;
 }
 
 .logo {
