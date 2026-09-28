@@ -84,7 +84,7 @@ const ContactMe = () => {
                     <figure className={Styles.perfilIContainer}>
                         <Image className={Styles.perfilI}
                             src={PerfilI}
-                            alt={`Foto minha ${PerfilI}`}
+                            alt={`Foto minha`}
                             loading="lazy"
                             placeholder="blur"
                             style={{

@@ -11,7 +11,7 @@ export const InteractiveGrid = ({ children, className }: { children?: React.Reac
         r: 145,
         g: 191,
         b: 39,
-        hex: "#91bf27"
+        hex: "var(--green-400)"
     };
 
     useEffect(() => {
@@ -31,7 +31,7 @@ export const InteractiveGrid = ({ children, className }: { children?: React.Reac
         let ripples: { x: number; y: number; radius: number; opacity: number }[] = [];
         const spacing = 22;
         const mouse = { x: -1000, y: -1000 };
-        let startTime = Date.now();
+        const startTime = Date.now();
 
         const init = () => {
             canvas.width = containerRef.current!.offsetWidth;

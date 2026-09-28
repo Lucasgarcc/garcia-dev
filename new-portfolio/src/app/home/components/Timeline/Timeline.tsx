@@ -35,7 +35,7 @@ const timelineData = {
 		},
 		{
 			year: '2024 - 2024',
-			title: 'Jascript – ES6+',
+			title: 'Javascript – ES6+',
 			location: 'Rio de Janeiro - RJ / ORIGAMID',
 		},
 		{
@@ -45,7 +45,7 @@ const timelineData = {
 		},
 
 		{
-			year: '2024 - atual',
+			year: '2024 - 2025',
 			title: 'React',
 			location: 'Rio de Janeiro - RJ / ORIGAMID',
 		},
