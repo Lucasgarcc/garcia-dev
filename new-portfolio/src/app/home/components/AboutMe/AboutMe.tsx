@@ -127,13 +127,10 @@ const AboutMe = () => {
                     </motion.div>
                     <div className={Styles.aboutContentText}>
                         <Typography className={Styles.aboutContentDescription} display={'block'} variant="body1" marginTop={5} fontWeight={450} maxWidth={'100%'} letterSpacing={0}>
-
-                            Desenvolvedor Web e criador de experiências digitais que unem design, propósito e tecnologia.
-                            Sempre coloco a minha criatividade em tudo que crio e faco.
-                            Trabalho com foco em Frontend e <strong className={Styles.aboutDatailsText}>UI/UX Design</strong>,  desenvolvendo interfaces que conectam pessoas e idéias.
-                            Acredito que cada projeto é uma oportunidade de evoluir — técnica e sigo construindo minha trajetória com curiosidade, resiliência e vontade de ir além.
-                            Meu objetivo é crescer como Desenvolvedor Frontend Pleno e, no futuro, expandir meus horizontes como <strong className={Styles.aboutDatailsText}>Full Stack</strong>, sempre mantendo o olhar criativo e a busca pela excelência em cada detalhe.
-
+                            Desenvolvedor Web e criador de experiências digitais que conectam design, tecnologia e propósito. 
+                            Trabalho focado em Frontend e <strong className={Styles.aboutDatailsText}>UI/UX Design</strong>, criando interfaces intuitivas que aproximam marcas e pessoas. 
+                            Acredito que cada projeto é uma oportunidade de evolução técnica e pessoal, trajetória que sigo construindo com curiosidade, resiliência e foco na excelência. 
+                            Meu objetivo é consolidar minha atuação como Desenvolvedor Frontend Pleno e expandir horizontes como <strong className={Styles.aboutDatailsText}>Full Stack</strong>, sem abrir mão da criatividade em cada detalhe.
                         </Typography>
 
                         <motion.div

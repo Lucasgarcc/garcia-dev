@@ -36,7 +36,8 @@ const Home = () => {
 
             <Typography className={Scene3D.description} variant="body1" display={'block'} fontWeight={450} fontSize={20} maxWidth={'100%'} marginBottom={4} letterSpacing={0} fontFamily={'var(--font-roboto)'}>
 				
-                Sou um desenvolvedor Frontend apaixonado por <strong className={Scene3D.datails}>criar experiências</strong> digitais incríveis. Com uma sólida formação em design e <strong className={Scene3D.datails}>desenvolvimento web</strong>, estou sempre em busca de novos desafios e oportunidades para aprimorar minhas habilidades.
+                Sou um desenvolvedor Frontend apaixonado por <strong className={Scene3D.datails}>criar experiências</strong> digitais incríveis. 
+                Com uma sólida formação em design e <strong className={Scene3D.datails}>desenvolvimento web</strong>, estou sempre em busca de novos desafios e oportunidades para aprimorar minhas habilidades.
 			</Typography>
             <Button variant="contained" sx={{
                     backgroundColor: 'var(--color-accent-button)', 
