@@ -13,7 +13,7 @@ import Skeleton from '../_components/ui/Skeleton/Skeleton';
 
 const Scene3D = dynamic(() => import('../_components/layout/Background/Scene3D'), {
     ssr: false,
-    loading: () => <Skeleton width="80%" height="auto" />
+    loading: () => <Skeleton width="100vw" height="100vh" />
 
 });
 const RedeSocial = dynamic(() => import('./components/Emphasis/RedeSocial/RedeSocial'), {
