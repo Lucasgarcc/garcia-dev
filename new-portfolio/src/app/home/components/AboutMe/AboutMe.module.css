@@ -30,13 +30,12 @@
 }
 
 .aboutContentText {
-    grid-area: 1 / 2 /3;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: .5rem;
     flex-direction: column;  
-    width: 500px;
+    width: 600px;
 }
 
 .containerHero {
@@ -93,8 +92,12 @@
 .aboutContentDescription {
     margin-top: 10rem;
     text-align: justify;
-    letter-spacing: normal;
-    hyphens: auto;
+    /* Força o navegador a distribuir o espaço entre as letras, e não só entre as palavras */
+    text-justify: inter-character;
+    word-spacing: -0.09em;
+    letter-spacing: 0;
+    hyphens: none;
+    word-break: normal;
     width: 100%;  
     font-size: 1.2rem !important;
 }
