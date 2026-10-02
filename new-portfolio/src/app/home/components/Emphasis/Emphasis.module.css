@@ -28,24 +28,19 @@
 
 .description {
     width: 100%;
-    text-align: justify;
-    /* Força o navegador a distribuir o espaço entre as letras, e não só entre as palavras */
+    text-align: left;
+    /* Força o navegador a distribuir o espaço entre as letras, e não só entre as palavras
     text-justify: inter-character;
     word-spacing: -0.05em;
     letter-spacing: 0;
     hyphens: none;
-    word-break: normal;
-}
+    word-break: normal; */
+} 
 
 @media screen and (max-width: 1568px) {
     .areaContainer {
         margin-top: 0rem;
     }
-
-    .description {
-        width: 100%;
-    }
-
 }
 
 @media screen and (max-width: 480px) {
@@ -60,7 +55,9 @@
         white-space: nowrap;
     }    
     .description {
+        width: 100%;
         font-size: .9rem;
+        word-spacing: -0.01em;
         letter-spacing: normal;
     }
 }
