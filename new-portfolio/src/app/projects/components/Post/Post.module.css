@@ -95,8 +95,7 @@
     width: 100%;
     font-size: 1.2rem;
     max-width: 100%;
-    text-align: justify;
-    hyphens: auto;
+    text-align: left;
     letter-spacing: 0;
 } 
 
@@ -138,6 +137,7 @@
     }
     .postContent {
         font-size: 1.2rem;
+        word-spacing: -0.01em;
     }
     .postTitleProject {
         font-size: 2rem;

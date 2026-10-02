@@ -91,14 +91,14 @@
 
 .aboutContentDescription {
     margin-top: 10rem;
-    text-align: justify;
-    /* Força o navegador a distribuir o espaço entre as letras, e não só entre as palavras */
-    text-justify: inter-character;
-    word-spacing: -0.09em;
+    text-align: left;
+    /* Força o navegador a distribuir o espaço entre as letras, e não só entre as palavras 
     letter-spacing: 0;
     hyphens: none;
-    word-break: normal;
-    width: 100%;  
+    word-break: normal;*/
+    text-justify: inter-character;
+    word-spacing: -0.09em;
+    width: 95%;  
     font-size: 1.2rem !important;
 }
 
@@ -243,7 +243,7 @@
         font-size: 1.6rem !important;
     }
     .aboutContentDescription {
-        word-spacing: 0; 
+        word-spacing: -0.01em;
         padding: .5rem 1.5rem;
         width: 100%;
         box-sizing: border-box;

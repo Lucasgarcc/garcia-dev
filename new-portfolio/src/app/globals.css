@@ -4,6 +4,7 @@
     /* --- Escala Base de Verdes (Identidade do Site) --- */
     --green-limon-light: #FBFFCA;
     --green-limon: #b7e901;
+    --green-limon-dark: #b0df0a;
     --green-50: #e6f9d8;
     --green-100: #c4f58c;
     --green-200: #a8f05b;
@@ -208,7 +209,7 @@
     /* --- Superfícies e Cards Claros --- */
     --surface-primary: #ffffff;
     --surface-secondary: #f5f5f7;
-    --surface-third: var(--green-500);
+    --surface-third: var(--green-limon-dark);
     --surface-fourth: #1c1c1e;
     --surface-five: #a1a1a1;
     --surface-emphasis: var(--green-500); 
