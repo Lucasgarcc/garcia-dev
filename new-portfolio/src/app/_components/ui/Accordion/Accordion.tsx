@@ -18,10 +18,15 @@ const Accordion = ({ icon, title, subtitle, content, className }: AccordionProps
     const hasMoreItems = content.length > item_limit;
 
     const displayedContent = isExpanded ? content : content.slice(0, item_limit);
+
+    // Cálculos matemáticos fixos para o desenho do círculo SVG
+    const radius = 32;
+    const circumference = 2 * Math.PI * radius;
+
     return (
         <motion.div className={`${styles.accordionWrapper} ${className} `} 
             animate={{
-                padding: isOpen ? '2rem 1.5rem' : '1.2rem'
+                padding: isOpen ? '2rem 1.5rem' : '1.2rem',
             }}
             transition={{ duration: 0.4 }}
         >
@@ -48,7 +53,7 @@ const Accordion = ({ icon, title, subtitle, content, className }: AccordionProps
                         className={styles.list}
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ 
-                            padding: '1rem 1rem', height: 'auto', 
+                            padding: '1rem', height: 'auto', 
                             opacity: 1 
                         }}
                         exit={{ height: 0, opacity: 0 }}
@@ -58,37 +63,63 @@ const Accordion = ({ icon, title, subtitle, content, className }: AccordionProps
                             opacity: { duration: 0.25 }
                         }}
                     >
-                        {displayedContent.map((item, i) => (
-                            <motion.li
-                                layout // Mantém a transição suave ao adicionar/remover itens
-                                key={i}
-                                className={styles.listItem}
-                            >
-                                <div className={styles.itemHeader}>
-                                    <div className={styles.itemName}>
-                                        {item.iconStask}
-                                        <span>{item.title}</span>
+                        {displayedContent.map((item, i) => {
+             
+                            const currentProgress = item.progess ?? 0; 
+                            const strokeDashoffset = circumference - (currentProgress / 100) * circumference;
+
+                            return (
+                                <motion.li
+                                    layout
+                                    key={i}
+                                    className={styles.listItem}
+                                >
+                                    {/* Nova estrutura visual: Círculo ao redor do Ícone */}
+                                    <div className={styles.radialContainer}>
+                                        <svg className={styles.radialSvg}>
+                                            <circle
+                                                cx="36"
+                                                cy="36"
+                                                r={radius}
+                                                className={styles.radialTrack}
+                                                strokeWidth="4"
+                                                fill="transparent"
+                                            />
+                                            <motion.circle
+                                                cx="36"
+                                                cy="36"
+                                                r={radius}
+                                                className={styles.radialProgress}
+                                                strokeWidth="4"
+                                                fill="transparent"
+                                                strokeDasharray={circumference}
+                                                initial={{ strokeDashoffset: circumference }}
+                                                animate={{ strokeDashoffset: strokeDashoffset }}
+                                                transition={{ duration: 2, ease: "easeOut", delay: 0.2 }}
+                                            />
+                                        </svg>
+                                        
+                                        {/* Renderiza o ícone stask do pai centralizado */}
+                                        <div className={styles.centerIcon}>
+                                            {item.iconStask}
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div className={styles.progressBack}>
-                                    <motion.div
-                                        className={styles.progressFront}
-                                        initial={{ width: 0 }}
-                                        animate={{ width: `${item.progess}%` }}
-                                        transition={{ duration: 2, delay: 0.2 }}
-                                    />
-                                </div>
-                            </motion.li>
-                        ))}
+                                    {/* Textos informativos empilhados abaixo do círculo */}
+                                    <div className={styles.itemMeta}>
+                                        <span className={styles.itemTitle}>{item.title}</span>
+                                    </div>
+                                </motion.li>
+                            );
+                        })}
 
-                        {/* Botão de Pull Down inserido como o último item da lista */}
+                        {/* Botão de Pull Down original preservado */}
                         {hasMoreItems && (
                             <li className={styles.pullDownWrapper}>
                                 <button
                                     className={styles.pullDownBtn}
                                     onClick={(e) => {
-                                        e.stopPropagation(); // Evita fechar o accordion
+                                        e.stopPropagation();
                                         setIsExpanded(!isExpanded);
                                     }}
                                 >
@@ -99,13 +130,7 @@ const Accordion = ({ icon, title, subtitle, content, className }: AccordionProps
                                         {isExpanded ? <KeyboardArrowUpIcon className={styles.iconArrow} /> : <KeyboardArrowDownIcon className={styles.iconArrow} />}
                                     </motion.div>
                                     <span>
-                                        {isExpanded ? (
-                                            'Recolher'
-                                        ) : (
-                                            <>
-                                                Ver Mais{' '}
-                                            </>
-                                        )}
+                                        {isExpanded ? 'Recolher' : 'Ver Mais'}
                                     </span>
                                 </button>
                             </li>
