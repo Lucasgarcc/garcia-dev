@@ -22,14 +22,12 @@
 
 /* Efeito de "apertar" o botão quando o mouse passa ou abre */
 .accordionWrapper:hover {
-    transform: translate(-1px, -1px);
     box-shadow: 
         inset 1px 1px 0px rgba(33, 33, 33, 0.08),
         7px 7px 20px rgba(0, 0, 0, 0.4);
     border-right-color: var(--surface-strong); /* Destaque na lateral ao hover */
     border-bottom-color: var(--surface-strong);
 }
-
 
 /* Opcional: Uma "aba" colorida na lateral esquerda para equilibrar o 3D da direita */
 .accordionWrapper::before {
@@ -51,12 +49,12 @@
 }
 
 .iconArrow > path {
-    stroke: var(--green-100);
+    stroke: var(--green-50);
     stroke-width: .4px ;
 }
 
 .iconArrow {
-    color:  #515151;
+    color: var(--green-limon)
 }
 
 .iconArrow:hover {
@@ -91,55 +89,114 @@
     color: var(--text-muted);
 }
 
+/* Ajustado para se transformar em um grid que respeita a fileira de 4 dinamicamente */
 .list {
     margin-top: 1rem;
-    padding: 1.5rem;
-    background: rgb(253, 255, 247);
+    background: var(--gray-700);
     color: var(--text-muted);
-    display: flex;
-    justify-content: flex-start;
-    align-self: center;
-    flex-direction: column;
     list-style: none;
     border-radius: .4rem;
     padding: 0 0 2rem 0;
     overflow: hidden;
+    
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 colunas em dispositivos móveis super pequenos */
+    gap: 1.5rem 1rem;
+    justify-items: center;
 }
 
+/* Transforma para fileira de 4 a partir de desktops */
+@media (min-width: 1500px) {
+    .list {
+        grid-template-columns: repeat(4, 1fr); 
+    }
+}
+
+/* Alinha o círculo e as descrições em coluna centralizada */
 .listItem {
-    padding: 1.5rem;
-}
-
-.itemHeader {
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 0.5rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    padding: 0.5rem;
 }
 
-.itemName {
+/* ==========================================================================
+   NOVAS CLASSES: Estruturação Gráfica dos Círculos Radiais 
+   ========================================================================== */
+
+/* Container que envolve o SVG e fixa a centralização absoluta do ícone */
+.radialContainer {
+    position: relative;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    font-size: 0.95rem;
+    justify-content: center;
+    width: 72px; /* Diâmetro matemático correspondente ao raio 32 do JSX */
+    height: 72px;
+    margin-bottom: 0.6rem;
 }
 
-.progressBack {
+.radialSvg {
     width: 100%;
-    height: 4px;
-    background: rgba(101, 101, 101, 0.946);
-    border-radius: 1rem 1rem ;
+    height: 100%;
+    transform: rotate(-90deg); /* Garante que o desenho do progresso inicie no topo */
 }
 
-.progressFront {
-    height: 100%;
-    background: var(--logo-stroke-primary);/* Cor de destaque do site */
-    border-radius: 2px;
+.radialTrack {
+    stroke: rgba(101, 101, 101, 0.2); /* Trilha sutil de fundo baseado no seu tom cinza */
 }
+
+.radialProgress {
+    stroke: var(--logo-stroke-primary); /* Mantém a sua cor de destaque original do site */
+    stroke-linecap: round;
+}
+
+/* Posiciona o ícone exato vindo do componente pai no centro do círculo */
+.centerIcon {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+/* Agrupador dos textos abaixo da skill circular */
+.itemMeta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.1rem;
+}
+
+.itemTitle {
+    font-size: 0.785rem;
+    font-weight: 500;
+    color: var(--green-50); /* Harmonizado com a cor dos títulos principais */
+}
+
+.itemPercentage {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+/* Garante que o botão Ver Mais salte para baixo da grade e fique centralizado */
+.pullDownWrapper {
+    grid-column: 1 / -1; 
+    display: flex;
+    justify-content: center;
+    padding-top: 1rem;
+    width: 100%;
+}
+
+/* ========================================================================== */
 
 .pullDownBtn {
     background: none;
     border: none;
-    color: var(--green-600);
+    color: var(--green-50);
     padding: 10px;
     cursor: pointer;
     display: flex;
@@ -161,6 +218,13 @@
     color: var(--tech-grey);
 }
 
+/* Suas Media Queries originais preservadas milimetricamente */
+@media (max-width: 1700px) {
+    .accordionWrapper  {
+        width: 32%;
+    }
+}
+
 @media (max-width: 1024px) {
     .accordionWrapper  {
         width: 70%;
@@ -173,14 +237,19 @@
         font-size: 1.1rem;
         font-weight: 500;
     }
-
+    .list {
+        grid-template-columns: repeat(3, 1fr); /* 3 itens por fileira em tablets */
+    }
 }
 
-@media (max-width: 428px) {
+@media (max-width: 686px) {
     .accordionWrapper {
-        width: 100%;
+        width: 90%;
     }
     .titleGroup {
         gap: 1.5rem;
+    }
+    .list {
+        grid-template-columns: repeat(2, 1fr); /* Mantém 2 por fileira em telas compactas */
     }
 }
