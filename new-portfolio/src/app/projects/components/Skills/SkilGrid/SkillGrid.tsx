@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { motion, useAnimationControls } from 'framer-motion';
 import Icon from '../Icon/Icon';
 import { Skill } from '@/app/core/interfaces/skill';
@@ -13,13 +13,6 @@ interface SkillGridProps {
 const SkillGrid = ({ skills }: SkillGridProps) => {
     const controlsRow1 = useAnimationControls();
     const controlsRow2 = useAnimationControls();
-    const [isMounted, setIsMounted] = useState(false);
-
-    // Garante que o componente só monte no cliente para evitar erros de cálculo de tamanho
-    useEffect(() => {
-        setIsMounted(true);
-    }, []);
-
     // Divide o array de skills em duas pistas
     const half = Math.ceil(skills.length / 2);
     const baseRow1 = skills.slice(0, half);
@@ -34,8 +27,6 @@ const SkillGrid = ({ skills }: SkillGridProps) => {
     const row2 = Array(6).fill(baseRow2).flat();
 
     useEffect(() => {
-        if (!isMounted) return;
-
         const startAnimations = () => {
             /* Como multiplicamos a lista por 6 partes idênticas lá em cima,
                o ponto exato de loop invisível agora passa a ser 1 parte de 6,
@@ -67,9 +58,7 @@ const SkillGrid = ({ skills }: SkillGridProps) => {
         // e sabe o tamanho exato da pista antes da animação começar. Isso mata o delay/travamento.
         const timer = setTimeout(startAnimations, 100);
         return () => clearTimeout(timer);
-    }, [controlsRow1, controlsRow2, isMounted, row1.length]);
-
-    if (!isMounted) return null;
+    }, [controlsRow1, controlsRow2, row1.length]);
 
     return (
         <div className={styles.wrapper}>

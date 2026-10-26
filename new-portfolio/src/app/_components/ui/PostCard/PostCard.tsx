@@ -10,9 +10,7 @@ import { BlogCardProps } from '@/app/core/interfaces/blogCard';
 const PostCard = ({ size, post }: BlogCardProps) => {
     const sizeClass = styles[`card${size.charAt(0).toUpperCase() + size.slice(1)}`];
 
-    const bgUrl = typeof post.imageUrl === 'object'
-        ? (post.imageUrl as any).src
-        : post.imageUrl;
+    const bgUrl = post.imageUrl;
     
     return (
         /* <Link href={`/articles/${post.slug}`} scroll={false} className={`${styles.linkWrapper} ${sizeClass}`}>*/

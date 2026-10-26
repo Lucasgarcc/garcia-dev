@@ -7,8 +7,6 @@ import LaserBackground from '@/app/_components/layout/Background/LaserBackground
 import localFont from "next/font/local";
 import Providers from './Providers';
 import Footer from '@/app/_components/layout/Footer/Footer';
-import Script from 'next/script';
-import './globals.css';
 
 const gugi = localFont({
     src: [
@@ -26,30 +24,6 @@ export const metadata = {
     title: 'Garcia Developer',
     description: 'Lucas Garcia - Desenvolvedor Frontend.',
 };
-
-const themeInitScript = `
-    (() => {
-        try {
-            const storageKey = 'portfolio-theme';
-            const storedTheme = window.localStorage.getItem(storageKey);
-            
-            // Se houver tema salvo, usa ele. Se não houver, checa o tema do sistema operacional.
-            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            const resolvedTheme = storedTheme ? storedTheme : (systemPrefersDark ? 'dark' : 'light');
-
-            document.documentElement.dataset.theme = resolvedTheme;
-            document.documentElement.style.colorScheme = resolvedTheme;
-
-            const themeMeta = document.querySelector('meta[name="theme-color"]');
-            if (themeMeta) {
-                themeMeta.setAttribute('content', resolvedTheme === 'dark' ? '#050505' : '#f5f5f5');
-            }
-        } catch (error) {
-            document.documentElement.dataset.theme = 'light';
-            document.documentElement.style.colorScheme = 'light';
-        }
-    })();
-`;
 
 const aldric = Aldrich({
     subsets: ['latin'],
@@ -92,14 +66,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
                 <meta property="og:description" content="Desenvolvimento web focado em performance, interfaces ricas e arquitetura moderna. Conheça meus projetos e ecossistema de desenvolvimento." />
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="https://garciadev.vercel.app" />
-                <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
             </head>
-            <body className={`${robotoMono.variable} ${aldric.variable} ${gugi.variable}`} suppressHydrationWarning={true}>
-                <Script
-                    id="theme-initializer"
-                    strategy="beforeInteractive"
-                    dangerouslySetInnerHTML={{ __html: themeInitScript }}
-                />
+            <body className={`${robotoMono.variable} ${aldric.variable} ${gugi.variable}`}>
                 <Providers>
                     {/* O Wrapper envolve tudo o que deve aparecer após o loading */}
 
@@ -108,9 +76,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
                         <Header />
                     </header>
 
-                    <main className='mainLayout'>
+                    <div className='mainLayout'>
                         {children}
-                    </main>
+                    </div>
 
                     <Footer />
 

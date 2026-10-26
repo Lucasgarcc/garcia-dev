@@ -1,6 +1,5 @@
 'use client';
 
-import { useState, useEffect } from 'react'; 
 import { AppBar, Toolbar, Typography } from '@mui/material';
 import Menu from '@/app/_components/Menu/Menu';
 import styles from './Header.module.css';
@@ -10,12 +9,6 @@ import { useNavigation } from '@/core/context/NavigationContext';
 const Header = () => {
 
     const { page } = useNavigation();
-    const [mounted, setMounted] = useState(false);
-
-    useEffect(() => {
-        setMounted(true);
-    }, []);
-
     const navigationMap: Record<string, NavItem[]> = {
         home: [
             { id: 'intro', label: 'Home', href: '/', page: 'home', type: 'section' },
@@ -40,9 +33,7 @@ const Header = () => {
         ]
     };
 
-    const currentPageKey = mounted
-        ? (page.includes('article') ? 'article' : page)
-        : 'home';
+    const currentPageKey = page.includes('article') ? 'article' : page;
 
     const navItems = navigationMap[currentPageKey] || navigationMap['home'];
 
