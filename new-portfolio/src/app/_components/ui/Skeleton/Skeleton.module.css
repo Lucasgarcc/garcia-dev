@@ -1,16 +1,25 @@
 
 .skeleton {
-  /* Gradiente reajustado para criar uma transição suave e natural */
-  background: linear-gradient(
+  /* Cor sólida para impedir que a imagem abaixo fique visível durante o carregamento. */
+  --skeleton-base: #cfd1d6;
+  --skeleton-highlight: #e9eaed;
+  background-color: var(--skeleton-base);
+  background-image: linear-gradient(
     90deg,
-    var(--skeleton-bg) 25%,
-    var(--skeleton-shimmer) 50%,
-    var(--skeleton-bg) 75%
+    var(--skeleton-base) 25%,
+    var(--skeleton-highlight) 50%,
+    var(--skeleton-base) 75%
   );
   background-size: 200% 100%;
   animation: shimmer 1.6s infinite linear;
   position: relative;
-  z-index: 50000;
+  z-index: 1;
+  opacity: 1;
+}
+
+:global(:root[data-theme='dark']) .skeleton {
+  --skeleton-base: #292929;
+  --skeleton-highlight: #424242;
 }
 
 .rectangular {

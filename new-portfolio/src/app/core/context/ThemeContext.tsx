@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+import { createContext, useContext, useMemo, useSyncExternalStore } from 'react';
 
 type ThemeMode = 'light' | 'dark';
 
@@ -23,17 +23,64 @@ const ThemeContext = createContext<ThemeContextValue | null>(null);
 
 const getStoredTheme = (): ThemeMode => {
     if (typeof window === 'undefined') {
-        return 'dark'; // Como seu design escuro é o principal, podemos usar como fallback seguro
+        return 'light';
     }
 
-    const storedTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
-    if (storedTheme === 'dark' || storedTheme === 'light') {
-        return storedTheme;
+    try {
+        const storedTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
+        if (storedTheme === 'dark' || storedTheme === 'light') {
+            return storedTheme;
+        }
+    } catch {
+        // Alguns navegadores podem bloquear o acesso ao localStorage.
     }
 
     // Se não houver histórico, respeita a preferência que o usuário já usa no sistema operacional
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     return prefersDark ? 'dark' : 'light';
+};
+
+const getThemeSnapshot = (): ThemeMode => {
+    const domTheme = document.documentElement.dataset.theme;
+
+    if (domTheme === 'dark' || domTheme === 'light') {
+        return domTheme;
+    }
+
+    return getStoredTheme();
+};
+
+const getServerThemeSnapshot = (): ThemeMode => 'light';
+
+const subscribeToTheme = (onChange: () => void) => {
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+    const handleStorageChange = (event: StorageEvent) => {
+        if (event.key === THEME_STORAGE_KEY) onChange();
+    };
+
+    const handleThemeChange = () => onChange();
+    const handleSystemChange = (event: MediaQueryListEvent) => {
+        try {
+            if (!window.localStorage.getItem(THEME_STORAGE_KEY)) {
+                applyTheme(event.matches ? 'dark' : 'light');
+            }
+        } catch {
+            // Mantém a atualização do snapshot mesmo sem acesso ao storage.
+        }
+
+        onChange();
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+    window.addEventListener('portfolio-theme-change', handleThemeChange);
+    mediaQuery.addEventListener('change', handleSystemChange);
+
+    return () => {
+        window.removeEventListener('storage', handleStorageChange);
+        window.removeEventListener('portfolio-theme-change', handleThemeChange);
+        mediaQuery.removeEventListener('change', handleSystemChange);
+    };
 };
 
 const applyTheme = (theme: ThemeMode) => {
@@ -51,36 +98,31 @@ const applyTheme = (theme: ThemeMode) => {
 };
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
-    const [theme, setThemeState] = useState<ThemeMode>(() => getStoredTheme());
+    const theme = useSyncExternalStore(
+        subscribeToTheme,
+        getThemeSnapshot,
+        getServerThemeSnapshot,
+    );
 
-    // Sincroniza o estado com o DOM e o LocalStorage sempre que o tema mudar
-    useEffect(() => {
-        applyTheme(theme);
-        window.localStorage.setItem(THEME_STORAGE_KEY, theme);
-    }, [theme]);
+    const setTheme = (nextTheme: ThemeMode) => {
+        applyTheme(nextTheme);
 
-    // Ouve mudanças na preferência do sistema se o usuário não tiver uma escolha salva
-    useEffect(() => {
-        const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+        try {
+            window.localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
+        } catch {
+            // Mantém o tema funcionando mesmo sem persistência local.
+        }
 
-        const handleChange = (e: MediaQueryListEvent) => {
-            const hasStored = window.localStorage.getItem(THEME_STORAGE_KEY);
-            if (!hasStored) {
-                setThemeState(e.matches ? 'dark' : 'light');
-            }
-        };
-
-        mediaQuery.addEventListener('change', handleChange);
-        return () => mediaQuery.removeEventListener('change', handleChange);
-    }, []);
+        window.dispatchEvent(new Event('portfolio-theme-change'));
+    };
 
     const value = useMemo<ThemeContextValue>(
         () => ({
             isDark: theme === 'dark',
             theme,
-            setTheme: setThemeState,
+            setTheme,
             toggleTheme: () => {
-                setThemeState(currentTheme => (currentTheme === 'dark' ? 'light' : 'dark'));
+                setTheme(theme === 'dark' ? 'light' : 'dark');
             },
         }),
         [theme]

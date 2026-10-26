@@ -1,7 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 
 import Logo from '@/app/_components/ui/Logo/Logo';
 import { useNavigation } from '@/core/context/NavigationContext';
@@ -27,12 +26,6 @@ const Menu = ({ items }: { items: NavItem[] }) => {
     const { scrollToSection, active, setActive, page } = useNavigation();
     const { isDark, toggleTheme } = useThemeMode();
     const [open, setOpen] = useState(false);
-    const [mounted, setMounted] = useState(false);
-
-    useEffect(() => {
-        setMounted(true);
-    }, []);
-
     const iconMap: Record<string, React.ReactNode> = {
         home: <OtherHousesIcon sx={{ fontSize: 24 }} className={styles.icon} />,
         intro: <OtherHousesIcon sx={{ fontSize: 20 }} className={styles.icon} />,
@@ -48,8 +41,6 @@ const Menu = ({ items }: { items: NavItem[] }) => {
         artRelated: <SpeakerNotesIcon sx={{ fontSize: 23 }} className={styles.icon} />
     };
 
-    const router = useRouter();
-
     const handleClick = (e: React.MouseEvent, item: NavItem) => {
         if (item.type === 'section' && item.page === page) {
             e.preventDefault();
@@ -59,12 +50,10 @@ const Menu = ({ items }: { items: NavItem[] }) => {
             return;
         }
 
-        e.preventDefault();
         setOpen(false);
-        router.push(item.href);
     };
 
-    const currentIsDark = mounted ? isDark : false;
+    const currentIsDark = isDark;
 
     return (
         <nav className={`${styles.menuContainer} ${open ? styles.active : ''}`}>
@@ -107,7 +96,6 @@ const Menu = ({ items }: { items: NavItem[] }) => {
                 onClick={toggleTheme}
                 aria-label={`Ativar modo ${currentIsDark ? 'claro' : 'escuro'}`}
                 title={`Ativar modo ${currentIsDark ? 'claro' : 'escuro'}`}
-                disabled={!mounted} // Opcional: evita cliques falsos antes do carregamento total
             >
                 {currentIsDark ? <MdLightMode className={styles.icon} size={18} /> : <MdDarkMode size={18} />}
                 <span className={styles.themeToggleLabel}>

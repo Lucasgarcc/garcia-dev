@@ -1,29 +1,17 @@
 "use client";
-import { useState, useEffect } from 'react';
+import { useSyncExternalStore } from 'react';
 
 const useMediaQuery = (query: string) => {
-    // Inicializamos com false para evitar erro de hidratação
-    const [matches, setMatches] = useState(false);
-
-    useEffect(() => {
-        // Verifica se o window existe (segurança extra)
-        if (typeof window === "undefined") return;
-
+    const subscribe = (onStoreChange: () => void) => {
         const media = window.matchMedia(query);
+        media.addEventListener('change', onStoreChange);
+        return () => media.removeEventListener('change', onStoreChange);
+    };
 
-        // Define o valor inicial corretamente
-        setMatches(media.matches);
+    const getSnapshot = () => window.matchMedia(query).matches;
+    const getServerSnapshot = () => false;
 
-        const listener = (e: MediaQueryListEvent) => setMatches(e.matches);
-
-        // Adiciona o listener
-        media.addEventListener("change", listener);
-
-        // remove o listener ao desmontar
-        return () => media.removeEventListener("change", listener);
-    }, [query]); // Removido 'matches' daqui para evitar loops
-
-    return matches;
+    return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 }
 
 export default useMediaQuery;

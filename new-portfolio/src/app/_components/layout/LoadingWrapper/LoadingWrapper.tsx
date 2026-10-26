@@ -1,34 +1,51 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useSyncExternalStore } from 'react';
 import LoadingTech from '@/app/_components/ui/Loading/LoadingTech';
 
-export default function LoadingWrapper({ children }: { children: React.ReactNode }) {
-    const [isLoading, setIsLoading] = useState(true);
+let ready = false;
+let revealStarted = false;
+const listeners = new Set<() => void>();
 
-    useEffect(() => {
-        // Verifica se o navegador terminou de carregar tudo (imagens, fontes, etc)
-        const handleLoad = () => {
-            // Delay de 1.5s para o usuário apreciar sua animação tech
-            setTimeout(() => setIsLoading(false), 1500);
+const notifyReady = () => {
+    if (ready) return;
+
+    ready = true;
+    listeners.forEach(listener => listener());
+};
+
+const subscribe = (listener: () => void) => {
+    listeners.add(listener);
+
+    if (!revealStarted) {
+        revealStarted = true;
+
+        const reveal = () => {
+            window.setTimeout(notifyReady, 450);
         };
 
         if (document.readyState === 'complete') {
-            handleLoad();
+            reveal();
         } else {
-            window.addEventListener('load', handleLoad);
-            return () => window.removeEventListener('load', handleLoad);
+            window.addEventListener('load', reveal, { once: true });
         }
-    }, []);
+    }
 
-    // Se estiver carregando, mostra apenas o loader
-    // Se terminou, mostra o conteúdo do site
+    return () => listeners.delete(listener);
+};
+
+const getSnapshot = () => ready;
+const getServerSnapshot = () => false;
+
+export default function LoadingWrapper({ children }: { children: React.ReactNode }) {
+    const isReady = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+
     return (
-        <>
-            {isLoading && <LoadingTech />}
-            <div style={{ visibility: isLoading ? 'hidden' : 'visible' }}>
+        <div aria-busy={!isReady}>
+            {!isReady && <LoadingTech />}
+            <div style={{ visibility: isReady ? 'visible' : 'hidden' }}>
                 {children}
             </div>
-        </>
+        </div>
     );
 }
