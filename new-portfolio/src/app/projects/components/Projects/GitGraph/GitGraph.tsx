@@ -1,6 +1,7 @@
 'use client';
-import React, { useRef, useEffect, useState, ReactNode } from 'react';
+import React, { useRef, useEffect } from 'react';
 import Zdog from 'zdog';
+import Zfont from 'zfont';
 import gsap from 'gsap';
 import gitProjects from '../data/gitProjects';
 import { useProjectsSelection } from '../context/ProjectsSelectionContext';
@@ -16,6 +17,7 @@ const COLORS = {
 };
 
 let isZfontInitialized = false;
+const getNow = () => Date.now();
 
 const GitGraph = () => {
     
@@ -35,27 +37,19 @@ const GitGraph = () => {
     const illoRef = useRef<Zdog.Illustration | null>(null);
     const isInteractingRef = useRef(false);
     const isZoomedRef = useRef(false);
-    const lastInteractionTimeRef = useRef(Date.now());
+    const lastInteractionTimeRef = useRef<number | null>(null);
 
-    let spacingY = (selectedProject
-                    ? 260  : isMobile && selectedProject
-                    ? 280 : isMobile 
-                    ? 250 : 240); //210 - selectedP.3D com 8 projects
+    const spacingY = isMobile ? 270 : selectedProject ? 260 : 240;
     
     const centerX = 250;
-    let branchOffset = selectedProject ? 250 : 250;
+    const branchOffset = isMobile ? 250 : 230;
 
-    const heightMultiplier = selectedProject && isMobile ? 1 :  1.7 ;
-    const totalHeight = (gitProjects.length + heightMultiplier) 
-                        && (selectedProject ? gitProjects.length + 1.2 : gitProjects.length + 1.7) 
-                        * spacingY;
-
-    isMobile ? (branchOffset = 250) && (spacingY = 270) : branchOffset = 230;
+    const totalHeight = (selectedProject ? gitProjects.length + 1.2 : gitProjects.length + 1.7) * spacingY;
     
     const toggleMode = (projectId: string) => {
 
         setSelectedProject(projectId);
-       return setIsMode3D(true);
+        setIsMode3D(true);
         
     }
 
@@ -68,7 +62,7 @@ const GitGraph = () => {
 
         if (!canvasRef.current || !illoRef.current) return;
 
-        lastInteractionTimeRef.current = Date.now();
+        lastInteractionTimeRef.current = getNow();
 
         const rect = canvasRef.current.getBoundingClientRect();
 
@@ -100,7 +94,7 @@ const GitGraph = () => {
 
             const getProjectedPoint = (x: number, y: number) => {
                 // Criamos o vetor com a posição exata do desenho
-                let v = new Zdog.Vector({ x, y, z: 0 });
+                const v = new Zdog.Vector({ x, y, z: 0 });
 
                 // APLICAMOS AS TRANSFORMAÇÕES NA ORDEM CORRETA
                 v.rotate(illoRef.current!.rotate);
@@ -198,11 +192,7 @@ const GitGraph = () => {
     useEffect(() => {
         if (!canvasRef.current) return;
 
-        const Zdog = require('zdog');
-        const ZfontModule = require('zfont');
-
         if (!isZfontInitialized) {
-            const Zfont = ZfontModule.init ? ZfontModule : ZfontModule.default;
             Zfont.init(Zdog);
             isZfontInitialized = true;
         }
@@ -216,7 +206,7 @@ const GitGraph = () => {
             sortVerts: true,
             translate: { x: 0, y: 0, z: 0 },
             zoom: isMobile ? 0.40 : 0.45,
-        });
+        } as unknown as Zdog.IllustrationOptions);
 
         illo.onDragStart = () => {
             if (isZoomedRef.current) return;
@@ -239,13 +229,11 @@ const GitGraph = () => {
 
         illo.onDragEnd = () => {
             isInteractingRef.current = false;
-            lastInteractionTimeRef.current = Date.now();
+            lastInteractionTimeRef.current = getNow();
         };
 
-        const myFont = new Zdog.Font({
-            src: '/fonts/Gugi/Gugi-Regular.ttf',
-            onload: () => illo.updateRenderGraph()
-        });
+        const myFont = new Zdog.Font({ src: '/fonts/Gugi/Gugi-Regular.ttf' });
+        myFont.waitForLoad().then(() => illo.updateRenderGraph());
 
         // --- Ilustração ---
 
@@ -262,7 +250,7 @@ const GitGraph = () => {
             const projectGroup = new Zdog.Group({
                 addTo: illo,
                 sortVerts: true,
-            });
+            } as unknown as Zdog.GroupOptions);
 
             // 1. Segmento do Tronco
             new Zdog.Shape({
@@ -283,7 +271,7 @@ const GitGraph = () => {
                 depth: 100,
                 color: 'rgba(52, 52, 52, 1)',
                 fill: true,
-            });
+            } as unknown as Zdog.RectOptions);
 
             // --- TEXTOS ---
             [{ z: 8, r: 0 }, { z: 8, r: Math.PI }].forEach(face => {
@@ -399,7 +387,7 @@ const GitGraph = () => {
         };
 
         const animate = () => {
-            const now = Date.now();
+            const now = getNow();
             const illo = illoRef.current;
             if (!illo) return;
 
@@ -425,6 +413,10 @@ const GitGraph = () => {
 
             // 3. Lógica de Rotação Automática (Sua lógica atual)
             if (!isInteractingRef.current && !isZoomedRef.current) {
+                if (lastInteractionTimeRef.current === null) {
+                    lastInteractionTimeRef.current = now;
+                }
+
                 if (now - lastInteractionTimeRef.current > 6000) {
                     illo.rotate.y += 0.005;
                 }
@@ -439,7 +431,7 @@ const GitGraph = () => {
         return () => {
             cancelAnimationFrame(frameId);
             gsap.killTweensOf([illo.rotate, illo.translate, illo]);
-            illo.children = [];
+            (illo as unknown as { children: unknown[] }).children = [];
         };
 
     }, [isMobile, totalHeight]);

@@ -1,7 +1,6 @@
 'use client';
-import { useLayoutEffect, useRef, useState, useEffect } from 'react';
+import { useCallback, useLayoutEffect, useRef, useState} from 'react';
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import styles from './Projects.module.css';
 import GitGraph from '../Projects/GitGraph/GitGraph';
 import { useProjectsSelection } from './context/ProjectsSelectionContext';
@@ -11,10 +10,6 @@ import { BsArrowRight } from 'react-icons/bs';
 import { InteractiveGrid } from '@/app/_components/ui/InteractiveGrid/InteractiveGrid';
 import { ScrollHelper } from '@/app/_components/helpers/ScrollHelper/ScrollHelper';
 import { FiGithub } from "react-icons/fi";
-
-if (typeof window !== 'undefined') {
-    gsap.registerPlugin(ScrollTrigger);
-}
 
 const Projects = () => {
 
@@ -54,7 +49,7 @@ const Projects = () => {
             .to(pathRef.current, { attr: { d: end }, duration: 0.4, ease: "power2.out" });
     };
 
-    const onProjectSelect = (id: string) => {
+    const onProjectSelect = useCallback((id: string) => {
     
         setSelectedProject(id);
         setIsCardOpen(true);
@@ -80,57 +75,69 @@ const Projects = () => {
                 filter: "blur(6px)",
                 duration: 1
             }, "<");
-    };
+    }, [setSelectedProject, setIsCardOpen]);
 
     useLayoutEffect(() => {
         if (!isActive) return;
+
+        let cancelled = false;
+        let animationContext: gsap.Context | undefined;
 
         const handleScroll = () => {
             // Se o usuário estiver no topo (menos de 50px de scroll), mostra.
             // Se ele rolar para baixo (iniciando o GitGraph), esconde.
             if (window.scrollY > 5000) {
-                console.log(window.scroll)
                 setIsVisible(false);
             } else {
                 setIsVisible(true);
             }
         };
 
-        window.addEventListener("scroll", handleScroll);
+        const setupAnimation = async () => {
+            const { ScrollTrigger } = await import('gsap/ScrollTrigger');
 
-        let ctx = gsap.context(() => {
-            // 3. RECUPERANDO A ANIMAÇÃO DO GRAPH (O que estava faltando)
-            const tl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: mainRef.current,
-                    start: "top top",
-                    end: "+=300%",
-                    scrub: 1.2,
-                    pin: true,
-                }
-            });
+            if (cancelled) return;
 
-            tl.to("#main-trunk", { strokeDashoffset: 0, duration: 3, ease: "none" })
-                .to(".git-branch-path", { strokeDashoffset: 0, stagger: 0.5, duration: 1.2 }, "-=2.5")
-                .from(".git-branch-line", { scaleY: 0, transformOrigin: "bottom", stagger: 0.5 }, "-=1.5")
-                .from("circle", { scale: 0, stagger: 0.2, duration: 0.5, ease: "back.out(2)" }, "-=1.2")
-                .to(".project-label", { opacity: 1, y: "-=20", stagger: 0.3, duration: 0.6 }, "-=1");
+            gsap.registerPlugin(ScrollTrigger);
+            window.addEventListener("scroll", handleScroll);
 
-            // 4. Listeners de clique
-            const groups = document.querySelectorAll<SVGGElement>('.project-group');
-            groups.forEach(group => {
-                group.addEventListener('click', () => {
-                    const id = group.getAttribute('data-project-id');
-                    if (id) onProjectSelect(id);
+            animationContext = gsap.context(() => {
+                // 3. RECUPERANDO A ANIMAÇÃO DO GRAPH (O que estava faltando)
+                const tl = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: mainRef.current,
+                        start: "top top",
+                        end: "+=300%",
+                        scrub: 1.2,
+                        pin: true,
+                    }
                 });
-            });
-        }, mainRef);
+
+                tl.to("#main-trunk", { strokeDashoffset: 0, duration: 3, ease: "none" })
+                    .to(".git-branch-path", { strokeDashoffset: 0, stagger: 0.5, duration: 1.2 }, "-=2.5")
+                    .from(".git-branch-line", { scaleY: 0, transformOrigin: "bottom", stagger: 0.5 }, "-=1.5")
+                    .from("circle", { scale: 0, stagger: 0.2, duration: 0.5, ease: "back.out(2)" }, "-=1.2")
+                    .to(".project-label", { opacity: 1, y: "-=20", stagger: 0.3, duration: 0.6 }, "-=1");
+
+                // 4. Listeners de clique
+                const groups = document.querySelectorAll<SVGGElement>('.project-group');
+                groups.forEach(group => {
+                    group.addEventListener('click', () => {
+                        const id = group.getAttribute('data-project-id');
+                        if (id) onProjectSelect(id);
+                    });
+                });
+            }, mainRef);
+        };
+
+        void setupAnimation();
     
         return () => {
-            ctx.revert(); 
+            cancelled = true;
+            animationContext?.revert();
             window.removeEventListener("scroll", handleScroll)
         };
-    }, [isActive]);
+    }, [isActive, onProjectSelect]);
 
     return (
         <div ref={mainRef} className={styles.projectsWrapper}>

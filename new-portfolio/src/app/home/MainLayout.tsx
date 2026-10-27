@@ -49,7 +49,6 @@ const MainLayout = ({ children }: MainLayoutProps) => {
     if (page !== 'home') return null;
 
     const homeRefs = refs.home;
-    console.log('Home Refs:', homeRefs);
     return (
         <>
             <main className="main-layout">
