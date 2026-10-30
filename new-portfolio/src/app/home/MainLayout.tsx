@@ -13,17 +13,18 @@ import Skeleton from '../_components/ui/Skeleton/Skeleton';
 
 const Scene3D = dynamic(() => import('../_components/layout/Background/Scene3D'), {
     ssr: false,
-    loading: () => <Skeleton width="100vw" height="100vh" />
+    loading: () => <Skeleton width="100%" height="100%" />
 
 });
+
 const RedeSocial = dynamic(() => import('./components/Emphasis/RedeSocial/RedeSocial'), {
     ssr: false,
-    loading: () => <Skeleton width="80%" height="auto" />
+    loading: () => <Skeleton width="80%" height="8rem" />
 
 });
 const ContactMe = dynamic(() => import('../_components/ContactMe/ContactMe'), {
     ssr: false,
-    loading: () => <Skeleton width="100%" height="auto" />
+    loading: () => <Skeleton width="100%" height="12rem" />
 
 });
 
@@ -51,7 +52,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
     const homeRefs = refs.home;
     return (
         <>
-            <main className="main-layout">
+            <div className="main-layout">
                 {children}
 
                 {/* Seção principal */}
@@ -138,7 +139,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
                 >
                     <ContactMe />
                 </motion.section>
-            </main>
+            </div>
         </>
     );
 };

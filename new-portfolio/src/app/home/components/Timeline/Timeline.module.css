@@ -69,8 +69,8 @@
     top: 0;
     width: 2px;
     height: 0%;
-    background: var(--green-400);
-    box-shadow: 0 0 15px var(--green-400);
+    background: var(--text-primary);
+    box-shadow: 0 0 15px var(--text-primary);
     transform: translateX(-50%);
     z-index: 2;
 }
@@ -91,7 +91,7 @@
 }
 
 .nodeIndicator:global(.node-active) {
-    background: var(--green-400) !important;
+    background: var(--green-100) !important;
     border-color: #fff !important;
     box-shadow: 0 0 15px var(--green-400);
     transform: translate(-50%, -50%) scale(1.3) !important;

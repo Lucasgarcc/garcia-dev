@@ -7,8 +7,33 @@ import { FaLightbulb } from 'react-icons/fa';
 import { GiBrain } from 'react-icons/gi';
 import { IoMdArrowDropright } from 'react-icons/io';
 import Styles from './Differential.module.css';
+import { useLanguage } from '@/app/core/context/LanguageContext';
 
 const Differential = () => {
+    const { t } = useLanguage();
+    const differential = t.home.differential;
+
+    return (
+        <motion.div className={Styles.sectionWrapper} initial={{ opacity: 0, y: 90 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut" }}>
+            <Typography marginTop={8} color="var(--green-500)" textTransform="uppercase" variant="h4" className={Styles.differentialTitle} marginBottom={8} textAlign="center" fontFamily="var(--font-altric)" gutterBottom fontWeight={500}>
+                {differential.title}<span className={Styles.differentialDetail}>?</span>
+            </Typography>
+            <div className={Styles.differentialContainer}>
+                {differential.items.map((item, index) => (
+                    <div className={Styles.differentialItem} key={item.title}>
+                        <Typography color="var(--green-50)" variant="h4" textTransform="uppercase" marginTop={2} className={Styles.differentialSubTitle} fontFamily="var(--font-title)" gutterBottom fontWeight={300}>
+                            <strong>{index === 0 ? <FaLightbulb size={40} color="var(--green-400)" className={Styles.differentialIcon} /> : <GiBrain size={70} color="var(--green-400)" className={Styles.differentialIcon} />} {item.title}</strong>
+                        </Typography>
+                        <Typography className={Styles.differentialDescription} variant="body1" maxWidth="100%" component="div">
+                            <span className={Styles.differentialInfo}>{item.description}</span>
+                            <span className={Styles.differentialInfoEmphasis}><IoMdArrowDropright size={50} color="var(--green-limon)" /><div>{item.emphasis}</div></span>
+                        </Typography>
+                    </div>
+                ))}
+            </div>
+        </motion.div>
+    );
+
     return (
         <motion.div
             initial={{ opacity: 0, y: 90 }}
