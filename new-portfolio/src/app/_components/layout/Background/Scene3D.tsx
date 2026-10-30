@@ -63,15 +63,17 @@ export default function OrbitLogos() {
         let frameId = 0;
         let lastFrame = 0;
         let isVisible = true;
-        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         const frameInterval = 1000 / 120;
-        const observer = new IntersectionObserver(([entry]) => { isVisible = entry.isIntersecting; });
+        const observer = new IntersectionObserver(
+            ([entry]) => { isVisible = entry.isIntersecting; },
+            { rootMargin: '160px 0px' }
+        );
 
         if (containerRef.current) observer.observe(containerRef.current);
 
         const animate = (timestamp: number) => {
             frameId = requestAnimationFrame(animate);
-            if (!isVisible || document.hidden || reducedMotion || timestamp - lastFrame < frameInterval) return;
+            if (!isVisible || document.hidden || timestamp - lastFrame < frameInterval) return;
             lastFrame = timestamp;
             const time = timestamp / 1000;
 

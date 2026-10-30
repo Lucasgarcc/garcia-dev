@@ -227,6 +227,13 @@
     }
 }
 
+@media (prefers-reduced-motion: reduce) {
+    .nodeIndicator:global(.node-active)::after {
+        animation-duration: 1.5s !important;
+        animation-iteration-count: infinite !important;
+    }
+}
+
 @media screen and (max-width: 480px) {
     .timelineContainer {
         padding: .5rem;

@@ -1,6 +1,6 @@
 'use client';
 
-import React, {useState, useRef, useEffect } from 'react';
+import React, {useState, useRef } from 'react';
 import Styles from './Timeline.module.css';
 import {Typography } from '@mui/material';
 import { motion, AnimatePresence } from 'framer-motion';
