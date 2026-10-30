@@ -13,6 +13,7 @@ export interface Post {
     };
     date: string; // Ex: 'Feb 25, 2021'
     content: string;
+    contentEn?: string;
 }
 
 export interface PostProps {
