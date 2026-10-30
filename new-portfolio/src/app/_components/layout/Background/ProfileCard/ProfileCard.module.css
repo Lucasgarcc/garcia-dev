@@ -10,10 +10,9 @@
   background-color: transparent;
   transform: translate(-50%, -50%);
   z-index: 1000;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0);
-  filter: drop-shadow(0 0 4px rgba(47, 46, 46, 0.36))
-    drop-shadow(0 0 8px rgba(97, 97, 97, 0.32))
-    drop-shadow(0 0 12px rgba(43, 43, 43, 0.25));
+  filter: drop-shadow(0 0 4px rgba(47, 46, 46, 0.316))
+    drop-shadow(0 0 8px rgba(97, 97, 97, 0.448))
+    drop-shadow(0 0 12px rgba(43, 43, 43, 0.479));
 }
 
 .profile {

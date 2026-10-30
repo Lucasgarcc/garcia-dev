@@ -15,14 +15,32 @@ const IcosahedronScene = () => {
     const lineGeomRef = useRef<THREE.BufferGeometry>(null!);
     const matRef = useRef<THREE.MeshPhongMaterial>(null!);
     const lineMatRef = useRef<THREE.LineBasicMaterial>(null!);
+    const vertexMatRef = useRef<THREE.PointsMaterial>(null!);
 
     const startTimeRef = useRef<number | null>(null);
 
     // Geramos as geometrias base de forma isolada
-    const { faceGeometry, edgeGeometry } = useMemo(() => {
+    const { faceGeometry, edgeGeometry, vertexGeometry } = useMemo(() => {
         const faces = new THREE.IcosahedronGeometry(1, 0);
         const edges = new THREE.EdgesGeometry(faces, 15);
-        return { faceGeometry: faces, edgeGeometry: edges };
+        const position = faces.getAttribute('position');
+        const vertices: number[] = [];
+        const seen = new Set<string>();
+
+        for (let index = 0; index < position.count; index += 1) {
+            const vertex = new THREE.Vector3().fromBufferAttribute(position, index);
+            const key = [vertex.x.toFixed(5), vertex.y.toFixed(5), vertex.z.toFixed(5)].join(':');
+
+            if (!seen.has(key)) {
+                seen.add(key);
+                vertices.push(vertex.x, vertex.y, vertex.z);
+            }
+        }
+
+        const points = new THREE.BufferGeometry();
+        points.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+
+        return { faceGeometry: faces, edgeGeometry: edges, vertexGeometry: points };
     }, []);
 
     const totalLinesCount = edgeGeometry.attributes.position.count;
@@ -41,6 +59,11 @@ const IcosahedronScene = () => {
             const threeColor = new THREE.Color(cssColor);
             if (lineMatRef.current) lineMatRef.current.color = threeColor;
             if (matRef.current) matRef.current.color = threeColor;
+        }
+
+        const greenColor = rootStyle.getPropertyValue('--green-500').trim();
+        if (greenColor && vertexMatRef.current) {
+            vertexMatRef.current.color = new THREE.Color(greenColor);
         }
     }, []);
 
@@ -78,17 +101,16 @@ const IcosahedronScene = () => {
         if (lineMatRef.current) {
             lineMatRef.current.opacity = 1;
         }
+
+        if (vertexMatRef.current) {
+            vertexMatRef.current.opacity = THREE.MathUtils.smoothstep(progress, 0.05, 0.55);
+        }
     });
 
     return (
         <group ref={groupRef} scale={currentScale}>
             <lineSegments>
-                <bufferGeometry
-                    ref={lineGeomRef}
-                    attach="geometry"
-                    index={edgeGeometry.index}
-                    attributes={edgeGeometry.attributes}
-                />
+                <primitive object={edgeGeometry} ref={lineGeomRef} attach="geometry" />
                 <lineBasicMaterial
                     ref={lineMatRef}
                     transparent
@@ -96,6 +118,18 @@ const IcosahedronScene = () => {
                     depthTest={true}
                 />
             </lineSegments>
+
+            <points geometry={vertexGeometry}>
+                <pointsMaterial
+                    ref={vertexMatRef}
+                    color="#91bf27"
+                    size={isMobile ? 0.075 : 0.09}
+                    sizeAttenuation
+                    transparent
+                    opacity={0}
+                    depthTest
+                />
+            </points>
 
             <mesh geometry={faceGeometry}>
                 <meshPhongMaterial

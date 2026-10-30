@@ -14,12 +14,13 @@ const  RotateWords = ({
     const [index, setIndex] = React.useState(0)
 
     React.useEffect(() => {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
         const interval = setInterval(() => {
             setIndex((prevIndex) => (prevIndex + 1) % words.length)
         }, 5000)
         // Clean up interval on unmount
         return () => clearInterval(interval)
-    }, [])
+    }, [words.length])
     return (
 
         <div className={`${className}tracking-tighter`}>

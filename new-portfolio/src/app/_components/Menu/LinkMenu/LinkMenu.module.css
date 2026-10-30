@@ -45,7 +45,9 @@
     justify-content: center;
     align-items: flex-start;
     text-align: center;
+    white-space: nowrap;
     gap: .5rem;
+
 }
 
 .iconWrapper {
@@ -53,10 +55,11 @@
     font-size: 1.2rem;
     align-items: flex-start;
     justify-content: flex-start;
+    margin-bottom: 0rem;
 }
 
 /* MOBILE */
-@media screen and (max-width: 768px )  {
+@media screen and (max-width: 1024px )  {
     .link {
         width: 100%;
         height: 8vh;
@@ -65,15 +68,15 @@
         justify-content: flex-start; /* Alinha à esquerda no menu mobile */
     }
 
-  .link:hover {
-    color: var(--text-secondary);
-  }
+    .link:hover {
+        color: var(--text-secondary);
+    }
     .link p {
         margin: .4rem;
     }
-  .active {
-    color: var(--logo-stroke-primary);
-  }
+    .active {
+        color: var(--logo-stroke-primary);
+    }
     .iconWrapper {
         display: flex; /* Mostra o ícone no mobile */
         color: var(--color-accent); /* Ou a cor que preferir para os ícones */
@@ -83,5 +86,8 @@
 
 @media screen and (max-width: 480px )  {
 
+    .iconWrapper {
+        margin-top: -.5rem;
+    }
 
 }

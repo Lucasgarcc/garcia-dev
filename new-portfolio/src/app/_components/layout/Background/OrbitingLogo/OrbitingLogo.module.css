@@ -2,9 +2,8 @@
     overflow: hidden;
     width: max-content;
     height: 50px;
-    /*
-        width: clamp(28px, 4vw, 50px);
-    height: clamp(28px, 4vw, 50px);*/
+    width: clamp(25px, 4vw, 35px);
+    height: clamp(25px, 4vw, 35px);
     position: absolute;
     top: 30%;
     left: 35%;
@@ -13,34 +12,35 @@
 }
 
 .logo {
-    width: 60%;
+    width: 75%;
     height: 100%;
     object-fit: contain;
+    shape-rendering: geometricPrecision;
+    text-rendering: geometricPrecision;
     isolation: isolate;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0);
-    filter: drop-shadow(0 0 1px rgba(47, 46, 46, 0.36))
-    drop-shadow(0 0 1px rgba(97, 97, 97, 0.168))
-    drop-shadow(0 0 1px rgba(43, 43, 43, 0.175));
+    filter: drop-shadow(0 0 0.5px rgba(47, 46, 46, 0.3))
+    drop-shadow(0 0 0.5px rgba(97, 97, 97, 0.14));
 }
 
 @media screen and (max-width: 1568px) {
     .logoContainer {
         top: 30%;
         left: 35%;
-        width: clamp(26px, 3.6vw, 44px);
-        height: clamp(26px, 3.6vw, 44px);
+        width: clamp(20px, 2.8vw, 32px);
+        height: clamp(20px, 2.8vw, 32px);
     }
 }
 
 @media screen and (max-width: 1024px) {
     .logo {
-        width: 65%;
+        width: 100%;
     }
     .logoContainer {
         top: 28%;
         left: 45%;
-        width: clamp(46px, 5vw, 54px);
-        height: clamp(46px, 5vw, 54px);
+        width: clamp(18px, 3.2vw, 28px);
+        height: clamp(18px, 3.2vw, 28px);
     }
 }
 
@@ -50,8 +50,8 @@
         left: 55%;
     }
     .logoContainer {
-        width: clamp(44px, 2vw, 46px);
-        height: clamp(44px, 2vw, 46px);
+        width: clamp(17px, 2.4vw, 24px);
+        height: clamp(17px, 2.4vw, 24px);
     }
 }
 
@@ -60,7 +60,8 @@
 
     .logoContainer {
         top: 18%;
-        width: clamp(30px, 1vw, 26px);
-        height: clamp(38px, 1vw, 26px);
+        width: clamp(16px, 1vw, 22px);
+        height: clamp(16px, 1vw, 22px);
     }
+    
 }

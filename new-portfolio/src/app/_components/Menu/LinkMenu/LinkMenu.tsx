@@ -19,15 +19,16 @@ const LinkMenu = ({
             id={id}
             href={href}
             onClick={onClick}
+            aria-current={active ? 'page' : undefined}
             className={`${styles.link} ${underline ? styles.underline : ''} ${active ? styles.active : ''}`}
         >
             
             {/* O ícone agora fica dentro do link para melhor área de clique */}
             <div className={ icon ? styles.MobileContainer : ''}>
                 {icon && <span className={styles.iconWrapper}>{icon}</span>}
-                <p>
+                <span>
                     {children}
-                </p>
+                </span>
             </div>
     
         </NextLink>
