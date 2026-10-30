@@ -1,6 +1,5 @@
 // app/layout.tsx
 import './globals.css';
-import { Aldrich, Roboto_Mono } from 'next/font/google';
 import type { ReactNode } from 'react';
 import Header from '@/app/_components/layout/Header/Header';
 import LaserBackground from '@/app/_components/layout/Background/LaserBackground/LaserBackground';
@@ -45,22 +44,6 @@ const themeBootstrapScript = `
     })();
 `;
 
-const aldric = Aldrich({
-    subsets: ['latin'],
-    weight: ['400'],
-    variable: '--font-altric',
-    display: 'swap',
-    fallback: ['sans-serif'],
-})
-
-const robotoMono = Roboto_Mono({
-    subsets: ['latin'],
-    weight: ['400', '500', '700'],
-    variable: '--font-roboto-mono',
-    display: 'swap',
-    fallback: ['sans-serif'],
-});
-
 interface RootLayoutProps {
     children: ReactNode;
 }
@@ -90,7 +73,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="https://garciadev.vercel.app" />
             </head>
-            <body className={`${robotoMono.variable} ${aldric.variable} ${gugi.variable}`}>
+            <body className={gugi.variable}>
                 <Providers>
                     {/* O Wrapper envolve tudo o que deve aparecer após o loading */}
 
