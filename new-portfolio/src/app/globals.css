@@ -1,10 +1,51 @@
 @import "tailwindcss";
+@import "flag-icons/css/flag-icons.min.css";
+
+/* Acessibilidade e estabilidade visual globais */
+html {
+    scroll-behavior: smooth;
+}
+
+:focus-visible {
+    outline: 3px solid var(--green-limon);
+    outline-offset: 4px;
+}
+
+.skip-link {
+    position: fixed;
+    top: 0.75rem;
+    left: 0.75rem;
+    z-index: 3000;
+    padding: 0.75rem 1rem;
+    color: #111;
+    background: var(--green-limon);
+    border-radius: 0.4rem;
+    transform: translateY(-150%);
+    transition: transform 0.2s ease;
+}
+
+.skip-link:focus-visible {
+    transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
 
 :root {
     /* --- Escala Base de Verdes (Identidade do Site) --- */
     --green-limon-light: #FBFFCA;
     --green-limon: #b7e901;
-    --green-limon-dark: #b0df0a;
+    --green-limon-dark: #a3d000;
     --green-50: #e6f9d8;
     --green-100: #c4f58c;
     --green-200: #a8f05b;
@@ -194,6 +235,17 @@
     --color-text-secondary-c: var(--text-secondary);
     --surface-node: var(--text-muted);
     --surface-node-border: var(--surface-line);
+    --tech-grid-line: rgba(183, 233, 1, 0.075);
+    --tech-glow-primary: rgba(183, 233, 1, 0.13);
+    --tech-glow-secondary: rgba(155, 195, 63, 0.07);
+    --tech-panel: rgba(25, 28, 36, 0.52);
+    --tech-panel-border: rgba(148, 163, 184, 0.2);
+    --tech-neon-primary: var(--green-limon);
+    --tech-neon-secondary: var(--green-400);
+    --tech-background-gradient:
+        radial-gradient(ellipse 78% 58% at 50% 112%, rgba(183, 233, 1, 0.16), transparent 70%),
+        radial-gradient(circle at 96% 4%, rgba(183, 233, 1, 0.13), transparent 30%),
+        linear-gradient(180deg, #050505 0%, #101010 42%, #182017 100%);
 }
 
 /* ==========================================================================
@@ -230,7 +282,7 @@
     
     /* --- Accent para o modo Claro (Verde um pouco mais escuro para contraste) --- */
     --color-accent: var(--green-300);
-    --color-definition: var(--green-400);
+    --color-definition: var(--gray-800);
     --color-accent-hover: var(--green-500);
     --color-fill: var(--green-600);
     /* --- Logo e Identidade no Claro --- */
@@ -270,6 +322,17 @@
     --color-text-secondary-c: #666666;
     --surface-node: var(--text-muted);
     --surface-node-border: var(--text-secondary);
+    --tech-grid-line: rgba(76, 104, 28, 0.1);
+    --tech-glow-primary: rgba(155, 195, 63, 0.13);
+    --tech-glow-secondary: rgba(109, 146, 29, 0.045);
+    --tech-panel: rgba(255, 255, 255, 0.54);
+    --tech-panel-border: rgba(71, 85, 105, 0.18);
+    --tech-neon-primary: var(--green-400);
+    --tech-neon-secondary: var(--green-500);
+    --tech-background-gradient:
+        radial-gradient(ellipse 78% 58% at 50% 112%, rgba(27, 47, 2, 0.2), transparent 70%),
+        radial-gradient(circle at 96% 4%, rgba(74, 118, 20, 0.16), transparent 30%),
+        linear-gradient(180deg, #fbfbfa 0%, #f0f2ed 44%, #d9dfd5 100%);
 }
 
 @keyframes moveGradient {
@@ -280,11 +343,85 @@
 
 body {
   background-color: var(--background);
+  background-image: var(--tech-background-gradient);
+  background-attachment: fixed;
   font-family:  var(--font-roboto);
   min-height: 100vh;
   box-sizing: border-box;
   overflow-x: hidden;
   transition: color 0.25s ease, background-color 0.25s ease;
+}
+
+.tech-background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 1;
+  overflow: hidden;
+  background-image:
+    radial-gradient(circle at 12% 18%, var(--tech-glow-primary), transparent 28%),
+    radial-gradient(circle at 88% 76%, var(--tech-glow-secondary), transparent 30%),
+    linear-gradient(var(--tech-grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--tech-grid-line) 1px, transparent 1px);
+  background-size: auto, auto, 56px 56px, 56px 56px;
+}
+
+.tech-network-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  opacity: 0.88;
+}
+
+:root[data-theme='light'] .tech-network-canvas {
+  opacity: 1;
+}
+
+.tech-background::before {
+  content: '';
+  position: absolute;
+  inset: 1rem 2rem;
+  border: 1px solid var(--tech-panel-border);
+  border-radius: 1rem;
+  background:
+    linear-gradient(115deg, transparent 0 46%, var(--tech-glow-secondary) 50%, transparent 54%),
+    var(--tech-panel);
+  box-shadow:
+    inset 0 0 80px var(--tech-glow-secondary),
+    0 0 70px var(--tech-glow-primary);
+  opacity: 0.86;
+}
+
+.tech-background::after {
+  content: '';
+  position: absolute;
+  width: min(46vw, 560px);
+  height: min(30vw, 290px);
+  left: 50%;
+  top: 38%;
+  transform: translate(-50%, -50%);
+  border: 1px solid color-mix(in srgb, var(--tech-neon-primary) 72%, transparent);
+  border-radius: 2rem;
+  background: linear-gradient(145deg, transparent, var(--tech-panel));
+  box-shadow:
+    0 -1px 22px color-mix(in srgb, var(--tech-neon-primary) 55%, transparent),
+    0 18px 30px color-mix(in srgb, var(--tech-neon-secondary) 28%, transparent),
+    inset 0 0 45px var(--tech-glow-secondary);
+  opacity: 0.58;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tech-background {
+    mask-image: none;
+  }
+
+  .tech-background::after {
+    animation: none;
+  }
 }
 
 /* No seu AboutMe.module.css */

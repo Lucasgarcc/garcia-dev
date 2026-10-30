@@ -7,6 +7,7 @@ import LaserBackground from '@/app/_components/layout/Background/LaserBackground
 import localFont from "next/font/local";
 import Providers from './Providers';
 import Footer from '@/app/_components/layout/Footer/Footer';
+import ScrollToTop from '@/app/_components/ui/ScrollToTop/ScrollToTop';
 
 const gugi = localFont({
     src: [
@@ -24,6 +25,25 @@ export const metadata = {
     title: 'Garcia Developer',
     description: 'Lucas Garcia - Desenvolvedor Frontend.',
 };
+
+const themeBootstrapScript = `
+    (() => {
+        try {
+            const savedTheme = localStorage.getItem('portfolio-theme');
+            const theme = savedTheme === 'dark' || savedTheme === 'light'
+                ? savedTheme
+                : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+            document.documentElement.dataset.theme = theme;
+            document.documentElement.style.colorScheme = theme;
+
+            const themeMeta = document.querySelector('meta[name="theme-color"]');
+            themeMeta?.setAttribute('content', theme === 'dark' ? '#0d0d0d' : '#fdfdfd');
+        } catch {
+            document.documentElement.dataset.theme = 'light';
+        }
+    })();
+`;
 
 const aldric = Aldrich({
     subsets: ['latin'],
@@ -55,6 +75,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
                 <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
                 <link rel="manifest" href="/site.webmanifest" />
                 <meta name="theme-color" content="#000000" />
+                {/*<script
+                    dangerouslySetInnerHTML={{ __html: themeBootstrapScript }}
+                />*/}
 
                 {/* SEO Principal */}
                 <meta name="description" content="Explore o ecossistema de desenvolvimento de Lucas Garcia. Engenharia frontend, arquitetura modular, design systems e experiências digitais interativas." />
@@ -76,11 +99,13 @@ export default function RootLayout({ children }: RootLayoutProps) {
                         <Header />
                     </header>
 
-                    <div className='mainLayout'>
+                    <a className="skip-link" href="#main-content">Pular para o conteúdo principal</a>
+                    <main id="main-content" className='mainLayout'>
                         {children}
-                    </div>
+                    </main>
 
                     <Footer />
+                    <ScrollToTop />
 
                 </Providers>
             </body>
