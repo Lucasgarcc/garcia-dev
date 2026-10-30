@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="ts-main" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#38bdf8"/>
+              <stop offset="50%" stop-color="#0284c7"/>
+              <stop offset="100%" stop-color="#0369a1"/>
+            </linearGradient>
+            <linearGradient id="ts-side" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#0369a1"/>
+              <stop offset="100%" stop-color="#0c4a6e"/>
+            </linearGradient>
+            <linearGradient id="ts-text-face" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#ffffff"/>
+              <stop offset="100%" stop-color="#e2e8f0"/>
+            </linearGradient>
+            <linearGradient id="ts-text-side" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#cbd5e1"/>
+              <stop offset="100%" stop-color="#94a3b8"/>
+            </linearGradient>
+            <filter id="ts-shadow" x="-20%" y="-20%" width="140%" height="140%">
+              <feDropShadow dx="5" dy="8" stdDeviation="6" flood-opacity="0.45"/>
+            </filter>
+          </defs>
+          <g filter="url(#ts-shadow)" transform="rotate(-6 100 100)">
+            <!-- Borda lateral tridimensional (Profundidade 3D) -->
+            <rect x="36" y="32" width="136" height="136" rx="30" fill="url(#ts-side)"/>
+            <!-- Face frontal do bloco de TypeScript -->
+            <rect x="28" y="24" width="136" height="136" rx="28" fill="url(#ts-main)"/>
+            <!-- Brilho superior na borda da face -->
+            <rect x="30" y="26" width="132" height="132" rx="26" fill="none" stroke="#ffffff" stroke-opacity="0.5" stroke-width="2"/>
+            
+            <!-- Sombras projetadas pelas letras "TS" -->
+            <g transform="translate(3, 4)" opacity="0.3">
+              <!-- T -->
+              <path d="M48 65 H88 V78 H75 V130 H59 V78 H48 V65 Z" fill="#000"/>
+              <!-- S -->
+              <path d="M92 118 C94 127 104 134 118 134 C134 134 144 125 144 114 C144 100 133 96 120 92 L114 90 C107 88 103 86 103 80 C103 75 108 72 116 72 C124 72 128 76 130 82 H143 C141 70 131 61 116 61 C100 61 89 70 89 82 C89 94 99 99 110 103 L116 105 C124 108 128 110 128 115 C128 121 122 123 116 123 C108 123 103 119 102 114 H90 Z" fill="#000"/>
+            </g>
+
+            <!-- Letra T 3D Desenhada -->
+            <path d="M48 65 H88 V78 H75 V130 H59 V78 H48 V65 Z" fill="url(#ts-text-side)" transform="translate(2,2)"/>
+            <path d="M48 65 H88 V78 H75 V130 H59 V78 H48 V65 Z" fill="url(#ts-text-face)"/>
+
+            <!-- Letra S 3D Desenhada -->
+            <path d="M90 118 C92 127 102 134 118 134 C134 134 144 125 144 114 C144 100 133 96 120 92 L114 90 C107 88 103 86 103 80 C103 75 108 72 116 72 C124 72 128 76 130 82 H143 C141 70 131 61 116 61 C100 61 89 70 89 82 C89 94 99 99 110 103 L116 105 C124 108 128 110 128 115 C128 121 122 123 116 123 C108 123 103 119 102 114 H90 Z" fill="url(#ts-text-side)" transform="translate(2,2)"/>
+            <path d="M90 118 C92 127 102 134 118 134 C134 134 144 125 144 114 C144 100 133 96 120 92 L114 90 C107 88 103 86 103 80 C103 75 108 72 116 72 C124 72 128 76 130 82 H143 C141 70 131 61 116 61 C100 61 89 70 89 82 C89 94 99 99 110 103 L116 105 C124 108 128 110 128 115 C128 121 122 123 116 123 C108 123 103 119 102 114 H90 Z" fill="url(#ts-text-face)"/>
+          </g>
+        </svg>
