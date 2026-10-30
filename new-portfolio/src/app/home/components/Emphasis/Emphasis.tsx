@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import Scene3D from './Emphasis.module.css';
 import RotateWords from '@/app/_components/ui/Animations/RotateWords/RotateWords';
 import GradualSpacing from '@/app/_components/ui/Animations/GradualSpaing/GradualSpaing';
+import { useLanguage } from '@/app/core/context/LanguageContext';
 
 const wordTitle = [
     'Front End',
@@ -12,6 +13,10 @@ const wordTitle = [
 ]
 
 const Home = () => {
+	const { t } = useLanguage();
+	const { intro: translatedIntro } = t.home;
+
+
 	return (
 
 		<motion.div
@@ -24,20 +29,19 @@ const Home = () => {
                 <GradualSpacing> 
                     <span className={Scene3D.titleDetail}>Eai</span>
                     <span style={{ color: 'var(--green-500)' }}>,</span> 
-                    Sou Lucas 
+                    {t.home.introTitle}
                 </GradualSpacing>
 			</Typography>
 
             <Typography className={Scene3D.titleSubtitle} fontWeight={450} variant="h4" gutterBottom>
-                <span style={{ color: 'var(--green-500)' }}>{'< '}</span>Desenvolvedor <span style={{ color: 'var(--green-500)' }}> / </span>
-                    <RotateWords text="" className={Scene3D.titleDetail} words={[wordTitle[0], wordTitle[1], wordTitle[2]]} />
+                <span style={{ color: 'var(--green-500)' }}>{'< '}</span>{t.home.developer} <span style={{ color: 'var(--green-500)' }}> / </span>
+                    <RotateWords text="" className={Scene3D.titleDetail} words={wordTitle} />
                 <span style={{ color: 'var(--green-500)'}}>{' >'}</span>
 			</Typography>
 
             <Typography className={Scene3D.description} variant="body1" display={'block'} fontWeight={450} fontSize={20} maxWidth={'100%'} marginBottom={4} letterSpacing={0} fontFamily={'var(--font-roboto)'}>
 				
-                Sou um desenvolvedor Frontend apaixonado por <strong className={Scene3D.datails}>criar experiências</strong> digitais incríveis. 
-                Com uma sólida formação em design e <strong className={Scene3D.datails}>desenvolvimento web</strong>, estou sempre em busca de novos desafios e oportunidades para aprimorar minhas habilidades.
+               {translatedIntro.before}<strong className={Scene3D.datails}>{translatedIntro.emphasis}</strong>{translatedIntro.middle}<strong className={Scene3D.datails}>{translatedIntro.secondEmphasis}</strong>{translatedIntro.after}
 			</Typography>
             <Button variant="contained" sx={{
                     backgroundColor: 'var(--color-accent-button)', 
@@ -57,8 +61,8 @@ const Home = () => {
                     textTransform: 'none'
                 }}>
 
-				<a href="https://wa.link/i3xug3" target="_blank" className="button button-flex" aria-label="Contate-me">
-					Contate-me <i className="uil uil-message button-icone"></i>
+				<a href="https://wa.link/i3xug3" target="_blank" rel="noopener noreferrer" className="button button-flex" aria-label={t.common.contactMe}>
+					{t.common.contactMe} <i className="uil uil-message button-icone"></i>
 				</a>
 			</Button>
 			

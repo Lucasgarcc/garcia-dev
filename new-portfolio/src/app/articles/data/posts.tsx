@@ -10,6 +10,10 @@ import fremeworkMd  from './contentMds/JS.md';
 import nginxMd from './contentMds/Nginx.md';
 import mindMd from './contentMds/Mind.md'
 import architectureMd from './contentMds/architecture.md';
+import fremeworkMdEn from './contentMds/JS.en.md';
+import nginxMdEn from './contentMds/Nginx.en.md';
+import mindMdEn from './contentMds/Mind.en.md';
+import architectureMdEn from './contentMds/architecture.en.md';
 
 export const posts: Post[] = [
     {
@@ -21,7 +25,8 @@ export const posts: Post[] = [
         author: { name: 'Lucas Garcia', avatar: avatar.src },
         date: 'Abril 18, 2026',
         category: 'JavaScript',
-        content: fremeworkMd
+        content: fremeworkMd,
+        contentEn: fremeworkMdEn
     },
     {
         slug: 'nginx-reverse-proxy',
@@ -32,7 +37,8 @@ export const posts: Post[] = [
         author: { name: 'Lucas Garcia', avatar: avatar.src },
         date: 'Março 16, 2026',
         category: 'Orquestrador Front End',
-        content: nginxMd
+        content: nginxMd,
+        contentEn: nginxMdEn
     },
     {
         slug: 'escalabilidade-frontend',
@@ -43,7 +49,8 @@ export const posts: Post[] = [
         author: { name: 'Lucas Garcia', avatar: avatar.src },
         category: 'Arquitetura de Software',
         date: 'Março 20, 2026',
-        content: architectureMd
+        content: architectureMd,
+        contentEn: architectureMdEn
     },
     {
         slug: 'pensamento-logico-dev',
@@ -54,6 +61,7 @@ export const posts: Post[] = [
         author: { name: 'Lucas Garcia', avatar: avatar.src },
         category: 'Raciocínio Lógico',
         date: 'Abril 10, 2026',
-        content: mindMd 
+        content: mindMd,
+        contentEn: mindMdEn
     }
 ];

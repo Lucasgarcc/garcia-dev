@@ -5,8 +5,10 @@ import { posts } from '@/app/articles/data/posts';
 import PostCard from '@/app/_components/ui/PostCard/PostCard';
 import { motion } from 'framer-motion';
 import { Typography } from '@mui/material';
+import { useLanguage } from '@/app/core/context/LanguageContext';
 
 const Articles = () => {
+    const { t } = useLanguage();
     return (
         <>
             <motion.div
@@ -27,7 +29,7 @@ const Articles = () => {
                     fontWeight={500}
                     zIndex={1000}
                 >
-                    Artigos Tech
+                    {t.projectPage.articlesTitle}
                 </Typography>
 
             </motion.div>
@@ -43,7 +45,11 @@ const Articles = () => {
                         {posts.map((item, index) => (
                             <PostCard
                                 key={item.slug}
-                                post={item}
+                                post={{
+                                    ...item,
+                                    ...(t.articleItems[item.slug as keyof typeof t.articleItems] ?? {}),
+                                    ...(t.articleMeta[item.slug as keyof typeof t.articleMeta] ?? {}),
+                                }}
                                 size={index === 0 ? 'large' : 'small'}
                             />
                         ))}

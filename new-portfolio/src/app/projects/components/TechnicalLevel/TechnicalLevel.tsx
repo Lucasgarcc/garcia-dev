@@ -24,6 +24,7 @@ import { RiTailwindCssFill } from "react-icons/ri";
 import { TbBrandFramerMotion } from "react-icons/tb";
 import { RiFigmaFill } from "react-icons/ri";
 import { IoIosGitBranch } from "react-icons/io";
+import { useLanguage } from '@/app/core/context/LanguageContext';
 
 const frontEnd = [
     {
@@ -108,6 +109,7 @@ const backEnd = [
 
 
 const TechnicalLevel = () => {
+    const { t } = useLanguage();
     return (
         <>
             <motion.div
@@ -128,7 +130,7 @@ const TechnicalLevel = () => {
                     fontWeight={500}
                     zIndex={1000}
                 >
-                    Nível Técnico
+                    {t.common.technicalLevelTitle}
                 </Typography>
 
             </motion.div>
@@ -140,12 +142,12 @@ const TechnicalLevel = () => {
                 className={`${styles.technicalContainer} contatiner`}
             >
 
-                <Accordion title="Front End Developer"
+                <Accordion title={t.projects.frontEndDeveloper}
                     icon={<CodeIcon className={styles.iconFront} />}
                     content={frontEnd}
                 />
 
-                <Accordion title="Back End Developer"
+                <Accordion title={t.projects.backEndDeveloper}
                     icon={<GrNetworkDrive fontSize={'21'} className={styles.iconBack} />}
                     content={backEnd}
                 />

@@ -71,8 +71,8 @@
 }
 
 .contactForm label, 
-.contactForm input::focus, 
-.contactForm textarea::focus {
+.contactForm input:focus,
+.contactForm textarea:focus {
     color: var(--text-primary) !important;
 }
 

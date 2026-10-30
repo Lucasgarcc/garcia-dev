@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <!-- Gradientes do Bloco Angular 3D -->
+            <linearGradient id="ang-main" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#ff1a40"/>
+              <stop offset="50%" stop-color="#dd0031"/>
+              <stop offset="100%" stop-color="#b30024"/>
+            </linearGradient>
+            <linearGradient id="ang-side" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#800018"/>
+              <stop offset="100%" stop-color="#4d000e"/>
+            </linearGradient>
+            
+            <!-- Gradientes do "A" e Escudo Frontal -->
+            <linearGradient id="ang-a-face" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#ffffff"/>
+              <stop offset="100%" stop-color="#e2e8f0"/>
+            </linearGradient>
+            <linearGradient id="ang-a-side" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#cbd5e1"/>
+              <stop offset="100%" stop-color="#94a3b8"/>
+            </linearGradient>
+
+            <filter id="ang-shadow" x="-20%" y="-20%" width="140%" height="140%">
+              <feDropShadow dx="5" dy="8" stdDeviation="6" flood-opacity="0.45"/>
+            </filter>
+          </defs>
+          <g filter="url(#ang-shadow)" transform="rotate(-6 100 100)">
+            <!-- Borda lateral tridimensional (Profundidade 3D / Extrusão) -->
+            <rect x="36" y="32" width="136" height="136" rx="30" fill="url(#ang-side)"/>
+            
+            <!-- Face frontal do bloco de Angular -->
+            <rect x="28" y="24" width="136" height="136" rx="28" fill="url(#ang-main)"/>
+            
+            <!-- Brilho superior na borda da face -->
+            <rect x="30" y="26" width="132" height="132" rx="26" fill="none" stroke="#ffffff" stroke-opacity="0.4" stroke-width="2"/>
+            
+            <!-- Sombra projetada pelo Escudo Angular -->
+            <g transform="translate(3, 4)" opacity="0.3">
+              <path d="M96 52 L58 66 L64 118 L96 136 L128 118 L134 66 Z" fill="#000"/>
+            </g>
+
+            <!-- Escudo Angular 3D e Letra 'A' em Alto Relevo -->
+            <!-- Profundidade/Lateral do Escudo Central -->
+            <g transform="translate(2, 2)">
+              <path d="M96 52 L58 66 L64 118 L96 136 L128 118 L134 66 Z" fill="url(#ang-a-side)"/>
+            </g>
+            
+            <!-- Face Frontal do Escudo Central -->
+            <path d="M96 52 L58 66 L64 118 L96 136 L128 118 L134 66 Z" fill="url(#ang-a-face)"/>
+            
+            <!-- Recortes internos Vermelhos do Angular no Escudo -->
+            <path d="M96 66 L72 118 H83 L88 105 H104 L109 118 H120 L96 66 Z" fill="#c3002f"/>
+            <path d="M90 95 H102 L96 81 Z" fill="url(#ang-a-face)"/>
+            <!-- Divisão tridimensional sombreada na metade do escudo -->
+            <path d="M96 52 L128 66 L122 118 L96 136 Z" fill="#000" opacity="0.12"/>
+          </g>
+        </svg>

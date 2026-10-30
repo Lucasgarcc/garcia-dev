@@ -10,17 +10,17 @@ import { BsArrowRight } from 'react-icons/bs';
 import { InteractiveGrid } from '@/app/_components/ui/InteractiveGrid/InteractiveGrid';
 import { ScrollHelper } from '@/app/_components/helpers/ScrollHelper/ScrollHelper';
 import { FiGithub } from "react-icons/fi";
+import { useLanguage } from '@/app/core/context/LanguageContext';
 
 const Projects = () => {
 
     const isMobile = useMediaQuery('(max-width: 1024px)');
+    const { t } = useLanguage();
 
     const mainRef = useRef(null);
     const container3DRef = useRef(null);
     const pathRef = useRef(null);
-    const labelCurveSwipe = `{ Explorar Projetos }`;
-
-
+    const labelCurveSwipe = t.projects.explore;
     const [isActive, setIsActive] = useState(false);
     const [isTransitioning, setIsTransitioning] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -34,6 +34,9 @@ const Projects = () => {
         setIsCardOpen,
         setSelectedProject 
     } = useProjectsSelection();
+    const selectedProjectTranslation = selectedProjectData
+        ? t.projectItems[selectedProjectData.id as keyof typeof t.projectItems]
+        : undefined;
 
     const start = "M 0 100 V 50 Q 50 0 100 50 V 100 z";
     const end = "M 0 100 V 0 Q 50 0 100 0 V 100 z";
@@ -143,8 +146,8 @@ const Projects = () => {
         <div ref={mainRef} className={styles.projectsWrapper}>
             {/* Botão e Morph que você tinha removido a lógica */}
             {!isActive && (
-                <div className={styles.overlay} onClick={handleStart}>
-                    <button className={`
+                <div className={styles.overlay}>
+                    <button type="button" onClick={handleStart} className={`
                         ${styles.btnExplore} 
                         ${isTransitioning ? styles.buttonEffect : ''}
                     `}>
@@ -172,7 +175,7 @@ const Projects = () => {
                         ${isVisible && !isMode3D ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}
                     `}
                 >
-                    <ScrollHelper text="Role para explorar" />
+                        <ScrollHelper text={t.projects.scrollToExplore} />
                 </div>
 
                 <div ref={container3DRef} className={styles.gitGraphContainer}>
@@ -190,7 +193,7 @@ const Projects = () => {
                             `} onClick={() => setIsModalOpen(false)} />
 
                                         {/* MODAL DETALHADO */}
-                                        <div className={`fixed inset-0 z-[100] flex items-center justify-center p-4 transition-all duration-500
+                                        <div role="dialog" aria-modal="true" aria-labelledby="project-modal-title" className={`fixed inset-0 z-[100] flex items-center justify-center p-4 transition-all duration-500
                                 ${isModalOpen
                                                 ? 'translate-y-0 opacity-100 pointer-events-auto'
                                                 : 'translate-y-full opacity-0 pointer-events-none'
@@ -200,14 +203,16 @@ const Projects = () => {
                                 
                             <WrapperCard
                                 className={`${styles.detailsModal} max-w-2xl border-t-4`}
-                                style={{ borderTopColor: selectedProjectData.colorBranch }}
+                                 style={{ borderTopColor: selectedProjectData.colorBranch }}
                             >
-                                <header className="flex justify-between items-start">
-                                    <h2 className={`${styles.titleDetailModal} text-3xl font-bold text-white`}>
-                                        {selectedProjectData.title || selectedProjectData.id}
+                                 <header className="flex justify-between items-start">
+                                             <h2 id="project-modal-title" className={`${styles.titleDetailModal} text-3xl font-bold text-white`}>
+                                        {selectedProjectTranslation?.title || selectedProjectData.title || selectedProjectData.id}
                                     </h2>
-                                    <button
-                                        className={`${styles.btnCloseDatailModal} hover:text-gray transition-colors`}
+                                        <button
+                                        type="button"
+                                        aria-label={t.projectPage.closeProject}
+                                         className={`${styles.btnCloseDatailModal} hover:text-gray transition-colors`}
                                         onClick={() => {
 
                                             setIsModalOpen(false);
@@ -218,22 +223,22 @@ const Projects = () => {
                                     </button>
                                 </header>
 
-                                <div className="mt-6 space-y-4">
-                                    <p className="leading-relaxed">{selectedProjectData.description}</p>
-                                    <div className="flex flex-wrap gap-2 pt-4">
+                                 <div className="mt-6 space-y-4">
+                                     <p className="leading-relaxed">{selectedProjectTranslation?.description || selectedProjectData.description}</p>
+                                     <div className="flex flex-wrap gap-2 pt-4">
                                         {selectedProjectData.tags?.map((tag: string) => (
-                                            <span key={tag} className={`${styles.tagDatailModal} px-3 py-1 bg-white/5 border border-white/10 text-xs `}>
+                                             <span key={tag} className={`${styles.tagDatailModal} px-3 py-1 bg-white/5 border border-white/10 text-xs `}>
                                                 {tag}
                                             </span>
                                         ))}
                                     </div>
                                 </div>
-                                <footer className="mt-8 flex gap-4">
+                                 <footer className="mt-8 flex gap-4">
 
                                     {selectedProjectData.deployUrl && (
                                         <span className={styles.buttonDeploy}>  
-                                             <a href={selectedProjectData.deployUrl} target="_blank" className={`${styles.deployLink} flex-1 text-center py-2 rounded-lg transition-colors font-medium`}>
-                                            Ver Mais
+                                             <a href={selectedProjectData.deployUrl} target="_blank" rel="noopener noreferrer" className={`${styles.deployLink} flex-1 text-center py-2 rounded-lg transition-colors font-medium`}>
+                                            {t.projectPage.viewMore}
                                         </a> 
                                             <BsArrowRight size={18} className={styles.icon}/>
                                         </span>
@@ -242,8 +247,8 @@ const Projects = () => {
 
                                     {selectedProjectData.repoUrl && (
                                         <span className={styles.buttonRepo}>
-                                            <a href={selectedProjectData.repoUrl} target="_blank" className={`${styles.repoLink} flex-1 text-center py-2 rounded-lg`}>
-                                                GitHub
+                                            <a href={selectedProjectData.repoUrl} target="_blank" rel="noopener noreferrer" className={`${styles.repoLink} flex-1 text-center py-2 rounded-lg`}>
+                                                {t.projectPage.github}
                                             </a>
                                             <FiGithub className={styles.icon}/>
                                         </span>
@@ -262,7 +267,7 @@ const Projects = () => {
                                     className={`${styles.btnVeiwProjectMobile} px-6 py-3 font-bold shadow-lg 
                                     flex justify-center items-center gap-2 animate-bounce`}
                                 >
-                                    <span>Detalhes: {selectedProjectData.id}</span>
+                                    <span>{t.projectPage.details}: {selectedProjectData.id}</span>
                                     <BsArrowRight size={18} strokeWidth={.9} className={styles.icon}/>
                                 </button>
                             </div>

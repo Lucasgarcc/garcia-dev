@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useMemo, useSyncExternalStore } from 'react';
+import { createContext, useContext, useEffect, useMemo, useSyncExternalStore } from 'react';
 
 type ThemeMode = 'light' | 'dark';
 
@@ -41,12 +41,6 @@ const getStoredTheme = (): ThemeMode => {
 };
 
 const getThemeSnapshot = (): ThemeMode => {
-    const domTheme = document.documentElement.dataset.theme;
-
-    if (domTheme === 'dark' || domTheme === 'light') {
-        return domTheme;
-    }
-
     return getStoredTheme();
 };
 
@@ -103,6 +97,10 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
         getThemeSnapshot,
         getServerThemeSnapshot,
     );
+
+    useEffect(() => {
+        applyTheme(theme);
+    }, [theme]);
 
     const setTheme = (nextTheme: ThemeMode) => {
         applyTheme(nextTheme);

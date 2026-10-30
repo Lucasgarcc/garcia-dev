@@ -7,8 +7,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import { useLanguage } from '@/app/core/context/LanguageContext';
 
 const Accordion = ({ icon, title, subtitle, content, className }: AccordionProps) => {
+    const { t } = useLanguage();
     const [isOpen, setIsOpen] = useState(false);
 
     // Estado para o pull down interno
@@ -16,6 +18,7 @@ const Accordion = ({ icon, title, subtitle, content, className }: AccordionProps
 
     const item_limit = 4;
     const hasMoreItems = content.length > item_limit;
+    const accordionId = `accordion-${(title ?? 'item').replace(/\s+/g, '-').toLowerCase()}`;
 
     const displayedContent = isExpanded ? content : content.slice(0, item_limit);
 
@@ -30,7 +33,7 @@ const Accordion = ({ icon, title, subtitle, content, className }: AccordionProps
             }}
             transition={{ duration: 0.4 }}
         >
-            <div className={styles.header} onClick={() => setIsOpen(!isOpen)}>
+            <button type="button" className={styles.header} onClick={() => setIsOpen(!isOpen)} aria-expanded={isOpen} aria-controls={accordionId}>
                 <div className={styles.titleGroup}>
                     <span className={styles.mainIcon}>{icon}</span>
                     <div>
@@ -39,18 +42,19 @@ const Accordion = ({ icon, title, subtitle, content, className }: AccordionProps
                     </div>
                 </div>
 
-                <motion.div
+                <motion.span
                     animate={{ rotate: isOpen ? 180 : 0 }}
                     transition={{ duration: 0.3 }}
                 >
                     <ExpandMoreIcon className={styles.iconArrow} sx={isOpen ? { color: 'var(--green-100)', fontSize: 30 } : {fontSize: 30}}/>
-                </motion.div>
-            </div>
+                </motion.span>
+            </button>
 
             <AnimatePresence>
                 {isOpen && (
                     <motion.ul
                         className={styles.list}
+                        id={accordionId}
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ 
                             padding: '1rem', height: 'auto', 
@@ -130,7 +134,7 @@ const Accordion = ({ icon, title, subtitle, content, className }: AccordionProps
                                         {isExpanded ? <KeyboardArrowUpIcon className={styles.iconArrow} /> : <KeyboardArrowDownIcon className={styles.iconArrow} />}
                                     </motion.div>
                                     <span>
-                                        {isExpanded ? 'Recolher' : 'Ver Mais'}
+                                        {isExpanded ? t.common.collapse : t.common.seeMore}
                                     </span>
                                 </button>
                             </li>

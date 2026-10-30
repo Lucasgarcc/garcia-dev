@@ -28,7 +28,8 @@ export default function ProfileCard({ image, alt }: ProfileCardProps) {
                 src={image}
                 className={Styles.profile}
                 alt={alt}
-                loading="lazy"
+                priority
+                sizes="(max-width: 768px) 90vw, 600px"
                 placeholder="blur"
             />
         </motion.div>

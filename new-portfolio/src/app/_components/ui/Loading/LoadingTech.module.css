@@ -1,7 +1,7 @@
 .overlay {
   position: fixed;
   inset: 0;
-  background: linear-gradient(circle at center, #1a1a1a 0%, #000 100%);
+  background: transparent;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,10 +11,17 @@
 .sceneContainer {
   width: 400px; /* Tamanho da área 3D */
   height: 400px;
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.sceneContainer canvas {
+  width: 400px !important;
+  height: 400px !important;
+  display: block;
 }
 
 .uiContainer {
@@ -29,10 +36,33 @@
   font-size: 0.9rem;
   letter-spacing: 5px;
   text-transform: uppercase;
-  animation: blink 1.5s step-end infinite;
   text-shadow: 0 0 10px var(--green-500), 0 0 20px var(--green-600), 0 0 30px var(--green-400);
 }
 
-@keyframes blink {
-  50% { opacity: 0.3; }
+.dots {
+  display: inline-flex;
+  margin-left: 0.1em;
+}
+
+.dot {
+  display: inline-block;
+  animation: dot-up-down 1s ease-in-out infinite;
+}
+
+.dot:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.dot:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes dot-up-down {
+  0%, 60%, 100% {
+    transform: translateY(0);
+  }
+
+  30% {
+    transform: translateY(-0.35em);
+  }
 }

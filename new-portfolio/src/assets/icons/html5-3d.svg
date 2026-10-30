@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="html-shield" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#ff7d33"/>
+              <stop offset="50%" stop-color="#f95700"/>
+              <stop offset="100%" stop-color="#d03b00"/>
+            </linearGradient>
+            <linearGradient id="html-5-light" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#e0f2fe"/>
+              <stop offset="100%" stop-color="#bae6fd"/>
+            </linearGradient>
+            <filter id="html-shadow">
+              <feDropShadow dx="3" dy="5" stdDeviation="4" flood-color="#000" flood-opacity="0.3"/>
+            </filter>
+          </defs>
+          <g filter="url(#html-shadow)">
+            <path d="M42 32 L158 32 L146 162 L100 176 L54 162 Z" fill="#9a2c00"/>
+            <path d="M40 30 L160 30 L148 160 L100 174 L52 160 Z" fill="url(#html-shield)"/>
+            <path d="M100 30 L160 30 L148 160 L100 174 Z" fill="#ffffff" opacity="0.15"/>
+            <path d="M68 56 H132 L130 74 H86 L88 92 H130 L124 138 L100 146 L76 138 L74 122 H92 L93 128 L100 131 L106 128 L109 110 H70 Z" fill="#000" opacity="0.2" transform="translate(0, 3)"/>
+            <path d="M68 54 H132 L130 72 H86 L88 90 H130 L124 136 L100 144 L76 136 L74 120 H92 L93 126 L100 129 L106 126 L109 108 H70 Z" fill="url(#html-5-light)"/>
+          </g>
+        </svg>

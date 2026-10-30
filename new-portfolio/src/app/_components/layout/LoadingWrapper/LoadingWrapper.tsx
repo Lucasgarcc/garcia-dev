@@ -21,7 +21,7 @@ const subscribe = (listener: () => void) => {
         revealStarted = true;
 
         const reveal = () => {
-            window.setTimeout(notifyReady, 450);
+            window.setTimeout(notifyReady, 3200);
         };
 
         if (document.readyState === 'complete') {

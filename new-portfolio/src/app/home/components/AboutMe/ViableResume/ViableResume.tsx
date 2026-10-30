@@ -4,14 +4,17 @@ import React from 'react';
 import Styles from './ViableResume.module.css';
 import { Button } from '@mui/material';
 import { BsDownload } from "react-icons/bs";
+import { useLanguage } from '@/app/core/context/LanguageContext';
 const ViableResume = () => {
+    const { t } = useLanguage();
     return (
         <div>
             <Button
                 component="a" // transforma o botão em link
-                href="/assets/LucasGarcia-DesenvolvedorFrontend.pdf" // arquivo na pasta public
+                href="/Lucas_Garcia_Curriculo_Angular.pdf" // arquivo na pasta public
                 download
                 target="_blank"
+                rel="noopener noreferrer"
                 variant="contained"
                 className={Styles.VariableResumeButton}
                 sx={{
@@ -34,10 +37,10 @@ const ViableResume = () => {
                     textTransform: 'none'
                 }}
                 startIcon={<BsDownload />}
-                aria-label="Baixar CV"
+                aria-label={t.common.downloadResume}
                 size="large" 
             >
-                Baixar CV
+                {t.common.downloadResume}
             </Button>
         </div>
     );

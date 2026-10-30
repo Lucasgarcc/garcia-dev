@@ -10,6 +10,7 @@ import ViableResume from './ViableResume/ViableResume';
 import photoBio from '@assets/photbiograp.png';
 import Image from 'next/image';
 import { InteractiveGrid } from '@/app/_components/ui/InteractiveGrid/InteractiveGrid';
+import { useLanguage } from '@/app/core/context/LanguageContext';
 
 const floatingVariantCenter = (delay: number = 0): Variants => ({
     floating: {
@@ -37,6 +38,7 @@ const floatingVariants = (delay: number = 0): Variants => ({
 });
 
 const AboutMe = () => {
+    const { t } = useLanguage();
     return (
 
         <motion.div
@@ -53,7 +55,7 @@ const AboutMe = () => {
                 textAlign={'center'} 
                 fontFamily='var(--font-altric)' 
                 gutterBottom fontWeight={450}>
-                Biografia
+                {t.common.biography}
             </Typography>
             <motion.div
                 initial={{ opacity: 0, x: -60 }}
@@ -127,10 +129,13 @@ const AboutMe = () => {
                     </motion.div>
                     <div className={Styles.aboutContentText}>
                         <Typography className={Styles.aboutContentDescription} display={'block'} variant="body1" marginTop={5} fontWeight={450} maxWidth={'100%'} letterSpacing={0}>
+                            {t.home.about.before}<strong className={Styles.aboutDatailsText}>{t.home.about.emphasis}</strong>{t.home.about.middle}<strong className={Styles.aboutDatailsText}>{t.home.about.secondEmphasis}</strong>{t.home.about.after}
+                            {false && <>
                             Desenvolvedor Web e criador de experiências digitais que conectam design, tecnologia e propósito. 
                             Trabalho focado em Frontend e <strong className={Styles.aboutDatailsText}>UI/UX Design</strong>, criando interfaces intuitivas que aproximam marcas e pessoas. 
                             Acredito que cada projeto é uma oportunidade de evolução técnica e pessoal, trajetória que sigo construindo com curiosidade, resiliência e foco na excelência. 
                             Meu objetivo é consolidar minha atuação como Desenvolvedor Frontend Pleno e expandir horizontes como <strong className={Styles.aboutDatailsText}>Full Stack</strong>, sem abrir mão da criatividade em cada detalhe.
+                            </>}
                         </Typography>
 
                         <motion.div

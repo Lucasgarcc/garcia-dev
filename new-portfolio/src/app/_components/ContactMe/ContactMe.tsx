@@ -7,6 +7,7 @@ import PerfilI from '../../../../public/assets/perfil_garcia.png'
 import { motion } from 'framer-motion';
 import { GrContact } from "react-icons/gr";
 import Styles from './ContactMe.module.css';
+import { useLanguage } from '@/app/core/context/LanguageContext';
 
 const theme = createTheme({
     palette: {
@@ -60,6 +61,22 @@ const theme = createTheme({
 
 
 const ContactMe = () => {
+    const { t } = useLanguage() as unknown as {
+        t: {
+            nav: { contact: string };
+            common: {
+                getInTouch: string;
+                name: string;
+                message: string;
+                send: string;
+            };
+        };
+    };
+
+    if (!t || !t.nav || !t.common) {
+        return null; // ou um esqueleto de carregamento <Skeleton />
+    }
+    
     return (
 
         <ThemeProvider theme={theme}>
@@ -74,7 +91,7 @@ const ContactMe = () => {
                 gutterBottom
                 fontWeight={500}
             >
-                Contato
+                {t.nav.contact}
             </Typography>
             <motion.div
                 className={Styles.contactContainer}
@@ -101,17 +118,18 @@ const ContactMe = () => {
                     <div className={Styles.containerForm}>
                         <h5 className={Styles.contactFormTitle}>
                             <span className={Styles.contactFormContentTitle}>
-                                <GrContact color='var(--green-100)' /> Entrar em contato
+                                <GrContact color='var(--green-100)' /> {t.common.getInTouch}
                             </span>
                         </h5>
                         <form className={Styles.contactForm}
                             action="https://formspree.io/f/mayvlrza" method="POST">
                             <TextField
-                                label="Nome"
+                                label={t.common.name}
                                 name="name"
                                 variant="outlined"
                                 fullWidth
                                 required
+                                autoComplete="name"
                                 className={Styles.contactInput}
                             />
                             <TextField
@@ -122,11 +140,12 @@ const ContactMe = () => {
                                 fullWidth
                                 margin="normal"
                                 required
+                                autoComplete="email"
                                 color="primary"
                                 className={Styles.contactInput}
                             />
                             <TextField
-                                label="Mensagem"
+                                label={t.common.message}
                                 name="message"
                                 variant="outlined"
                                 fullWidth
@@ -159,7 +178,7 @@ const ContactMe = () => {
                                 }}
                                 className={Styles.contactButton}
                             >
-                                Enviar
+                                {t.common.send}
                             </Button>
                         </form>
                     </div>

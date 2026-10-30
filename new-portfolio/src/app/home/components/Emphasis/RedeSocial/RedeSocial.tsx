@@ -24,7 +24,7 @@ const HomeSocial = ({ redesocial }: HomeSocialProps) => {
                 role="navigation"
                 aria-label="Redes sociais"
             >
-                <a href="https://www.linkedin.com/in/lucas-garcia-l/" target="_blank" aria-label="Perfil no LinkedIn">
+                <a href="https://www.linkedin.com/in/lucas-garcia-l/" target="_blank" rel="noopener noreferrer" aria-label="Perfil no LinkedIn">
                     <RiLinkedinLine
                         className={Styles.Icon}
                         size={
@@ -49,7 +49,7 @@ const HomeSocial = ({ redesocial }: HomeSocialProps) => {
                     />
                 </a>
 
-                <a href="https://github.com/Lucasgarcc" target="_blank" aria-label="Perfil no GitHub">
+                <a href="https://github.com/Lucasgarcc" target="_blank" rel="noopener noreferrer" aria-label="Perfil no GitHub">
                     <FiGithub
                         className={Styles.Icon}
                         size={`
