@@ -24,6 +24,7 @@ import SkillExperience from "./SkillExperience/SkillExperience";
 
 import DesignServicesIcon from '@mui/icons-material/DesignServices';
 import CodeIcon from '@mui/icons-material/Code';
+import { useLanguage } from '@/app/core/context/LanguageContext';
 
 
 const mySkills: Omit<Skill, 'id'>[]= [
@@ -43,22 +44,10 @@ const mySkills: Omit<Skill, 'id'>[]= [
 
 ];
 
-const design = [
-    { text: 'Concepção de Design Systems escaláveis e consistentes.' },
-    { text: 'Arquitetura de informação focada em reduzir a carga cognitiva.' },
-    { text: 'Prototipagem de alta fidelidade com micro-interações fluidas.' },
-    { text: 'Interfaces Mobile-First com foco em acessibilidade (WCAG).' }
-];
-
-const developer = [
-    { text: 'Desenvolvimento de SPA modernas utilizando ecossistemas baseados em React.' },
-    { text: 'Interfaces responsivas com foco em Performance e SEO.' },
-    { text: 'Consumo de APIs RESTful e gerenciamento de estado complexo.' },
-    { text: 'Código limpo e modular seguindo as melhores práticas de Clean Code.' }
-];
-
-
 const Skills = () => {
+    const { t } = useLanguage();
+    const designContent = t.projectPage.designer.items.map(text => ({ text }));
+    const developerContent = t.projectPage.developer.items.map(text => ({ text }));
 
     return (
         <> 
@@ -79,7 +68,7 @@ const Skills = () => {
                     fontWeight={500}
                     zIndex={1000}
                 >
-                Habilidades
+                {t.projectPage.skillsTitle}
                 </Typography>
             </motion.div>
             <div className={`${Styles.skillsContainer} contatiner`}>
@@ -91,15 +80,15 @@ const Skills = () => {
                     className={Styles.sillsExpContent}
                 >
                     <SkillExperience
-                        title="UI / Ux"
-                        subtitle="Designer"
-                        content={design}
+                        title={t.projectPage.designer.title}
+                        subtitle={t.projectPage.designer.subtitle}
+                        content={designContent}
                         icon={<DesignServicesIcon sx={{ fontSize: 45}} />}
                     />
                     <SkillExperience
-                        title="Front End"
-                        subtitle="Developer"
-                        content={developer}
+                        title={t.projectPage.developer.title}
+                        subtitle={t.projectPage.developer.subtitle}
+                        content={developerContent}
                         icon={<CodeIcon sx={{ fontSize: 50 }} />}
                     />
                 </motion.div>

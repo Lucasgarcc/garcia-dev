@@ -7,6 +7,7 @@ import gitProjects from '../data/gitProjects';
 import { useProjectsSelection } from '../context/ProjectsSelectionContext';
 import styles from './GitGraph.module.css';
 import useMediaQuery from '@/core/hooks/MediaQuery/MediQuery';
+import { useLanguage } from '@/app/core/context/LanguageContext';
 import { LightingNode} from '@/core/interfaces/gitProject'
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
@@ -30,6 +31,7 @@ const GitGraph = () => {
     } = useProjectsSelection();
 
     const isMobile = useMediaQuery('(max-width: 1024px)');
+    const { t, language } = useLanguage();
 
     // Refs para persistência de estado sem re-render
     const nodesRef = useRef<LightingNode[]>([]);
@@ -246,6 +248,8 @@ const GitGraph = () => {
             const isRight = i % 2 !== 0;
             const xPos = isRight ? 180 : -180;
             const yBase = isMobile ? 350 - (i * totalHeight / 10) : 100 - (i * totalHeight / 10); //400
+            const projectLabel = (t.projectItems[project.id as keyof typeof t.projectItems]?.title ?? project.title ?? project.id).toUpperCase();
+            const labelFontSize = Math.max(12, Math.min(20, 320 / projectLabel.length));
 
             const projectGroup = new Zdog.Group({
                 addTo: illo,
@@ -264,7 +268,7 @@ const GitGraph = () => {
             // 2. Retângulo base (Label)
             const rect = new Zdog.Rect({
                 addTo: projectGroup,
-                width: 260,
+                width: 320,
                 height: 60,
                 translate: { x: xPos, y: yBase - 220 },
                 stroke: 10,
@@ -279,8 +283,8 @@ const GitGraph = () => {
                     addTo: rect,
                     font: myFont,
                     backface: false,
-                    value: project.id.toUpperCase(),
-                    fontSize: 20,
+                    value: projectLabel,
+                    fontSize: labelFontSize,
                     textAlign: 'center',
                     textBaseline: 'middle',
                     color: '#fff',
@@ -434,7 +438,7 @@ const GitGraph = () => {
             (illo as unknown as { children: unknown[] }).children = [];
         };
 
-    }, [isMobile, totalHeight]);
+    }, [isMobile, spacingY, totalHeight, language, t]);
 
     return (
         <div className={styles.containerGraph2D}>
@@ -463,23 +467,23 @@ const GitGraph = () => {
                         <g
                             key={project.id}
                             onClick={() => toggleMode(project.id)}
-                            style={{ cursor: 'pointer', padding: '6rem' }}
+                            style={{ cursor: 'pointer', padding: '10rem' }}
                         >   
 
                             <g>
                                 {/* Fundo (Retângulo) */}
                                 <rect
-                                    x={targetX - 180} // Centralização manual: (x - metade da largura)
+                                    x={targetX - 175} // Centralização manual: (x - metade da largura)
                                     y={currentY - 246}
                                     width="100%"
                                     height="70"
-                                    rx="10"
+                                    rx="14"
                                     fill="rgba(52, 52, 52, 1)"
                                     stroke={'#111'} // HEX puro para evitar erro no Zdog
                                     strokeWidth="3"
                                     textAnchor="middle" // Garante que o texto alinhe pelo centro do x
                                     className="project-label"
-                                    style={{ opacity: 0,}} // Para sua animação GSAP
+                                    style={{ opacity: 0, padding: '.5rem'}} // Para sua animação GSAP
                                 />
 
                                 {/* O Texto (Sobreposto ao retângulo) */}
@@ -496,7 +500,7 @@ const GitGraph = () => {
                                         pointerEvents: 'none'
                                     }}
                                 >
-                                    {project.id.toUpperCase()}
+                                    {(t.projectItems[project.id as keyof typeof t.projectItems]?.title ?? project.id).toUpperCase()}
                                 </text>
                             </g>
 

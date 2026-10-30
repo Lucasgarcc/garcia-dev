@@ -10,10 +10,12 @@ import styles from './MainArticle.module.css';
 
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import { useLanguage } from '@/app/core/context/LanguageContext';
 
 const MainArticle = ({ post }: MainArticleProps) => {
     const currentSlug = post.slug;
     const { page, refs } = useNavigation();
+    const { language, t } = useLanguage();
 
     // Early return se não estiver na página de artigos
     if (!page.includes('article')) return null;
@@ -21,6 +23,13 @@ const MainArticle = ({ post }: MainArticleProps) => {
     const relatedPosts = posts
         .filter(p => p.slug !== currentSlug)
         .slice(0, 3);
+    const translatedPost = t.articleItems[currentSlug as keyof typeof t.articleItems];
+    const translatedPostMeta = t.articleMeta[currentSlug as keyof typeof t.articleMeta];
+    const translatedRelatedPosts = relatedPosts.map(relatedPost => ({
+        ...relatedPost,
+        ...(t.articleItems[relatedPost.slug as keyof typeof t.articleItems] ?? {}),
+        ...(t.articleMeta[relatedPost.slug as keyof typeof t.articleMeta] ?? {}),
+    }));
 
     return (
         <motion.div
@@ -34,9 +43,9 @@ const MainArticle = ({ post }: MainArticleProps) => {
                 {/* Header com as informações do post */}
                 <ArticleHeader
     
-                    title={post.title}
-                    category={post.category || 'Tech'}
-                    date={post.date}
+                    title={translatedPost?.title ?? post.title}
+                    category={translatedPostMeta?.category ?? post.category ?? 'Tech'}
+                    date={translatedPostMeta?.date ?? post.date}
                     readTime={post.readTime}
                 />
 
@@ -48,7 +57,7 @@ const MainArticle = ({ post }: MainArticleProps) => {
                 >
                     <div className={styles.markdownBody}>
                         <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                            {post.content}
+                            {language === 'en' ? (post.contentEn ?? post.content) : post.content}
                         </ReactMarkdown>
                     </div>
                 </div>
@@ -60,8 +69,8 @@ const MainArticle = ({ post }: MainArticleProps) => {
                 ref={refs.articles.artRelated}
                 className={styles.relatedSection}
             >
-                <h2 className={styles.relatedTitle}>Outros Artigos</h2>
-                <ArticleGrid relatedPosts={relatedPosts} />
+                <h2 className={styles.relatedTitle}>{t.nav.relatedArticles}</h2>
+                <ArticleGrid relatedPosts={translatedRelatedPosts} />
             </section>
         </motion.div>
     );

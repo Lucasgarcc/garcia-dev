@@ -12,6 +12,7 @@ import { BsArrowRight } from 'react-icons/bs';
 
 import { PostProps } from '@/app/core/interfaces/post';
 import { useThemeMode } from '@/app/core/context/ThemeContext'; 
+import { useLanguage } from '@/app/core/context/LanguageContext';
 
 const floatingVariants = (delay: number = 0): Variants => ({
     floating: {
@@ -33,6 +34,7 @@ const blob = `
 const Post = ({ title, content, imageUrl = null, deploy, github }: PostProps) => {
 
     const { isDark } = useThemeMode();
+    const { t } = useLanguage();
 
     return (
         <motion.div
@@ -63,9 +65,8 @@ const Post = ({ title, content, imageUrl = null, deploy, github }: PostProps) =>
                 fontFamily="var(--font-altric)"
                 gutterBottom
                 fontWeight={500}
-                style={ !isDark ? { background: 'var(--surface-primary)' } : {} }
                 className={styles.postTile} >
-                Projeto destaque
+                {t.common.featuredProject}
             </Typography>
 
             <motion.div
@@ -74,12 +75,6 @@ const Post = ({ title, content, imageUrl = null, deploy, github }: PostProps) =>
                 viewport={{ once: false, amount: 0 }}
                 transition={{ duration: 0.3, delay: 0.2 }}
                 className={styles.postContainer}
-                style={!isDark ? 
-                    {
-                        backgroundColor: 'var(--surface-primary)',
-                        transition: 'background-color 0.3s ease-in -out',
-                    } 
-                    : {}}
             >
                 <div className={styles.postContent}>
                     {imageUrl && (
@@ -104,7 +99,7 @@ const Post = ({ title, content, imageUrl = null, deploy, github }: PostProps) =>
                                 <IoIosLock fontSize={26.5}
                                     stroke='var(--green-800)'      
                                     strokeWidth='4' 
-                                    className={styles.icon} /> JWT Auth
+                                    className={styles.icon} /> {t.projectPage.authBadge}
                             </motion.div>
 
                             <motion.div
@@ -117,7 +112,7 @@ const Post = ({ title, content, imageUrl = null, deploy, github }: PostProps) =>
                                     stroke='var(--green-900)'
                                     strokeWidth='1.5' 
                                     className={styles.icon} 
-                                    /> Social Feed
+                                    /> {t.projectPage.socialBadge}
                             </motion.div>
 
                             {/* SVG VISÍVEL (O Contorno que já está ok) */}
@@ -167,7 +162,7 @@ const Post = ({ title, content, imageUrl = null, deploy, github }: PostProps) =>
                             ":hover": { gap: '1rem', backgroundColor: "var(--green-300)", color: "var(--green-700)", transform: "translateY(-2px)" },
                             textTransform: 'none'
                         }}>
-                            <a href={deploy} target="_blank" className="button button-flex"> Ver Mais </a>
+                                <a href={deploy} target="_blank" rel="noopener noreferrer" className="button button-flex"> {t.projects.viewMore} </a>
                             <BsArrowRight size={18} strokeWidth={.9} className={styles.icon} />
                         </Button>
 
@@ -180,7 +175,7 @@ const Post = ({ title, content, imageUrl = null, deploy, github }: PostProps) =>
                             ":hover": { gap: '1rem', backgroundColor: "var(--gray-700)", color: "var(--gray-200)", transform: "translateY(-2px)" },
                             textTransform: 'none'
                         }}>
-                            <a href={github} target="_blank" className="button button-flex"> GitHub </a>
+                                <a href={github} target="_blank" rel="noopener noreferrer" className="button button-flex"> {t.projectPage.github} </a>
                             <FiGithub />
                         </Button>
                     </div>

@@ -4,9 +4,11 @@ import { useState } from 'react';
 import styles from './AticleHeader.module.css'
 import { ArticleHeaderProps } from '../../../core/interfaces/mainArticle/articleHeader';
 import { motion } from 'framer-motion';
+import { useLanguage } from '@/app/core/context/LanguageContext';
 
 const ArticleHeader = ({title, category, date, readTime}: ArticleHeaderProps)  => {
    const  [typeCategory, setypeCategory] = useState('');
+   const { t } = useLanguage();
 
     return (
         <header className={styles.articleHeader}>
@@ -37,7 +39,7 @@ const ArticleHeader = ({title, category, date, readTime}: ArticleHeaderProps)  =
                     <span>{date}</span>
                     <span className={styles.metaSeparatorWrapper}>
                         <span className={styles.metaDot} />
-                        {readTime} de leitura
+                        {readTime} {t.common.readingTime}
                     </span>
                 </div>
             </motion.div>

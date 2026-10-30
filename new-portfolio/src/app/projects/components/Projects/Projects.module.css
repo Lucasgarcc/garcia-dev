@@ -281,7 +281,7 @@
 }
 
 .buttonDeploy {
-    padding: .2rem 1rem ;
+    padding: .2rem 1rem;
     background: var(--green-500);
     color: var(--text-button);
     font-family: var(--font-roboto);

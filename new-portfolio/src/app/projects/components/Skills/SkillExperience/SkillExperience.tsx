@@ -5,9 +5,11 @@ import styles from './SkillExperience.module.css';
 import { CardUi } from "@/app/core/interfaces/cardUi";
 import { HiArrowRight } from "react-icons/hi";
 import Card from "../../../../_components/ui/Card/Card";
+import { useLanguage } from '@/app/core/context/LanguageContext';
 
 const SkillExperience = ({ title, subtitle, icon, content }: CardUi) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const { t } = useLanguage();
 
     useEffect(() => {
         // Função para fechar com a tecla ESC
@@ -38,7 +40,7 @@ const SkillExperience = ({ title, subtitle, icon, content }: CardUi) => {
                     className={styles.seeMore}
                     onClick={() => setIsModalOpen(true)}
                 >
-                    Veja Mais <HiArrowRight />
+                    {t.projectPage.seeMore} <HiArrowRight />
                 </button>
             </div>
 

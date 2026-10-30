@@ -9,6 +9,7 @@ import TechnicalLevel from './TechnicalLevel/TechnicalLevel';
 import Articles from './Articles/Articles';
 import Projects from './Projects/Projects';
 import gitProjects from './Projects/data/gitProjects';
+import { useLanguage } from '@/app/core/context/LanguageContext';
 interface ProjectsProps {
     children?: ReactNode;
 }
@@ -28,10 +29,12 @@ const slideFromRightY = {
 const MainProject = ({ children }: ProjectsProps) => {
 
     const { refs, page } = useNavigation();
+    const { t } = useLanguage();
 
     if (page !== 'projects') return null;
 
     const projectRefs = refs.projects;
+    const featuredProject = project ? t.projectItems[project.id as keyof typeof t.projectItems] : undefined;
 
     return (
 
@@ -58,8 +61,8 @@ const MainProject = ({ children }: ProjectsProps) => {
                             
                        {project && ( 
                             <Post
-                                title={project.id}
-                                content={project.subDescription}
+                                title={featuredProject?.title ?? project.id}
+                                content={featuredProject?.description ?? project.subDescription}
                                 imageUrl='/assets/dog-social.jpeg'
                                 deploy={project.deployUrl}
                                 github={project.repoUrl}
