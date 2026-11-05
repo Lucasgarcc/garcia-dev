@@ -44,7 +44,7 @@ export const messages = {
         },
         projectItems: {
             'flux-framework': { title: 'Framework JS Pure', description: 'Desenvolvimento de uma camada de estrutura do zero para entender reatividade e manipulação de DOM sob o capô.' },
-            'Dogs Social': { title: 'Aplicativo Mídia Social', description: 'Plataforma de rede social para amantes de cães, com perfis para pets, compartilhamento de fotos e interação entre usuários.' },
+            'Dogs Social': { title: 'Aplicativo Midia Social', description: 'Plataforma de rede social para amantes de cães, com perfis para pets, compartilhamento de fotos e interação entre usuários.' },
             Organo: { title: 'Site Web React', description: 'Aplicação desenvolvida em React para facilitar a gestão entre times.' },
             'API Node': { title: 'RESTful Data Engine', description: 'Arquitetura de comunicação entre sistemas focada em métodos HTTP puros e integridade de dados.' },
             Book: { title: 'Books', description: 'Comunidade de leitores com recomendações personalizadas para enriquecer suas jornadas literárias.' },
@@ -108,7 +108,7 @@ export const messages = {
             developer: { title: 'Front End', subtitle: 'Developer', items: ['Modern SPA development using React-based ecosystems.', 'Responsive interfaces focused on performance and SEO.', 'RESTful API consumption and complex state management.', 'Clean, modular code following Clean Code best practices.'] },
         },
         projectItems: {
-            'flux-framework': { title: 'Pure JavaScript Framework', description: 'A framework layer built from scratch to understand reactivity and DOM manipulation under the hood.' },
+            'flux-framework': { title: 'Pure JS Framework', description: 'A framework layer built from scratch to understand reactivity and DOM manipulation under the hood.' },
             'Dogs Social': { title: 'Social Media App', description: 'A social network for dog lovers, with pet profiles, photo sharing and interaction between users.' },
             Organo: { title: 'React Web Site', description: 'A React application designed to make team management easier.' },
             'API Node': { title: 'RESTful Data Engine', description: 'A communication architecture focused on pure HTTP methods and data integrity.' },
